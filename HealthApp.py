@@ -14,4 +14,13 @@ def cargarBaseDeDatos(hoja):
 #Cargamos la hoja1 en la cual se encuentran los alimentos con sus macronutrientes.
 hojaAlimentos = cargarBaseDeDatos('Hoja1')
 hojaAlimentos = hojaAlimentos.sort_values(by=['LRE']).sort_values(by=['Proteina'],ascending=False)
+n_Opciones = 3;
+for i in range(n_Opciones):
+    print(i, " ",hojaAlimentos["Nombre"].loc[i])
+opc = int(input("Introduzca la opción que desea desayunar"))
+hojaAlimentos.loc[opc,'LRE'] = 1
+hojaAlimentos = hojaAlimentos.sort_values(by=['Proteina'],ascending=False).sort_values(by=['LRE'])
+writer = pd.ExcelWriter("BaseDeDatosDeAlimentos.xlsx")
+hojaAlimentos.to_excel(writer,'Hoja1')
+writer.save();
 print(hojaAlimentos)
