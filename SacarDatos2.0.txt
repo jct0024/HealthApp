@@ -1,0 +1,17 @@
+nFila=-1;
+flag=0
+M = [];
+for al in hoja1:
+    nFila =nFila+1
+    if(flag==0):
+        M.append([])
+        for i in al:
+            if(i.value != None):
+                M[nFila].append(i.value)
+            else:
+                flag=1;
+#print(M)
+M = np.array(M)
+print(np.isnan(M))
+print("---------------------------------------------------------1")
+        

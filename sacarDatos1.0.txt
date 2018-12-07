@@ -1,0 +1,42 @@
+mAlimentos = np.empty((hoja1.max_row,9), dtype=object);
+for alimentos in hoja1:
+    nFila =nFila+1
+    if (nFila!=0):
+        i = 0;
+        for inf in alimentos:
+            if (i==0):
+                mAlimentos[nFila,i]=inf.value;
+            elif (i==1):
+                mAlimentos[nFila,i]=inf.value;
+            elif (i==2):
+                mAlimentos[nFila,i]=inf.value;
+            elif (i==3):
+                mAlimentos[nFila,i]=inf.value;
+            elif (i==4):
+                mAlimentos[nFila,i]=inf.value;
+            elif (i==5):
+                mAlimentos[nFila,i]=inf.value;
+            elif (i==6):
+                mAlimentos[nFila,i]=inf.value;
+            elif (i==7):
+                mAlimentos[nFila,i]=inf.value;
+            elif (i==8):
+                mAlimentos[nFila,i]=inf.value;
+            i=i+1
+            
+        #Iniciamos a cero la frecuencia con la que ingieren los alimentos.
+        #Esta varaible luego servirá para imlementar un LRU, para la gestión de alimentos.
+        #mAlimentos[nFila,8] = 0;
+lis = []
+for i in mAlimentos:
+    for j in i:
+            if(j != None):
+                lis.append(i)
+for t in lis:
+    for n in t:
+        print(n)
+n_opciones = 3;
+#mAlimentos  = sorted(mAlimentos)
+#print(mAlimentos)
+for i in range(n_opciones):
+    print("hola")
