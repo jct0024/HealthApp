@@ -13,14 +13,20 @@ def cargarBaseDeDatos(hoja):
 
 #Cargamos la hoja1 en la cual se encuentran los alimentos con sus macronutrientes.
 hojaAlimentos = cargarBaseDeDatos('Hoja1')
-hojaAlimentos = hojaAlimentos.sort_values(by=['LRE']).sort_values(by=['Proteina'],ascending=False)
+print(hojaAlimentos)
+hojaAlimentos = hojaAlimentos.sort_values(by=['Proteina'],ascending=False).sort_values(by=['LRE'])
 n_Opciones = 3;
 for i in range(n_Opciones):
-    print(i, " ",hojaAlimentos["Nombre"].loc[i])
+    print(i, " ",hojaAlimentos["Nombre"].iloc[i])
 opc = int(input("Introduzca la opción que desea desayunar"))
-hojaAlimentos.loc[opc,'LRE'] = 1
+hojaAlimentos.loc[opc,'LRE'] =hojaAlimentos.loc[opc,'LRE'] + 1
 hojaAlimentos = hojaAlimentos.sort_values(by=['Proteina'],ascending=False).sort_values(by=['LRE'])
 writer = pd.ExcelWriter("BaseDeDatosDeAlimentos.xlsx")
 hojaAlimentos.to_excel(writer,'Hoja1')
 writer.save();
 print(hojaAlimentos)
+PRUEBA = str(1101);
+total=0;
+for p in PRUEBA:
+    total=int(p)+total
+    print(total)
