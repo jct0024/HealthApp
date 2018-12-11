@@ -18,14 +18,15 @@ def cargarBaseDeDatos():
 
 def comprobarUsuario(userId,passwd):
     a,u,p = cargarBaseDeDatos();
-    indice=0;
+    indice=-1;
     if ((u.iloc[:,0]==userId).any()):
         for i in u.iloc[:,0]:
+            indice+=1
             if(i == userId):
                 if(passwd == u.iloc[indice,3]):
-                    return True;
-            indice+=1
-    return False;
+                    return indice;
+            
+    return indice;
 def getFilaUsuario(userId):
     a,u,p = cargarBaseDeDatos();
     indice=0;

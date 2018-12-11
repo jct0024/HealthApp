@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-1
 import numpy as np;
-import AdminBase as ab
+import AdminBase as ab;
+import CalculosDieta as cd;
 #Función que carga la base de datos.
-datosAlimCliente = np.zeros(6)
-datosAlimTotal = np.zeros(6)
+datosAlimCliente = np.zeros(7)
+datosAlimTotal = np.zeros(7)
 flagMenu = -1;
 flagLogIn = False
 #Vectores datos alimentos: calorias/grasas/garasas saturadas/hidratos/azucares/proteina
@@ -11,13 +12,19 @@ flagLogIn = False
 hojaAlimentos, hojaUsuarios, hojaPatologias = ab.cargarBaseDeDatos()
 #print(hojaAlimentos)
 while ( flagLogIn == False):
-    user = int(input("Introduzca el DNI"))
-    pwd = int(input("Introduzca la contraseña"))
-    if (ab.comprobarUsuario(user,pwd)):
+    print("Introduzca su DNI:")
+    user = int(input(">> "))
+    print("Introduzca su contraseña:")
+    pwd = int(input(">> "))
+    #Indice de la fila del usuario
+    n_FilaUser = ab.comprobarUsuario(user,pwd)
+    if (n_FilaUser>-1):
         print("Bienvenido ", hojaUsuarios.iloc[ab.getFilaUsuario(user),1])
         flagLogIn = True
     else:
         print("Usuario o contraseña erroneos vuelva a intentarlo")
+kcal_Por_Dia = cd.calculoTMB(hojaUsuarios.iloc[n_FilaUser,:])
+
 while (flagMenu !=0):
    #Hacer todo lo del menu , opciones para el cliente y demas
    print('1: Mostrar datos del usuario' )
