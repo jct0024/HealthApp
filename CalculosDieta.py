@@ -29,12 +29,28 @@ def calculoTMB(usuario):
         TMB = TMB*1.9;
     else:
         TMB = "ERROR"
-    print(usuario[10])
     #Por ultimo, el TBM son las calorias que el usuario gasta al dia aproximadas,
     #si quiere subir y bajar el restamos o sumamos el resto de calorias
     if(usuario[10]=='subir'):
         TMB=TMB+500;
     elif(usuario[6]=='bajar'):
         TMB=TMB-500
-    print(TMB)
     return TMB
+def distribuciónDeMacronutrientes(kcal,tipoDieta):
+    if (tipoDieta == 'normal'):
+        '''
+        En una dieta normal la distribución es:
+            Hidratos = 50%
+            Proteinas = 25%
+            Grasas = 25%
+        Por esta razon dividimos entre 2 a los hidratos y luego otra vez entre 4 para trasnformar las kcal en gramos
+        hacemos lo mismo con las proteinas y las grasas, solo que las grasas son 8 kcal/gramo, es decir 4 * 8 = 32.
+        '''
+        hidratos = kcal/8 #En gramos todo
+        proteinas = kcal/16
+        grasas = kcal/32
+        listMacDiarios = [kcal,hidratos,proteinas,grasas]
+        return listMacDiarios
+    else:
+        return None;
+    

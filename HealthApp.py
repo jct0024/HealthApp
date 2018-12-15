@@ -3,8 +3,8 @@ import numpy as np;
 import AdminBase as ab;
 import CalculosDieta as cd;
 #Función que carga la base de datos.
-datosAlimCliente = np.zeros(7)
-datosAlimTotal = np.zeros(7)
+datosAlimCliente = np.zeros(4)
+listMacDiarios = np.zeros(4)
 flagMenu = -1;
 flagLogIn = False
 #Vectores datos alimentos: calorias/grasas/garasas saturadas/hidratos/azucares/proteina
@@ -23,8 +23,10 @@ while ( flagLogIn == False):
         flagLogIn = True
     else:
         print("Usuario o contraseña erroneos vuelva a intentarlo")
+#Kcalorias que el usuario debe tomar al dia en base a su dieta
 kcal_Por_Dia = cd.calculoTMB(hojaUsuarios.iloc[n_FilaUser,:])
-
+listMacDiarios = np.array(cd.distribuciónDeMacronutrientes(kcal_Por_Dia,'normal'))
+print(listMacDiarios)
 while (flagMenu !=0):
    #Hacer todo lo del menu , opciones para el cliente y demas
    print('1: Mostrar datos del usuario' )
@@ -38,16 +40,18 @@ while (flagMenu !=0):
        hojaAlimentos = hojaAlimentos.sort_values(by=['Proteina'],ascending=False).sort_values(by=['LRE'])
        n_Opciones = 3;
        #Escoger entre opciones el desayuno de hoy:
-       while (datosAlimCliente[0] != datosAlimTotal[0]):
+       while (datosAlimCliente[0] != listMacDiarios[0]):
            for i in range(n_Opciones):
                 print(i, " ",hojaAlimentos["Nombre"].iloc[i])
-                opc = int(input("Introduzca la opción que desea desayunar"))
-                hojaAlimentos.iloc[opc,8] =hojaAlimentos.iloc[opc,8] + 1
+           opc = int(input("Introduzca la opción que desea desayunar"))
+           hojaAlimentos.iloc[opc,8] =hojaAlimentos.iloc[opc,8] + 1
         #Rellenar datos.
-       for i in range(datosAlimTotal.size):
-          datosAlimCliente[i] = hojaAlimentos.iloc[opc,i+1] + datosAlimCliente[i]
-          print(datosAlimCliente)
-          hojaAlimentos = hojaAlimentos.sort_values(by=['Proteina'],ascending=False).sort_values(by=['LRE'])
+           datosAlimCliente[0] = hojaAlimentos.iloc[opc,1] + datosAlimCliente[0]
+           datosAlimCliente[1] = hojaAlimentos.iloc[opc,2] + datosAlimCliente[1]
+           datosAlimCliente[2] = hojaAlimentos.iloc[opc,4] + datosAlimCliente[2]
+           datosAlimCliente[3] = hojaAlimentos.iloc[opc,5] + datosAlimCliente[3]
+           print(datosAlimCliente)
+           hojaAlimentos = hojaAlimentos.sort_values(by=['Proteina'],ascending=False).sort_values(by=['LRE'])
 
 ab.guardarDatos (hojaAlimentos,hojaUsuarios,hojaPatologias)
 print("Ya puede cerrar el sistema, hasta pronto:)")
