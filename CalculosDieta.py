@@ -6,7 +6,7 @@ Created on Tue Dec 11 08:50:40 2018
 """
 """
 Calcula el número de calorias que el usuario ha de gastar en base a:
-   altura, peso, edad,sexo, actividad realizada y sus objetivs(bjar,subir o mantener peso)
+   altura, peso, edad,sexo, actividad realizada y sus objetivos(bjar,subir o mantener peso)
 """
 def calculoTMB(usuario):
     #Formula para calcular la tasa de metabolismo basal
@@ -53,4 +53,23 @@ def distribuciónDeMacronutrientes(kcal,tipoDieta):
         return listMacDiarios
     else:
         return None;
+'''
+Crear Función que te devuelva en diferentes arrays, las kcal, 
+y gramos de comida correspondientes al desayuno, almuerzo, comida, merienda y cena
+'''
+def repartoDeKcal (kcalDiaria):
+    desayuno = kcalDiaria*0.23;
+    almuerzo = kcalDiaria*0.10;
+    comida = kcalDiaria*0.37;
+    merienda = kcalDiaria*0.10;
+    cena = kcalDiaria*0.20;
+    kcalDesAlmComMerCen = [desayuno,almuerzo,comida,merienda,cena];
+    return kcalDesAlmComMerCen;
+'''
+Serie de metodos que te devuelve verdadero o falso según si es el tipo de comida que se espera o no
+'''
+def esDesayuno(tipoComida):
+    if tipoComida==31 or tipoComida==26:
+        return True;
+    return False;
     
