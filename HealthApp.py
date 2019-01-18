@@ -27,8 +27,11 @@ while ( flagLogIn == False):
 kcal_Por_Dia = cd.calculoTMB(hojaUsuarios.iloc[n_FilaUser,:])
 #Lista en la cual se encuentran los macronutrientes que el usuario ha de comer en kcal, hidratos, proteina y grasas
 listMacDiarios = np.array(cd.distribuciónDeMacronutrientes(kcal_Por_Dia,'normal'))
+#Distribución en Kcal en desayuno, almuerzo, comido, merienda y cena.
 listDistribuciónKcal = np.array(cd.repartoDeKcal(listMacDiarios[0]))
-print(listDistribuciónKcal)
+#Sacamos las patologias que tiene el usuario.
+datosPatologias = np.array(hojaPatologias.iloc[int(ab.getFilaPatologia(hojaUsuarios.iloc[ab.getFilaUsuario(user),9])),:])
+print(datosPatologias)
 while (flagMenu !=0):
    #Hacer todo lo del menu , opciones para el cliente y demas
    print('1: Mostrar datos del usuario' )
@@ -39,18 +42,16 @@ while (flagMenu !=0):
        #Datos del usuario.
        break;
    elif (flagMenu ==2):
-       print("hola")
        hojaAlimentos = hojaAlimentos.sort_values(by=['Proteina'],ascending=False).sort_values(by=['LRE'])
        n_Opciones = 3;
        #Mientras las kcal que el cliente lleva, no supere las del desayuno, seguir preguntando.
        while (datosAlimCliente[0] <= listDistribuciónKcal[0]):
-           print("hola2")
+           print()
            i=0
            #Variable que lleva un "puntero" de las opciones que nos muestra sobre la base de datos
            #para mas tarde poder elegir una opción
            localizadorDeAli=0;
            while i<3:
-               print(localizadorDeAli)
                if(cd.esDesayuno(int(hojaAlimentos["Tipo"].iloc[localizadorDeAli]))):
                    print(i, " ",hojaAlimentos["Nombre"].iloc[localizadorDeAli])
                    if i == 0:
@@ -63,18 +64,19 @@ while (flagMenu !=0):
                localizadorDeAli = localizadorDeAli+1;
            opc = int(input("Introduzca la opción que desea desayunar"))
            if opc == 0:
-               hojaAlimentos.iloc[localizadorDeAli,8] =hojaAlimentos.iloc[localizadorDeAli,8] + 1
+               hojaAlimentos.iloc[al1,8] =hojaAlimentos.iloc[al1,8] + 1
            elif opc == 1:
-               hojaAlimentos.iloc[localizadorDeAli,8] =hojaAlimentos.iloc[localizadorDeAli,8] + 1
+               hojaAlimentos.iloc[al2,8] =hojaAlimentos.iloc[al2,8] + 1
            elif opc== 2:
-               hojaAlimentos.iloc[localizadorDeAli,8] =hojaAlimentos.iloc[localizadorDeAli,8] + 1
+               hojaAlimentos.iloc[al3,8] =hojaAlimentos.iloc[al3,8] + 1
            
         #Rellenar datos.
            datosAlimCliente[0] = hojaAlimentos.iloc[opc,1] + datosAlimCliente[0]
            datosAlimCliente[1] = hojaAlimentos.iloc[opc,2] + datosAlimCliente[1]
            datosAlimCliente[2] = hojaAlimentos.iloc[opc,4] + datosAlimCliente[2]
            datosAlimCliente[3] = hojaAlimentos.iloc[opc,6] + datosAlimCliente[3]
-           print(datosAlimCliente)
+           print("Lo que llevamos comido", datosAlimCliente[0])
+           print("objetivo: ", listDistribuciónKcal[0])
            hojaAlimentos = hojaAlimentos.sort_values(by=['Proteina'],ascending=False).sort_values(by=['LRE'])
 
 ab.guardarDatos (hojaAlimentos,hojaUsuarios,hojaPatologias)

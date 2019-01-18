@@ -27,6 +27,14 @@ def comprobarUsuario(userId,passwd):
                     return indice;
             
     return indice;
+def getFilaPatologia(patologiaID):
+    a,u,p = cargarBaseDeDatos();
+    indice=0;
+    for i in p.iloc[:,0]:
+        if(i == patologiaID):
+            break;
+        indice+=1;
+    return indice;
 def getFilaUsuario(userId):
     a,u,p = cargarBaseDeDatos();
     indice=0;
