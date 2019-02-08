@@ -51,6 +51,15 @@ def distribuciónDeMacronutrientes(kcal,tipoDieta):
         grasas = kcal/32
         listMacDiarios = [kcal,hidratos,proteinas,grasas]
         return listMacDiarios
+    '''
+    Retocar para que la grasa sea menos o mayor según sea necesario, esto queda pendiente de estudio, para 
+    saber cual seria la distribución correcta.
+    '''
+    if (tipoDieta == 'baja en grasa'):
+        hidratos = kcal/8 #En gramos todo
+        proteinas = kcal/16
+        grasas = kcal/32
+        listMacDiarios = [kcal,hidratos,proteinas,grasas]
     else:
         return None;
 '''

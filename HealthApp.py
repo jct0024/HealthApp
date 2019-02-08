@@ -26,12 +26,14 @@ while ( flagLogIn == False):
 #Kcalorias que el usuario debe tomar al dia en base a su dieta
 kcal_Por_Dia = cd.calculoTMB(hojaUsuarios.iloc[n_FilaUser,:])
 #Lista en la cual se encuentran los macronutrientes que el usuario ha de comer en kcal, hidratos, proteina y grasas
-listMacDiarios = np.array(cd.distribuciónDeMacronutrientes(kcal_Por_Dia,'normal'))
+if (hojaPatologias.iloc[int(ab.getFilaPatologia(hojaUsuarios.iloc[ab.getFilaUsuario(user),9])),2] == 'normal' or hojaPatologias.iloc[int(ab.getFilaPatologia(hojaUsuarios.iloc[ab.getFilaUsuario(user),9])),2] == 'baja azucares'):    
+    listMacDiarios = np.array(cd.distribuciónDeMacronutrientes(kcal_Por_Dia,'normal'))
+    print('hola')
 #Distribución en Kcal en desayuno, almuerzo, comido, merienda y cena.
 listDistribuciónKcal = np.array(cd.repartoDeKcal(listMacDiarios[0]))
 #Sacamos las patologias que tiene el usuario.
-datosPatologias = np.array(hojaPatologias.iloc[int(ab.getFilaPatologia(hojaUsuarios.iloc[ab.getFilaUsuario(user),9])),:])
-print(datosPatologias)
+if(hojaUsuarios.iloc[int(ab.getFilaUsuario(user)),9]>0 and hojaUsuarios.iloc[int(ab.getFilaUsuario(user)),9]<9999):
+    datosPatologias = np.array(hojaPatologias.iloc[int(ab.getFilaPatologia(hojaUsuarios.iloc[ab.getFilaUsuario(user),9])),:])
 while (flagMenu !=0):
    #Hacer todo lo del menu , opciones para el cliente y demas
    print('1: Mostrar datos del usuario' )
