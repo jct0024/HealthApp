@@ -4,6 +4,7 @@ Created on Tue Dec 11 08:50:40 2018
 
 @author: Jesus
 """
+import pandas as pd;
 """
 Calcula el número de calorias que el usuario ha de gastar en base a:
    altura, peso, edad,sexo, actividad realizada y sus objetivos(bjar,subir o mantener peso)
@@ -75,10 +76,44 @@ def repartoDeKcal (kcalDiaria):
     kcalDesAlmComMerCen = [desayuno,almuerzo,comida,merienda,cena];
     return kcalDesAlmComMerCen;
 '''
-Serie de metodos que te devuelve verdadero o falso según si es el tipo de comida que se espera o no
+Función que crea 5 listas con los alimentos que son desayunos, almuerzos, comidas, meriendas o cena respectivamente
+RECORDATORIO: un alimento puede pertenecer perfectamente a varios grupos de comida a la vez.
 '''
-def esDesayuno(tipoComida):
-    if tipoComida==31 or tipoComida==26:
-        return True;
-    return False;
-    
+def listasPorTipo(listaDeAlimentos):
+    desayuno = pd.DataFrame();
+    almuerzo = pd.DataFrame();
+    comida = pd.DataFrame();
+    merienda = pd.DataFrame();
+    cena = pd.DataFrame();
+    for indice, comida in listaDeAlimentos.iterrows():
+        if(int(comida["Tipo"])==31):
+            desayuno = desayuno.append(listaDeAlimentos.loc[indice]);
+            almuerzo.append(comida);
+            comida.append(comida);
+            merienda.append(comida);
+            cena.append(comida);
+        elif(int(comida["Tipo"])==26):
+            desayuno = desayuno.append(listaDeAlimentos.loc[indice]);
+            almuerzo.append(comida);
+            merienda.append(comida);
+        elif(int(comida["Tipo"])==5):
+            comida.append(comida);
+            cena.append(comida);
+        elif(int(comida["Tipo"])==15):
+            almuerzo.append(comida);
+            comida.append(comida);
+            merienda.append(comida);
+            cena.append(comida);
+    return desayuno, almuerzo,comida,merienda,cena;
+'''
+Ordena la comida en base a la minima diferencia entre lo que debo comer y el 
+objetivo que tengo para esta comida especifica
+'''
+def OrdMinimaDiferencia(listComida,objetivo):
+    dif=0;
+    listComida.loc[:,"dif"]=0;
+    for i,comida in listComida.iterrows():
+        dif = abs(objetivo-int(comida["Calorias"]))
+        listComida["dif"].loc[i]=dif
+    listComida = listComida.sort_values(by=['dif'])
+    return listComida;

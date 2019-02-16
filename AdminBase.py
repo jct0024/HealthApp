@@ -27,22 +27,28 @@ def comprobarUsuario(userId,passwd):
                     return indice;
             
     return indice;
-def getFilaPatologia(patologiaID):
-    a,u,p = cargarBaseDeDatos();
+def getFilaPatologia(patologiaID,p):
     indice=0;
     for i in p.iloc[:,0]:
         if(i == patologiaID):
             break;
         indice+=1;
     return indice;
-def getFilaUsuario(userId):
-    a,u,p = cargarBaseDeDatos();
+def getFilaUsuario(userId,u):
     indice=0;
     for i in u.iloc[:,0]:
         if(i == userId):
             break;
         indice+=1;
     return indice;
+def getFilaAlimento(nombre,a):
+    indice=0;
+    for i,alimento in a.iterrows():
+        if(alimento["Nombre"] == nombre):
+            break;
+        indice+=1;
+    return i;    
+    
 #Guarda los datos en la hoja que se le pasa como argumento
 def guardarDatos (hojaAlimentos, hojaUsuarios, hojaPatologias):
     writer = pd.ExcelWriter("BaseDeDatosDeAlimentos.xlsx")
