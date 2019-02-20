@@ -88,22 +88,22 @@ def listasPorTipo(listaDeAlimentos):
     for indice, comida in listaDeAlimentos.iterrows():
         if(int(comida["Tipo"])==31):
             desayuno = desayuno.append(listaDeAlimentos.loc[indice]);
-            almuerzo.append(comida);
-            comida.append(comida);
-            merienda.append(comida);
-            cena.append(comida);
+            almuerzo = almuerzo.append(listaDeAlimentos.loc[indice]);
+            comida = comida.append(listaDeAlimentos.loc[indice]);
+            merienda = merienda.append(listaDeAlimentos.loc[indice]);
+            cena = cena.append(listaDeAlimentos.loc[indice]);
         elif(int(comida["Tipo"])==26):
             desayuno = desayuno.append(listaDeAlimentos.loc[indice]);
-            almuerzo.append(comida);
-            merienda.append(comida);
+            almuerzo = almuerzo.append(listaDeAlimentos.loc[indice]);
+            merienda = merienda.append(listaDeAlimentos.loc[indice]);
         elif(int(comida["Tipo"])==5):
-            comida.append(comida);
-            cena.append(comida);
+            comida = comida.append(listaDeAlimentos.loc[indice]);
+            cena = cena.append(listaDeAlimentos.loc[indice]);
         elif(int(comida["Tipo"])==15):
-            almuerzo.append(comida);
-            comida.append(comida);
-            merienda.append(comida);
-            cena.append(comida);
+            almuerzo = almuerzo.append(listaDeAlimentos.loc[indice]);
+            comida = comida.append(listaDeAlimentos.loc[indice]);
+            merienda = merienda.append(listaDeAlimentos.loc[indice]);
+            cena = cena.append(listaDeAlimentos.loc[indice]);
     return desayuno, almuerzo,comida,merienda,cena;
 '''
 Ordena la comida en base a la minima diferencia entre lo que debo comer y el 

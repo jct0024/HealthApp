@@ -58,6 +58,7 @@ while (flagMenu !=0):
        Umbral es una variable de calidad que va aumentando cada vez que da una vuelta
        Hay que hacer un control de errores, de tal manera que si no hay 3 opciones de umbra 1 (ejemplo), la tercera opción sea de umbral 2
        '''
+       #DESAYUNO
        umbral=1
        while (opc==-1 or opc ==3):
 
@@ -93,7 +94,45 @@ while (flagMenu !=0):
        datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[fila] + datosAlimCliente[3]
        print("Lo que llevamos comido", datosAlimCliente[0])
        print("objetivo: ", listMacDiarios[0])
-       hojaAlimentos = hojaAlimentos.sort_values(by=['Proteina'],ascending=False).sort_values(by=['LRE'])
+       #hojaAlimentos = hojaAlimentos.sort_values(by=['Proteina'],ascending=False).sort_values(by=['LRE'])
+       #ALMUERZO
+       umbral=2
+       opc = -1;
+       while (opc==-1 or opc ==3):
+           i=0
+           print(almuerzo)
+           umbral = umbral+1;
+           almuerzo = almuerzo.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
+           almuerzo = cd.OrdMinimaDiferencia(almuerzo,listDistribuciónKcal[0])
+           filtAlmuerzo = almuerzo.loc[almuerzo["Calidad"] <= umbral]
+           filtAlmuerzo = filtAlmuerzo.sort_values(by=["LRE"])
+           while i<n_Opciones:
+               print(i, " ",filtAlmuerzo["Nombre"].iloc[i], " (",filtAlmuerzo["Calorias"].iloc[i],"Kcal)")
+               i=i+1;
+           print("3   Refresh")
+           opc = int(input("Introduzca la opción que desea desayunar"))
+           #Si la opcion es refresh, añadimos a todos un punto al LRE, para que a la siguiente vuelta no aparezcan de nuevo.
+           if (opc == 3):
+               fila=ab.getFilaAlimento(filtAlmuerzo["Nombre"].iloc[0],hojaAlimentos);
+               hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1;  
+               fila=ab.getFilaAlimento(filtAlmuerzo["Nombre"].iloc[1],hojaAlimentos);
+               hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1;
+               fila=ab.getFilaAlimento(filtAlmuerzo["Nombre"].iloc[2],hojaAlimentos);
+               hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1; 
+               almuerzo["LRE"].iloc[2] = almuerzo["LRE"].iloc[2]+1
+               almuerzo["LRE"].iloc[0] = almuerzo["LRE"].iloc[0]+1
+               almuerzo["LRE"].iloc[1] = almuerzo["LRE"].iloc[1]+1
+      #Sumamos 1 al LRE, esto indica que lo hemos comido recientemente.
+       fila=ab.getFilaAlimento(filtAlmuerzo["Nombre"].iloc[opc],hojaAlimentos);
+       hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1;      
+        #Rellenar datos.
+       datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
+       datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
+       datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[fila] + datosAlimCliente[2]
+       datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[fila] + datosAlimCliente[3]
+       print("Lo que llevamos comido", datosAlimCliente[0])
+       print("objetivo: ", listMacDiarios[0]+listMacDiarios[1])
+       #hojaAlimentos = hojaAlimentos.sort_values(by=['Proteina'],ascending=False).sort_values(by=['LRE'])
        
        
        
