@@ -83,13 +83,14 @@ def listasPorTipo(listaDeAlimentos):
     desayuno = pd.DataFrame();
     almuerzo = pd.DataFrame();
     comida = pd.DataFrame();
+    comida2  = pd.DataFrame();
     merienda = pd.DataFrame();
     cena = pd.DataFrame();
     for indice, comida in listaDeAlimentos.iterrows():
         if(int(comida["Tipo"])==31):
             desayuno = desayuno.append(listaDeAlimentos.loc[indice]);
             almuerzo = almuerzo.append(listaDeAlimentos.loc[indice]);
-            comida = comida.append(listaDeAlimentos.loc[indice]);
+            comida2 = comida2.append(listaDeAlimentos.loc[indice]);
             merienda = merienda.append(listaDeAlimentos.loc[indice]);
             cena = cena.append(listaDeAlimentos.loc[indice]);
         elif(int(comida["Tipo"])==26):
@@ -97,14 +98,14 @@ def listasPorTipo(listaDeAlimentos):
             almuerzo = almuerzo.append(listaDeAlimentos.loc[indice]);
             merienda = merienda.append(listaDeAlimentos.loc[indice]);
         elif(int(comida["Tipo"])==5):
-            comida = comida.append(listaDeAlimentos.loc[indice]);
+            comida2 = comida2.append(listaDeAlimentos.loc[indice]);
             cena = cena.append(listaDeAlimentos.loc[indice]);
         elif(int(comida["Tipo"])==15):
             almuerzo = almuerzo.append(listaDeAlimentos.loc[indice]);
-            comida = comida.append(listaDeAlimentos.loc[indice]);
+            comida2 = comida2.append(listaDeAlimentos.loc[indice]);
             merienda = merienda.append(listaDeAlimentos.loc[indice]);
             cena = cena.append(listaDeAlimentos.loc[indice]);
-    return desayuno, almuerzo,comida,merienda,cena;
+    return desayuno, almuerzo, comida2, merienda, cena;
 '''
 Ordena la comida en base a la minima diferencia entre lo que debo comer y el 
 objetivo que tengo para esta comida especifica
