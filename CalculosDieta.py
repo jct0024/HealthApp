@@ -118,3 +118,31 @@ def OrdMinimaDiferencia(listComida,objetivo):
         listComida["dif"].loc[i]=dif
     listComida = listComida.sort_values(by=['dif'])
     return listComida;
+'''
+Funcion que te reparte lo sobrante entre las comidas que quedan
+POSIBLE MEJORA: Que te reparta de manera proporcional a la importancia de la comida
+es decir si sobran 40 kcal en el desayuno, que no se repartan equitativamente sino que la comida
+tenga 15 y el almuerzo 5 (por ejemplo)
+'''
+def repartoKcalSobrantes(kcal,listakcalcomidas, comida):
+    cont=0;
+    if(comida == "desayuno"):
+        cont = (int(listakcalcomidas[0])-int(kcal))/4;
+        listakcalcomidas[1] = listakcalcomidas[1] + cont
+        listakcalcomidas[2] = listakcalcomidas[2] + cont
+        listakcalcomidas[3] = listakcalcomidas[3] + cont
+        listakcalcomidas[4] = listakcalcomidas[4] + cont
+    elif (comida == "almuerzo"):
+        cont = (int(listakcalcomidas[1])-int(kcal))/3;
+        listakcalcomidas[2] = listakcalcomidas[2] + cont
+        listakcalcomidas[3] = listakcalcomidas[3] + cont
+        listakcalcomidas[4] = listakcalcomidas[4] + cont
+    elif(comida == "comida"):
+        cont = (int(listakcalcomidas[2])-int(kcal))/2
+        listakcalcomidas[3] = listakcalcomidas[3] + cont
+        listakcalcomidas[4] = listakcalcomidas[4] + cont
+    elif(comida == "merienda"):
+        cont = (int(listakcalcomidas[3])-int(kcal))
+        listakcalcomidas[4] = listakcalcomidas[4] + cont       
+    return listakcalcomidas
+        

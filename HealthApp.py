@@ -74,6 +74,8 @@ while (flagMenu !=0):
                i=i+1;
            print("3   Refresh")
            opc = int(input("Introduzca la opción que desea desayunar"))
+           print("");
+           print("");
            #Si la opcion es refresh, añadimos a todos un punto al LRE, para que a la siguiente vuelta no aparezcan de nuevo.
            if (opc == 3):
                fila=ab.getFilaAlimento(filtDesayuno["Nombre"].iloc[0],hojaAlimentos);
@@ -88,7 +90,9 @@ while (flagMenu !=0):
       #Sumamos 1 al LRE, esto indica que lo hemos comido recientemente.
        fila=ab.getFilaAlimento(filtDesayuno["Nombre"].iloc[opc],hojaAlimentos);
        hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1;      
-        #Rellenar datos.
+       #Repartimos las kcal que nos han sobrado o faltado entre el resto de comidas para no pasarnos del objetivo o quedarnos cortos
+       listDistribuciónKcal = cd.repartoKcalSobrantes(hojaAlimentos["Calorias"].loc[fila],listDistribuciónKcal, "desayuno" )
+       #Rellenar datos.
        datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
        datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
        datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[fila] + datosAlimCliente[2]
@@ -110,7 +114,10 @@ while (flagMenu !=0):
                print(i, " ",filtAlmuerzo["Nombre"].iloc[i], " (",filtAlmuerzo["Calorias"].iloc[i],"Kcal)")
                i=i+1;
            print("3   Refresh")
+           
            opc = int(input("Introduzca la opción que desea almorzar"))
+           print("");
+           print("");
            #Si la opcion es refresh, añadimos a todos un punto al LRE, para que a la siguiente vuelta no aparezcan de nuevo.
            if (opc == 3):
                fila=ab.getFilaAlimento(filtAlmuerzo["Nombre"].iloc[0],hojaAlimentos);
@@ -126,7 +133,9 @@ while (flagMenu !=0):
       #Sumamos 1 al LRE, esto indica que lo hemos comido recientemente.
        fila=ab.getFilaAlimento(filtAlmuerzo["Nombre"].iloc[opc],hojaAlimentos);
        hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1;      
-        #Rellenar datos.
+       #Repartimos las kcal que nos han sobrado o faltado entre el resto de comidas para no pasarnos del objetivo o quedarnos cortos
+       listDistribuciónKcal = cd.repartoKcalSobrantes(hojaAlimentos["Calorias"].loc[fila],listDistribuciónKcal, "almuerzo" )
+       #Rellenar datos de lo que vamos comieendo a lo largo del día.
        datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
        datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
        datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[fila] + datosAlimCliente[2]
@@ -150,6 +159,8 @@ while (flagMenu !=0):
                i=i+1;
            print("3   Refresh")
            opc = int(input("Introduzca la opción que desea comer"))
+           print("");
+           print("");
            #Si la opcion es refresh, añadimos a todos un punto al LRE, para que a la siguiente vuelta no aparezcan de nuevo.
            if (opc == 3):
                fila=ab.getFilaAlimento(filtComida["Nombre"].iloc[0],hojaAlimentos);
@@ -164,7 +175,8 @@ while (flagMenu !=0):
                
       #Sumamos 1 al LRE, esto indica que lo hemos comido recientemente.
        fila=ab.getFilaAlimento(filtComida["Nombre"].iloc[opc],hojaAlimentos);
-       hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1;      
+       hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1;    
+       listDistribuciónKcal = cd.repartoKcalSobrantes(hojaAlimentos["Calorias"].loc[fila],listDistribuciónKcal, "comida" )
         #Rellenar datos.
        datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
        datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
@@ -178,8 +190,8 @@ while (flagMenu !=0):
        while (opc==-1 or opc ==3):
            i=0
            umbral = umbral+1;
-           merienda = merienda.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
-           merienda = cd.OrdMinimaDiferencia(merienda,listDistribuciónKcal[2])
+           merienda = merienda.sort_values(by=['Hidratos'],ascending=False).sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False)
+           merienda = cd.OrdMinimaDiferencia(merienda,listDistribuciónKcal[3])
            filtAlmuerzo = merienda.loc[merienda["Calidad"] <= umbral]
            filtAlmuerzo = filtComida.sort_values(by=["LRE"])
            while i<n_Opciones:
@@ -187,6 +199,8 @@ while (flagMenu !=0):
                i=i+1;
            print("3   Refresh")
            opc = int(input("Introduzca la opción que desea Almorzar"))
+           print("");
+           print("");
            #Si la opcion es refresh, añadimos a todos un punto al LRE, para que a la siguiente vuelta no aparezcan de nuevo.
            if (opc == 3):
                fila=ab.getFilaAlimento(filtAlmuerzo["Nombre"].iloc[0],hojaAlimentos);
@@ -201,7 +215,8 @@ while (flagMenu !=0):
                
       #Sumamos 1 al LRE, esto indica que lo hemos comido recientemente.
        fila=ab.getFilaAlimento(filtAlmuerzo["Nombre"].iloc[opc],hojaAlimentos);
-       hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1;      
+       hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1;     
+       listDistribuciónKcal = cd.repartoKcalSobrantes(hojaAlimentos["Calorias"].loc[fila],listDistribuciónKcal, "merienda" )
         #Rellenar datos.
        datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
        datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
@@ -215,8 +230,8 @@ while (flagMenu !=0):
        while (opc==-1 or opc ==3):
            i=0
            umbral = umbral+1;
-           cena = cena.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
-           cena = cd.OrdMinimaDiferencia(cena,listDistribuciónKcal[2])
+           cena = cena.sort_values(by=['Hidratos'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Grasa'],ascending=False)
+           cena = cd.OrdMinimaDiferencia(cena,listDistribuciónKcal[4])
            filtCena = cena.loc[cena["Calidad"] <= umbral]
            filtCena = filtCena.sort_values(by=["LRE"])
            while i<n_Opciones:
@@ -224,6 +239,8 @@ while (flagMenu !=0):
                i=i+1;
            print("3   Refresh")
            opc = int(input("Introduzca la opción que desea cenar"))
+           print("");
+           print("");
            #Si la opcion es refresh, añadimos a todos un punto al LRE, para que a la siguiente vuelta no aparezcan de nuevo.
            if (opc == 3):
                fila=ab.getFilaAlimento(filtComida["Nombre"].iloc[0],hojaAlimentos);
@@ -238,7 +255,8 @@ while (flagMenu !=0):
                
       #Sumamos 1 al LRE, esto indica que lo hemos comido recientemente.
        fila=ab.getFilaAlimento(filtCena["Nombre"].iloc[opc],hojaAlimentos);
-       hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1;      
+       hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1;    
+       listDistribuciónKcal = cd.repartoKcalSobrantes(hojaAlimentos["Calorias"].loc[fila],listDistribuciónKcal, "cena" )
         #Rellenar datos.
        datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
        datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
