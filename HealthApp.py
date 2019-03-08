@@ -66,7 +66,7 @@ while (flagMenu !=0):
            i=0
            umbral = umbral+1;
            desayuno = desayuno.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
-           desayuno = cd.OrdMinimaDiferencia(desayuno,listDistribuciónKcal[0])
+           desayuno = cd.OrdMinimaDiferencia(desayuno,listDistribuciónKcal[0],"desayuno",datosAlimCliente,kcal_Por_Dia)
            filtDesayuno = desayuno.loc[desayuno["Calidad"] <= umbral]
            filtDesayuno = filtDesayuno.sort_values(by=["LRE"])
            while i<n_Opciones:
@@ -107,7 +107,7 @@ while (flagMenu !=0):
            i=0
            umbral = umbral+1;
            almuerzo = almuerzo.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
-           almuerzo = cd.OrdMinimaDiferencia(almuerzo,listDistribuciónKcal[1])
+           almuerzo = cd.OrdMinimaDiferencia(almuerzo,listDistribuciónKcal[1],"almuerzo",datosAlimCliente,kcal_Por_Dia)
            filtAlmuerzo = almuerzo.loc[almuerzo["Calidad"] <= umbral]
            filtAlmuerzo = filtAlmuerzo.sort_values(by=["LRE"])
            while i<n_Opciones:
@@ -151,7 +151,7 @@ while (flagMenu !=0):
            i=0
            umbral = umbral+1;
            comida = comida.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
-           comida = cd.OrdMinimaDiferencia(comida,listDistribuciónKcal[2])
+           comida = cd.OrdMinimaDiferencia(comida,listDistribuciónKcal[2],"comida",datosAlimCliente,kcal_Por_Dia)
            filtComida = comida.loc[comida["Calidad"] <= umbral]
            filtComida = filtComida.sort_values(by=["LRE"])
            while i<n_Opciones:
@@ -191,7 +191,7 @@ while (flagMenu !=0):
            i=0
            umbral = umbral+1;
            merienda = merienda.sort_values(by=['Hidratos'],ascending=False).sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False)
-           merienda = cd.OrdMinimaDiferencia(merienda,listDistribuciónKcal[3])
+           merienda = cd.OrdMinimaDiferencia(merienda,listDistribuciónKcal[3],"merienda",datosAlimCliente,kcal_Por_Dia)
            filtAlmuerzo = merienda.loc[merienda["Calidad"] <= umbral]
            filtAlmuerzo = filtComida.sort_values(by=["LRE"])
            while i<n_Opciones:
@@ -231,7 +231,7 @@ while (flagMenu !=0):
            i=0
            umbral = umbral+1;
            cena = cena.sort_values(by=['Hidratos'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Grasa'],ascending=False)
-           cena = cd.OrdMinimaDiferencia(cena,listDistribuciónKcal[4])
+           cena = cd.OrdMinimaDiferencia(cena,listDistribuciónKcal[4],"cena",datosAlimCliente,kcal_Por_Dia)
            filtCena = cena.loc[cena["Calidad"] <= umbral]
            filtCena = filtCena.sort_values(by=["LRE"])
            while i<n_Opciones:

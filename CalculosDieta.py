@@ -68,11 +68,11 @@ Crear Función que te devuelva en diferentes arrays, las kcal,
 y gramos de comida correspondientes al desayuno, almuerzo, comida, merienda y cena
 '''
 def repartoDeKcal (kcalDiaria):
-    desayuno = kcalDiaria*0.23;
-    almuerzo = kcalDiaria*0.10;
-    comida = kcalDiaria*0.37;
-    merienda = kcalDiaria*0.10;
-    cena = kcalDiaria*0.20;
+    desayuno = kcalDiaria*0.2475;
+    almuerzo = kcalDiaria*0.135;
+    comida = kcalDiaria*0.305;
+    merienda = kcalDiaria*0.115;
+    cena = kcalDiaria*0.1975;
     kcalDesAlmComMerCen = [desayuno,almuerzo,comida,merienda,cena];
     return kcalDesAlmComMerCen;
 '''
@@ -109,15 +109,82 @@ def listasPorTipo(listaDeAlimentos):
 '''
 Ordena la comida en base a la minima diferencia entre lo que debo comer y el 
 objetivo que tengo para esta comida especifica
+MEJOOOOOORAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Hay que hacer los calculos según sea: Desayuno, almuerzo... 
+y sacar de ahí las kcal en carb, proteina y grasas
+para sacar la diferencia de las tres con lo que deberiamos llevar, y hacer una media de la diferencia.
+ESTA MAAAAAL HAY QUE CORREGIRLO
 '''
-def OrdMinimaDiferencia(listComida,objetivo):
+def OrdMinimaDiferencia(listComida,objetivo,tipoComida,dat,kcaldiarias):
     dif=0;
     listComida.loc[:,"dif"]=0;
-    for i,comida in listComida.iterrows():
-        dif = abs(objetivo-int(comida["Calorias"]))
+    if(tipoComida == "desayuno"):
+      #Es el tanto por ciento correspondiente a cada macronutriente en base al objetivo de la comida
+      # Se calcula = %pesoMacronutrienteSobreKcalDiarias*100/%pesodelacomidadelmomentocar
+      graDeber = kcaldiarias*0.0375
+      carDeber = kcaldiarias*0.15
+      protDeber = kcaldiarias*0.06
+      #deber = objetivo
+      carb = objetivo*0.606060
+      gra = objetivo*0.15
+      prot = objetivo*0.2424
+    #PENDIENTE DE CALCULAR EL RESTO DE COMIDAS EMPEZANDO POR AQUI
+    elif(tipoComida == "almuerzo"):
+      graDeber = kcaldiarias*0.015+kcaldiarias*0.0375
+      carDeber = kcaldiarias*0.1+kcaldiarias*0.15
+      protDeber = kcaldiarias*0.02+kcaldiarias*0.06
+      #deber = objetivo+kcaldiarias*0.135
+      carb = objetivo*0.606060
+      gra = objetivo*0.15
+      prot = objetivo*0.2424
+    elif(tipoComida == "comida"):
+      graDeber = kcaldiarias*0.075+kcaldiarias*0.015+kcaldiarias*0.0375
+      carDeber = kcaldiarias*0.145+kcaldiarias*0.1+kcaldiarias*0.15
+      protDeber = kcaldiarias*0.085+kcaldiarias*0.02+kcaldiarias*0.06
+      #deber = objetivo+kcaldiarias*0.135+kcaldiarias*0.305
+      carb = objetivo*0.606060
+      gra = objetivo*0.15
+      prot = objetivo*0.2424
+    elif(tipoComida == "merienda"):
+      graDeber = kcaldiarias*0.045+kcaldiarias*0.075+kcaldiarias*0.015+kcaldiarias*0.0375
+      carDeber = kcaldiarias*0.45+kcaldiarias*0.145+kcaldiarias*0.1+kcaldiarias*0.15
+      protDeber = kcaldiarias*0.025+kcaldiarias*0.085+kcaldiarias*0.02+kcaldiarias*0.06
+      #deber = objetivo+kcaldiarias*0.135+kcaldiarias*0.305+kcaldiarias*0.115
+      carb = objetivo*0.606060
+      gra = objetivo*0.15
+      prot = objetivo*0.2424
+    else:
+      graDeber = kcaldiarias*0.0875+kcaldiarias*0.045+kcaldiarias*0.075+kcaldiarias*0.015+kcaldiarias*0.0375
+      carDeber = kcaldiarias*0.05+kcaldiarias*0.45+kcaldiarias*0.145+kcaldiarias*0.1+kcaldiarias*0.15
+      protDeber = kcaldiarias*0.06+kcaldiarias*0.025+kcaldiarias*0.085+kcaldiarias*0.02+kcaldiarias*0.06
+      #deber = objetivo+kcaldiarias*0.135+kcaldiarias*0.305+kcaldiarias*0.115+kcaldiarias*0.1975
+      carb = objetivo*0.606060
+      gra = objetivo*0.15
+      prot = objetivo*0.2424
+    for i,comida in listComida.iterrows():        
+        dif = formulDif(dat,carb,prot,gra,comida,objetivo,carDeber,graDeber,protDeber)
+        #dif = abs(objetivo-int(comida["Calorias"]))
         listComida["dif"].loc[i]=dif
-    listComida = listComida.sort_values(by=['dif'])
+    listComida = listComida.sort_values(by=['dif'],ascending=False)
     return listComida;
+
+def formulDif(loQueLlevo,carb,prot,gras,comida,deboComida,carDeber,graDeber,protDeber):
+    #print("carb que deberia llevar: ",carDeber, "//Lo que llevo: ",loQueLlevo[2])
+    #print("resta carb que debería comer vslo que como", (carb-(comida["Hidratos"]*4)))
+    #print("kcal deberia vs calorias llevo", (deboComida-(comida["Calorias"])))
+    if ((carDeber-loQueLlevo[1]*4) >= 0 ):
+        comidaCarb = (carDeber-loQueLlevo[2]*4)/(carb-(comida["Hidratos"]*4)+(deboComida-(comida["Calorias"])))
+    else:
+        comidaCarb=0;
+    if ((protDeber-loQueLlevo[2]*4) >= 0 ):
+        comidaPro = (carDeber-loQueLlevo[3]*4)/(prot-(comida["Proteina"]*4)+(deboComida-(comida["Calorias"])))
+    else:
+        comidaPro=0;
+    if ((graDeber-loQueLlevo[3]*8)>= 0 ):
+        comidaGra = (carDeber-loQueLlevo[1]*8)/(gras-(comida["Grasa"]*8)+(deboComida-(comida["Calorias"])))
+    else:
+        comidaGra=0;
+    return (comidaCarb+comidaPro+comidaGra)/3
 '''
 Funcion que te reparte lo sobrante entre las comidas que quedan
 POSIBLE MEJORA: Que te reparta de manera proporcional a la importancia de la comida
