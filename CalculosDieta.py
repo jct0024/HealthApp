@@ -134,33 +134,33 @@ def OrdMinimaDiferencia(listComida,objetivo,tipoComida,dat,kcaldiarias):
       carDeber = kcaldiarias*0.1+kcaldiarias*0.15
       protDeber = kcaldiarias*0.02+kcaldiarias*0.06
       #deber = objetivo+kcaldiarias*0.135
-      carb = objetivo*0.606060
-      gra = objetivo*0.15
-      prot = objetivo*0.2424
+      carb = objetivo*0.74074074
+      gra = objetivo*0.111111
+      prot = objetivo*0.14814814
     elif(tipoComida == "comida"):
       graDeber = kcaldiarias*0.075+kcaldiarias*0.015+kcaldiarias*0.0375
       carDeber = kcaldiarias*0.145+kcaldiarias*0.1+kcaldiarias*0.15
       protDeber = kcaldiarias*0.085+kcaldiarias*0.02+kcaldiarias*0.06
       #deber = objetivo+kcaldiarias*0.135+kcaldiarias*0.305
-      carb = objetivo*0.606060
-      gra = objetivo*0.15
-      prot = objetivo*0.2424
+      carb = objetivo*0.4754098
+      gra = objetivo*0.245901
+      prot = objetivo*0.2786885
     elif(tipoComida == "merienda"):
       graDeber = kcaldiarias*0.045+kcaldiarias*0.075+kcaldiarias*0.015+kcaldiarias*0.0375
       carDeber = kcaldiarias*0.45+kcaldiarias*0.145+kcaldiarias*0.1+kcaldiarias*0.15
       protDeber = kcaldiarias*0.025+kcaldiarias*0.085+kcaldiarias*0.02+kcaldiarias*0.06
       #deber = objetivo+kcaldiarias*0.135+kcaldiarias*0.305+kcaldiarias*0.115
-      carb = objetivo*0.606060
-      gra = objetivo*0.15
-      prot = objetivo*0.2424
+      carb = objetivo*0.39130434
+      gra = objetivo*0.39130434
+      prot = objetivo*0.2173913043
     else:
       graDeber = kcaldiarias*0.0875+kcaldiarias*0.045+kcaldiarias*0.075+kcaldiarias*0.015+kcaldiarias*0.0375
       carDeber = kcaldiarias*0.05+kcaldiarias*0.45+kcaldiarias*0.145+kcaldiarias*0.1+kcaldiarias*0.15
       protDeber = kcaldiarias*0.06+kcaldiarias*0.025+kcaldiarias*0.085+kcaldiarias*0.02+kcaldiarias*0.06
       #deber = objetivo+kcaldiarias*0.135+kcaldiarias*0.305+kcaldiarias*0.115+kcaldiarias*0.1975
-      carb = objetivo*0.606060
-      gra = objetivo*0.15
-      prot = objetivo*0.2424
+      carb = objetivo*0.2531645570
+      gra = objetivo*0.4430379747
+      prot = objetivo*0.3037974684
     for i,comida in listComida.iterrows():        
         dif = formulDif(dat,carb,prot,gra,comida,objetivo,carDeber,graDeber,protDeber)
         #dif = abs(objetivo-int(comida["Calorias"]))

@@ -2,96 +2,96 @@
 # -*- coding: utf-8 -*-
 
 from tkinter import *
-from tkinter import ttk
-import numpy as np;
-import AdminBase as ab;
-import CalculosDieta as cd;
-# La clase 'Aplicacion' ha crecido. En el ejemplo se incluyen
-# nuevos widgets en el método constructor __init__(): Uno de
-# ellos es el botón 'Info'  que cuando sea presionado llamará 
-# al método 'verinfo' para mostrar información en el otro 
-# widget, una caja de texto: un evento ejecuta una acción: 
+from tkinter import ttk, font
+import getpass
+
+# Gestor de geometría (pack)
 
 class Aplicacion():
     def __init__(self):
-        
-        # En el ejemplo se utiliza el prefijo 'self' para
-        # declarar algunas variables asociadas al objeto 
-        # ('mi_app')  de la clase 'Aplicacion'. Su uso es 
-        # imprescindible para que se pueda acceder a sus
-        # valores desde otros métodos:
-        
         self.raiz = Tk()
-        self.raiz.geometry('300x200')
+        self.raiz.title("Acceso")
+        # Cambia el formato de la fuente actual a negrita para
+        # resaltar las dos etiquetas que acompañan a las cajas
+        # de entrada. (Para este cambio se ha importado el  
+        # módulo 'font' al comienzo del programa):
         
-        # Impide que los bordes puedan desplazarse para
-        # ampliar o reducir el tamaño de la ventana 'self.raiz':
+        fuente = font.Font(weight='bold')
         
-        self.raiz.resizable(width=False,height=False)
-        self.raiz.title('Ver info')
+        # Define las etiquetas que acompañan a las cajas de
+        # entrada y asigna el formato de fuente anterior: 
+                               
+        self.etiq1 = ttk.Label(self.raiz, text="Usuario:", 
+                               font=fuente)
+        self.etiq2 = ttk.Label(self.raiz, text="Contraseña:", 
+                               font=fuente)
         
-        # Define el widget Text 'self.tinfo ' en el que se
-        # pueden introducir varias líneas de texto:
+        # Declara dos variables de tipo cadena para contener
+        # el usuario y la contraseña: 
         
-        self.tinfo = Text(self.raiz, width=40, height=10)
+        self.usuario = StringVar()
+        self.clave = StringVar()
+
+
+
+        self.ctext1 = ttk.Entry(self.raiz, 
+                                textvariable=self.usuario, 
+                                width=30)
+        self.ctext2 = ttk.Entry(self.raiz, 
+                                textvariable=self.clave, 
+                                width=30, show="*")
+        self.separ1 = ttk.Separator(self.raiz, orient=HORIZONTAL)
         
-        # Sitúa la caja de texto 'self.tinfo' en la parte
-        # superior de la ventana 'self.raiz':
-        
-        self.tinfo.pack(side=TOP)
-        
-        # Define el widget Button 'self.binfo' que llamará 
-        # al metodo 'self.verinfo' cuando sea presionado
-        
-        self.binfo = ttk.Button(self.raiz, text='Info', 
-                                command=self.verinfo())
-        
-        # Coloca el botón 'self.binfo' debajo y a la izquierda
-        # del widget anterior
-                                
-        self.binfo.pack(side=LEFT)
-        
-        # Define el botón 'self.bsalir'. En este caso
-        # cuando sea presionado, el método destruirá o
-        # terminará la aplicación-ventana 'self.raíz' con 
-        # 'self.raiz.destroy'
-        
-        self.bsalir = ttk.Button(self.raiz, text='Salir', 
+
+        self.boton1 = ttk.Button(self.raiz, text="Aceptar", 
+                                 command=self.aceptar)
+        self.boton2 = ttk.Button(self.raiz, text="Cancelar", 
                                  command=self.raiz.destroy)
                                  
-        # Coloca el botón 'self.bsalir' a la derecha del 
-        # objeto anterior.
-                                 
-        self.bsalir.pack(side=RIGHT)
+                        
+        self.etiq1.pack(side=TOP, fill=BOTH, expand=True, 
+                        padx=5, pady=5)
+        self.ctext1.pack(side=TOP, fill=X, expand=True, 
+                         padx=5, pady=5)
+        self.etiq2.pack(side=TOP, fill=BOTH, expand=True, 
+                        padx=5, pady=5)
+        self.ctext2.pack(side=TOP, fill=X, expand=True, 
+                         padx=5, pady=5)
+        self.separ1.pack(side=TOP, fill=BOTH, expand=True, 
+                         padx=5, pady=5)
+        self.boton1.pack(side=LEFT, fill=BOTH, expand=True, 
+                         padx=5, pady=5)
+        self.boton2.pack(side=RIGHT, fill=BOTH, expand=True, 
+                         padx=5, pady=5)
         
-        # El foco de la aplicación se sitúa en el botón
-        # 'self.binfo' resaltando su borde. Si se presiona
-        # la barra espaciadora el botón que tiene el foco
-        # será pulsado. El foco puede cambiar de un widget
-        # a otro con la tecla tabulador [tab]
+        # Cuando se inicia el programa se asigna el foco
+        # a la caja de entrada de la contraseña para que se
+        # pueda empezar a escribir directamente:
+                
+        self.ctext2.focus_set()
         
-        self.binfo.focus_set()
         self.raiz.mainloop()
     
-    def verinfo(self):
-        print("Hola")
-        # Borra el contenido que tenga en un momento dado
-        # la caja de texto
-        
-        self.tinfo.delete("1.0", END)
-        texto_info ="";
-        # Construye una cadena de texto con toda la
-        # información obtenida:
-        for i in range(5):
-            texto_info = texto_info + str(hojaAlimentos.iloc[i])+ "\n"
+    # El método 'aceptar' se emplea para validar la 
+    # contraseña introducida. Será llamado cuando se 
+    # presione el botón 'Aceptar'. Si la contraseña
+    # coincide con la cadena 'tkinter' se imprimirá
+    # el mensaje 'Acceso permitido' y los valores 
+    # aceptados. En caso contrario, se mostrará el
+    # mensaje 'Acceso denegado' y el foco volverá al
+    # mismo lugar.
+    
+    def aceptar(self):
+        print("Acceso permitido")
+        print("Usuario:   ", self.ctext1.get())
+        print("Contraseña:", self.ctext2.get())
 
-        
-        # Inserta la información en la caja de texto:
-        
-        self.tinfo.insert("1.0", texto_info)
-
+        self.ventana2 = Tk()
+        self.hola = ttk.Label(self.ventana2, text="holiiiii")
+        self.hola.pack(side=TOP,fill=BOTH,expand=True)
+        self.ctext2.focus_set()
+        self.ventana2.mainloop()
 def main():
-    hojaAlimentos, hojaUsuarios, hojaPatologias = ab.cargarBaseDeDatos()
     mi_app = Aplicacion()
     return 0
 
