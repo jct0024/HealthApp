@@ -19,13 +19,16 @@ def cargarBaseDeDatos():
 def comprobarUsuario(userId,passwd):
     a,u,p = cargarBaseDeDatos();
     indice=-1;
+    bandera =True;
     if ((u.iloc[:,0]==userId).any()):
         for i in u.iloc[:,0]:
             indice+=1
             if(i == userId):
-                if(passwd == u.iloc[indice,3]):
+                if(passwd == str(u.iloc[indice,3])):
+                    bandera = False;
                     return indice;
-            
+    if(bandera):
+        indice = -1;            
     return indice;
 def getFilaPatologia(patologiaID,p):
     indice=0;
