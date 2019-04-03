@@ -24,7 +24,7 @@ def comprobarUsuario(userId,passwd):
         for i in u.iloc[:,0]:
             indice+=1
             if(i == userId):
-                if(passwd == str(u.iloc[indice,3])):
+                if(str(passwd) == str(u.iloc[indice,3])):
                     bandera = False;
                     return indice;
     if(bandera):
