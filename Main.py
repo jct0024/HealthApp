@@ -88,7 +88,6 @@ class MostrarDieta(tk.Frame):
     global totalKcalComidas;
     def __init__(self, parent, controller):
         self.codigo()
-        print(self.desayuno)
         '''
         Parte gráfica
         '''
@@ -123,8 +122,7 @@ class MostrarDieta(tk.Frame):
         self.style.configure("black.Horizontal.TProgressbar", background='orange')
         '''
         self.barProgTotal = ttk.Progressbar(self,length=150,style='black.Horizontal.TProgressbar')
-        progreso = (100*datosAlimCliente[0])/self.listMacDiarios[0]
-        self.barProgTotal['value'] = progreso;
+        self.barProgTotal['value'] = (100*datosAlimCliente[0])/self.listMacDiarios[0];
         self.barProgTotal.pack(side=RIGHT)
         '''
         Aqui metemos la carga inicial de datos.
@@ -146,6 +144,7 @@ class MostrarDieta(tk.Frame):
         #CARGAMOS las 5 comidas
         self.desayuno,self.almuerzo,self.comida,self.merienda,self.cena = cd.listasPorTipo(hojaAlimentos);  
     def desayunoF(self):
+        self.opc=-1;
         self.label = tk.Label(self.tabDesayuno, text="-DESAYUNO-", font=self.controller.title_font)
         self.label.pack(side="top", fill="x", pady=10)
         self.selected = IntVar()
@@ -162,8 +161,10 @@ class MostrarDieta(tk.Frame):
             rad1 = ttk.Radiobutton(self.tabDesayuno,text=str(nombre), value=i, variable=self.selected)
             rad1.pack(anchor=tk.W)
             i=i+1;
-        btn = Button(self.tabDesayuno, text="Click Me", command=self.clicked)
-        btn.pack()
+        btnSel = tk.Button(self.tabDesayuno, text="Seleccionar", command=self.clicked)
+        btnRefr = tk.Button(self.tabDesayuno, text="Refrescar", command=self.clicked)
+        btnSel.pack(fill=X)
+        btnRefr.pack(fill=X)
     def AlmuerzoF(self):
         self.label = tk.Label(self.tabAlmuerzo, text="-ALMUERZO-", font=self.controller.title_font)
         self.label.pack(side="top", fill="x", pady=10)
@@ -177,7 +178,20 @@ class MostrarDieta(tk.Frame):
         self.label = tk.Label(self.tabCena, text="-CENA-", font=self.controller.title_font)
         self.label.pack(side="top", fill="x", pady=10)
     def clicked(self):
-        print(self.selected.get())
+        global progreso;
+        self.opc=self.selected.get()
+        self.fila=ab.getFilaAlimento(self.filtDesayuno["Nombre"].iloc[self.opc],hojaAlimentos);
+        hojaAlimentos["LRE"].loc[self.fila] =hojaAlimentos["LRE"].loc[self.fila] + 1; 
+        #Rellenar datos.
+        datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[self.fila] + datosAlimCliente[0]
+        datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[self.fila] + datosAlimCliente[1]
+        datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[self.fila] + datosAlimCliente[2]
+        datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[self.fila] + datosAlimCliente[3]
+        print(self.barProgTotal['value'])
+        self.barProgTotal['value'] = int((100*datosAlimCliente[0])/self.listMacDiarios[0]);
+        print(self.barProgTotal['value'])
+        #self.barProgTotal['value'] = 46
+        print( self.opc)
 if __name__ == "__main__":
         #Variable que almacena lo que lleva comido el cliente
         datosAlimCliente = np.zeros(4)
