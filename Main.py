@@ -7,12 +7,13 @@ from tkinter import *
 from tkinter import ttk,font, messagebox;
 from PIL import ImageTk, Image
 import numpy as np;
+import datetime
 
 class SampleApp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-
+        print(datetime.date.today())
         self.title_font = font.Font(family='Helvetica', size=18, weight="bold", slant="italic")
         self.geometry('500x500')
         # the container is where we'll stack a bunch of frames
@@ -27,8 +28,8 @@ class SampleApp(tk.Tk):
         self.frames["menuPrincipal"] = menuPrincipal(parent=container, controller=self)
         self.frames["menuPrincipal"].grid(row=0, column=0, sticky="nsew")
         self.frames["menuPrincipal"].config(bg="powder blue")
-        self.frames["PageOne"] = PageOne(parent=container, controller=self)
-        self.frames["PageOne"].grid(row=0, column=0, sticky="nsew")
+        self.frames["InfoUsuario"] = InfoUsuario(parent=container, controller=self)
+        self.frames["InfoUsuario"].grid(row=0, column=0, sticky="nsew")
         
         self.frames["MostrarDieta"] = MostrarDieta(parent=container, controller=self)
         self.frames["MostrarDieta"].grid(row=0, column=0, sticky="nsew")
@@ -53,7 +54,7 @@ class menuPrincipal(tk.Frame):
         self.icon_size = Label(self.bar)
         self.icon_size.configure(image=self.icon)
         button1 = tk.Button(self, text="Información de Usuario",
-                            command=lambda: controller.show_frame("PageOne"),height = 2, width = 20,relief=GROOVE,bg="spring green")
+                            command=lambda: controller.show_frame("InfoUsuario"),height = 2, width = 20,relief=GROOVE,bg="spring green")
         button2 = tk.Button(self, text="Dieta diaria",
                             command=lambda: controller.show_frame("MostrarDieta"),height = 2, width = 20,relief=GROOVE,bg="spring green")
         button3 = tk.Button(self, text="Guardar",
@@ -68,16 +69,29 @@ def guardar():
     ab.guardarDatos(hojaAlimentos, hojaUsuarios, hojaPatologias)
     messagebox.showinfo("GUARDAR","Se ha guadado")
 
-class PageOne(tk.Frame):
-
+class InfoUsuario(tk.Frame):
     def __init__(self, parent, controller):
+        self.user,self.pwd = vs.getUsuario()
         tk.Frame.__init__(self, parent)
         self.controller = controller
+        #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
+        self.c = 0;
         label = tk.Label(self, text="This is page 1", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
-        button = tk.Button(self, text="Go to the start page",
-                           command=lambda: controller.show_frame("menuPrincipal"))
-        button.pack()
+        for i in hojaUsuarios.iloc[int(ab.getFilaUsuario(self.user,hojaUsuarios)),:]:
+            if(str(hojaUsuarios.columns.values[self.c]) == "patologia"):
+                self.texto = str(hojaUsuarios.columns.values[self.c])+ ": "+str(hojaPatologias.iloc[i,1])
+            elif(str(hojaUsuarios.columns.values[self.c]) == "password"):
+                self.texto = str(hojaUsuarios.columns.values[self.c])+ ": *******"
+            else:
+                self.texto = str(hojaUsuarios.columns.values[self.c])+ ": "+str(i)
+            self.labelInfo = tk.Label(self, text=self.texto)
+            self.labelInfo.pack(anchor=tk.W)
+            self.c+=1;
+        btnEditar = tk.Button(self, text="Editar información",height = 2, width = 20,relief=GROOVE)
+        btnEditar.pack();
+        button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("menuPrincipal"),relief=GROOVE)
+        button.pack(side=BOTTOM)
 
 
 class MostrarDieta(tk.Frame):
@@ -112,7 +126,7 @@ class MostrarDieta(tk.Frame):
         self.CenaF()
         self.tab_control.pack(expand=1, fill='both')
         ###-Comun todas comidas-######
-        self.button = tk.Button(self, text="Volver al inicio", command=lambda: self.controller.show_frame("menuPrincipal"))
+        self.button = tk.Button(self, text="Volver al inicio", command=lambda: self.controller.show_frame("menuPrincipal"),relief=GROOVE)
         self.button.pack(side=LEFT)
         #NO BORRAAARR, DE MOMENTO NO LO NECESITAMOS, PERO ASI SE CAMBIARÍA EL COLOR DE LA BARRA.
         '''
@@ -144,6 +158,7 @@ class MostrarDieta(tk.Frame):
         #CARGAMOS las 5 comidas
         self.desayuno,self.almuerzo,self.comida,self.merienda,self.cena = cd.listasPorTipo(hojaAlimentos);  
     def desayunoF(self):
+        print("Hola")
         self.opc=-1;
         self.label = tk.Label(self.tabDesayuno, text="-DESAYUNO-", font=self.controller.title_font)
         self.label.pack(side="top", fill="x", pady=10)
@@ -156,13 +171,23 @@ class MostrarDieta(tk.Frame):
         self.filtDesayuno = self.filtDesayuno.sort_values(by=["LRE"])
         self.objetivo = tk.Label(self.tabDesayuno,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal")
         self.objetivo.pack()
+        self.cont_comida_inf = tk.Frame(self.tabDesayuno);
+        self.cont_opciones_Des =tk.Frame(self.cont_comida_inf)
+        self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf)
+        self.label_Informacion_comida = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN",width=20,height=20)
+        self.label_Informacion_comida.pack(fill=X)
+        
         while(i<n_opciones):
             nombre=str(i)+") "+str(self.filtDesayuno["Nombre"].iloc[i])+" ("+ str(self.filtDesayuno["Calorias"].iloc[i])+"Kcal)"
-            rad1 = ttk.Radiobutton(self.tabDesayuno,text=str(nombre), value=i, variable=self.selected)
+            rad1 = ttk.Radiobutton(self.cont_opciones_Des,text=str(nombre), value=i, variable=self.selected)
+            #rad1['state']='disable' #DESABILITAMOS LOS BOTONES.
             rad1.pack(anchor=tk.W)
             i=i+1;
+        self.cont_opciones_Des.pack(side=LEFT)
+        self.cont_inf_eleccion.pack(side=LEFT)
+        self.cont_comida_inf.pack()
         btnSel = tk.Button(self.tabDesayuno, text="Seleccionar", command=self.clicked)
-        btnRefr = tk.Button(self.tabDesayuno, text="Refrescar", command=self.clicked)
+        btnRefr = tk.Button(self.tabDesayuno, text="Refrescar", command=self.refresh)
         btnSel.pack(fill=X)
         btnRefr.pack(fill=X)
     def AlmuerzoF(self):
@@ -178,7 +203,6 @@ class MostrarDieta(tk.Frame):
         self.label = tk.Label(self.tabCena, text="-CENA-", font=self.controller.title_font)
         self.label.pack(side="top", fill="x", pady=10)
     def clicked(self):
-        global progreso;
         self.opc=self.selected.get()
         self.fila=ab.getFilaAlimento(self.filtDesayuno["Nombre"].iloc[self.opc],hojaAlimentos);
         hojaAlimentos["LRE"].loc[self.fila] =hojaAlimentos["LRE"].loc[self.fila] + 1; 
@@ -192,6 +216,9 @@ class MostrarDieta(tk.Frame):
         print(self.barProgTotal['value'])
         #self.barProgTotal['value'] = 46
         print( self.opc)
+    def refresh(self):
+        print("holi")
+        self.controller.destroy
 if __name__ == "__main__":
         #Variable que almacena lo que lleva comido el cliente
         datosAlimCliente = np.zeros(4)
