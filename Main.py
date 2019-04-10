@@ -8,7 +8,7 @@ from tkinter import ttk,font, messagebox;
 from PIL import ImageTk, Image
 import numpy as np;
 import datetime
-
+import os
 class SampleApp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
@@ -23,7 +23,11 @@ class SampleApp(tk.Tk):
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
-  
+        menu = Menu(self)
+        subMenuManual = Menu(menu)
+        subMenuManual.add_command(label="Manual",command=self.pdf)
+        menu.add_cascade(label='Archivo',menu=subMenuManual)
+        self.config(menu=menu)
         self.frames = {}
         self.frames["menuPrincipal"] = menuPrincipal(parent=container, controller=self)
         self.frames["menuPrincipal"].grid(row=0, column=0, sticky="nsew")
@@ -41,12 +45,14 @@ class SampleApp(tk.Tk):
         frame = self.frames[page_name]
         frame.tkraise()
 
-
+    def pdf(self):
+        os.system('ejemplo.pdf')
 class menuPrincipal(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
+        
         label = tk.Label(self, text="This is the start page", font=controller.title_font)
         self.bar = tk.Frame(self, relief=RIDGE, borderwidth=5)
         self.imgPath = './descarga.jpg'
