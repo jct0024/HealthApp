@@ -188,7 +188,7 @@ class MostrarDieta(tk.Frame):
         self.opc=-1;
         self.label = tk.Label(self.tabDesayuno, text="-DESAYUNO-", font=self.controller.title_font)
         self.label.pack(side="top", fill="x", pady=10)
-        self.selected = IntVar()
+        selected = IntVar()
         i=0;
         umbral=2
         self.desayuno = self.desayuno.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
@@ -202,10 +202,11 @@ class MostrarDieta(tk.Frame):
         self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf)
         self.label_Informacion_comida = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN")
         self.label_Informacion_comida.pack(fill=BOTH,side=LEFT,anchor=tk.W)
+        
         botones = {};
         while(i<n_opciones):
             nombre=str(i)+") "+str(self.filtDesayuno["Nombre"].iloc[i])+" ("+ str(self.filtDesayuno["Calorias"].iloc[i])+"Kcal)"
-            self.rad1 = ttk.Radiobutton(self.cont_opciones_Des,text=str(nombre), value=i, command=partial(self.MostrarInfo,i,"desayuno"))
+            self.rad1 = ttk.Radiobutton(self.cont_opciones_Des,text=str(nombre), value=i, variable=selected, command=partial(self.MostrarInfo,i,"desayuno"))
             #rad1['state']='disable' #DESABILITAMOS LOS BOTONES.
             self.rad1.pack(anchor=tk.W)
             nomb = "boton"+str(i)
@@ -215,7 +216,7 @@ class MostrarDieta(tk.Frame):
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
         btnSel = tk.Button(self.tabDesayuno, text="Seleccionar")
-        btnSel.config( command=partial(self.seleccionar,"desayuno",botones,btnSel))
+        btnSel.config( command=partial(self.seleccionar,"desayuno",botones,btnSel,selected))
         self.btnRefr = tk.Button(self.tabDesayuno, text="Refrescar", command=partial(self.refresh,"desayuno"))
         btnSel.pack(fill=X)
         self.btnRefr.pack(fill=X)
@@ -224,7 +225,7 @@ class MostrarDieta(tk.Frame):
         self.label = tk.Label(self.tabAlmuerzo, text="-ALMUERZO-", font=self.controller.title_font)
         self.label.pack(side="top", fill="x", pady=10)
         umbral=2
-        self.selected = IntVar()
+        selected = IntVar()
         self.cont_comida_inf = tk.Frame(self.tabAlmuerzo);
         self.cont_opciones_Des =tk.Frame(self.cont_comida_inf)
         self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf)
@@ -240,7 +241,7 @@ class MostrarDieta(tk.Frame):
         botonesAl=  dict()
         while i<3:
             nombre=str(i)+") "+str(self.filtAlmuerzo["Nombre"].iloc[i])+" ("+ str(self.filtAlmuerzo["Calorias"].iloc[i])+"Kcal)"
-            self.rad2 = ttk.Radiobutton(self.cont_opciones_Des,text=str(nombre), value=i, command=partial(self.MostrarInfo,i,"almuerzo"))
+            self.rad2 = ttk.Radiobutton(self.cont_opciones_Des,text=str(nombre), value=i, variable=selected, command=partial(self.MostrarInfo,i,"almuerzo"))
             self.rad2.pack(anchor=tk.W)
             nomb = "botonA"+str(i)
             botonesAl[nomb]=self.rad2
@@ -249,7 +250,7 @@ class MostrarDieta(tk.Frame):
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
         btnSel = tk.Button(self.tabAlmuerzo, text="Seleccionar")
-        btnSel.config(command=partial(self.seleccionar,"almuerzo",botonesAl,btnSel))
+        btnSel.config(command=partial(self.seleccionar,"almuerzo",botonesAl,btnSel,selected))
         self.btnRefr = tk.Button(self.tabAlmuerzo, text="Refrescar", command=partial(self.refresh,"desayuno"))
         btnSel.pack(fill=X)
         self.btnRefr.pack(fill=X)
@@ -257,7 +258,7 @@ class MostrarDieta(tk.Frame):
         self.label = tk.Label(self.tabComida, text="-COMIDA-", font=self.controller.title_font)
         self.label.pack(side="top", fill="x", pady=10)
         umbral=2
-        self.selected = IntVar()
+        selected = IntVar()
         self.cont_comida_inf = tk.Frame(self.tabComida);
         self.cont_opciones_Des =tk.Frame(self.cont_comida_inf)
         self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf)
@@ -273,7 +274,7 @@ class MostrarDieta(tk.Frame):
         botonesCom=  dict()
         while i<3:
             nombre=str(i)+") "+str(self.filtComida["Nombre"].iloc[i])+" ("+ str(self.filtComida["Calorias"].iloc[i])+"Kcal)"
-            self.radCom = ttk.Radiobutton(self.cont_opciones_Des,text=str(nombre), value=i, command=partial(self.MostrarInfo,i,"comida"))
+            self.radCom = ttk.Radiobutton(self.cont_opciones_Des,text=str(nombre), value=i, variable=selected, command=partial(self.MostrarInfo,i,"comida"))
             self.radCom.pack(anchor=tk.W)
             nomb = "botonA"+str(i)
             botonesCom[nomb]=self.radCom
@@ -282,7 +283,7 @@ class MostrarDieta(tk.Frame):
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
         btnSel = tk.Button(self.tabComida, text="Seleccionar")
-        btnSel.config(command=partial(self.seleccionar,"comida",botonesCom,btnSel))
+        btnSel.config(command=partial(self.seleccionar,"comida",botonesCom,btnSel,selected))
         self.btnRefr = tk.Button(self.tabComida, text="Refrescar", command=partial(self.refresh,"desayuno"))
         btnSel.pack(fill=X)
         self.btnRefr.pack(fill=X)
@@ -290,7 +291,7 @@ class MostrarDieta(tk.Frame):
         self.label = tk.Label(self.tabMerienda, text="-MERIENDA-", font=self.controller.title_font)
         self.label.pack(side="top", fill="x", pady=10)
         umbral=2
-        self.selected = IntVar()
+        selected = IntVar()
         self.cont_comida_inf = tk.Frame(self.tabMerienda);
         self.cont_opciones_Des =tk.Frame(self.cont_comida_inf)
         self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf)
@@ -306,7 +307,7 @@ class MostrarDieta(tk.Frame):
         botonesMer=  dict()
         while i<3:
             nombre=str(i)+") "+str(self.filtMerienda["Nombre"].iloc[i])+" ("+ str(self.filtMerienda["Calorias"].iloc[i])+"Kcal)"
-            self.radMer = ttk.Radiobutton(self.cont_opciones_Des,text=str(nombre), value=i, command=partial(self.MostrarInfo,i,"merienda"))
+            self.radMer = ttk.Radiobutton(self.cont_opciones_Des,text=str(nombre), value=i, variable=selected, command=partial(self.MostrarInfo,i,"merienda"))
             self.radMer.pack(anchor=tk.W)
             nomb = "botonA"+str(i)
             botonesMer[nomb]=self.radMer
@@ -315,7 +316,7 @@ class MostrarDieta(tk.Frame):
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
         btnSel = tk.Button(self.tabMerienda, text="Seleccionar")
-        btnSel.config(command=partial(self.seleccionar,"merienda",botonesMer,btnSel))
+        btnSel.config(command=partial(self.seleccionar,"merienda",botonesMer,btnSel,selected))
         self.btnRefr = tk.Button(self.tabMerienda, text="Refrescar", command=partial(self.refresh,"merienda"))
         btnSel.pack(fill=X)
         self.btnRefr.pack(fill=X)
@@ -323,7 +324,7 @@ class MostrarDieta(tk.Frame):
         self.label = tk.Label(self.tabCena, text="-CENA-", font=self.controller.title_font)
         self.label.pack(side="top", fill="x", pady=10)
         umbral=2
-        self.selected = IntVar()
+        selected = IntVar()
         self.cont_comida_inf = tk.Frame(self.tabCena);
         self.cont_opciones_Des =tk.Frame(self.cont_comida_inf)
         self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf)
@@ -339,7 +340,7 @@ class MostrarDieta(tk.Frame):
         botonesCen=  dict()
         while i<3:
             nombre=str(i)+") "+str(self.filtCena["Nombre"].iloc[i])+" ("+ str(self.filtCena["Calorias"].iloc[i])+"Kcal)"
-            self.radCen = ttk.Radiobutton(self.cont_opciones_Des,text=str(nombre), value=i, command=partial(self.MostrarInfo,i,"cena"))
+            self.radCen = ttk.Radiobutton(self.cont_opciones_Des,text=str(nombre), value=i, variable=selected, command=partial(self.MostrarInfo,i,"cena"))
             self.radCen.pack(anchor=tk.W)
             nomb = "botonA"+str(i)
             botonesCen[nomb]=self.radCen
@@ -348,7 +349,7 @@ class MostrarDieta(tk.Frame):
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
         btnSel = tk.Button(self.tabCena, text="Seleccionar")
-        btnSel.config(command=partial(self.seleccionar,"cena",botonesCen,btnSel))
+        btnSel.config(command=partial(self.seleccionar,"cena",botonesCen,btnSel,selected))
         self.btnRefr = tk.Button(self.tabCena, text="Refrescar", command=partial(self.refresh,"cena"))
         btnSel.pack(fill=X)
         self.btnRefr.pack(fill=X)
@@ -358,124 +359,130 @@ class MostrarDieta(tk.Frame):
     Una vez seleccionado, te suma a lo que llevas hoy, lo propio de la comida que has seleccionado, y si deseleccionas la comida,
     para elegir otra cosa te lo resta
     '''
-    def seleccionar(self,tipoComida, arrrayBoton,btnSel):
+    def seleccionar(self,tipoComida, arrrayBoton,btnSel,selected):
         if(tipoComida =="desayuno"):
             #Comprobamos si el bton esta en modo editar o seleccionar
             if not(self.banderaSelect[0]):
-                self.opc=self.selected.get()
-                self.fila=ab.getFilaAlimento(self.filtDesayuno["Nombre"].iloc[self.opc],hojaAlimentos);
+                opc=selected.get()
+                self.fila=ab.getFilaAlimento(self.filtDesayuno["Nombre"].iloc[opc],hojaAlimentos);
                 hojaAlimentos["LRE"].loc[self.fila] =hojaAlimentos["LRE"].loc[self.fila] + 1; 
                 #Rellenar datos.
                 datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[self.fila] + datosAlimCliente[0]
                 datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[self.fila] + datosAlimCliente[1]
                 datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[self.fila] + datosAlimCliente[2]
                 datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[self.fila] + datosAlimCliente[3]
-                print(self.barProgTotal['value'])
+                #Añadimos el desayuno a la opción de que llevamos comido
+                menuDeHoy[0] = hojaAlimentos["Nombre"].loc[self.fila]
                 #Creamos el % de lo que hemos comido sobre la barra de progreso.
                 self.barProgTotal['value'] = int((100*datosAlimCliente[0])/self.listMacDiarios[0]);
-                print(self.barProgTotal['value'])
                 #Desabilitamos los botones
                 for i in arrrayBoton.values():
                     i['state']='disable'
                 btnSel.config(text="Editar")
                 self.banderaSelect[0]=True
             else:
+                menuDeHoy[0]=None
                 for i in arrrayBoton.values():
                     i['state']='enable'
                 btnSel.config(text="Seleccionar")
                 self.banderaSelect[0]=False
         elif(tipoComida =="almuerzo"):
             if not(self.banderaSelect[1]):
-                self.opc=self.selected.get()
-                print(arrrayBoton)
-                self.fila=ab.getFilaAlimento(self.filtAlmuerzo["Nombre"].iloc[self.opc],hojaAlimentos);
+                opc=selected.get()
+                self.fila=ab.getFilaAlimento(self.filtAlmuerzo["Nombre"].iloc[opc],hojaAlimentos);
                 hojaAlimentos["LRE"].loc[self.fila] =hojaAlimentos["LRE"].loc[self.fila] + 1; 
                 #Rellenar datos.
                 datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[self.fila] + datosAlimCliente[0]
                 datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[self.fila] + datosAlimCliente[1]
                 datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[self.fila] + datosAlimCliente[2]
                 datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[self.fila] + datosAlimCliente[3]
-                print(self.barProgTotal['value'])
+                #Añadimos el almuerzo a la opción de que llevamos comido
+                nom = hojaAlimentos["Nombre"].loc[self.fila]
+                menuDeHoy[1] = str(hojaAlimentos["Nombre"].loc[self.fila])
                 self.barProgTotal['value'] = int((100*datosAlimCliente[0])/self.listMacDiarios[0]);
-                print(self.barProgTotal['value'])
                 for j in arrrayBoton.values():
                     j['state']='disable'
                 btnSel.config(text="Editar")
                 self.banderaSelect[1]=True
             else:
+                menuDeHoy[1]=""
                 for j in arrrayBoton.values():
                     j['state']='enable'
                 btnSel.config(text="Seleccionar")
                 self.banderaSelect[1]=False
         elif(tipoComida =="comida"):
             if not(self.banderaSelect[2]):
-                self.opc=self.selected.get()
-                print(arrrayBoton)
-                self.fila=ab.getFilaAlimento(self.filtAlmuerzo["Nombre"].iloc[self.opc],hojaAlimentos);
+                opc=selected.get()
+                self.fila=ab.getFilaAlimento(self.filtAlmuerzo["Nombre"].iloc[opc],hojaAlimentos);
                 hojaAlimentos["LRE"].loc[self.fila] =hojaAlimentos["LRE"].loc[self.fila] + 1; 
                 #Rellenar datos.
                 datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[self.fila] + datosAlimCliente[0]
                 datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[self.fila] + datosAlimCliente[1]
                 datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[self.fila] + datosAlimCliente[2]
                 datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[self.fila] + datosAlimCliente[3]
-                print(self.barProgTotal['value'])
+                #Añadimos la comida a la opción de que llevamos comido
+                menuDeHoy[2] = hojaAlimentos["Nombre"].loc[self.fila]
                 self.barProgTotal['value'] = int((100*datosAlimCliente[0])/self.listMacDiarios[0]);
-                print(self.barProgTotal['value'])
                 for j in arrrayBoton.values():
                     j['state']='disable'
                 btnSel.config(text="Editar")
                 self.banderaSelect[2]=True
             else:
+                menuDeHoy[2]=None
                 for j in arrrayBoton.values():
                     j['state']='enable'
                 btnSel.config(text="Seleccionar")
                 self.banderaSelect[2]=False
         elif(tipoComida == "merienda"):
             if not(self.banderaSelect[3]):
-                self.opc=self.selected.get()
-                self.fila=ab.getFilaAlimento(self.filtMerienda["Nombre"].iloc[self.opc],hojaAlimentos);
+                opc=selected.get()
+                self.fila=ab.getFilaAlimento(self.filtMerienda["Nombre"].iloc[opc],hojaAlimentos);
                 hojaAlimentos["LRE"].loc[self.fila] =hojaAlimentos["LRE"].loc[self.fila] + 1; 
                 #Rellenar datos.
                 datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[self.fila] + datosAlimCliente[0]
                 datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[self.fila] + datosAlimCliente[1]
                 datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[self.fila] + datosAlimCliente[2]
                 datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[self.fila] + datosAlimCliente[3]
-                print(self.barProgTotal['value'])
+                #Añadimos la merienda a la opción de que llevamos comido
+                menuDeHoy[3] = hojaAlimentos["Nombre"].loc[self.fila]
                 self.barProgTotal['value'] = int((100*datosAlimCliente[0])/self.listMacDiarios[0]);
-                print(self.barProgTotal['value'])
                 for j in arrrayBoton.values():
                     j['state']='disable'
                 btnSel.config(text="Editar")
                 self.banderaSelect[3]=True
             else:
+                menuDeHoy[3]=None;
                 for j in arrrayBoton.values():
                     j['state']='enable'
                 btnSel.config(text="Seleccionar")
                 self.banderaSelect[3]=False 
         elif(tipoComida == "cena"):
             if not(self.banderaSelect[4]):
-                self.opc=self.selected.get()
-                self.fila=ab.getFilaAlimento(self.filtCena["Nombre"].iloc[self.opc],hojaAlimentos);
+                opc=selected.get()
+                self.fila=ab.getFilaAlimento(self.filtCena["Nombre"].iloc[opc],hojaAlimentos);
                 hojaAlimentos["LRE"].loc[self.fila] =hojaAlimentos["LRE"].loc[self.fila] + 1; 
                 #Rellenar datos.
                 datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[self.fila] + datosAlimCliente[0]
                 datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[self.fila] + datosAlimCliente[1]
                 datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[self.fila] + datosAlimCliente[2]
                 datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[self.fila] + datosAlimCliente[3]
-                print(self.barProgTotal['value'])
+                #Añadimos la cena a la opción de que llevamos comido
+                menuDeHoy[4] = hojaAlimentos["Nombre"].loc[self.fila]
                 self.barProgTotal['value'] = int((100*datosAlimCliente[0])/self.listMacDiarios[0]);
-                print(self.barProgTotal['value'])
                 for j in arrrayBoton.values():
                     j['state']='disable'
                 btnSel.config(text="Editar")
                 self.banderaSelect[4]=True
             else:
+                menuDeHoy[5]=None;
                 for j in arrrayBoton.values():
                     j['state']='enable'
                 btnSel.config(text="Seleccionar")
                 self.banderaSelect[4]=False 
     '''
     Muestra la información del checkButton seleccionado
+    Params: i Indice de la comida en la lista filtrada
+    Params: tipo Tipo de comida para saber cual es el tipo de desayuno a criptar
     '''
     def MostrarInfo(self,i,tipo):
         if(tipo == "desayuno"):
@@ -506,8 +513,10 @@ class MostrarDieta(tk.Frame):
            self.desayuno["LRE"].iloc[1] = self.desayuno["LRE"].iloc[1]+1
         self.tab_control.update
 if __name__ == "__main__":
-        #Variable que almacena lo que lleva comido el cliente
+        #Variable que almacena lo que lleva comido el cliente en cuanto a datos
         datosAlimCliente = np.zeros(4)
+        #Array que guarda lo que ha comido hoy el cliente
+        menuDeHoy = np.empty(5, dtype = str)
         #Variable que almacena lo que tiene que comer
         listMacDiarios = np.zeros(4)
         totalKcalComidas=0;
