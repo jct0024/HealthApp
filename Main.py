@@ -395,7 +395,7 @@ if __name__ == "__main__":
         #Variable que almacena lo que lleva comido el cliente en cuanto a datos
         datosAlimCliente = np.zeros(4)
         #Array que guarda lo que ha comido hoy el cliente
-        menuDeHoy = np.empty(5, dtype = str)
+        menuDeHoy = ["","","","",""]
         #Variable que almacena lo que tiene que comer
         listMacDiarios = np.zeros(4)
         totalKcalComidas=0;

@@ -51,7 +51,9 @@ def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAliment
     indince = indiceCom(tipoComida)
     if not(banderaSelect[indince]):
         opc=selected.get()
+        #Sacamos la fila del alimento, o lo que es lo mismo sus datos.
         fila=ab.getFilaAlimento(listaComida["Nombre"].iloc[opc],hojaAlimentos);
+        #Aumentamos el LRE del alimento en cuestión
         hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1; 
         #Rellenar datos.
         datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
@@ -66,8 +68,20 @@ def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAliment
         for i in arrrayBoton.values():
             i['state']='disable'
         btnSel.config(text="Editar")
+        #Cambiamos de valor a la variable
         banderaSelect[indince]=True
     else:
+        opc=selected.get()
+        #Sacamos la fila del alimento, o lo que es lo mismo sus datos.
+        fila=ab.getFilaAlimento(listaComida["Nombre"].iloc[opc],hojaAlimentos);
+        #Aumentamos el LRE del alimento en cuestión
+        hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] -1; 
+        datosAlimCliente[0] -= hojaAlimentos["Calorias"].loc[fila] 
+        datosAlimCliente[1] -= hojaAlimentos["Grasa"].loc[fila] 
+        datosAlimCliente[2] -= hojaAlimentos["Hidratos"].loc[fila] 
+        datosAlimCliente[3] -= hojaAlimentos["Proteina"].loc[fila]
+        #Restamos el % en la barra
+        barProgTotal['value'] = int((100*datosAlimCliente[0])/listMacDiarios[0]);
         menuDeHoy[indince]=None
         for i in arrrayBoton.values():
             i['state']='enable'
