@@ -94,8 +94,9 @@ class InfoUsuario(tk.Frame):
         self.controller = controller
         #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
         self.c = 0;
-        label = tk.Label(self, text="This is page 1", font=controller.title_font)
+        label = tk.Label(self, text="Información del usuario", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
+        arrayLabelInfo={}
         for i in hojaUsuarios.iloc[int(ab.getFilaUsuario(self.user,hojaUsuarios)),:]:
             if(str(hojaUsuarios.columns.values[self.c]) == "patologia"):
                 self.texto = str(hojaUsuarios.columns.values[self.c])+ ": "+str(hojaPatologias.iloc[i,1])
@@ -103,10 +104,12 @@ class InfoUsuario(tk.Frame):
                 self.texto = str(hojaUsuarios.columns.values[self.c])+ ": *******"
             else:
                 self.texto = str(hojaUsuarios.columns.values[self.c])+ ": "+str(i)
+            nombre="inf"+str(self.c)
             self.labelInfo = tk.Label(self, text=self.texto)
+            arrayLabelInfo[nombre]=self.labelInfo
             self.labelInfo.pack(anchor=tk.W)
             self.c+=1;
-        btnEditar = tk.Button(self, text="Editar información",height = 2, width = 20,relief=GROOVE)
+        btnEditar = tk.Button(self, text="Editar información",height = 2, width = 20,relief=GROOVE,command=partial(vs.editarInf,arrayLabelInfo,self))
         btnEditar.pack();
         button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("menuPrincipal"),relief=GROOVE)
         button.pack(side=BOTTOM)
@@ -219,7 +222,7 @@ class MostrarDieta(tk.Frame):
         self.cont_comida_inf.pack()
         btnSel = tk.Button(self.tabDesayuno, text="Seleccionar")
         btnSel.config( command=partial(vs.seleccionar,"desayuno",botones,btnSel,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtDesayuno,self.barProgTotal,self.listMacDiarios))
-        self.btnRefr = tk.Button(self.tabDesayuno, text="Refrescar", command=partial(self.refresh,"desayuno"))
+        self.btnRefr = tk.Button(self.tabDesayuno, text="Refrescar", command=partial(vs.refrescar,"desayuno",self.cont_opciones_Des,self.filtDesayuno,umbral,self.desayuno,hojaAlimentos,botones,n_opciones))
         btnSel.pack(fill=X)
         self.btnRefr.pack(fill=X)
 

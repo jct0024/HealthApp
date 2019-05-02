@@ -5,7 +5,8 @@ Created on Sun Mar 24 12:51:31 2019
 @author: Jesus
 """
 
-from tkinter import *
+from tkinter import * 
+import tkinter as tk;
 from tkinter import ttk,font
 import AdminBase as ab;
 bandera = False;
@@ -101,3 +102,41 @@ def indiceCom(tipoComida):
         return 3;
     elif(tipoComida=="cena"):
         return 4;
+'''
+Función que edita la información del usuario y guarda los datos.
+'''
+def editarInf(dictLabelsInfoUsuario,containerPack):
+    #Inicilizamos las opciones cerradas
+    sexo = ["H","M"]
+    actividad = [0,1,2,3,4]
+    tipo=["bajar", "mantener","subir"]
+    for key in dictLabelsInfoUsuario.keys():
+        l = dictLabelsInfoUsuario[key]
+        l.destroy()
+    txtNombre = ttk.Label(containerPack,text="prueba")
+    txtNombre.pack()
+'''
+Función que refresca la información y aumenta el umbral para que puedas comer "peor"
+te destruye la actual ventana y te la vuelve a crear de cero para refrescar.
+POR HACER
+hay que cambiar la lista de filtrar para que te cargue los nuevos valores.
+'''
+def refrescar(tipoComida, container,listaFiltrada,umbral,comida,hojaAlimentos, dictBotones,n_opciones):
+    for cont in range(0,3):
+        print(cont)
+        fila=ab.getFilaAlimento(listaFiltrada["Nombre"].iloc[cont],hojaAlimentos);
+        hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1; 
+    umbral +=1;
+    for k in dictBotones.keys():
+        boton = dictBotones[k];
+        boton.destroy()
+    dictBotones={}
+    i=0;
+    while(i<n_opciones):
+        nombre=str(i)+") "+str(listaFiltrada["Nombre"].iloc[i])+" ("+ str(listaFiltrada["Calorias"].iloc[i])+"Kcal)"
+        rad1 = ttk.Radiobutton(container,text=str(nombre), value=i)
+        #rad1['state']='disable' #DESABILITAMOS LOS BOTONES.
+        rad1.pack(anchor=tk.W)
+        nomb = "boton"+str(i)
+        dictBotones[nomb]=rad1
+        i=i+1;
