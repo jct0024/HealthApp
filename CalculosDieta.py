@@ -177,11 +177,11 @@ def formulDif(loQueLlevo,carb,prot,gras,comida,deboComida,carDeber,graDeber,prot
     else:
         comidaCarb=0;
     if ((protDeber-loQueLlevo[2]*4) >= 0 ):
-        comidaPro = (carDeber-loQueLlevo[3]*4)/(prot-(comida["Proteina"]*4)+(deboComida-(comida["Calorias"])))
+        comidaPro = (protDeber-loQueLlevo[3]*4)/(prot-(comida["Proteina"]*4)+(deboComida-(comida["Calorias"])))
     else:
         comidaPro=0;
     if ((graDeber-loQueLlevo[3]*8)>= 0 ):
-        comidaGra = (carDeber-loQueLlevo[1]*8)/(gras-(comida["Grasa"]*8)+(deboComida-(comida["Calorias"])))
+        comidaGra = (graDeber-loQueLlevo[1]*8)/(gras-(comida["Grasa"]*8)+(deboComida-(comida["Calorias"])))
     else:
         comidaGra=0;
     return (comidaCarb+comidaPro+comidaGra)/3

@@ -10,6 +10,7 @@ from tkinter import ttk
 import AdminBase as ab;
 from functools import partial;
 import CalculosDieta as cd
+import Main as m;
 bandera = False;
 usr = 0;
 contraseña = "";
@@ -48,7 +49,7 @@ y el btnSel, que es el boton seleccionar que ha de editar.
 Una vez seleccionado, te suma a lo que llevas hoy, lo propio de la comida que has seleccionado, y si deseleccionas la comida,
 para elegir otra cosa te lo resta
 '''
-def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios):
+def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style):
     #Comprobamos si el bton esta en modo editar o seleccionar
     indince = indiceCom(tipoComida)
     if not(banderaSelect[indince]):
@@ -62,10 +63,12 @@ def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAliment
         datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
         datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[fila] + datosAlimCliente[2]
         datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[fila] + datosAlimCliente[3]
+        datosAlimCliente[4] = hojaAlimentos["Calidad"].loc[fila] + datosAlimCliente[4]
         #Añadimos el desayuno a la opción de que llevamos comido
         menuDeHoy[indince] = hojaAlimentos["Nombre"].loc[fila]
         #Creamos el % de lo que hemos comido sobre la barra de progreso.
-        barProgTotal['value'] = int((100*datosAlimCliente[0])/listMacDiarios[0]);
+        actualizarBarra(menuDeHoy,hojaAlimentos.loc[fila],barProgTotal,datosAlimCliente,listMacDiarios,style)
+        #barProgTotal['value'] = int((100*datosAlimCliente[0])/listMacDiarios[0]);
         #Desabilitamos los botones
         for i in arrrayBoton.values():
             i['state']='disable'
@@ -84,12 +87,33 @@ def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAliment
         datosAlimCliente[2] -= hojaAlimentos["Hidratos"].loc[fila] 
         datosAlimCliente[3] -= hojaAlimentos["Proteina"].loc[fila]
         #Restamos el % en la barra
-        barProgTotal['value'] = int((100*datosAlimCliente[0])/listMacDiarios[0]);
-        menuDeHoy[indince]=None
+        actualizarBarra(menuDeHoy,hojaAlimentos.loc[fila],barProgTotal,datosAlimCliente,listMacDiarios,style)
+        menuDeHoy[indince]=""
         for i in arrrayBoton.values():
             i['state']='enable'
         btnSel.config(text="Seleccionar")
         banderaSelect[indince]=False
+'''
+Función que actualiza la brra de progesión y la tiñe según el umbra
+'''
+def actualizarBarra(menuDeHoy,alimento,barProgTotal,datosAlimCliente,listMacDiarios,style):
+    n=0;
+    for i in menuDeHoy:
+        if (i != ""):
+            n+=1;
+    calidad = datosAlimCliente[4]/n
+    print(calidad)
+    if(calidad<=1.5):      
+        style.configure("green.Horizontal.TProgressbar", background='green')         
+        barProgTotal.config(style="green.Horizontal.TProgressbar")
+    elif(calidad>1.5 or calidad<=3.5):
+        style.configure("yellow.Horizontal.TProgressbar", background='yellow')
+        barProgTotal.config(style="yellow.Horizontal.TProgressbar")
+    else:
+        style.configure("red.Horizontal.TProgressbar", background='red')
+        barProgTotal.config(style="red.Horizontal.TProgressbar")
+    barProgTotal['value'] = int((100*datosAlimCliente[0])/listMacDiarios[0]);
+
 '''
 Función Simple que te coge el tipo de comida en forma de string y te devuelve el indice correspondiente a esa comida
 '''
@@ -180,3 +204,6 @@ Params: tipo Tipo de comida para saber cual es el tipo de desayuno a criptar
 def MostrarInfo(i,listaFiltrada,etiquetaComida):
     texto = "Nombre: "+str(listaFiltrada["Nombre"].iloc[i])+" \nCalorias: "+str(listaFiltrada["Calorias"].iloc[i])+"\nGrasa: "+str(listaFiltrada["Grasa"].iloc[i])+" (Saturadas: "+str(listaFiltrada["Saturadas"].iloc[i])+")"+"\nHidratos: "+str(listaFiltrada["Hidratos"].iloc[i])+"(Azucares"+str(listaFiltrada["Azucares"].iloc[i])+")\nProteina "+str(listaFiltrada["Proteina"].iloc[i])+"\nCalidad: "+str(listaFiltrada["Calidad"].iloc[i])
     etiquetaComida.config(text=texto);
+def ActualizarAll():
+    md = m.MostrarDieta()
+    md.almuerzo()
