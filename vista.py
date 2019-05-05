@@ -44,6 +44,11 @@ def show_frame(frames, page_name):
     frame = frames[page_name]
     frame.tkraise()
 '''
+Función que sirve de transacción para que al pulsar el botón haga dos funciones y asi mantener la funcionalidad
+'''
+def seleccionarYActualizarResto(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style):
+    seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style)
+'''
 Funcion que te recoge como parametros, el tipo de comida que es, los checkButton sobre los que tiene que actuar
 y el btnSel, que es el boton seleccionar que ha de editar.
 Una vez seleccionado, te suma a lo que llevas hoy, lo propio de la comida que has seleccionado, y si deseleccionas la comida,

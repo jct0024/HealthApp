@@ -223,7 +223,7 @@ class MostrarDieta(tk.Frame):
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
         btnSel = tk.Button(self.tabDesayuno, text="Seleccionar")
-        btnSel.config( command=partial(vs.seleccionar,"desayuno",botones,btnSel,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtDesayuno,self.barProgTotal,self.listMacDiarios,self.style))
+        btnSel.config( command=partial(vs.seleccionarYActualizarResto,"desayuno",botones,btnSel,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtDesayuno,self.barProgTotal,self.listMacDiarios,self.style))
         btnRefr = tk.Button(self.tabDesayuno, text="Refrescar")
         btnRefr.config(command=partial(vs.refrescar,"desayuno",self.cont_opciones_Des,self.filtDesayuno,umbral,self.desayuno,hojaAlimentos,botones,n_opciones,btnSel,btnRefr, self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect))
         btnSel.pack(fill=X)
@@ -259,7 +259,7 @@ class MostrarDieta(tk.Frame):
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
         btnSel = tk.Button(self.tabAlmuerzo, text="Seleccionar")
-        btnSel.config(command=partial(vs.seleccionar,"almuerzo",botonesAl,btnSel,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtAlmuerzo,self.barProgTotal,self.listMacDiarios,self.style))
+        btnSel.config(command=partial(vs.seleccionarYActualizarResto,"almuerzo",botonesAl,btnSel,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtAlmuerzo,self.barProgTotal,self.listMacDiarios,self.style))
         
         btnRefr = tk.Button(self.tabAlmuerzo, text="Refrescar")
         btnRefr.config(command=partial(vs.refrescar,"almuerzo",self.cont_opciones_Des,self.filtAlmuerzo,umbral,self.almuerzo,hojaAlimentos,botonesAl,n_opciones,btnSel,btnRefr, self.label_Informacion_Alm,self.listDistribuciónKcal[1],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect))
@@ -295,7 +295,7 @@ class MostrarDieta(tk.Frame):
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
         btnSel = tk.Button(self.tabComida, text="Seleccionar")
-        cont = btnSel.config(command=partial(vs.seleccionar,"comida",botonesCom,btnSel,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style))
+        cont = btnSel.config(command=partial(vs.seleccionarYActualizarResto,"comida",botonesCom,btnSel,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style))
         #self.barProgTotal['value'] = int((100*datosAlimCliente[0])/self.listMacDiarios[0]);
         btnRefr = tk.Button(self.tabComida, text="Refrescar")
         btnRefr.config(command=partial(vs.refrescar,"comida",self.cont_opciones_Des,self.filtComida,umbral,self.comida,hojaAlimentos,botonesCom,n_opciones,btnSel,btnRefr, self.label_Informacion_Com,self.listDistribuciónKcal[2],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect))
@@ -331,7 +331,7 @@ class MostrarDieta(tk.Frame):
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
         btnSel = tk.Button(self.tabMerienda, text="Seleccionar")
-        btnSel.config(command=partial(vs.seleccionar,"merienda",botonesMer,btnSel,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style))
+        btnSel.config(command=partial(vs.seleccionarYActualizarResto,"merienda",botonesMer,btnSel,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style))
         btnRefr = tk.Button(self.tabMerienda, text="Refrescar")
         btnRefr.config(command=partial(vs.refrescar,"merienda",self.cont_opciones_Des,self.filtMerienda,umbral,self.merienda,hojaAlimentos,botonesMer,n_opciones,btnSel,btnRefr, self.label_Informacion_Mer,self.listDistribuciónKcal[3],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect))
         
@@ -368,7 +368,7 @@ class MostrarDieta(tk.Frame):
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
         btnSel = tk.Button(self.tabCena, text="Seleccionar")
-        btnSel.config(command=partial(vs.seleccionar,"cena",botonesCen,btnSel,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style))
+        btnSel.config(command=partial(vs.seleccionarYActualizarResto,"cena",botonesCen,btnSel,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style))
         btnRefr = tk.Button(self.tabCena, text="Refrescar")
         btnRefr.config(command=partial(vs.refrescar,"cena",self.cont_opciones_Des,self.filtCena,umbral,self.cena,hojaAlimentos,botonesCen,n_opciones,btnSel,btnRefr, self.label_Informacion_Cen,self.listDistribuciónKcal[4],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect))
         
