@@ -44,11 +44,6 @@ def show_frame(frames, page_name):
     frame = frames[page_name]
     frame.tkraise()
 '''
-Función que sirve de transacción para que al pulsar el botón haga dos funciones y asi mantener la funcionalidad
-'''
-def seleccionarYActualizarResto(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style):
-    seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style)
-'''
 Funcion que te recoge como parametros, el tipo de comida que es, los checkButton sobre los que tiene que actuar
 y el btnSel, que es el boton seleccionar que ha de editar.
 Una vez seleccionado, te suma a lo que llevas hoy, lo propio de la comida que has seleccionado, y si deseleccionas la comida,
@@ -209,6 +204,3 @@ Params: tipo Tipo de comida para saber cual es el tipo de desayuno a criptar
 def MostrarInfo(i,listaFiltrada,etiquetaComida):
     texto = "Nombre: "+str(listaFiltrada["Nombre"].iloc[i])+" \nCalorias: "+str(listaFiltrada["Calorias"].iloc[i])+"\nGrasa: "+str(listaFiltrada["Grasa"].iloc[i])+" (Saturadas: "+str(listaFiltrada["Saturadas"].iloc[i])+")"+"\nHidratos: "+str(listaFiltrada["Hidratos"].iloc[i])+"(Azucares"+str(listaFiltrada["Azucares"].iloc[i])+")\nProteina "+str(listaFiltrada["Proteina"].iloc[i])+"\nCalidad: "+str(listaFiltrada["Calidad"].iloc[i])
     etiquetaComida.config(text=texto);
-def ActualizarAll():
-    md = m.MostrarDieta()
-    md.almuerzo()
