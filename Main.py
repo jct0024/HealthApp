@@ -223,7 +223,7 @@ class MostrarDieta(tk.Frame):
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
         self.btnSelDes = tk.Button(self.tabDesayuno, text="Seleccionar")
-        self.btnSelDes.config( command=partial(self.seleccionarYActualizarResto,"desayuno",self.botonesDes,self.btnSelDes,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtDesayuno,self.barProgTotal,self.listMacDiarios,self.style,umbral))
+        self.btnSelDes.config( command=partial(vs.seleccionarYActualizarResto,self,"desayuno",self.botonesDes,self.btnSelDes,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtDesayuno,self.barProgTotal,self.listMacDiarios,self.style,umbral))
         self.btnRefrDes = tk.Button(self.tabDesayuno, text="Refrescar")
         self.btnRefrDes.config(command=partial(vs.refrescar,"desayuno",self.cont_opciones_Des2,self.filtDesayuno,umbral,self.desayuno,hojaAlimentos,self.botonesDes,n_opciones,self.btnSelDes,self.btnRefrDes, self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style))
         self.btnSelDes.pack(fill=X)
