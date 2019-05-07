@@ -225,7 +225,7 @@ class MostrarDieta(tk.Frame):
         self.btnSelDes = tk.Button(self.tabDesayuno, text="Seleccionar")
         self.btnSelDes.config( command=partial(self.seleccionarYActualizarResto,"desayuno",self.botonesDes,self.btnSelDes,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtDesayuno,self.barProgTotal,self.listMacDiarios,self.style,umbral))
         self.btnRefrDes = tk.Button(self.tabDesayuno, text="Refrescar")
-        self.btnRefrDes.config(command=partial(vs.refrescar,"desayuno",self.cont_opciones_Des2,self.filtDesayuno,umbral,self.desayuno,hojaAlimentos,self.botonesDes,n_opciones,self.btnSelDes,self.btnRefrDes, self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect))
+        self.btnRefrDes.config(command=partial(vs.refrescar,"desayuno",self.cont_opciones_Des2,self.filtDesayuno,umbral,self.desayuno,hojaAlimentos,self.botonesDes,n_opciones,self.btnSelDes,self.btnRefrDes, self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style))
         self.btnSelDes.pack(fill=X)
         self.btnRefrDes.pack(fill=X)
         textoTotal="Comido hoy:\n desayuno:\nAmuerzo:\nMerienda:\nCena:"
@@ -264,7 +264,7 @@ class MostrarDieta(tk.Frame):
         self.btnSelAlm.config(command=partial(self.seleccionarYActualizarResto,"almuerzo",self.botonesAl,self.btnSelAlm,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtAlmuerzo,self.barProgTotal,self.listMacDiarios,self.style,umbral))
         
         self.btnRefrAlm = tk.Button(self.tabAlmuerzo, text="Refrescar")
-        self.btnRefrAlm.config(command=partial(vs.refrescar,"almuerzo",self.cont_opciones_Alm,self.filtAlmuerzo,umbral,self.almuerzo,hojaAlimentos,self.botonesAl,n_opciones,self.btnSelAlm,self.btnRefrAlm, self.label_Informacion_Alm,self.listDistribuciónKcal[1],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect))
+        self.btnRefrAlm.config(command=partial(vs.refrescar,"almuerzo",self.cont_opciones_Alm,self.filtAlmuerzo,umbral,self.almuerzo,hojaAlimentos,self.botonesAl,n_opciones,self.btnSelAlm,self.btnRefrAlm, self.label_Informacion_Alm,self.listDistribuciónKcal[1],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style))
         self.btnSelAlm.pack(fill=X)
         self.btnRefrAlm.pack(fill=X)
         textoTotal="Comido hoy:\n desayuno:\nAmuerzo:\nMerienda:\nCena:"
@@ -303,7 +303,7 @@ class MostrarDieta(tk.Frame):
         cont = self.btnSelCom.config(command=partial(self.seleccionarYActualizarResto,"comida",self.botonesCom,self.btnSelCom,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style,umbral))
         #self.barProgTotal['value'] = int((100*datosAlimCliente[0])/self.listMacDiarios[0]);
         self.btnRefrCom = tk.Button(self.tabComida, text="Refrescar")
-        self.btnRefrCom.config(command=partial(vs.refrescar,"comida",self.cont_opciones_Com,self.filtComida,umbral,self.comida,hojaAlimentos,self.botonesCom,n_opciones,self.btnSelCom,self.btnRefrCom, self.label_Informacion_Com,self.listDistribuciónKcal[2],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect))
+        self.btnRefrCom.config(command=partial(vs.refrescar,"comida",self.cont_opciones_Com,self.filtComida,umbral,self.comida,hojaAlimentos,self.botonesCom,n_opciones,self.btnSelCom,self.btnRefrCom, self.label_Informacion_Com,self.listDistribuciónKcal[2],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style))
         
         self.btnSelCom.pack(fill=X)
         self.btnRefrCom.pack(fill=X)
@@ -341,7 +341,7 @@ class MostrarDieta(tk.Frame):
         self.btnSelMer = tk.Button(self.tabMerienda, text="Seleccionar")
         self.btnSelMer.config(command=partial(self.seleccionarYActualizarResto,"merienda",self.botonesMer,self.btnSelMer,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style,umbral))
         self.btnRefrMer = tk.Button(self.tabMerienda, text="Refrescar")
-        self.btnRefrMer.config(command=partial(vs.refrescar,"merienda",self.cont_opciones_Mer,self.filtMerienda,umbral,self.merienda,hojaAlimentos,self.botonesMer,n_opciones,self.btnSelMer,self.btnRefrMer, self.label_Informacion_Mer,self.listDistribuciónKcal[3],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect))
+        self.btnRefrMer.config(command=partial(vs.refrescar,"merienda",self.cont_opciones_Mer,self.filtMerienda,umbral,self.merienda,hojaAlimentos,self.botonesMer,n_opciones,self.btnSelMer,self.btnRefrMer, self.label_Informacion_Mer,self.listDistribuciónKcal[3],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style))
         
         self.btnSelMer.pack(fill=X)
         self.btnRefrMer.pack(fill=X)
@@ -381,7 +381,7 @@ class MostrarDieta(tk.Frame):
         self.btnSelCen = tk.Button(self.tabCena, text="Seleccionar")
         self.btnSelCen.config(command=partial(self.seleccionarYActualizarResto,"cena",self.botonesCen,self.btnSelCen,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style,umbral))
         self.btnRefrCen = tk.Button(self.tabCena, text="Refrescar")
-        self.btnRefrCen.config(command=partial(vs.refrescar,"cena",self.cont_opciones_Cen,self.filtCena,umbral,self.cena,hojaAlimentos,self.botonesCen,n_opciones,self.btnSelCen,self.btnRefrCen, self.label_Informacion_Cen,self.listDistribuciónKcal[4],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect))
+        self.btnRefrCen.config(command=partial(vs.refrescar,"cena",self.cont_opciones_Cen,self.filtCena,umbral,self.cena,hojaAlimentos,self.botonesCen,n_opciones,self.btnSelCen,self.btnRefrCen, self.label_Informacion_Cen,self.listDistribuciónKcal[4],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style))
         
         self.btnSelCen.pack(fill=X)
         self.btnRefrCen.pack(fill=X)
@@ -392,74 +392,82 @@ class MostrarDieta(tk.Frame):
     Función que sirve de transacción para que al pulsar el botón haga dos funciones y asi mantener la funcionalidad
     '''
     def seleccionarYActualizarResto(self,tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style,umbral):
+        print("holi")
         vs.seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style)       
-        self.lblDesTotal.config(text="yiiii")
+        textoTotal="Comido hoy:\n desayuno:",menuDeHoy[0],"\nAmuerzo:",menuDeHoy[1],"\nComida:",menuDeHoy[2],"\nMerienda:",menuDeHoy[3],"\nCena:",menuDeHoy[4]
+        self.lblDesTotal.config(text=textoTotal)
+        print(tipoComida)
         if(tipoComida=="desayuno"):
+            print("hola1")
             if(banderaSelect[1]== False):
                 #Refrescamos almuerzo
-                vs.refrescar("almuerzo",self.cont_opciones_Alm,self.filtAlmuerzo,umbral, self.almuerzo,hojaAlimentos,self.botonesAl,n_opciones,self.btnSelAlm,self.btnRefrAlm,self.label_Informacion_comida,self.listDistribuciónKcal[1],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+                vs.refrescar("almuerzo",self.cont_opciones_Alm,self.filtAlmuerzo,umbral, self.almuerzo,hojaAlimentos,self.botonesAl,n_opciones,self.btnSelAlm,self.btnRefrAlm,self.label_Informacion_Alm,self.listDistribuciónKcal[1],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[2]== False):
                 #Refrescamos comida
-                vs.refrescar("comida",self.cont_opciones_Com,self.filtComida,umbral, self.comida,hojaAlimentos,self.botonesCom,n_opciones,self.btnSelCom,self.btnRefrCom,self.label_Informacion_comida,self.listDistribuciónKcal[2],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelec)
+                vs.refrescar("comida",self.cont_opciones_Com,self.filtComida,umbral, self.comida,hojaAlimentos,self.botonesCom,n_opciones,self.btnSelCom,self.btnRefrCom,self.label_Informacion_Com,self.listDistribuciónKcal[2],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[3]== False):
                 #Refrescamos merienda
-                vs.refrescar("merienda",self.cont_opciones_Mer,self.filtMerienda,umbral, self.merienda,hojaAlimentos,self.botonesMer,n_opciones,self.btnSelMer,self.btnRefrMer,self.label_Informacion_comida,self.listDistribuciónKcal[3],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+                vs.refrescar("merienda",self.cont_opciones_Mer,self.filtMerienda,umbral, self.merienda,hojaAlimentos,self.botonesMer,n_opciones,self.btnSelMer,self.btnRefrMer,self.label_Informacion_Mer,self.listDistribuciónKcal[3],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[4]== False):
                 #Refrescamos cena
-                vs.refrescar("cena",self.cont_opciones_Cen,self.filtCena,umbral, self.cena,hojaAlimentos,self.botonesCen,n_opciones,self.btnSelCen,self.btnRefrCen,self.label_Informacion_comida,self.listDistribuciónKcal[4],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+                vs.refrescar("cena",self.cont_opciones_Cen,self.filtCena,umbral, self.cena,hojaAlimentos,self.botonesCen,n_opciones,self.btnSelCen,self.btnRefrCen,self.label_Informacion_Cen,self.listDistribuciónKcal[4],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
 
-        if(tipoComida=="almuerzo"): 
+        elif(tipoComida=="almuerzo"): 
+            print("hola2")
             if(banderaSelect[0]== False):
                 #Refrescamos desayuno
-                vs.refrescar("desayuno",self.cont_opciones_Des2,self.filtDesayuno,umbral, self.desayuno,hojaAlimentos,self.botonesDes,n_opciones,self.btnSelDes,self.btnRefrDes,self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+                vs.refrescar("desayuno",self.cont_opciones_Des2,self.filtDesayuno,umbral, self.desayuno,hojaAlimentos,self.botonesDes,n_opciones,self.btnSelDes,self.btnRefrDes,self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[2]== False):
                 #Refrescamos comida
-                vs.refrescar("comida",self.cont_opciones_Com,self.filtComida,umbral, self.comida,hojaAlimentos,self.botonesCom,n_opciones,self.btnSelCom,self.btnRefrCom,self.label_Informacion_comida,self.listDistribuciónKcal[2],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+                vs.refrescar("comida",self.cont_opciones_Com,self.filtComida,umbral, self.comida,hojaAlimentos,self.botonesCom,n_opciones,self.btnSelCom,self.btnRefrCom,self.label_Informacion_Com,self.listDistribuciónKcal[2],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[3]== False):
                 #Refrescamos merienda
-                vs.refrescar("merienda",self.cont_opciones_Mer,self.filtMerienda,umbral, self.merienda,hojaAlimentos,self.botonesMer,n_opciones,self.btnSelMer,self.btnRefrMer,self.label_Informacion_comida,self.listDistribuciónKcal[3],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+                vs.refrescar("merienda",self.cont_opciones_Mer,self.filtMerienda,umbral, self.merienda,hojaAlimentos,self.botonesMer,n_opciones,self.btnSelMer,self.btnRefrMer,self.label_Informacion_Alm,self.listDistribuciónKcal[3],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[4]== False):
                 #Refrescamos cena
-                vs.refrescar("cena",self.cont_opciones_Cen,self.filtCena,umbral, self.cena,hojaAlimentos,self.botonesCen,n_opciones,self.btnSelCen,self.btnRefrCen,self.label_Informacion_comida,self.listDistribuciónKcal[4],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
-        if(tipoComida=="comida"):
+                vs.refrescar("cena",self.cont_opciones_Cen,self.filtCena,umbral, self.cena,hojaAlimentos,self.botonesCen,n_opciones,self.btnSelCen,self.btnRefrCen,self.label_Informacion_Cen,self.listDistribuciónKcal[4],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
+        elif(tipoComida=="comida"):
+            print("hola3")
             if(banderaSelect[0]== False):
                 #Refrescamos desayuno
-                vs.refrescar("desayuno",self.cont_opciones_Des2,self.filtDesayuno,umbral, self.desayuno,hojaAlimentos,self.botonesDes,n_opciones,self.btnSelDes,self.btnRefrDes,self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+                vs.refrescar("desayuno",self.cont_opciones_Des2,self.filtDesayuno,umbral, self.desayuno,hojaAlimentos,self.botonesDes,n_opciones,self.btnSelDes,self.btnRefrDes,self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[1]== False):
                 #Refrescamos almuerzo
-                vs.refrescar("almuerz0",self.cont_opciones_Alm,self.filtAlmuerzo,umbral, self.almuerzo,hojaAlimentos,self.botonesAl,n_opciones,self.btnSelAlm,self.btnRefrAlm,self.label_Informacion_comida,self.listDistribuciónKcal[1],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+                vs.refrescar("almuerz0",self.cont_opciones_Alm,self.filtAlmuerzo,umbral, self.almuerzo,hojaAlimentos,self.botonesAl,n_opciones,self.btnSelAlm,self.btnRefrAlm,self.label_Informacion_Alm,self.listDistribuciónKcal[1],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[3]== False):
                 #Refrescamos merienda
-                vs.refrescar("merienda",self.cont_opciones_Mer,self.filtMerienda,umbral, self.merienda,hojaAlimentos,self.botonesMer,n_opciones,self.btnSelMer,self.btnRefrMer,self.label_Informacion_comida,self.listDistribuciónKcal[3],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+                vs.refrescar("merienda",self.cont_opciones_Mer,self.filtMerienda,umbral, self.merienda,hojaAlimentos,self.botonesMer,n_opciones,self.btnSelMer,self.btnRefrMer,self.label_Informacion_Mer,self.listDistribuciónKcal[3],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[4]== False):
                 #Refrescamos cena
-                vs.refrescar("cena",self.cont_opciones_Cen,self.filtCena,umbral, self.cena,hojaAlimentos,self.botonesCen,n_opciones,self.btnSelCen,self.btnRefrCen,self.label_Informacion_comida,self.listDistribuciónKcal[4],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
-        if(tipoComida=="merienda"):
+                vs.refrescar("cena",self.cont_opciones_Cen,self.filtCena,umbral, self.cena,hojaAlimentos,self.botonesCen,n_opciones,self.btnSelCen,self.btnRefrCen,self.label_Informacion_Cen,self.listDistribuciónKcal[4],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
+        elif(tipoComida=="merienda"):
+            print("holaMer")
             if(banderaSelect[0]== False):
                 #Refrescamos desayuno
-                vs.refrescar("desayuno",self.cont_opciones_Des2,self.filtDesayuno,umbral, self.desayuno,hojaAlimentos,self.botonesDes,n_opciones,self.btnSelDes,self.btnRefrDes,self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+                vs.refrescar("desayuno",self.cont_opciones_Des2,self.filtDesayuno,umbral, self.desayuno,hojaAlimentos,self.botonesDes,n_opciones,self.btnSelDes,self.btnRefrDes,self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[1]== False):
                 #Refrescamos almuerzo
-                vs.refrescar("almuerzo",self.cont_opciones_Alm,self.filtAlmuerzo,umbral, self.almuerzo,hojaAlimentos,self.botonesAl,n_opciones,self.btnSelAlm,self.btnRefrAlm,self.label_Informacion_comida,self.listDistribuciónKcal[1],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+                vs.refrescar("almuerzo",self.cont_opciones_Alm,self.filtAlmuerzo,umbral, self.almuerzo,hojaAlimentos,self.botonesAl,n_opciones,self.btnSelAlm,self.btnRefrAlm,self.label_Informacion_Alm,self.listDistribuciónKcal[1],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[2]== False):
                 #Refrescamos comida
-                vs.refrescar("comida",self.cont_opciones_Com,self.filtComida,umbral, self.comida,hojaAlimentos,self.botonesCom,n_opciones,self.btnSelCom,self.btnRefrCom,self.label_Informacion_comida,self.listDistribuciónKcal[2],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelec)
+                vs.refrescar("comida",self.cont_opciones_Com,self.filtComida,umbral, self.comida,hojaAlimentos,self.botonesCom,n_opciones,self.btnSelCom,self.btnRefrCom,self.label_Informacion_Com,self.listDistribuciónKcal[2],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[4]== False):
                 #Refrescamos cena
-                vs.refrescar("cena",self.cont_opciones_Cen,self.filtCena,umbral, self.cena,hojaAlimentos,self.botonesCen,n_opciones,self.btnSelCen,self.btnRefrCen,self.label_Informacion_comida,self.listDistribuciónKcal[4],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
-        if(tipoComida=="cena"):
+                vs.refrescar("cena",self.cont_opciones_Cen,self.filtCena,umbral, self.cena,hojaAlimentos,self.botonesCen,n_opciones,self.btnSelCen,self.btnRefrCen,self.label_Informacion_Cen,self.listDistribuciónKcal[4],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
+        elif(tipoComida=="cena"):
+            print("hola4")
             if(banderaSelect[0]== False):
                 #Refrescamos desayuno
-               vs.refrescar("desayuno",self.cont_opciones_Des2,self.filtDesayuno,umbral, self.desayuno,hojaAlimentos,self.botonesDes,n_opciones,self.btnSelDes,self.btnRefrDes,self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+               vs.refrescar("desayuno",self.cont_opciones_Des2,self.filtDesayuno,umbral, self.desayuno,hojaAlimentos,self.botonesDes,n_opciones,self.btnSelDes,self.btnRefrDes,self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[1]== False):
                 #Refrescamos almuerzo
-                vs.refrescar("almuerzo",self.cont_opciones_Alm,self.filtAlmuerzo,umbral, self.almuerzo,hojaAlimentos,self.botonesAl,n_opciones,self.btnSelAlm,self.btnRefrAlm,self.label_Informacion_comida,self.listDistribuciónKcal[1],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+                vs.refrescar("almuerzo",self.cont_opciones_Alm,self.filtAlmuerzo,umbral, self.almuerzo,hojaAlimentos,self.botonesAl,n_opciones,self.btnSelAlm,self.btnRefrAlm,self.label_Informacion_Alm,self.listDistribuciónKcal[1],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[2]== False):
                 #Refrescamos comida
-                vs.refrescar("comida",self.cont_opciones_Com,self.filtComida,umbral, self.comida,hojaAlimentos,self.botonesCom,n_opciones,self.btnSelCom,self.btnRefrCom,self.label_Informacion_comida,self.listDistribuciónKcal[2],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelec)
+                vs.refrescar("comida",self.cont_opciones_Com,self.filtComida,umbral, self.comida,hojaAlimentos,self.botonesCom,n_opciones,self.btnSelCom,self.btnRefrCom,self.label_Informacion_Com,self.listDistribuciónKcal[2],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
             if(banderaSelect[3]== False):
                 #Refrescamos merienda
-                vs.refrescar("merienda",self.cont_opciones_Mer,self.filtMerienda,umbral, self.merienda,hojaAlimentos,self.botonesMer,n_opciones,self.btnSelMer,self.btnRefrMer,self.label_Informacion_comida,self.listDistribuciónKcal[3],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect)
+                vs.refrescar("merienda",self.cont_opciones_Mer,self.filtMerienda,umbral, self.merienda,hojaAlimentos,self.botonesMer,n_opciones,self.btnSelMer,self.btnRefrMer,self.label_Informacion_Mer,self.listDistribuciónKcal[3],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style)
 if __name__ == "__main__":
         #Variable que almacena lo que lleva comido el cliente en cuanto a datos
         datosAlimCliente = np.zeros(5)
