@@ -65,7 +65,7 @@ def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAliment
         datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[fila] + datosAlimCliente[3]
         datosAlimCliente[4] = hojaAlimentos["Calidad"].loc[fila] + datosAlimCliente[4]
         #Añadimos el desayuno a la opción de que llevamos comido
-        menuDeHoy[indince] = hojaAlimentos["Nombre"].loc[fila]
+        menuDeHoy[indince] = str(hojaAlimentos["Nombre"].loc[fila])
         #Creamos el % de lo que hemos comido sobre la barra de progreso.
         actualizarBarra(menuDeHoy,hojaAlimentos.loc[fila],barProgTotal,datosAlimCliente,listMacDiarios,style)
         #barProgTotal['value'] = int((100*datosAlimCliente[0])/listMacDiarios[0]);
@@ -101,11 +101,21 @@ def actualizarBarra(menuDeHoy,alimento,barProgTotal,datosAlimCliente,listMacDiar
         if (i != ""):
             n+=1;
     calidad = datosAlimCliente[4]/n
+    print(calidad)
     if(calidad<=1.5):      
         style.configure("green.Horizontal.TProgressbar", background='green')         
         barProgTotal.config(style="green.Horizontal.TProgressbar")
-    elif(calidad>1.5 or calidad<=3.5):
+    elif(calidad>1.5 and calidad<=2):
+        style.configure("yellowgreen.Horizontal.TProgressbar", background='yellow green')
+        barProgTotal.config(style="yellowgreen.Horizontal.TProgressbar")
+    elif(calidad>2 and calidad<=2.5):
         style.configure("yellow.Horizontal.TProgressbar", background='yellow')
+        barProgTotal.config(style="yellow.Horizontal.TProgressbar")
+    elif(calidad>2.5 and calidad<3):
+        style.configure("orange.Horizontal.TProgressbar", background='orange')
+        barProgTotal.config(style="orange.Horizontal.TProgressbar")
+    elif(calidad>3 and calidad<3.6):
+        style.configure("yellow.Horizontal.TProgressbar", background='orange red')
         barProgTotal.config(style="yellow.Horizontal.TProgressbar")
     else:
         style.configure("red.Horizontal.TProgressbar", background='red')
@@ -174,31 +184,15 @@ def refrescar(selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlimen
     #Sustituimos la listaFiltrada con los nuevos valores.
     listaFiltrada = comida.loc[comida["Calidad"] <= umbral]
     listaFiltrada = listaFiltrada.sort_values(by=["LRE"])
-    #Borramos las opciones viejas
-    '''for k in dictBotones.keys():
-        boton = dictBotones[k];
-        boton.destroy()
-    #Vaciamos el array
-    dictBotones={}'''
+    #Configuramos los values
     i=0;
     for k in dictBotones.keys():
         boton = dictBotones[k];
         nombre=str(i)+") "+str(listaFiltrada["Nombre"].iloc[i])+" ("+ str(listaFiltrada["Calorias"].iloc[i])+"Kcal2)"
         boton.config(text=nombre,command=partial(MostrarInfo,i,listaFiltrada, etiquetaInfor))
         i=i+1;
-    #Añadimos un nuevo array
-    '''while(i<n_opciones):
-        nombre=str(i)+") "+str(listaFiltrada["Nombre"].iloc[i])+" ("+ str(listaFiltrada["Calorias"].iloc[i])+"Kcal)"
-        rad1 = ttk.Radiobutton(container,text=str(nombre), value=i,variable=selected,command=partial(MostrarInfo,i,listaFiltrada, etiquetaInfor))
-        #rad1['state']='disable' #DESABILITAMOS LOS BOTONES.
-        rad1.pack(anchor=tk.W)
-        nomb = "boton"+str(i)
-        dictBotones[nomb]=rad1
-        i=i+1;
-        '''
+
     #Hacemos una llamada recursiva al propio procedimiento
-    #tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios
-    #btnSelect.config(command=partial(seleccionar,tipoComida,dictBotones,btnSelect,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaFiltrada,barProgTotal,listMacDiarios,style))
     btnSelect.config(command=partial(seleccionarYActualizarResto,selfi,tipoComida,dictBotones,btnSelect,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaFiltrada,barProgTotal,listMacDiarios,style,umbral))
     btnRefresh.config(command=partial(refrescar,selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlimentos, dictBotones,n_opciones,btnSelect,btnRefresh,etiquetaInfor,listDistribuciónKcal,datosAlimCliente,kcal_Por_Dia,listMacDiarios,menuDeHoy,barProgTotal,banderaSelect,style))
  
@@ -215,10 +209,13 @@ Función que sirve de transacción para que al pulsar el botón haga dos funcion
 '''
 def seleccionarYActualizarResto(loc,tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style,umbral):
     #FUNCIONAAAAAAAAAAAAAAAAAAAAAAA
-    loc.btnRefrCom.config(text="yiiii")
     seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style)       
-    textoTotal="Comido hoy:\n desayuno:",menuDeHoy[0],"\nAmuerzo:",menuDeHoy[1],"\nComida:",menuDeHoy[2],"\nMerienda:",menuDeHoy[3],"\nCena:",menuDeHoy[4]
+    textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
     loc.lblDesTotal.config(text=textoTotal)
+    loc.lblAlmTotal.config(text=textoTotal)
+    loc.lblComTotal.config(text=textoTotal)
+    loc.lblMerTotal.config(text=textoTotal)
+    loc.lblCenTotal.config(text=textoTotal)
     if(tipoComida!="desayuno"):
         if(banderaSelect[0]== False):
             Actualizar(loc,"desayuno",loc.cont_opciones_Des2,loc.filtDesayuno,umbral, loc.desayuno,hojaAlimentos,loc.botonesDes,loc.n_opciones,loc.btnSelDes,loc.btnRefrDes,loc.label_Informacion_comida,loc.listDistribuciónKcal[0],datosAlimCliente,loc.kcal_Por_Dia,loc.listMacDiarios,menuDeHoy,loc.barProgTotal,loc.banderaSelect,loc.style)
@@ -268,31 +265,12 @@ def Actualizar(selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlime
     #Sustituimos la listaFiltrada con los nuevos valores.
     listaFiltrada = comida.loc[comida["Calidad"] <= umbral]
     listaFiltrada = listaFiltrada.sort_values(by=["LRE"])
-    print("//////////////////",tipoComida,"////////////////////////")
-    #Borramos las opciones viejas
-
-    #Vaciamos el array
-    #dictBotones={}
     i=0;
     for k in dictBotones.keys():
         boton = dictBotones[k];
         nombre=str(i)+") "+str(listaFiltrada["Nombre"].iloc[i])+" ("+ str(listaFiltrada["Calorias"].iloc[i])+"Kcal)"
         boton.config(text=str(nombre),command=partial(MostrarInfo,i,listaFiltrada, etiquetaInfor))
         i=i+1;
-    #Añadimos un nuevo array
-# =============================================================================
-#     while(i<n_opciones):
-#         nombre=str(i)+") "+str(listaFiltrada["Nombre"].iloc[i])+" ("+ str(listaFiltrada["Calorias"].iloc[i])+"Kcal)"
-#         rad1 = ttk.Radiobutton(container,text=str(nombre), value=i,variable=selected,command=partial(MostrarInfo,i,listaFiltrada, etiquetaInfor))
-#         #rad1['state']='disable' #DESABILITAMOS LOS BOTONES.
-#         rad1.pack(anchor=tk.W)
-#         nomb = "boton"+str(i)
-#         dictBotones[nomb]=rad1
-#         i=i+1;
-# =============================================================================
-    #Hacemos una llamada recursiva al propio procedimiento
-    #tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios
-    #btnSelect.config(command=partial(seleccionar,tipoComida,dictBotones,btnSelect,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaFiltrada,barProgTotal,listMacDiarios,style))
     btnSelect.config(command=partial(seleccionarYActualizarResto,selfi,tipoComida,dictBotones,btnSelect,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaFiltrada,barProgTotal,listMacDiarios,style,umbral))
     btnRefresh.config(command=partial(refrescar,selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlimentos, dictBotones,n_opciones,btnSelect,btnRefresh,etiquetaInfor,listDistribuciónKcal,datosAlimCliente,kcal_Por_Dia,listMacDiarios,menuDeHoy,barProgTotal,banderaSelect,style))
                 
