@@ -188,7 +188,7 @@ def refrescar(selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlimen
     i=0;
     for k in dictBotones.keys():
         boton = dictBotones[k];
-        nombre=str(i)+") "+str(listaFiltrada["Nombre"].iloc[i])+" ("+ str(listaFiltrada["Calorias"].iloc[i])+"Kcal2)"
+        nombre=str(i)+") "+str(listaFiltrada["Nombre"].iloc[i])+" ("+ str(listaFiltrada["Calorias"].iloc[i])+"Kcal)"
         boton.config(text=nombre,command=partial(MostrarInfo,i,listaFiltrada, etiquetaInfor))
         i=i+1;
 
@@ -208,14 +208,22 @@ def MostrarInfo(i,listaFiltrada,etiquetaComida):
 Función que sirve de transacción para que al pulsar el botón haga dos funciones y asi mantener la funcionalidad
 '''
 def seleccionarYActualizarResto(loc,tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style,umbral):
-    #FUNCIONAAAAAAAAAAAAAAAAAAAAAAA
+    #Llamamos a la función seleccionar
     seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style)       
+    #Cadena de texto que muestra el menu de hoy
     textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
+    #Cambiamos los contenedores de las 5 comidas
     loc.lblDesTotal.config(text=textoTotal)
     loc.lblAlmTotal.config(text=textoTotal)
     loc.lblComTotal.config(text=textoTotal)
     loc.lblMerTotal.config(text=textoTotal)
     loc.lblCenTotal.config(text=textoTotal)
+    #Actualizamos el dato de las kcalorias que llevo comidas
+    loc.LblLoQueLlevoDes.config(text="Llevo Comido: "+str(datosAlimCliente[0])+" Kcal")
+    loc.LblLoQueLlevoAlm.config(text="Llevo Comido: "+str(datosAlimCliente[0])+" Kcal")
+    loc.LblLoQueLlevoCom.config(text="Llevo Comido: "+str(datosAlimCliente[0])+" Kcal")
+    loc.LblLoQueLlevoMer.config(text="Llevo Comido: "+str(datosAlimCliente[0])+" Kcal")
+    loc.LblLoQueLlevoCen.config(text="Llevo Comido: "+str(datosAlimCliente[0])+" Kcal")
     if(tipoComida!="desayuno"):
         if(banderaSelect[0]== False):
             Actualizar(loc,"desayuno",loc.cont_opciones_Des2,loc.filtDesayuno,umbral, loc.desayuno,hojaAlimentos,loc.botonesDes,loc.n_opciones,loc.btnSelDes,loc.btnRefrDes,loc.label_Informacion_comida,loc.listDistribuciónKcal[0],datosAlimCliente,loc.kcal_Por_Dia,loc.listMacDiarios,menuDeHoy,loc.barProgTotal,loc.banderaSelect,loc.style)

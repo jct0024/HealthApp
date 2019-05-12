@@ -209,7 +209,8 @@ class MostrarDieta(tk.Frame):
         self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf)
         self.label_Informacion_comida = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN")
         self.label_Informacion_comida.pack(fill=BOTH,side=LEFT,anchor=tk.W)
-        
+        self.LblLoQueLlevoDes = tk.Label(self.tabDesayuno, text="Llevo Comido:"+str(datosAlimCliente[0]))
+        self.LblLoQueLlevoDes.pack();
         self.botonesDes = {};
         while(i<self.n_opciones):
             nombre=str(i)+") "+str(self.filtDesayuno["Nombre"].iloc[i])+" ("+ str(self.filtDesayuno["Calorias"].iloc[i])+"Kcal)"
@@ -249,6 +250,8 @@ class MostrarDieta(tk.Frame):
         self.filtAlmuerzo = self.filtAlmuerzo.sort_values(by=["LRE"])
         self.objetivo = tk.Label(self.tabAlmuerzo,text="Objetivo tital: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Almuerzo: "+str(self.listDistribuciónKcal[1]))
         self.objetivo.pack()
+        self.LblLoQueLlevoAlm = tk.Label(self.tabAlmuerzo, text="Llevo Comido:"+str(datosAlimCliente[0]))
+        self.LblLoQueLlevoAlm.pack();
         self.botonesAl=  dict()
         while i<3:
             nombre=str(i)+") "+str(self.filtAlmuerzo["Nombre"].iloc[i])+" ("+ str(self.filtAlmuerzo["Calorias"].iloc[i])+"Kcal)"
@@ -288,6 +291,8 @@ class MostrarDieta(tk.Frame):
         self.filtComida = self.filtComida.sort_values(by=["LRE"])
         self.objetivo = tk.Label(self.tabComida,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Comida: "+str(self.listDistribuciónKcal[2]))
         self.objetivo.pack()
+        self.LblLoQueLlevoCom = tk.Label(self.tabComida, text="Llevo Comido:"+str(datosAlimCliente[0]))
+        self.LblLoQueLlevoCom.pack()
         self.botonesCom=  dict()
         while i<3:
             nombre=str(i)+") "+str(self.filtComida["Nombre"].iloc[i])+" ("+ str(self.filtComida["Calorias"].iloc[i])+"Kcal)"
@@ -327,6 +332,8 @@ class MostrarDieta(tk.Frame):
         self.filtMerienda = self.filtMerienda.sort_values(by=["LRE"])
         self.objetivo = tk.Label(self.tabMerienda,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Merienda: "+str(self.listDistribuciónKcal[3]))
         self.objetivo.pack()
+        self.LblLoQueLlevoMer = tk.Label(self.tabMerienda, text="Llevo Comido:"+str(datosAlimCliente[0]))
+        self.LblLoQueLlevoMer.pack()
         self.botonesMer=  dict()
         while i<3:
             nombre=str(i)+") "+str(self.filtMerienda["Nombre"].iloc[i])+" ("+ str(self.filtMerienda["Calorias"].iloc[i])+"Kcal)"
@@ -364,9 +371,9 @@ class MostrarDieta(tk.Frame):
         self.filtCena = self.cena.loc[self.cena["Calidad"] <= umbral]
         self.filtCena = self.filtCena.sort_values(by=["LRE"])
         self.objetivo = tk.Label(self.tabCena,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Cena: "+str(self.listDistribuciónKcal[4]))
-        self.LblLoQueLlevo = tk.Label(self.tabCena, text="Llevo Comido:"+str(datosAlimCliente[0]))
+        self.LblLoQueLlevoCen = tk.Label(self.tabCena, text="Llevo Comido:"+str(datosAlimCliente[0]))
         self.objetivo.pack()
-        self.LblLoQueLlevo.pack()
+        self.LblLoQueLlevoCen.pack()
         self.botonesCen=  dict()
         while i<3:
             nombre=str(i)+") "+str(self.filtCena["Nombre"].iloc[i])+" ("+ str(self.filtCena["Calorias"].iloc[i])+"Kcal)"
