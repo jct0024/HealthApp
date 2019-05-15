@@ -85,6 +85,7 @@ def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAliment
         datosAlimCliente[1] -= hojaAlimentos["Grasa"].loc[fila] 
         datosAlimCliente[2] -= hojaAlimentos["Hidratos"].loc[fila] 
         datosAlimCliente[3] -= hojaAlimentos["Proteina"].loc[fila]
+        datosAlimCliente[4] -= hojaAlimentos["Calidad"].loc[fila]
         #Restamos el % en la barra
         actualizarBarra(menuDeHoy,hojaAlimentos.loc[fila],barProgTotal,datosAlimCliente,listMacDiarios,style)
         menuDeHoy[indince]=""
@@ -97,6 +98,7 @@ Función que actualiza la brra de progesión y la tiñe según el umbra
 '''
 def actualizarBarra(menuDeHoy,alimento,barProgTotal,datosAlimCliente,listMacDiarios,style):
     n=0;
+    calidad = 0;
     for i in menuDeHoy:
         if (i != ""):
             n+=1;
@@ -189,7 +191,7 @@ def refrescar(selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlimen
     for k in dictBotones.keys():
         boton = dictBotones[k];
         nombre=str(i)+") "+str(listaFiltrada["Nombre"].iloc[i])+" ("+ str(listaFiltrada["Calorias"].iloc[i])+"Kcal)"
-        boton.config(text=nombre,command=partial(MostrarInfo,i,listaFiltrada, etiquetaInfor))
+        boton.config(text=nombre,command=partial(MostrarInfo,i,listaFiltrada, etiquetaInfor),value=i, variable=selected)
         i=i+1;
 
     #Hacemos una llamada recursiva al propio procedimiento
@@ -277,7 +279,7 @@ def Actualizar(selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlime
     for k in dictBotones.keys():
         boton = dictBotones[k];
         nombre=str(i)+") "+str(listaFiltrada["Nombre"].iloc[i])+" ("+ str(listaFiltrada["Calorias"].iloc[i])+"Kcal)"
-        boton.config(text=str(nombre),command=partial(MostrarInfo,i,listaFiltrada, etiquetaInfor))
+        boton.config(text=str(nombre),command=partial(MostrarInfo,i,listaFiltrada, etiquetaInfor),value=i, variable=selected)
         i=i+1;
     btnSelect.config(command=partial(seleccionarYActualizarResto,selfi,tipoComida,dictBotones,btnSelect,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaFiltrada,barProgTotal,listMacDiarios,style,umbral))
     btnRefresh.config(command=partial(refrescar,selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlimentos, dictBotones,n_opciones,btnSelect,btnRefresh,etiquetaInfor,listDistribuciónKcal,datosAlimCliente,kcal_Por_Dia,listMacDiarios,menuDeHoy,barProgTotal,banderaSelect,style))

@@ -7,13 +7,12 @@ from tkinter import *
 from tkinter import ttk,font, messagebox;
 from PIL import ImageTk, Image
 import numpy as np;
-import datetime
 import os
 class SampleApp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-        print(datetime.date.today())
+        
         self.title_font = font.Font(family='Helvetica', size=18, weight="bold", slant="italic")
         self.geometry('500x500')
         # the container is where we'll stack a bunch of frames
@@ -63,19 +62,21 @@ class menuPrincipal(tk.Frame):
 
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        
+        histUA = ab.cargarHistorial()
+        usr,pws =vs.getUsuario();
         label = tk.Label(self, text="This is the start page", font=controller.title_font)
         self.bar = tk.Frame(self, relief=RIDGE, borderwidth=5)
         self.imgPath = './descarga.jpg'
         self.icon = ImageTk.PhotoImage(Image.open('./descarga.jpg'))
         self.icon_size = Label(self.bar)
         self.icon_size.configure(image=self.icon)
+        print(menuDeHoy)
         button1 = tk.Button(self, text="Información de Usuario",
                             command=lambda: controller.show_frame("InfoUsuario"),height = 2, width = 20,relief=GROOVE,bg="spring green")
         button2 = tk.Button(self, text="Dieta diaria",
                             command=lambda: controller.show_frame("MostrarDieta"),height = 2, width = 20,relief=GROOVE,bg="spring green")
         button3 = tk.Button(self, text="Guardar",
-                            command=guardar,height = 2, width = 20,relief=GROOVE,bg="spring green")
+                            command=partial(ab.guardarHistorial,usr,menuDeHoy,histUA),height = 2, width = 20,relief=GROOVE,bg="spring green")
         label.pack(side="top", fill="x", pady=10)
         self.icon_size.pack(side=LEFT)
         self.bar.pack(side=TOP)
