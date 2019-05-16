@@ -20,10 +20,67 @@ def cargarBaseDeDatos():
     hojaPa = pd.read_excel(doc,'Patologias')
 
     return hojaAl,hojaUs,hojaPa;
-def cargarHistorial():
+'''
+Función que carga el historial del usuario para futuros calculosy gráficas para ello necesita solo la id del usuario,se 
+criba y se devuelve para ser almacenado.
+'''
+def cargarHistorial(usr):
     hist = pd.ExcelFile("Historial.xlsx");
     hojaHisAl = pd.read_excel(hist, 'UsrAl')
+    hojaHisAl = hojaHisAl.loc[hojaHisAl.Usuario == usr]
+    
     return(hojaHisAl)
+'''
+Modificamos el array 'menuDeHoy' con la información de hoy si es que hay
+'''
+def cargaHistorialHoy(hojaHisAl,menuDeHoy,datosAlimCliente,hojaAlimentos):
+    hoy = str(datetime.date.today())
+    if(hoy in list(hojaHisAl.Fecha)):
+       diaEntero=hojaHisAl.loc[hojaHisAl.Fecha == hoy]
+       if not (diaEntero.iloc[0].isnull().loc['Desayuno']):
+           menuDeHoy[0] = str(diaEntero.iloc[0].loc['Desayuno'])
+           fila = getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+           datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
+           datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
+           datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[fila] + datosAlimCliente[2]
+           datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[fila] + datosAlimCliente[3]
+           datosAlimCliente[4] = hojaAlimentos["Calidad"].loc[fila] + datosAlimCliente[4]
+        
+       if not (diaEntero.iloc[0].isnull().loc['Almuerzo']):
+           menuDeHoy[1] = str(diaEntero.iloc[0].loc['Almuerzo'])
+           fila = getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+           datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
+           datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
+           datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[fila] + datosAlimCliente[2]
+           datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[fila] + datosAlimCliente[3]
+           datosAlimCliente[4] = hojaAlimentos["Calidad"].loc[fila] + datosAlimCliente[4]
+        
+       if not (diaEntero.iloc[0].isnull().loc['Comida']):
+           menuDeHoy[2] = str(diaEntero.iloc[0].loc['Comida'])
+           fila = getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+           datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
+           datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
+           datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[fila] + datosAlimCliente[2]
+           datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[fila] + datosAlimCliente[3]
+           datosAlimCliente[4] = hojaAlimentos["Calidad"].loc[fila] + datosAlimCliente[4]
+        
+       if not (diaEntero.iloc[0].isnull().loc['Merienda']):
+           menuDeHoy[3] = str(diaEntero.iloc[0].loc['Merienda'])
+           fila = getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+           datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
+           datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
+           datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[fila] + datosAlimCliente[2]
+           datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[fila] + datosAlimCliente[3]
+           datosAlimCliente[4] = hojaAlimentos["Calidad"].loc[fila] + datosAlimCliente[4]
+        
+       if not (diaEntero.iloc[0].isnull().loc['Cena']):
+           menuDeHoy[4] = str(diaEntero.iloc[0].loc['Cena'])    
+           fila = getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+           datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
+           datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
+           datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[fila] + datosAlimCliente[2]
+           datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[fila] + datosAlimCliente[3]
+           datosAlimCliente[4] = hojaAlimentos["Calidad"].loc[fila] + datosAlimCliente[4]
 def comprobarUsuario(userId,passwd):
     a,u,p = cargarBaseDeDatos();
     indice=-1;
@@ -59,6 +116,9 @@ def getFilaAlimento(nombre,a):
             break;
         indice+=1;
     return i;    
+def guardaTodo(usr, menuDeHoy, historial,hojaAlimentos, hojaUsuarios, hojaPatologias):
+    guardarHistorial (usr, menuDeHoy, historial)
+    guardarDatos (hojaAlimentos, hojaUsuarios, hojaPatologias)
 def guardarHistorial (usr, menuDeHoy, historial):
     fech = str(datetime.date.today())
     h = historial.loc[historial.Fecha == fech]
@@ -70,10 +130,8 @@ def guardarHistorial (usr, menuDeHoy, historial):
                     "Merienda":[menuDeHoy[3]],
                     "Cena":[menuDeHoy[4]]})
     if(usr in list(h.Usuario)):
-        print(historial)
         lala = historial.index[(historial.Fecha == fech) & (historial.Usuario == usr)]
         historial.iloc[lala] = hoy
-        print(historial)
     else:
         historial=historial.append(hoy)    
     writer = pd.ExcelWriter("Historial.xlsx")

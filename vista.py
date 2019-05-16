@@ -103,7 +103,6 @@ def actualizarBarra(menuDeHoy,alimento,barProgTotal,datosAlimCliente,listMacDiar
         if (i != ""):
             n+=1;
     calidad = datosAlimCliente[4]/n
-    print(calidad)
     if(calidad<=1.5):      
         style.configure("green.Horizontal.TProgressbar", background='green')         
         barProgTotal.config(style="green.Horizontal.TProgressbar")
@@ -283,4 +282,10 @@ def Actualizar(selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlime
         i=i+1;
     btnSelect.config(command=partial(seleccionarYActualizarResto,selfi,tipoComida,dictBotones,btnSelect,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaFiltrada,barProgTotal,listMacDiarios,style,umbral))
     btnRefresh.config(command=partial(refrescar,selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlimentos, dictBotones,n_opciones,btnSelect,btnRefresh,etiquetaInfor,listDistribuciónKcal,datosAlimCliente,kcal_Por_Dia,listMacDiarios,menuDeHoy,barProgTotal,banderaSelect,style))
-                
+def crearArrayBandera(menuDeHoy):
+    banderaSelect = [False, False, False, False, False]
+    for i in range(len(menuDeHoy)):
+        if menuDeHoy[i] != "":
+            banderaSelect[i]= True;
+    return banderaSelect
+            

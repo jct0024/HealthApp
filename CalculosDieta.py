@@ -212,4 +212,3 @@ def repartoKcalSobrantes(kcal,listakcalcomidas, comida):
         cont = (int(listakcalcomidas[3])-int(kcal))
         listakcalcomidas[4] = listakcalcomidas[4] + cont       
     return listakcalcomidas
-        
