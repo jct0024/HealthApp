@@ -22,19 +22,27 @@ class SampleApp(tk.Tk):
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
+        usr,pws =vs.getUsuario();
+        histUA = ab.cargarHistorial(usr)
+        ab.cargaHistorialHoy(histUA,menuDeHoy,datosAlimCliente,hojaAlimentos)
         menu = Menu(self)
         subMenuArchivo = Menu(menu)
         subMenuArchivo.add_command(label="Manual",command=self.pdf)
         subMenuArchivo.add_separator()
         subMenuArchivo.add_command(label="Guardar",command=guardar)
+        subMenuArchivo.add_command(label="G-Hist",command=partial(ab.guardarHistorial,usr,menuDeHoy,histUA))
         menu.add_cascade(label='Archivo',menu=subMenuArchivo)
         self.config(menu=menu)
         self.frames = {}
         self.frames["menuPrincipal"] = menuPrincipal(parent=container, controller=self)
         self.frames["menuPrincipal"].grid(row=0, column=0, sticky="nsew")
         self.frames["menuPrincipal"].config(bg="powder blue")
+        
         self.frames["InfoUsuario"] = InfoUsuario(parent=container, controller=self)
         self.frames["InfoUsuario"].grid(row=0, column=0, sticky="nsew")
+        
+        self.frames["Historial"] = Historial(parent=container, controller=self)
+        self.frames["Historial"].grid(row=0, column=0, sticky="nsew")
         
         self.frames["MostrarDieta"] = MostrarDieta(parent=container, controller=self)
         self.frames["MostrarDieta"].grid(row=0, column=0, sticky="nsew")
@@ -63,9 +71,7 @@ class menuPrincipal(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         
-        usr,pws =vs.getUsuario();
-        histUA = ab.cargarHistorial(usr)
-        ab.cargaHistorialHoy(histUA,menuDeHoy,datosAlimCliente,hojaAlimentos)
+        
         
         label = tk.Label(self, text="This is the start page", font=controller.title_font)
         self.bar = tk.Frame(self, relief=RIDGE, borderwidth=5)
@@ -77,8 +83,8 @@ class menuPrincipal(tk.Frame):
                             command=lambda: controller.show_frame("InfoUsuario"),height = 2, width = 20,relief=GROOVE,bg="spring green")
         button2 = tk.Button(self, text="Dieta diaria",
                             command=lambda: controller.show_frame("MostrarDieta"),height = 2, width = 20,relief=GROOVE,bg="spring green")
-        button3 = tk.Button(self, text="Guardar",
-                            command=partial(ab.guardarHistorial,usr,menuDeHoy,histUA),height = 2, width = 20,relief=GROOVE,bg="spring green")
+        button3 = tk.Button(self, text="Historial",
+                            command=lambda: controller.show_frame("Historial"),height = 2, width = 20,relief=GROOVE,bg="spring green")
         label.pack(side="top", fill="x", pady=10)
         self.icon_size.pack(side=LEFT)
         self.bar.pack(side=TOP)
@@ -90,7 +96,26 @@ class menuPrincipal(tk.Frame):
 def guardar():
     ab.guardarDatos(hojaAlimentos, hojaUsuarios, hojaPatologias)
     messagebox.showinfo("GUARDAR","Se ha guadado")
-
+class Historial(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+        usr,pws =vs.getUsuario();
+        histUA = ab.cargarHistorial(usr)
+        ab.cargaHistorialHoy(histUA,menuDeHoy,datosAlimCliente,hojaAlimentos)
+        label = tk.Label(self, text="Historial", font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+        self.history=tk.Frame(self)
+        self.frameBotones = tk.Frame(self.history)
+        self.grafo = tk.Frame(self.history)
+        btnGrafo = tk.Button(self.frameBotones,text='Mostrar',command=partial(vs.gráfico,histUA,self.grafo))
+        self.history.pack()
+        self.frameBotones.pack(side=LEFT)
+        self.grafo.pack(side=tk.RIGHT)
+        btnGrafo.pack()
+        #Volver al iniciao
+        button = tk.Button(self.frameBotones, text="Volver al inicio",command=lambda: controller.show_frame("menuPrincipal"),relief=GROOVE)
+        button.pack(side=BOTTOM)
 class InfoUsuario(tk.Frame):
     def __init__(self, parent, controller):
         self.user,self.pwd = vs.getUsuario()
@@ -310,7 +335,7 @@ class MostrarDieta(tk.Frame):
             nombre=str(i)+") "+str(self.filtComida["Nombre"].iloc[i])+" ("+ str(self.filtComida["Calorias"].iloc[i])+"Kcal)"
             self.radCom = ttk.Radiobutton(self.cont_opciones_Com,text=str(nombre), value=i, variable=selected, command=partial(vs.MostrarInfo,i,self.filtComida, self.label_Informacion_Com))
             self.radCom.pack(anchor=tk.W)
-            if(self.banderaSelect[3]):
+            if(self.banderaSelect[2]):
                 self.radCom['state']='disable' #DESABILITAMOS LOS BOTONES SI YA HEMOS ESCOGIFO.
             nomb = "botonCo"+str(i)
             self.botonesCom[nomb]=self.radCom

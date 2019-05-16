@@ -11,6 +11,10 @@ import AdminBase as ab;
 from functools import partial;
 import CalculosDieta as cd
 import Main as m;
+import matplotlib
+matplotlib.use("TkAgg")
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
 bandera = False;
 usr = 0;
 contraseña = "";
@@ -282,10 +286,20 @@ def Actualizar(selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlime
         i=i+1;
     btnSelect.config(command=partial(seleccionarYActualizarResto,selfi,tipoComida,dictBotones,btnSelect,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaFiltrada,barProgTotal,listMacDiarios,style,umbral))
     btnRefresh.config(command=partial(refrescar,selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlimentos, dictBotones,n_opciones,btnSelect,btnRefresh,etiquetaInfor,listDistribuciónKcal,datosAlimCliente,kcal_Por_Dia,listMacDiarios,menuDeHoy,barProgTotal,banderaSelect,style))
+'''
+Función que inicializa el array bandera qu se usará para activar o desactivar los radiobutton
+de las selecciones de la comida. Coge como parametros el menu diario y haca las comprobaiones.
+'''
 def crearArrayBandera(menuDeHoy):
     banderaSelect = [False, False, False, False, False]
     for i in range(len(menuDeHoy)):
         if menuDeHoy[i] != "":
             banderaSelect[i]= True;
     return banderaSelect
-            
+def gráfico(historial, container):
+    f = Figure(figsize=(5,5), dpi=100)
+    a = f.add_subplot(111)
+    a.plot([0,1,2,3,4,5],[0,1,4,9,16,25])
+    canvas = FigureCanvasTkAgg(f,container)
+    canvas.draw()
+    canvas.get_tk_widget().pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
