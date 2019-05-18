@@ -40,20 +40,23 @@ class SampleApp(tk.Tk):
         self.frames = {}
         self.frames["menuPrincipal"] = menuPrincipal(parent=container, controller=self)
         self.frames["menuPrincipal"].grid(row=0, column=0, sticky="nsew")
-        self.frames["menuPrincipal"].config(bg="powder blue")
+        self.frames["menuPrincipal"].config(bg=fondoGeneral)
         
         self.frames["InfoUsuario"] = InfoUsuario(parent=container, controller=self)
         self.frames["InfoUsuario"].grid(row=0, column=0, sticky="nsew")
+        self.frames["InfoUsuario"].config(bg=fondoGeneral)
         
         self.frames["Historial"] = Historial(parent=container, controller=self)
         self.frames["Historial"].grid(row=0, column=0, sticky="nsew")
+        self.frames["Historial"].config(bg=fondoGeneral)
         
         self.frames["histSemanal"] = histSemanal(parent=container, controller=self)
         self.frames["histSemanal"].grid(row=0, column=0, sticky="nsew")
+        self.frames["histSemanal"].config(bg=fondoGeneral)
         
         self.frames["MostrarDieta"] = MostrarDieta(parent=container, controller=self)
         self.frames["MostrarDieta"].grid(row=0, column=0, sticky="nsew")
-        self.frames["MostrarDieta"].config(bg="powder blue")
+        self.frames["MostrarDieta"].config(bg=fondoGeneral)
         self.show_frame("menuPrincipal")
 
     def show_frame(self, page_name):
@@ -490,6 +493,7 @@ if __name__ == "__main__":
         #Variable que almacena lo que lleva comido el cliente en cuanto a datos
         datosAlimCliente = np.zeros(5)
         #Array que guarda lo que ha comido hoy el cliente
+        fondoGeneral='powder blue'
         menuDeHoy = ["","","","",""]
         #Variable que almacena lo que tiene que comer
         listMacDiarios = np.zeros(4)
