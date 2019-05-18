@@ -53,7 +53,7 @@ y el btnSel, que es el boton seleccionar que ha de editar.
 Una vez seleccionado, te suma a lo que llevas hoy, lo propio de la comida que has seleccionado, y si deseleccionas la comida,
 para elegir otra cosa te lo resta
 '''
-def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style):
+def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style,btnRefresh):
     #Comprobamos si el bton esta en modo editar o seleccionar
     indince = indiceCom(tipoComida)
     if not(banderaSelect[indince]):
@@ -77,6 +77,7 @@ def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAliment
         for i in arrrayBoton.values():
             i['state']='disable'
         btnSel.config(text="Editar")
+        btnRefresh['state']='disable'
         #Cambiamos de valor a la variable
         banderaSelect[indince]=True
     else:
@@ -94,8 +95,9 @@ def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAliment
         actualizarBarra(menuDeHoy,hojaAlimentos.loc[fila],barProgTotal,datosAlimCliente,listMacDiarios,style)
         menuDeHoy[indince]=""
         for i in arrrayBoton.values():
-            i['state']='enable'
+            i['state']='normal'
         btnSel.config(text="Seleccionar")
+        btnRefresh['state']='normal'
         banderaSelect[indince]=False
 '''
 Función que actualiza la brra de progesión y la tiñe según el umbra
@@ -213,8 +215,19 @@ def MostrarInfo(i,listaFiltrada,etiquetaComida):
 Función que sirve de transacción para que al pulsar el botón haga dos funciones y asi mantener la funcionalidad
 '''
 def seleccionarYActualizarResto(loc,tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style,umbral):
-    #Llamamos a la función seleccionar
-    seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style)       
+        #Llamamos a la función seleccionar
+    if(tipoComida == "desayuno"):
+        btnRefresh = loc.btnRefrDes;
+    if(tipoComida == "almuerzo"):
+        btnRefresh = loc.btnRefrAlm;
+    if(tipoComida == "comida"):
+        btnRefresh = loc.btnRefrCom;
+    if(tipoComida == "merienda"):
+        btnRefresh = loc.btnRefrMer;
+    if(tipoComida == "cena"):
+        btnRefresh = loc.btnRefrCen;
+    seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style,btnRefresh)       
+    
     #Cadena de texto que muestra el menu de hoy
     textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
     #Cambiamos los contenedores de las 5 comidas
@@ -296,10 +309,9 @@ def crearArrayBandera(menuDeHoy):
         if menuDeHoy[i] != "":
             banderaSelect[i]= True;
     return banderaSelect
-def gráfico(historial, container):
-    f = Figure(figsize=(5,5), dpi=100)
-    a = f.add_subplot(111)
-    a.plot([0,1,2,3,4,5],[0,1,4,9,16,25])
-    canvas = FigureCanvasTkAgg(f,container)
-    canvas.draw()
-    canvas.get_tk_widget().pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+def gráfico(selfi,x,y):
+    selfi.lin.set_data(x,y)
+    ax = selfi.canvas.figure.axes[0]
+    ax.set_xlim(min(x),max(x))
+    ax.set_ylim(min(y),max(y)) 
+    selfi.canvas.draw()
