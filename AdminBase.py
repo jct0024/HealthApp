@@ -135,12 +135,12 @@ def guardarHistorial (usr, menuDeHoy, historial):
     else:
         historial=historial.append(hoy)    
     writer = pd.ExcelWriter("Historial.xlsx")
-    historial.to_excel(writer,'UsrAl')
+    historial.to_excel(writer,'UsrAl',index=False)
     writer.save();
 #Guarda los datos en la hoja que se le pasa como argumento
 def guardarDatos (hojaAlimentos, hojaUsuarios, hojaPatologias):
-    writer = pd.ExcelWriter("BaseDeDatosDeAlimentos.xlsx",index=False)
-    hojaAlimentos.to_excel(writer,'Alimentos')
-    hojaUsuarios.to_excel(writer,'Usuarios')
-    hojaPatologias.to_excel(writer,'Patologias')
+    writer = pd.ExcelWriter("BaseDeDatosDeAlimentos.xlsx")
+    hojaAlimentos.to_excel(writer,'Alimentos',index=False)
+    hojaUsuarios.to_excel(writer,'Usuarios',index=False)
+    hojaPatologias.to_excel(writer,'Patologias',index=False)
     writer.save();

@@ -181,6 +181,7 @@ class InfoUsuario(tk.Frame):
 class editarInforUsuario(tk.Frame):
         def __init__(self, parent, controller):
             tk.Frame.__init__(self, parent)
+            self.user,self.pwd = vs.getUsuario()
             self.controller = controller
             #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
             self.c = 0;
@@ -257,24 +258,37 @@ class editarInforUsuario(tk.Frame):
             Checkbutton(self, text="python", variable=var2).place(x=290,y=330)
             '''
             a = Button(self, text='Submit',command=partial(self.value,self)).grid(column=0,row=15)
-
             print(a)
             button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("InfoUsuario"),relief=GROOVE)
             button.grid(column=0,row=16)
             
-            self.label_3 = Label(self, text="",width=20,font=("bold", 10),bg=fondoGeneral,foreground="red")
-            self.label_3.grid(column=0,row=17)
+            self.label_Error = Label(self, text="",width=20,font=("bold", 10),bg=fondoGeneral,foreground="red")
+            self.label_Error.grid(column=0,row=17)
         def value(self,selfi):
-            if(selfi.entry_Nom.get() != None):
-                print('vacio') #FUNCIONAAAAAAAA
-            print(selfi.entry_Nom.get())
-            print(selfi.entry_Ape.get())
-            print(selfi.entry_Eda.get())
-            print(selfi.entry_Alt.get())
-            print(selfi.entry_Pes.get())
-            print(selfi.var)
-            print(selfi.varAct)
-            print(selfi.varTipo)
+            fila = ab.getFilaUsuario(selfi.user,hojaUsuarios)
+            print(hojaUsuarios.loc[fila])
+            print(selfi.varTipo.get())
+            if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_Ape.get()) == 0 or len(selfi.entry_Eda.get()) == 0 or len(selfi.entry_Alt.get()) == 0 or len(selfi.entry_Pes.get()) == 0):
+                selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")
+            else:
+                hojaUsuarios['nombre'].loc[fila] = selfi.entry_Nom.get()
+                hojaUsuarios['apellido'].loc[fila] = selfi.entry_Ape.get()
+                if(selfi.var.get() == 1):
+                    hojaUsuarios['sexo'] .loc[fila]= 'H'
+                else:
+                    hojaUsuarios['sexo'].loc[fila] = 'M'
+                hojaUsuarios['edad'].loc[fila] = selfi.entry_Eda.get()
+                hojaUsuarios['altura'].loc[fila] = selfi.entry_Alt.get()
+                hojaUsuarios['peso'].loc[fila] = selfi.entry_Pes.get()
+                hojaUsuarios['actividad'].loc[fila] = selfi.varAct.get()
+                if(selfi.varTipo.get() == 1):
+                    hojaUsuarios['tipo'].loc[fila] = "bajar"
+                elif(selfi.varTipo.get() == 2):
+                    hojaUsuarios['tipo'].loc[fila] = "mantener"
+                else:
+                    hojaUsuarios['tipo'].loc[fila] = "subir"
+            print(hojaUsuarios.iloc[fila])
+
 class MostrarDieta(tk.Frame):
     global user;
     global pwd;
