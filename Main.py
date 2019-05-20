@@ -83,18 +83,18 @@ class menuPrincipal(tk.Frame):
         
         
         
-        label = tk.Label(self, text="This is the start page", font=controller.title_font)
+        label = tk.Label(self, text="This is the start page", font=controller.title_font,bg=fondoGeneral)
         self.bar = tk.Frame(self, relief=RIDGE, borderwidth=5)
         self.imgPath = './descarga.jpg'
         self.icon = ImageTk.PhotoImage(Image.open('./descarga.jpg'))
         self.icon_size = Label(self.bar)
         self.icon_size.configure(image=self.icon)
         button1 = tk.Button(self, text="Información de Usuario",
-                            command=lambda: controller.show_frame("InfoUsuario"),height = 2, width = 20,relief=GROOVE,bg="spring green")
+                            command=lambda: controller.show_frame("InfoUsuario"),height = 2, width = 20,relief=GROOVE,bg=colorDetalles)
         button2 = tk.Button(self, text="Dieta diaria",
-                            command=lambda: controller.show_frame("MostrarDieta"),height = 2, width = 20,relief=GROOVE,bg="spring green")
+                            command=lambda: controller.show_frame("MostrarDieta"),height = 2, width = 20,relief=GROOVE,bg=colorDetalles)
         button3 = tk.Button(self, text="Historial",
-                            command=lambda: controller.show_frame("Historial"),height = 2, width = 20,relief=GROOVE,bg="spring green")
+                            command=lambda: controller.show_frame("Historial"),height = 2, width = 20,relief=GROOVE,bg=colorDetalles)
         label.pack(side="top", fill="x", pady=10)
         self.icon_size.pack(side=LEFT)
         self.bar.pack(side=TOP)
@@ -112,11 +112,11 @@ class Historial(tk.Frame):
         self.controller = controller
         usr,pws =vs.getUsuario();
         histUA = ab.cargarHistorial(usr)
-        label = tk.Label(self, text="Historial", font=controller.title_font)
+        label = tk.Label(self, text="Historial", font=controller.title_font,bg=fondoGeneral)
         label.pack(side="top", fill="x", pady=10)
-        self.history=tk.Frame(self)
-        self.frameBotones = tk.Frame(self.history)
-        self.grafo = tk.Frame(self.history)
+        self.history=tk.Frame(self,bg=fondoGeneral)
+        self.frameBotones = tk.Frame(self.history,bg=fondoGeneral)
+        self.grafo = tk.Frame(self.history,bg=fondoGeneral)
         f = Figure(figsize=(5,5), dpi=100)
         a = f.add_subplot(111)
         self.lin, = a.plot([],[],'r-')
@@ -142,7 +142,7 @@ class histSemanal(tk.Frame):
         self.controller = controller
         usr,pws =vs.getUsuario();
         histUA = ab.cargarHistorial(usr)
-        label = tk.Label(self, text="Historial", font=controller.title_font)
+        label = tk.Label(self, text="Historial", font=controller.title_font,bg=fondoGeneral)
         label.pack(side="top", fill="x", pady=10)
         button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("Historial"),relief=GROOVE)
         button.pack()
@@ -153,7 +153,7 @@ class InfoUsuario(tk.Frame):
         self.controller = controller
         #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
         self.c = 0;
-        label = tk.Label(self, text="Información del usuario", font=controller.title_font)
+        label = tk.Label(self, text="Información del usuario", font=controller.title_font,bg=fondoGeneral)
         label.pack(side="top", fill="x", pady=10)
         arrayLabelInfo={}
         for i in hojaUsuarios.iloc[int(ab.getFilaUsuario(self.user,hojaUsuarios)),:]:
@@ -164,7 +164,7 @@ class InfoUsuario(tk.Frame):
             else:
                 self.texto = str(hojaUsuarios.columns.values[self.c])+ ": "+str(i)
             nombre="inf"+str(self.c)
-            self.labelInfo = tk.Label(self, text=self.texto)
+            self.labelInfo = tk.Label(self, text=self.texto,bg=fondoGeneral)
             arrayLabelInfo[nombre]=self.labelInfo
             self.labelInfo.pack(anchor=tk.W)
             self.c+=1;
@@ -190,11 +190,11 @@ class MostrarDieta(tk.Frame):
         tk.Frame.__init__(self, parent)   
         self.controller = controller
         self.tab_control = ttk.Notebook(self)
-        self.tabDesayuno = tk.Frame(self.tab_control);
-        self.tabAlmuerzo = tk.Frame(self.tab_control);
-        self.tabComida = tk.Frame(self.tab_control);
-        self.tabMerienda = tk.Frame(self.tab_control);
-        self.tabCena = tk.Frame(self.tab_control);
+        self.tabDesayuno = tk.Frame(self.tab_control,bg=fondoGeneral);
+        self.tabAlmuerzo = tk.Frame(self.tab_control,bg=fondoGeneral);
+        self.tabComida = tk.Frame(self.tab_control,bg=fondoGeneral);
+        self.tabMerienda = tk.Frame(self.tab_control,bg=fondoGeneral);
+        self.tabCena = tk.Frame(self.tab_control,bg=fondoGeneral);
         self.tab_control.add(self.tabDesayuno, text='Desayuno')
         self.tab_control.add(self.tabAlmuerzo, text='Almuerzo')
         self.tab_control.add(self.tabComida, text='Comida')
@@ -252,7 +252,7 @@ class MostrarDieta(tk.Frame):
     '''
     def desayunoF(self):
         self.opc=-1;
-        self.label = tk.Label(self.tabDesayuno, text="-DESAYUNO-", font=self.controller.title_font)
+        self.label = tk.Label(self.tabDesayuno, text="-DESAYUNO-", font=self.controller.title_font,bg=fondoGeneral)
         self.label.pack(side="top", fill="x", pady=10)
         selected = IntVar()
         i=0;
@@ -261,19 +261,19 @@ class MostrarDieta(tk.Frame):
         self.desayuno = cd.OrdMinimaDiferencia(self.desayuno,self.listDistribuciónKcal[0],"desayuno",datosAlimCliente,self.kcal_Por_Dia)
         self.filtDesayuno = self.desayuno.loc[self.desayuno["Calidad"] <= umbral]
         self.filtDesayuno = self.filtDesayuno.sort_values(by=["LRE"])
-        self.objetivo = tk.Label(self.tabDesayuno,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Desayuno: "+str(self.listDistribuciónKcal[0]))
+        self.objetivo = tk.Label(self.tabDesayuno,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Desayuno: "+str(self.listDistribuciónKcal[0]),bg=fondoGeneral)
         self.objetivo.pack()
-        self.cont_comida_inf = tk.Frame(self.tabDesayuno);
-        self.cont_opciones_Des2 =tk.Frame(self.cont_comida_inf)
-        self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf)
-        self.label_Informacion_comida = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN")
+        self.cont_comida_inf = tk.Frame(self.tabDesayuno,bg=fondoGeneral);
+        self.cont_opciones_Des2 =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
+        self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
+        self.label_Informacion_comida = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN",bg=fondoGeneral)
         self.label_Informacion_comida.pack(fill=BOTH,side=LEFT,anchor=tk.W)
-        self.LblLoQueLlevoDes = tk.Label(self.tabDesayuno, text="Llevo Comido: "+str(datosAlimCliente[0]))
+        self.LblLoQueLlevoDes = tk.Label(self.tabDesayuno, text="Llevo Comido: "+str(datosAlimCliente[0]),bg=fondoGeneral)
         self.LblLoQueLlevoDes.pack();
         self.botonesDes = {};
         while(i<self.n_opciones):
             nombre=str(i)+") "+str(self.filtDesayuno["Nombre"].iloc[i])+" ("+ str(self.filtDesayuno["Calorias"].iloc[i])+"Kcal)"
-            self.rad1 = tk.Radiobutton(self.cont_opciones_Des2,text=str(nombre), value=i, variable=selected, command=partial(vs.MostrarInfo,i,self.filtDesayuno, self.label_Informacion_comida))
+            self.rad1 = tk.Radiobutton(self.cont_opciones_Des2,text=str(nombre), value=i, variable=selected, command=partial(vs.MostrarInfo,i,self.filtDesayuno, self.label_Informacion_comida),bg=fondoGeneral)
             if(self.banderaSelect[0]):
                 self.rad1['state']='disable' #DESABILITAMOS LOS BOTONES SI YA HEMOS ESCOGIFO.
             self.rad1.pack(anchor=tk.W)
@@ -295,31 +295,31 @@ class MostrarDieta(tk.Frame):
         self.btnSelDes.pack(fill=X)
         self.btnRefrDes.pack(fill=X)
         textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
-        self.lblDesTotal = tk.Label(self.tabDesayuno,text=textoTotal)
+        self.lblDesTotal = tk.Label(self.tabDesayuno,text=textoTotal,bg=fondoGeneral)
         self.lblDesTotal.pack(anchor=tk.W)
     def AlmuerzoF(self):
-        self.label = tk.Label(self.tabAlmuerzo, text="-ALMUERZO-", font=self.controller.title_font)
+        self.label = tk.Label(self.tabAlmuerzo, text="-ALMUERZO-", font=self.controller.title_font,bg=fondoGeneral)
         self.label.pack(side="top", fill="x", pady=10)
         umbral=2
         selected = IntVar()
-        self.cont_comida_inf = tk.Frame(self.tabAlmuerzo);
-        self.cont_opciones_Alm =tk.Frame(self.cont_comida_inf)
-        self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf)
-        self.label_Informacion_Alm = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN")
+        self.cont_comida_inf = tk.Frame(self.tabAlmuerzo,bg=fondoGeneral);
+        self.cont_opciones_Alm =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
+        self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
+        self.label_Informacion_Alm = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN",bg=fondoGeneral)
         self.label_Informacion_Alm.pack(fill=BOTH,side=LEFT,anchor=tk.W)
         i=0;
         self.almuerzo = self.almuerzo.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
         self.almuerzo = cd.OrdMinimaDiferencia(self.almuerzo,self.listDistribuciónKcal[1],"almuerzo",datosAlimCliente,self.kcal_Por_Dia)
         self.filtAlmuerzo = self.almuerzo.loc[self.almuerzo["Calidad"] <= umbral]
         self.filtAlmuerzo = self.filtAlmuerzo.sort_values(by=["LRE"])
-        self.objetivo = tk.Label(self.tabAlmuerzo,text="Objetivo tital: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Almuerzo: "+str(self.listDistribuciónKcal[1]))
+        self.objetivo = tk.Label(self.tabAlmuerzo,text="Objetivo tital: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Almuerzo: "+str(self.listDistribuciónKcal[1]),bg=fondoGeneral)
         self.objetivo.pack()
-        self.LblLoQueLlevoAlm = tk.Label(self.tabAlmuerzo, text="Llevo Comido: "+str(datosAlimCliente[0]))
+        self.LblLoQueLlevoAlm = tk.Label(self.tabAlmuerzo, text="Llevo Comido: "+str(datosAlimCliente[0]),bg=fondoGeneral)
         self.LblLoQueLlevoAlm.pack();
         self.botonesAl=  dict()
         while i<3:
             nombre=str(i)+") "+str(self.filtAlmuerzo["Nombre"].iloc[i])+" ("+ str(self.filtAlmuerzo["Calorias"].iloc[i])+"Kcal)"
-            self.rad2 = tk.Radiobutton(self.cont_opciones_Alm,text=str(nombre), value=i, variable=selected, command=partial(vs.MostrarInfo,i,self.filtAlmuerzo, self.label_Informacion_Alm))
+            self.rad2 = tk.Radiobutton(self.cont_opciones_Alm,text=str(nombre), value=i, variable=selected, command=partial(vs.MostrarInfo,i,self.filtAlmuerzo, self.label_Informacion_Alm),bg=fondoGeneral)
             self.rad2.pack(anchor=tk.W)
             if(self.banderaSelect[1]):
                 self.rad2['state']='disable' #DESABILITAMOS LOS BOTONES SI YA HEMOS ESCOGIFO.
@@ -340,9 +340,9 @@ class MostrarDieta(tk.Frame):
         
         self.btnRefrAlm.config(command=partial(vs.refrescar,self,"almuerzo",self.cont_opciones_Alm,self.filtAlmuerzo,umbral,self.almuerzo,hojaAlimentos,self.botonesAl,self.n_opciones,self.btnSelAlm,self.btnRefrAlm, self.label_Informacion_Alm,self.listDistribuciónKcal[1],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style))
         self.btnSelAlm.pack(fill=X)
-        
+        self.btnRefrAlm.pack(fill=X)
         textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
-        self.lblAlmTotal = tk.Label(self.tabAlmuerzo,text=textoTotal)
+        self.lblAlmTotal = tk.Label(self.tabAlmuerzo,text=textoTotal,bg=fondoGeneral)
         self.lblAlmTotal.pack(anchor=tk.W)
     def ComidaF(self):
         
@@ -350,24 +350,24 @@ class MostrarDieta(tk.Frame):
         self.label.pack(side="top", fill="x", pady=10)
         umbral=2
         selected = IntVar()
-        self.cont_comida_inf = tk.Frame(self.tabComida);
-        self.cont_opciones_Com =tk.Frame(self.cont_comida_inf)
-        self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf)
-        self.label_Informacion_Com = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN")
+        self.cont_comida_inf = tk.Frame(self.tabComida,bg=fondoGeneral);
+        self.cont_opciones_Com =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
+        self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
+        self.label_Informacion_Com = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN",bg=fondoGeneral)
         self.label_Informacion_Com.pack(fill=BOTH,side=LEFT,anchor=tk.W)
         i=0;
         self.comida = self.comida.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
         self.comida = cd.OrdMinimaDiferencia(self.comida,self.listDistribuciónKcal[1],"almuerzo",datosAlimCliente,self.kcal_Por_Dia)
         self.filtComida = self.comida.loc[self.comida["Calidad"] <= umbral]
         self.filtComida = self.filtComida.sort_values(by=["LRE"])
-        self.objetivo = tk.Label(self.tabComida,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Comida: "+str(self.listDistribuciónKcal[2]))
+        self.objetivo = tk.Label(self.tabComida,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Comida: "+str(self.listDistribuciónKcal[2]),bg=fondoGeneral)
         self.objetivo.pack()
-        self.LblLoQueLlevoCom = tk.Label(self.tabComida, text="Llevo Comido: "+str(datosAlimCliente[0]))
+        self.LblLoQueLlevoCom = tk.Label(self.tabComida, text="Llevo Comido: "+str(datosAlimCliente[0]),bg=fondoGeneral)
         self.LblLoQueLlevoCom.pack()
         self.botonesCom=  dict()
         while i<3:
             nombre=str(i)+") "+str(self.filtComida["Nombre"].iloc[i])+" ("+ str(self.filtComida["Calorias"].iloc[i])+"Kcal)"
-            self.radCom = tk.Radiobutton(self.cont_opciones_Com,text=str(nombre), value=i, variable=selected, command=partial(vs.MostrarInfo,i,self.filtComida, self.label_Informacion_Com))
+            self.radCom = tk.Radiobutton(self.cont_opciones_Com,text=str(nombre), value=i, variable=selected, command=partial(vs.MostrarInfo,i,self.filtComida, self.label_Informacion_Com),bg=fondoGeneral)
             self.radCom.pack(anchor=tk.W)
             if(self.banderaSelect[2]):
                 self.radCom['state']='disable' #DESABILITAMOS LOS BOTONES SI YA HEMOS ESCOGIFO.
@@ -391,31 +391,31 @@ class MostrarDieta(tk.Frame):
         self.btnSelCom.pack(fill=X)
         self.btnRefrCom.pack(fill=X)
         textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
-        self.lblComTotal = tk.Label(self.tabComida,text=textoTotal)
+        self.lblComTotal = tk.Label(self.tabComida,text=textoTotal,bg=fondoGeneral)
         self.lblComTotal.pack(anchor=tk.W)
     def MeriendaF(self):
-        self.label = tk.Label(self.tabMerienda, text="-MERIENDA-", font=self.controller.title_font)
+        self.label = tk.Label(self.tabMerienda, text="-MERIENDA-", font=self.controller.title_font,bg=fondoGeneral)
         self.label.pack(side="top", fill="x", pady=10)
         umbral=2
         selected = IntVar()
-        self.cont_comida_inf = tk.Frame(self.tabMerienda);
-        self.cont_opciones_Mer =tk.Frame(self.cont_comida_inf)
-        self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf)
-        self.label_Informacion_Mer = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN")
+        self.cont_comida_inf = tk.Frame(self.tabMerienda,bg=fondoGeneral);
+        self.cont_opciones_Mer =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
+        self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
+        self.label_Informacion_Mer = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN",bg=fondoGeneral)
         self.label_Informacion_Mer.pack(fill=BOTH,side=LEFT,anchor=tk.W)
         i=0;
         self.merienda = self.merienda.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
         self.merienda = cd.OrdMinimaDiferencia(self.merienda,self.listDistribuciónKcal[1],"almuerzo",datosAlimCliente,self.kcal_Por_Dia)
         self.filtMerienda = self.merienda.loc[self.merienda["Calidad"] <= umbral]
         self.filtMerienda = self.filtMerienda.sort_values(by=["LRE"])
-        self.objetivo = tk.Label(self.tabMerienda,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Merienda: "+str(self.listDistribuciónKcal[3]))
+        self.objetivo = tk.Label(self.tabMerienda,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Merienda: "+str(self.listDistribuciónKcal[3]),bg=fondoGeneral)
         self.objetivo.pack()
-        self.LblLoQueLlevoMer = tk.Label(self.tabMerienda, text="Llevo Comido: "+str(datosAlimCliente[0]))
+        self.LblLoQueLlevoMer = tk.Label(self.tabMerienda, text="Llevo Comido: "+str(datosAlimCliente[0]),bg=fondoGeneral)
         self.LblLoQueLlevoMer.pack()
         self.botonesMer=  dict()
         while i<3:
             nombre=str(i)+") "+str(self.filtMerienda["Nombre"].iloc[i])+" ("+ str(self.filtMerienda["Calorias"].iloc[i])+"Kcal)"
-            self.radMer = tk.Radiobutton(self.cont_opciones_Mer,text=str(nombre), value=i, variable=selected, command=partial(vs.MostrarInfo,i,self.filtMerienda, self.label_Informacion_Mer))
+            self.radMer = tk.Radiobutton(self.cont_opciones_Mer,text=str(nombre), value=i, variable=selected, command=partial(vs.MostrarInfo,i,self.filtMerienda, self.label_Informacion_Mer),bg=fondoGeneral)
             self.radMer.pack(anchor=tk.W)
             if(self.banderaSelect[3]):
                 self.radMer['state']='disable' #DESABILITAMOS LOS BOTONES SI YA HEMOS ESCOGIFO.
@@ -439,31 +439,31 @@ class MostrarDieta(tk.Frame):
         self.btnSelMer.pack(fill=X)
         self.btnRefrMer.pack(fill=X)
         textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
-        self.lblMerTotal = tk.Label(self.tabMerienda,text=textoTotal)
+        self.lblMerTotal = tk.Label(self.tabMerienda,text=textoTotal,bg=fondoGeneral)
         self.lblMerTotal.pack(anchor=tk.W)
     def CenaF(self):
-        self.label = tk.Label(self.tabCena, text="-CENA-", font=self.controller.title_font)
+        self.label = tk.Label(self.tabCena, text="-CENA-", font=self.controller.title_font,bg=fondoGeneral)
         self.label.pack(side="top", fill="x", pady=10)
         umbral=2
         selected = IntVar()
-        self.cont_comida_inf = tk.Frame(self.tabCena);
-        self.cont_opciones_Cen =tk.Frame(self.cont_comida_inf)
-        self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf)
-        self.label_Informacion_Cen = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN")
+        self.cont_comida_inf = tk.Frame(self.tabCena,bg=fondoGeneral);
+        self.cont_opciones_Cen =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
+        self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
+        self.label_Informacion_Cen = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN",bg=fondoGeneral)
         self.label_Informacion_Cen.pack(fill=BOTH,side=LEFT,anchor=tk.W)
         i=0;
         self.cena = self.cena.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
         self.cena = cd.OrdMinimaDiferencia(self.cena,self.listDistribuciónKcal[1],"cena",datosAlimCliente,self.kcal_Por_Dia)
         self.filtCena = self.cena.loc[self.cena["Calidad"] <= umbral]
         self.filtCena = self.filtCena.sort_values(by=["LRE"])
-        self.objetivo = tk.Label(self.tabCena,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Cena: "+str(self.listDistribuciónKcal[4]))
-        self.LblLoQueLlevoCen = tk.Label(self.tabCena, text="Llevo Comido: "+str(datosAlimCliente[0]))
+        self.objetivo = tk.Label(self.tabCena,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Cena: "+str(self.listDistribuciónKcal[4]),bg=fondoGeneral)
+        self.LblLoQueLlevoCen = tk.Label(self.tabCena, text="Llevo Comido: "+str(datosAlimCliente[0]),bg=fondoGeneral)
         self.objetivo.pack()
         self.LblLoQueLlevoCen.pack()
         self.botonesCen=  dict()
         while i<3:
             nombre=str(i)+") "+str(self.filtCena["Nombre"].iloc[i])+" ("+ str(self.filtCena["Calorias"].iloc[i])+"Kcal)"
-            self.radCen = tk.Radiobutton(self.cont_opciones_Cen,text=str(nombre), value=i, variable=selected, command=partial(vs.MostrarInfo,i,self.filtCena, self.label_Informacion_Cen))
+            self.radCen = tk.Radiobutton(self.cont_opciones_Cen,text=str(nombre), value=i, variable=selected, command=partial(vs.MostrarInfo,i,self.filtCena, self.label_Informacion_Cen),bg=fondoGeneral)
             self.radCen.pack(anchor=tk.W)
             if(self.banderaSelect[4]):
                 self.radCen['state']='disable' #DESABILITAMOS LOS BOTONES SI YA HEMOS ESCOGIFO.
@@ -486,7 +486,7 @@ class MostrarDieta(tk.Frame):
         self.btnSelCen.pack(fill=X)
         self.btnRefrCen.pack(fill=X)
         textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
-        self.lblCenTotal = tk.Label(self.tabCena,text=textoTotal)
+        self.lblCenTotal = tk.Label(self.tabCena,text=textoTotal,bg=fondoGeneral)
         self.lblCenTotal.pack(anchor=tk.W)
 
 if __name__ == "__main__":
@@ -494,6 +494,7 @@ if __name__ == "__main__":
         datosAlimCliente = np.zeros(5)
         #Array que guarda lo que ha comido hoy el cliente
         fondoGeneral='powder blue'
+        colorDetalles="spring green"
         menuDeHoy = ["","","","",""]
         #Variable que almacena lo que tiene que comer
         listMacDiarios = np.zeros(4)
