@@ -107,8 +107,6 @@ class menuPrincipal(tk.Frame):
         button1.pack()
         button2.pack()
         button3.pack();
-    def refresh(self):
-        self.update_idletasks
 def guardar():
     ab.guardarDatos(hojaAlimentos, hojaUsuarios, hojaPatologias)
     messagebox.showinfo("GUARDAR","Se ha guadado")
@@ -186,39 +184,70 @@ class editarInforUsuario(tk.Frame):
             self.controller = controller
             #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
             self.c = 0;
+            
             label = tk.Label(self, text="Editando información", font=controller.title_font,bg=fondoGeneral)    
-            label.pack(side="top", fill="x", pady=10)
-            label_0 = Label(self, text="Registration form",width=20,font=("bold", 20))
-            label_0.place(x=90,y=53)
+            label.grid(column=0,row=0)
             
+            label_Nom = Label(self, text="Nombre",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Nom.grid(column=0,row=1)
             
-            label_1 = Label(self, text="FullName",width=20,font=("bold", 10))
-            label_1.place(x=80,y=130)
+            self.entry_Nom = Entry(self,bg=fondoGeneral)
+            self.entry_Nom.grid(column=1,row=1)
             
-            entry_1 = Entry(self)
-            entry_1.place(x=240,y=130)
+            label_Ape = Label(self, text="Apellidos",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Ape.grid(column=0,row=2)
             
-            label_2 = Label(self, text="Email",width=20,font=("bold", 10))
-            label_2.place(x=68,y=180)
+            self.entry_Ape = Entry(self,bg=fondoGeneral)
+            self.entry_Ape.grid(column=1,row=2)
             
-            entry_2 = Entry(self)
-            entry_2.place(x=240,y=180)
+            label_Eda = Label(self, text="Edad",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Eda.grid(column=0,row=3)         
             
-            label_3 = Label(self, text="Gender",width=20,font=("bold", 10))
-            label_3.place(x=70,y=230)
-            var = IntVar()
-            Radiobutton(self, text="Male",padx = 5, variable=var, value=1).place(x=235,y=230)
-            Radiobutton(self, text="Female",padx = 20, variable=var, value=2).place(x=290,y=230)
+            self.entry_Eda = Entry(self,bg=fondoGeneral)
+            self.entry_Eda.grid(column=1,row=3)
             
+            label_Alt = Label(self, text="Altura",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Alt.grid(column=0,row=4)       
+            
+            self.entry_Alt = Entry(self,bg=fondoGeneral)
+            self.entry_Alt.grid(column=1,row=4)
+            
+            label_Pes = Label(self, text="Peso",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Pes.grid(column=0,row=5)       
+            
+            self.entry_Pes = Entry(self,bg=fondoGeneral)
+            self.entry_Pes.grid(column=1,row=5)
+            
+            label_3 = Label(self, text="Sexo:",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_3.grid(column=0,row=6)
+            self.var = IntVar()
+            Radiobutton(self, text="Hombre",padx = 5, variable=self.var, value=1,bg=fondoGeneral).grid(column=0,row=7)
+            Radiobutton(self, text="Mujer",padx = 20, variable=self.var, value=2,bg=fondoGeneral).grid(column=1,row=7)
+            
+            label_Act = Label(self, text="Actividad: ",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Act.grid(column=0,row=8)
+            self.varAct = IntVar()
+            Radiobutton(self, text="1 ",padx = 10, variable=self.varAct, value=1,bg=fondoGeneral).grid(column=0,row=9)
+            Radiobutton(self, text="2 ",padx = 10, variable=self.varAct, value=2,bg=fondoGeneral).grid(column=1,row=9)
+            Radiobutton(self, text="3 ",padx = 10, variable=self.varAct, value=3,bg=fondoGeneral).grid(column=0,row=10)
+            Radiobutton(self, text="4 ",padx = 10, variable=self.varAct, value=4,bg=fondoGeneral).grid(column=1,row=10)
+            
+            label_3 = Label(self, text="Tipo",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_3.grid(column=0,row=11)
+            self.varTipo = IntVar()
+            Radiobutton(self, text="bajar",padx = 5, variable=self.varTipo, value=1,bg=fondoGeneral).grid(column=0,row=12)
+            Radiobutton(self, text="mantener",padx = 20, variable=self.varTipo, value=2,bg=fondoGeneral).grid(column=1,row=12)
+            Radiobutton(self, text="subir",padx = 20, variable=self.varTipo, value=3,bg=fondoGeneral).grid(column=2,row=12)
+            '''
             label_4 = Label(self, text="country",width=20,font=("bold", 10))
-            label_4.place(x=70,y=280)
+            label_4.grid(column=0,row=13)
             
             list1 = ['Canada','India','UK','Nepal','Iceland','South Africa'];
             c=StringVar()
             droplist=OptionMenu(self,c, *list1)
             droplist.config(width=15)
             c.set('select your country') 
-            droplist.place(x=240,y=280)
+            droplist.grid(column=0,row=14)
             
             label_4 = Label(self, text="Programming",width=20,font=("bold", 10))
             label_4.place(x=85,y=330)
@@ -226,14 +255,26 @@ class editarInforUsuario(tk.Frame):
             Checkbutton(self, text="java", variable=var1).place(x=235,y=330)
             var2 = IntVar()
             Checkbutton(self, text="python", variable=var2).place(x=290,y=330)
-            
-            a = Button(self, text='Submit',width=20,bg='brown',fg='white',command=partial(self.value, entry_1)).place(x=180,y=380)
+            '''
+            a = Button(self, text='Submit',command=partial(self.value,self)).grid(column=0,row=15)
 
             print(a)
             button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("InfoUsuario"),relief=GROOVE)
-            button.pack(side=BOTTOM)
-        def value(self,e):
-            print(e.get())
+            button.grid(column=0,row=16)
+            
+            self.label_3 = Label(self, text="",width=20,font=("bold", 10),bg=fondoGeneral,foreground="red")
+            self.label_3.grid(column=0,row=17)
+        def value(self,selfi):
+            if(selfi.entry_Nom.get() != None):
+                print('vacio') #FUNCIONAAAAAAAA
+            print(selfi.entry_Nom.get())
+            print(selfi.entry_Ape.get())
+            print(selfi.entry_Eda.get())
+            print(selfi.entry_Alt.get())
+            print(selfi.entry_Pes.get())
+            print(selfi.var)
+            print(selfi.varAct)
+            print(selfi.varTipo)
 class MostrarDieta(tk.Frame):
     global user;
     global pwd;
