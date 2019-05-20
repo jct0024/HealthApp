@@ -46,6 +46,10 @@ class SampleApp(tk.Tk):
         self.frames["InfoUsuario"].grid(row=0, column=0, sticky="nsew")
         self.frames["InfoUsuario"].config(bg=fondoGeneral)
         
+        self.frames["editarInforUsuario"] = editarInforUsuario(parent=container, controller=self)
+        self.frames["editarInforUsuario"].grid(row=0, column=0, sticky="nsew")
+        self.frames["editarInforUsuario"].config(bg=fondoGeneral)
+        
         self.frames["Historial"] = Historial(parent=container, controller=self)
         self.frames["Historial"].grid(row=0, column=0, sticky="nsew")
         self.frames["Historial"].config(bg=fondoGeneral)
@@ -57,6 +61,8 @@ class SampleApp(tk.Tk):
         self.frames["MostrarDieta"] = MostrarDieta(parent=container, controller=self)
         self.frames["MostrarDieta"].grid(row=0, column=0, sticky="nsew")
         self.frames["MostrarDieta"].config(bg=fondoGeneral)
+        
+        
         self.show_frame("menuPrincipal")
 
     def show_frame(self, page_name):
@@ -168,12 +174,66 @@ class InfoUsuario(tk.Frame):
             arrayLabelInfo[nombre]=self.labelInfo
             self.labelInfo.pack(anchor=tk.W)
             self.c+=1;
-        btnEditar = tk.Button(self, text="Editar información",height = 2, width = 20,relief=GROOVE,command=partial(vs.editarInf,arrayLabelInfo,self))
-        btnEditar.pack();
+        btnEditar = tk.Button(self, text="Editar información",height = 2, width = 20,command=lambda: controller.show_frame("editarInforUsuario"),relief=GROOVE)
         button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("menuPrincipal"),relief=GROOVE)
+        btnEditar.pack();
+        
         button.pack(side=BOTTOM)
 
+class editarInforUsuario(tk.Frame):
+        def __init__(self, parent, controller):
+            tk.Frame.__init__(self, parent)
+            self.controller = controller
+            #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
+            self.c = 0;
+            label = tk.Label(self, text="Editando información", font=controller.title_font,bg=fondoGeneral)    
+            label.pack(side="top", fill="x", pady=10)
+            label_0 = Label(self, text="Registration form",width=20,font=("bold", 20))
+            label_0.place(x=90,y=53)
+            
+            
+            label_1 = Label(self, text="FullName",width=20,font=("bold", 10))
+            label_1.place(x=80,y=130)
+            
+            entry_1 = Entry(self)
+            entry_1.place(x=240,y=130)
+            
+            label_2 = Label(self, text="Email",width=20,font=("bold", 10))
+            label_2.place(x=68,y=180)
+            
+            entry_2 = Entry(self)
+            entry_2.place(x=240,y=180)
+            
+            label_3 = Label(self, text="Gender",width=20,font=("bold", 10))
+            label_3.place(x=70,y=230)
+            var = IntVar()
+            Radiobutton(self, text="Male",padx = 5, variable=var, value=1).place(x=235,y=230)
+            Radiobutton(self, text="Female",padx = 20, variable=var, value=2).place(x=290,y=230)
+            
+            label_4 = Label(self, text="country",width=20,font=("bold", 10))
+            label_4.place(x=70,y=280)
+            
+            list1 = ['Canada','India','UK','Nepal','Iceland','South Africa'];
+            c=StringVar()
+            droplist=OptionMenu(self,c, *list1)
+            droplist.config(width=15)
+            c.set('select your country') 
+            droplist.place(x=240,y=280)
+            
+            label_4 = Label(self, text="Programming",width=20,font=("bold", 10))
+            label_4.place(x=85,y=330)
+            var1 = IntVar()
+            Checkbutton(self, text="java", variable=var1).place(x=235,y=330)
+            var2 = IntVar()
+            Checkbutton(self, text="python", variable=var2).place(x=290,y=330)
+            
+            a = Button(self, text='Submit',width=20,bg='brown',fg='white',command=partial(self.value, entry_1)).place(x=180,y=380)
 
+            print(a)
+            button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("InfoUsuario"),relief=GROOVE)
+            button.pack(side=BOTTOM)
+        def value(self,e):
+            print(e.get())
 class MostrarDieta(tk.Frame):
     global user;
     global pwd;
