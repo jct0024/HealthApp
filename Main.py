@@ -29,9 +29,9 @@ class SampleApp(tk.Tk):
         menu = Menu(self)
         subMenuArchivo = Menu(menu)
         subMenuArchivo.add_command(label="Manual",command=self.pdf)
-        subMenuArchivo.add_separator()
         subMenuArchivo.add_command(label="Guardar",command=partial(ab.guardaTodo,usr,menuDeHoy, histUA ,hojaAlimentos, hojaUsuarios, hojaPatologias))
-        subMenuArchivo.add_command(label="G-Hist",command=partial(ab.guardarHistorial,usr,menuDeHoy,histUA))
+        subMenuArchivo.add_separator()
+        subMenuArchivo.add_command(label="Salir",command= lambda: self.destroy())
         menu.add_cascade(label='Archivo',menu=subMenuArchivo)
         self.config(menu=menu)
         self.frames = {}
