@@ -5,9 +5,8 @@ Created on Mon Dec 10 10:36:25 2018
 @author: Jesus
 """
 import pandas as pd;
-import win32com.client;
-import xlwings as wx;
 import datetime
+from tkinter import messagebox
 def cargarBaseDeDatos():
     #Cargamos la base de datos
     #doc = wx.Book("BaseDeDatosDeAlimentos.xlsx")
@@ -119,7 +118,9 @@ def getFilaAlimento(nombre,a):
     return i;    
 def guardaTodo(usr, menuDeHoy, historial,hojaAlimentos, hojaUsuarios, hojaPatologias):
     guardarHistorial (usr, menuDeHoy, historial)
+    guardarUsuario(hojaUsuarios)
     guardarDatos (hojaAlimentos, hojaUsuarios, hojaPatologias)
+    messagebox.showinfo("Ya se ha guardado","Datos guardados ya puede cerrar el programa")
 def guardarUsuario(hojaUsuarios):
     writer = pd.ExcelWriter("BaseDeDatosUsuarios.xlsx")
     hojaUsuarios.to_excel(writer,'Usuarios',index=False)

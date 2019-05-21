@@ -4,7 +4,7 @@ from functools import partial
 import AdminBase as ab;
 import CalculosDieta as cd;
 from tkinter import *
-from tkinter import ttk,font, messagebox;
+from tkinter import ttk,font
 from PIL import ImageTk, Image
 import numpy as np;
 import os
@@ -19,9 +19,6 @@ class SampleApp(tk.Tk):
         
         self.title_font = font.Font(family='Helvetica', size=18, weight="bold", slant="italic")
         self.geometry('500x500')
-        # the container is where we'll stack a bunch of frames
-        # on top of each other, then the one we want visible
-        # will be raised above the others
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
@@ -33,7 +30,7 @@ class SampleApp(tk.Tk):
         subMenuArchivo = Menu(menu)
         subMenuArchivo.add_command(label="Manual",command=self.pdf)
         subMenuArchivo.add_separator()
-        subMenuArchivo.add_command(label="Guardar",command=guardar)
+        subMenuArchivo.add_command(label="Guardar",command=partial(ab.guardaTodo,usr,menuDeHoy, histUA ,hojaAlimentos, hojaUsuarios, hojaPatologias))
         subMenuArchivo.add_command(label="G-Hist",command=partial(ab.guardarHistorial,usr,menuDeHoy,histUA))
         menu.add_cascade(label='Archivo',menu=subMenuArchivo)
         self.config(menu=menu)
@@ -75,9 +72,6 @@ class SampleApp(tk.Tk):
     '''
     def pdf(self):
         os.system('ejemplo.pdf')
-    def guardar():
-        ab.guardarDatos(hojaAlimentos, hojaUsuarios, hojaPatologias)
-        messagebox.showinfo("GUARDAR","Se ha guadado")
  
         
 class menuPrincipal(tk.Frame):
