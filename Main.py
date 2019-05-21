@@ -127,15 +127,15 @@ class Historial(tk.Frame):
         self.canvas = FigureCanvasTkAgg(f,self.grafo)
         self.canvas.draw()
         self.canvas.get_tk_widget().pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
-        btnGrafo = tk.Button(self.frameBotones,text='Mostrar',command=partial(vs.gráfico,self,[0,1,2,3],[0,1,4,9]),relief=GROOVE)
-        btnGrafo2 = tk.Button(self.frameBotones,text='Otro',command=partial(vs.gráfico,self,[0,1,2,3],[3,2,1,0]),relief=GROOVE)
+        btnGrafo = tk.Button(self.frameBotones,text='Mostrar',command=partial(vs.gráfico,self,[0,1,2,3],[0,1,4,9]),relief=GROOVE,bg=colorDetalles)
+        btnGrafo2 = tk.Button(self.frameBotones,text='Otro',command=partial(vs.gráfico,self,[0,1,2,3],[3,2,1,0]),relief=GROOVE,bg=colorDetalles)
         self.history.pack()
         self.frameBotones.pack(side=LEFT)
         self.grafo.pack(side=tk.RIGHT)
         
         #Volver al iniciao
-        button = tk.Button(self.frameBotones, text="Volver al inicio",command=lambda: controller.show_frame("menuPrincipal"),relief=GROOVE)
-        button2 = tk.Button(self.frameBotones, text="Semana ingerida",command=lambda: controller.show_frame("histSemanal"),relief=GROOVE)
+        button = tk.Button(self.frameBotones, text="Volver al inicio",command=lambda: controller.show_frame("menuPrincipal"),relief=GROOVE,bg=colorDetalles)
+        button2 = tk.Button(self.frameBotones, text="Semana ingerida",command=lambda: controller.show_frame("histSemanal"),relief=GROOVE,bg=colorDetalles)
         btnGrafo.pack(fill=X)
         btnGrafo2.pack(fill=X)
         button2.pack(side=BOTTOM,fill=X)
@@ -148,7 +148,7 @@ class histSemanal(tk.Frame):
         histUA = ab.cargarHistorial(usr)
         label = tk.Label(self, text="Historial", font=controller.title_font,bg=fondoGeneral)
         label.pack(side="top", fill="x", pady=10)
-        button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("Historial"),relief=GROOVE)
+        button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("Historial"),relief=GROOVE,bg=colorDetalles)
         button.pack()
 class InfoUsuario(tk.Frame):
     def __init__(self, parent, controller):
@@ -172,8 +172,8 @@ class InfoUsuario(tk.Frame):
             arrayLabelInfo[nombre]=self.labelInfo
             self.labelInfo.pack(anchor=tk.W)
             self.c+=1;
-        btnEditar = tk.Button(self, text="Editar información",height = 2, width = 20,command=lambda: controller.show_frame("editarInforUsuario"),relief=GROOVE)
-        button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("menuPrincipal"),relief=GROOVE)
+        btnEditar = tk.Button(self, text="Editar información",height = 2, width = 20,command=lambda: controller.show_frame("editarInforUsuario"),relief=GROOVE,bg=colorDetalles)
+        button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("menuPrincipal"),relief=GROOVE,bg=colorDetalles)
         btnEditar.pack();
         
         button.pack(side=BOTTOM)
@@ -257,8 +257,8 @@ class editarInforUsuario(tk.Frame):
             var2 = IntVar()
             Checkbutton(self, text="python", variable=var2).place(x=290,y=330)
             '''
-            buttonEnviar = Button(self, text='Aceptar',command=partial(vs.value,hojaUsuarios,self)).grid(column=0,row=15)
-            button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("InfoUsuario"),relief=GROOVE)
+            buttonEnviar = Button(self, text='Aceptar y Guardar',command=partial(vs.value,hojaUsuarios,self, controller),bg=colorDetalles,relief=GROOVE).grid(column=0,row=15)
+            button = tk.Button(self, text="Cancelar",command=lambda: controller.show_frame("InfoUsuario"),relief=GROOVE,bg=colorDetalles)
             button.grid(column=0,row=16)
             
             self.label_Error = Label(self, text="",width=20,font=("bold", 10),bg=fondoGeneral,foreground="red")
@@ -312,7 +312,7 @@ class MostrarDieta(tk.Frame):
 
         ###-Comun todas comidas-######
         self.barProgTotal.pack(side=RIGHT)
-        self.button = tk.Button(self, text="Volver al inicio", command=lambda: self.controller.show_frame("menuPrincipal"),relief=GROOVE)
+        self.button = tk.Button(self, text="Volver al inicio", command=lambda: self.controller.show_frame("menuPrincipal"),relief=GROOVE,bg=colorDetalles)
         self.button.pack(side=LEFT)
 
         '''
@@ -380,9 +380,9 @@ class MostrarDieta(tk.Frame):
             self.btnRefrDes['state']='disable'
         else:
             self.btnSelDes = tk.Button(self.tabDesayuno, text="Seleccionar")
-        self.btnSelDes.config( command=partial(vs.seleccionarYActualizarResto,self,"desayuno",self.botonesDes,self.btnSelDes,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtDesayuno,self.barProgTotal,self.listMacDiarios,self.style,umbral))
+        self.btnSelDes.config( command=partial(vs.seleccionarYActualizarResto,self,"desayuno",self.botonesDes,self.btnSelDes,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtDesayuno,self.barProgTotal,self.listMacDiarios,self.style,umbral),bg=colorDetalles)
         
-        self.btnRefrDes.config(command=partial(vs.refrescar,self,"desayuno",self.cont_opciones_Des2,self.filtDesayuno,umbral,self.desayuno,hojaAlimentos,self.botonesDes,self.n_opciones,self.btnSelDes,self.btnRefrDes, self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style))
+        self.btnRefrDes.config(command=partial(vs.refrescar,self,"desayuno",self.cont_opciones_Des2,self.filtDesayuno,umbral,self.desayuno,hojaAlimentos,self.botonesDes,self.n_opciones,self.btnSelDes,self.btnRefrDes, self.label_Informacion_comida,self.listDistribuciónKcal[0],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style),bg=colorDetalles)
         self.btnSelDes.pack(fill=X)
         self.btnRefrDes.pack(fill=X)
         textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
@@ -420,12 +420,12 @@ class MostrarDieta(tk.Frame):
         self.cont_opciones_Alm.pack(side=LEFT)
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
-        self.btnRefrAlm = tk.Button(self.tabAlmuerzo, text="Refrescar")
+        self.btnRefrAlm = tk.Button(self.tabAlmuerzo, text="Refrescar",bg=colorDetalles)
         if(self.banderaSelect[1]):
             self.btnRefrAlm['state']='disable'
-            self.btnSelAlm = tk.Button(self.tabAlmuerzo, text="Editar")
+            self.btnSelAlm = tk.Button(self.tabAlmuerzo, text="Editar",bg=colorDetalles)
         else:
-            self.btnSelAlm = tk.Button(self.tabAlmuerzo, text="Seleccionar")
+            self.btnSelAlm = tk.Button(self.tabAlmuerzo, text="Seleccionar",bg=colorDetalles)
         self.btnSelAlm.config(command=partial(vs.seleccionarYActualizarResto,self,"almuerzo",self.botonesAl,self.btnSelAlm,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtAlmuerzo,self.barProgTotal,self.listMacDiarios,self.style,umbral))
         
         
@@ -468,12 +468,12 @@ class MostrarDieta(tk.Frame):
         self.cont_opciones_Com.pack(side=LEFT)
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
-        self.btnRefrCom = tk.Button(self.tabComida, text="Refrescar")
+        self.btnRefrCom = tk.Button(self.tabComida, text="Refrescar",bg=colorDetalles)
         if(self.banderaSelect[2]):
             self.btnRefrCom['state']='disable'
-            self.btnSelCom = tk.Button(self.tabComida, text="Editar")
+            self.btnSelCom = tk.Button(self.tabComida, text="Editar",bg=colorDetalles)
         else:
-            self.btnSelCom = tk.Button(self.tabComida, text="Seleccionar")
+            self.btnSelCom = tk.Button(self.tabComida, text="Seleccionar",bg=colorDetalles)
         cont = self.btnSelCom.config(command=partial(vs.seleccionarYActualizarResto,self,"comida",self.botonesCom,self.btnSelCom,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style,umbral))
         #self.barProgTotal['value'] = int((100*datosAlimCliente[0])/self.listMacDiarios[0]);
         self.btnRefrCom = tk.Button(self.tabComida, text="Refrescar")
@@ -516,13 +516,13 @@ class MostrarDieta(tk.Frame):
         self.cont_opciones_Mer.pack(side=LEFT)
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
-        self.btnRefrMer = tk.Button(self.tabMerienda, text="Refrescar")
+        self.btnRefrMer = tk.Button(self.tabMerienda, text="Refrescar",bg=colorDetalles)
         
         if(self.banderaSelect[3]):
             self.btnRefrMer['state']='disable'
-            self.btnSelMer = tk.Button(self.tabMerienda, text="Editar")
+            self.btnSelMer = tk.Button(self.tabMerienda, text="Editar",bg=colorDetalles)
         else:
-            self.btnSelMer = tk.Button(self.tabMerienda, text="Seleccionar")
+            self.btnSelMer = tk.Button(self.tabMerienda, text="Seleccionar",bg=colorDetalles)
         self.btnSelMer.config(command=partial(vs.seleccionarYActualizarResto,self,"merienda",self.botonesMer,self.btnSelMer,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style,umbral))
         self.btnRefrMer = tk.Button(self.tabMerienda, text="Refrescar")
         self.btnRefrMer.config(command=partial(vs.refrescar,self,"merienda",self.cont_opciones_Mer,self.filtMerienda,umbral,self.merienda,hojaAlimentos,self.botonesMer,self.n_opciones,self.btnSelMer,self.btnRefrMer, self.label_Informacion_Mer,self.listDistribuciónKcal[3],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style))
@@ -564,10 +564,10 @@ class MostrarDieta(tk.Frame):
         self.cont_opciones_Cen.pack(side=LEFT)
         self.cont_inf_eleccion.pack(side=LEFT)
         self.cont_comida_inf.pack()
-        self.btnRefrCen = tk.Button(self.tabCena, text="Refrescar")
+        self.btnRefrCen = tk.Button(self.tabCena, text="Refrescar",bg=colorDetalles)
         if(self.banderaSelect[4]):
             self.btnRefrCen['state']='disable'
-            self.btnSelCen = tk.Button(self.tabCena, text="Editar")  
+            self.btnSelCen = tk.Button(self.tabCena, text="Editar",bg=colorDetalles)  
         else:
             self.btnSelCen = tk.Button(self.tabCena, text="Seleccionar")
         self.btnSelCen.config(command=partial(vs.seleccionarYActualizarResto,self,"cena",self.botonesCen,self.btnSelCen,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style,umbral))

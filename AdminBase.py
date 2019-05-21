@@ -12,11 +12,12 @@ def cargarBaseDeDatos():
     #Cargamos la base de datos
     #doc = wx.Book("BaseDeDatosDeAlimentos.xlsx")
     doc = pd.ExcelFile("BaseDeDatosDeAlimentos.xlsx")
+    docU = pd.ExcelFile("BaseDeDatosUsuarios.xlsx")
     #print(doc.sheetnames) #Si añadimos hojas a la base de datos, podremos saber la información.
     #Seleccionamos la hoja de excell que contendrá dicha información-
 
     hojaAl = pd.read_excel(doc,'Alimentos')
-    hojaUs = pd.read_excel(doc,'Usuarios')
+    hojaUs = pd.read_excel(docU,'Usuarios')
     hojaPa = pd.read_excel(doc,'Patologias')
 
     return hojaAl,hojaUs,hojaPa;
@@ -119,6 +120,10 @@ def getFilaAlimento(nombre,a):
 def guardaTodo(usr, menuDeHoy, historial,hojaAlimentos, hojaUsuarios, hojaPatologias):
     guardarHistorial (usr, menuDeHoy, historial)
     guardarDatos (hojaAlimentos, hojaUsuarios, hojaPatologias)
+def guardarUsuario(hojaUsuarios):
+    writer = pd.ExcelWriter("BaseDeDatosUsuarios.xlsx")
+    hojaUsuarios.to_excel(writer,'Usuarios',index=False)
+    writer.save();
 def guardarHistorial (usr, menuDeHoy, historial):
     fech = str(datetime.date.today())
     h = historial.loc[historial.Fecha == fech]
@@ -141,6 +146,5 @@ def guardarHistorial (usr, menuDeHoy, historial):
 def guardarDatos (hojaAlimentos, hojaUsuarios, hojaPatologias):
     writer = pd.ExcelWriter("BaseDeDatosDeAlimentos.xlsx")
     hojaAlimentos.to_excel(writer,'Alimentos',index=False)
-    hojaUsuarios.to_excel(writer,'Usuarios',index=False)
     hojaPatologias.to_excel(writer,'Patologias',index=False)
     writer.save();

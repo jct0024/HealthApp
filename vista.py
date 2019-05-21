@@ -6,7 +6,7 @@ Created on Sun Mar 24 12:51:31 2019
 """
 
 import tkinter as tk;
-from tkinter import ttk
+from tkinter import ttk, messagebox
 import AdminBase as ab;
 from functools import partial;
 import CalculosDieta as cd
@@ -303,7 +303,7 @@ def gráfico(selfi,x,y):
     ax.set_xlim(min(x),max(x))
     ax.set_ylim(min(y),max(y)) 
     selfi.canvas.draw()
-def value(hojaUsuarios,selfi):
+def value(hojaUsuarios,selfi,controller):
     fila = ab.getFilaUsuario(selfi.user,hojaUsuarios)
     if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_Ape.get()) == 0 or len(selfi.entry_Eda.get()) == 0 or len(selfi.entry_Alt.get()) == 0 or len(selfi.entry_Pes.get()) == 0 or selfi.var.get() == 0 or selfi.varTipo.get() == 0 or selfi.varAct.get() == 0):
         selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")
@@ -314,7 +314,6 @@ def value(hojaUsuarios,selfi):
             print(int(selfi.entry_Alt.get()))
             selfi.label_Error.config(text="")
         except ValueError:
-            print('holi')
             selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")
             
        
@@ -324,9 +323,9 @@ def value(hojaUsuarios,selfi):
             hojaUsuarios['sexo'] .loc[fila]= 'H'
         else:
             hojaUsuarios['sexo'].loc[fila] = 'M'
-        hojaUsuarios['edad'].loc[fila] = selfi.entry_Eda.get()
-        hojaUsuarios['altura'].loc[fila] = selfi.entry_Alt.get()
-        hojaUsuarios['peso'].loc[fila] = selfi.entry_Pes.get()
+        hojaUsuarios['edad'].loc[fila] = int(selfi.entry_Eda.get())
+        hojaUsuarios['altura'].loc[fila] = int(selfi.entry_Alt.get())
+        hojaUsuarios['peso'].loc[fila] = int(selfi.entry_Pes.get())
         hojaUsuarios['actividad'].loc[fila] = selfi.varAct.get()
         if(selfi.varTipo.get() == 1):
             hojaUsuarios['tipo'].loc[fila] = "bajar"
@@ -334,4 +333,5 @@ def value(hojaUsuarios,selfi):
             hojaUsuarios['tipo'].loc[fila] = "mantener"
         else:
             hojaUsuarios['tipo'].loc[fila] = "subir"
-        
+        ab.guardarUsuario(hojaUsuarios)
+        messagebox.showinfo("Datos actualizados","Datos actualizados correctamente, veras los cambios al reiniciar el programa")
