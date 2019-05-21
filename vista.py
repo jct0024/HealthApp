@@ -303,3 +303,35 @@ def gráfico(selfi,x,y):
     ax.set_xlim(min(x),max(x))
     ax.set_ylim(min(y),max(y)) 
     selfi.canvas.draw()
+def value(hojaUsuarios,selfi):
+    fila = ab.getFilaUsuario(selfi.user,hojaUsuarios)
+    if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_Ape.get()) == 0 or len(selfi.entry_Eda.get()) == 0 or len(selfi.entry_Alt.get()) == 0 or len(selfi.entry_Pes.get()) == 0 or selfi.var.get() == 0 or selfi.varTipo.get() == 0 or selfi.varAct.get() == 0):
+        selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")
+    else:
+        try:
+            print(int(selfi.entry_Eda.get()))
+            print(int(selfi.entry_Pes.get()))
+            print(int(selfi.entry_Alt.get()))
+            selfi.label_Error.config(text="")
+        except ValueError:
+            print('holi')
+            selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")
+            
+       
+        hojaUsuarios['nombre'].loc[fila] = selfi.entry_Nom.get()
+        hojaUsuarios['apellido'].loc[fila] = selfi.entry_Ape.get()
+        if(selfi.var.get() == 1):
+            hojaUsuarios['sexo'] .loc[fila]= 'H'
+        else:
+            hojaUsuarios['sexo'].loc[fila] = 'M'
+        hojaUsuarios['edad'].loc[fila] = selfi.entry_Eda.get()
+        hojaUsuarios['altura'].loc[fila] = selfi.entry_Alt.get()
+        hojaUsuarios['peso'].loc[fila] = selfi.entry_Pes.get()
+        hojaUsuarios['actividad'].loc[fila] = selfi.varAct.get()
+        if(selfi.varTipo.get() == 1):
+            hojaUsuarios['tipo'].loc[fila] = "bajar"
+        elif(selfi.varTipo.get() == 2):
+            hojaUsuarios['tipo'].loc[fila] = "mantener"
+        else:
+            hojaUsuarios['tipo'].loc[fila] = "subir"
+        
