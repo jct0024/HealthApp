@@ -81,9 +81,18 @@ def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAliment
         #Cambiamos de valor a la variable
         banderaSelect[indince]=True
     else:
-        opc=selected.get()
         #Sacamos la fila del alimento, o lo que es lo mismo sus datos.
-        fila=ab.getFilaAlimento(listaComida["Nombre"].iloc[opc],hojaAlimentos);
+        if(tipoComida == 'desayuno'):
+            fila = ab.getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+        if(tipoComida == 'almuerzo'):
+            fila = ab.getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+        if(tipoComida == 'comida'):
+            fila = ab.getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+        if(tipoComida == 'merienda'):
+            fila = ab.getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+        if(tipoComida == 'cena'):
+            fila = ab.getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+        
         #Aumentamos el LRE del alimento en cuestión
         hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] -1; 
         datosAlimCliente[0] -= hojaAlimentos["Calorias"].loc[fila] 

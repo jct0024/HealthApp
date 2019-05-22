@@ -346,14 +346,14 @@ class MostrarDieta(tk.Frame):
         self.desayuno = cd.OrdMinimaDiferencia(self.desayuno,self.listDistribuciónKcal[0],"desayuno",datosAlimCliente,self.kcal_Por_Dia)
         self.filtDesayuno = self.desayuno.loc[self.desayuno["Calidad"] <= umbral]
         self.filtDesayuno = self.filtDesayuno.sort_values(by=["LRE"])
-        self.objetivo = tk.Label(self.tabDesayuno,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Desayuno: "+str(self.listDistribuciónKcal[0]),bg=fondoGeneral)
+        self.objetivo = tk.Label(self.tabDesayuno,text="Objetivo: "+str(np.round(self.listMacDiarios[0]))+" Kcal // Objetivo Desayuno: "+str(np.round(self.listDistribuciónKcal[0])),bg=fondoGeneral)
         self.objetivo.pack()
         self.cont_comida_inf = tk.Frame(self.tabDesayuno,bg=fondoGeneral);
         self.cont_opciones_Des2 =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
         self.cont_inf_eleccion =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
         self.label_Informacion_comida = tk.Label(self.cont_inf_eleccion,text="INFORMACIÓN",bg=fondoGeneral)
         self.label_Informacion_comida.pack(fill=BOTH,side=LEFT,anchor=tk.W)
-        self.LblLoQueLlevoDes = tk.Label(self.tabDesayuno, text="Llevo Comido: "+str(datosAlimCliente[0]),bg=fondoGeneral)
+        self.LblLoQueLlevoDes = tk.Label(self.tabDesayuno, text="Llevo Comido: "+str(np.round(datosAlimCliente[0])),bg=fondoGeneral)
         self.LblLoQueLlevoDes.pack();
         self.botonesDes = {};
         while(i<self.n_opciones):
@@ -397,9 +397,9 @@ class MostrarDieta(tk.Frame):
         self.almuerzo = cd.OrdMinimaDiferencia(self.almuerzo,self.listDistribuciónKcal[1],"almuerzo",datosAlimCliente,self.kcal_Por_Dia)
         self.filtAlmuerzo = self.almuerzo.loc[self.almuerzo["Calidad"] <= umbral]
         self.filtAlmuerzo = self.filtAlmuerzo.sort_values(by=["LRE"])
-        self.objetivo = tk.Label(self.tabAlmuerzo,text="Objetivo tital: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Almuerzo: "+str(self.listDistribuciónKcal[1]),bg=fondoGeneral)
+        self.objetivo = tk.Label(self.tabAlmuerzo,text="Objetivo tital: "+str(np.round(self.listMacDiarios[0]))+" Kcal // Objetivo Almuerzo: "+str(np.round(self.listDistribuciónKcal[1])),bg=fondoGeneral)
         self.objetivo.pack()
-        self.LblLoQueLlevoAlm = tk.Label(self.tabAlmuerzo, text="Llevo Comido: "+str(datosAlimCliente[0]),bg=fondoGeneral)
+        self.LblLoQueLlevoAlm = tk.Label(self.tabAlmuerzo, text="Llevo Comido: "+str(np.round(datosAlimCliente[0])),bg=fondoGeneral)
         self.LblLoQueLlevoAlm.pack();
         self.botonesAl=  dict()
         while i<3:
@@ -445,9 +445,9 @@ class MostrarDieta(tk.Frame):
         self.comida = cd.OrdMinimaDiferencia(self.comida,self.listDistribuciónKcal[1],"almuerzo",datosAlimCliente,self.kcal_Por_Dia)
         self.filtComida = self.comida.loc[self.comida["Calidad"] <= umbral]
         self.filtComida = self.filtComida.sort_values(by=["LRE"])
-        self.objetivo = tk.Label(self.tabComida,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Comida: "+str(self.listDistribuciónKcal[2]),bg=fondoGeneral)
+        self.objetivo = tk.Label(self.tabComida,text="Objetivo: "+str(np.round(self.listMacDiarios[0]))+" Kcal // Objetivo Comida: "+str(np.round(self.listDistribuciónKcal[2])),bg=fondoGeneral)
         self.objetivo.pack()
-        self.LblLoQueLlevoCom = tk.Label(self.tabComida, text="Llevo Comido: "+str(datosAlimCliente[0]),bg=fondoGeneral)
+        self.LblLoQueLlevoCom = tk.Label(self.tabComida, text="Llevo Comido: "+str(np.round(datosAlimCliente[0])),bg=fondoGeneral)
         self.LblLoQueLlevoCom.pack()
         self.botonesCom=  dict()
         while i<3:
@@ -470,7 +470,6 @@ class MostrarDieta(tk.Frame):
             self.btnSelCom = tk.Button(self.tabComida, text="Seleccionar",bg=colorDetalles)
         cont = self.btnSelCom.config(command=partial(vs.seleccionarYActualizarResto,self,"comida",self.botonesCom,self.btnSelCom,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style,umbral))
         #self.barProgTotal['value'] = int((100*datosAlimCliente[0])/self.listMacDiarios[0]);
-        self.btnRefrCom = tk.Button(self.tabComida, text="Refrescar")
         self.btnRefrCom.config(command=partial(vs.refrescar,self,"comida",self.cont_opciones_Com,self.filtComida,umbral,self.comida,hojaAlimentos,self.botonesCom,self.n_opciones,self.btnSelCom,self.btnRefrCom, self.label_Informacion_Com,self.listDistribuciónKcal[2],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style))
         
         self.btnSelCom.pack(fill=X)
@@ -493,9 +492,9 @@ class MostrarDieta(tk.Frame):
         self.merienda = cd.OrdMinimaDiferencia(self.merienda,self.listDistribuciónKcal[1],"almuerzo",datosAlimCliente,self.kcal_Por_Dia)
         self.filtMerienda = self.merienda.loc[self.merienda["Calidad"] <= umbral]
         self.filtMerienda = self.filtMerienda.sort_values(by=["LRE"])
-        self.objetivo = tk.Label(self.tabMerienda,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Merienda: "+str(self.listDistribuciónKcal[3]),bg=fondoGeneral)
+        self.objetivo = tk.Label(self.tabMerienda,text="Objetivo: "+str(np.round(self.listMacDiarios[0]))+" Kcal // Objetivo Merienda: "+str(np.round(self.listDistribuciónKcal[3])),bg=fondoGeneral)
         self.objetivo.pack()
-        self.LblLoQueLlevoMer = tk.Label(self.tabMerienda, text="Llevo Comido: "+str(datosAlimCliente[0]),bg=fondoGeneral)
+        self.LblLoQueLlevoMer = tk.Label(self.tabMerienda, text="Llevo Comido: "+str(np.round(datosAlimCliente[0])),bg=fondoGeneral)
         self.LblLoQueLlevoMer.pack()
         self.botonesMer=  dict()
         while i<3:
@@ -518,7 +517,6 @@ class MostrarDieta(tk.Frame):
         else:
             self.btnSelMer = tk.Button(self.tabMerienda, text="Seleccionar",bg=colorDetalles)
         self.btnSelMer.config(command=partial(vs.seleccionarYActualizarResto,self,"merienda",self.botonesMer,self.btnSelMer,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style,umbral))
-        self.btnRefrMer = tk.Button(self.tabMerienda, text="Refrescar")
         self.btnRefrMer.config(command=partial(vs.refrescar,self,"merienda",self.cont_opciones_Mer,self.filtMerienda,umbral,self.merienda,hojaAlimentos,self.botonesMer,self.n_opciones,self.btnSelMer,self.btnRefrMer, self.label_Informacion_Mer,self.listDistribuciónKcal[3],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style))
         
         self.btnSelMer.pack(fill=X)
@@ -541,8 +539,8 @@ class MostrarDieta(tk.Frame):
         self.cena = cd.OrdMinimaDiferencia(self.cena,self.listDistribuciónKcal[1],"cena",datosAlimCliente,self.kcal_Por_Dia)
         self.filtCena = self.cena.loc[self.cena["Calidad"] <= umbral]
         self.filtCena = self.filtCena.sort_values(by=["LRE"])
-        self.objetivo = tk.Label(self.tabCena,text="Objetivo: "+str(self.listMacDiarios[0])+" Kcal // Objetivo Cena: "+str(self.listDistribuciónKcal[4]),bg=fondoGeneral)
-        self.LblLoQueLlevoCen = tk.Label(self.tabCena, text="Llevo Comido: "+str(datosAlimCliente[0]),bg=fondoGeneral)
+        self.objetivo = tk.Label(self.tabCena,text="Objetivo: "+str(np.round(self.listMacDiarios[0]))+" Kcal // Objetivo Cena: "+str(np.round(self.listDistribuciónKcal[4])),bg=fondoGeneral)
+        self.LblLoQueLlevoCen = tk.Label(self.tabCena, text="Llevo Comido: "+str(np.round(datosAlimCliente[0])),bg=fondoGeneral)
         self.objetivo.pack()
         self.LblLoQueLlevoCen.pack()
         self.botonesCen=  dict()
@@ -563,9 +561,8 @@ class MostrarDieta(tk.Frame):
             self.btnRefrCen['state']='disable'
             self.btnSelCen = tk.Button(self.tabCena, text="Editar",bg=colorDetalles)  
         else:
-            self.btnSelCen = tk.Button(self.tabCena, text="Seleccionar")
+            self.btnSelCen = tk.Button(self.tabCena, text="Seleccionar",bg=colorDetalles)
         self.btnSelCen.config(command=partial(vs.seleccionarYActualizarResto,self,"cena",self.botonesCen,self.btnSelCen,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style,umbral))
-        self.btnRefrCen = tk.Button(self.tabCena, text="Refrescar")
         self.btnRefrCen.config(command=partial(vs.refrescar,self,"cena",self.cont_opciones_Cen,self.filtCena,umbral,self.cena,hojaAlimentos,self.botonesCen,self.n_opciones,self.btnSelCen,self.btnRefrCen, self.label_Informacion_Cen,self.listDistribuciónKcal[4],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style))
         
         self.btnSelCen.pack(fill=X)
