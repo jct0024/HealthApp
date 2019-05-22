@@ -344,3 +344,13 @@ def value(hojaUsuarios,selfi,controller):
             hojaUsuarios['tipo'].loc[fila] = "subir"
         ab.guardarUsuario(hojaUsuarios)
         messagebox.showinfo("Datos actualizados","Datos actualizados correctamente, veras los cambios al reiniciar el programa")
+def estiloTotal(idEstilo):
+    if(idEstilo == 0):
+        config=['powder blue','spring green']
+    elif(idEstilo == 1):
+        config=['thistle1','MediumPurple']
+    file = open('config.txt','w')
+    texto = config[0]+":"+config[1]
+    file.write(texto)
+    file.close()
+    messagebox.showinfo("!Todo correcto¡","Veras el nuevo diseño cuando reinicie el programa")

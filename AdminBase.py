@@ -18,8 +18,11 @@ def cargarBaseDeDatos():
     hojaAl = pd.read_excel(doc,'Alimentos')
     hojaUs = pd.read_excel(docU,'Usuarios')
     hojaPa = pd.read_excel(doc,'Patologias')
-
-    return hojaAl,hojaUs,hojaPa;
+    archivo = open('config.txt','r')
+    config = str(archivo.read()).split(':')
+    archivo.close()
+    
+    return hojaAl,hojaUs,hojaPa,config;
 '''
 Función que carga el historial del usuario para futuros calculosy gráficas para ello necesita solo la id del usuario,se 
 criba y se devuelve para ser almacenado.
@@ -82,7 +85,7 @@ def cargaHistorialHoy(hojaHisAl,menuDeHoy,datosAlimCliente,hojaAlimentos):
            datosAlimCliente[3] = hojaAlimentos["Proteina"].loc[fila] + datosAlimCliente[3]
            datosAlimCliente[4] = hojaAlimentos["Calidad"].loc[fila] + datosAlimCliente[4]
 def comprobarUsuario(userId,passwd):
-    a,u,p = cargarBaseDeDatos();
+    a,u,p,c = cargarBaseDeDatos();
     indice=-1;
     bandera =True;
     if ((u.iloc[:,0]==userId).any()):
@@ -116,10 +119,12 @@ def getFilaAlimento(nombre,a):
             break;
         indice+=1;
     return i;    
-def guardaTodo(usr, menuDeHoy, historial,hojaAlimentos, hojaUsuarios, hojaPatologias):
+def guardaTodo(usr, menuDeHoy, historial,hojaAlimentos, hojaUsuarios, hojaPatologias,config):
     guardarHistorial (usr, menuDeHoy, historial)
     guardarUsuario(hojaUsuarios)
     guardarDatos (hojaAlimentos, hojaUsuarios, hojaPatologias)
+
+    
     messagebox.showinfo("Ya se ha guardado","Datos guardados ya puede cerrar el programa")
 def guardarUsuario(hojaUsuarios):
     writer = pd.ExcelWriter("BaseDeDatosUsuarios.xlsx")

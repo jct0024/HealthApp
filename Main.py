@@ -28,11 +28,17 @@ class SampleApp(tk.Tk):
         ab.cargaHistorialHoy(histUA,menuDeHoy,datosAlimCliente,hojaAlimentos)
         menu = Menu(self)
         subMenuArchivo = Menu(menu)
+        subMenuEstilo = Menu(menu)
         subMenuArchivo.add_command(label="Manual",command=self.pdf)
-        subMenuArchivo.add_command(label="Guardar",command=partial(ab.guardaTodo,usr,menuDeHoy, histUA ,hojaAlimentos, hojaUsuarios, hojaPatologias))
+        config = [fondoGeneral,colorDetalles]
+        subMenuArchivo.add_command(label="Guardar",command=partial(ab.guardaTodo,usr,menuDeHoy, histUA ,hojaAlimentos, hojaUsuarios, hojaPatologias,config))
         subMenuArchivo.add_separator()
         subMenuArchivo.add_command(label="Salir",command= lambda: self.destroy())
         menu.add_cascade(label='Archivo',menu=subMenuArchivo)
+        ###################################################################
+        subMenuEstilo.add_command(label="Azul/Verde",command=partial(vs.estiloTotal,0))
+        subMenuEstilo.add_command(label="Blanco/Morado",command=partial(vs.estiloTotal,1))
+        menu.add_cascade(label='Estilos',menu=subMenuEstilo)
         self.config(menu=menu)
         self.frames = {}
         self.frames["menuPrincipal"] = menuPrincipal(parent=container, controller=self)
@@ -575,13 +581,15 @@ if __name__ == "__main__":
         #Variable que almacena lo que lleva comido el cliente en cuanto a datos
         datosAlimCliente = np.zeros(5)
         #Array que guarda lo que ha comido hoy el cliente
-        fondoGeneral='powder blue'
-        colorDetalles="spring green"
+        dictTem = {'verde': ['powder blue','spring green'], 'rojo': ['red','white']}
+        
         menuDeHoy = ["","","","",""]
         #Variable que almacena lo que tiene que comer
         listMacDiarios = np.zeros(4)
         totalKcalComidas=0;
-        hojaAlimentos, hojaUsuarios, hojaPatologias = ab.cargarBaseDeDatos()
+        hojaAlimentos, hojaUsuarios, hojaPatologias,config = ab.cargarBaseDeDatos()
+        fondoGeneral=config[0]
+        colorDetalles=config[1]
         mensajeError = "";
         login = tk.Tk();
         login.resizable(0,0)
