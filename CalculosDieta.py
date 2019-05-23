@@ -5,6 +5,7 @@ Created on Tue Dec 11 08:50:40 2018
 @author: Jesus
 """
 import pandas as pd;
+import numpy as np;
 """
 Calcula el número de calorias que el usuario ha de gastar en base a:
    altura, peso, edad,sexo, actividad realizada y sus objetivos(bjar,subir o mantener peso)
@@ -105,7 +106,17 @@ def listasPorTipo(listaDeAlimentos):
             comida2 = comida2.append(listaDeAlimentos.loc[indice]);
             merienda = merienda.append(listaDeAlimentos.loc[indice]);
             cena = cena.append(listaDeAlimentos.loc[indice]);
+        elif(int(comida["Tipo"])==7):
+            comida2 = comida2.append(listaDeAlimentos.loc[indice]);
+            merienda = merienda.append(listaDeAlimentos.loc[indice]);
+            cena = cena.append(listaDeAlimentos.loc[indice]);
+        elif(int(comida["Tipo"])==16):
+            desayuno = desayuno.append(listaDeAlimentos.loc[indice]);
+        elif(int(comida["Tipo"])==10):
+            merienda = merienda.append(listaDeAlimentos.loc[indice]);
+            almuerzo = almuerzo.append(listaDeAlimentos.loc[indice]);
     return desayuno, almuerzo, comida2, merienda, cena;
+
 '''
 Ordena la comida en base a la minima diferencia entre lo que debo comer y el 
 objetivo que tengo para esta comida especifica
@@ -162,7 +173,7 @@ def OrdMinimaDiferencia(listComida,objetivo,tipoComida,dat,kcaldiarias):
       gra = objetivo*0.4430379747
       prot = objetivo*0.3037974684
     for i,comida in listComida.iterrows():        
-        dif = formulDif(dat,carb,prot,gra,comida,objetivo,carDeber,graDeber,protDeber)
+        dif = np.abs(formulDif(dat,carb,prot,gra,comida,objetivo,carDeber,graDeber,protDeber))
         #dif = abs(objetivo-int(comida["Calorias"]))
         listComida["dif"].loc[i]=dif
     listComida = listComida.sort_values(by=['dif'],ascending=False)
