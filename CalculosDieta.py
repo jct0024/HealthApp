@@ -227,7 +227,7 @@ def repartoKcalSobrantes(kcal,listakcalcomidas, comida):
         cont = (int(listakcalcomidas[3])-int(kcal))
         listakcalcomidas[4] = listakcalcomidas[4] + cont       
     return listakcalcomidas
-def graficoTotal(selfi,x,y,hojaAlimentos):
+def graficoTotal(selfi,hojaAlimentos):
 
     fechas = [];
     medias = [];
@@ -260,5 +260,46 @@ def graficoTotal(selfi,x,y,hojaAlimentos):
             container+=hojaAlimentos["Calidad"].loc[fila]
             contador+=1
         medias.append(container/contador)
+        
+    vs.gráfico(selfi,fechas,medias)
+def graficoMejoraComida(selfi,hojaAlimentos, bandera):
+    
+    fechas = [];
+    medias = [];
+    mes = 0
+    for index,dias in selfi.histUA.iterrows():
+        if (mes == 30):
+            exit
+        mes+=1
+        if(bandera == 0):
+            if not (pd.isnull(dias['Desayuno'])):
+                fechas.append(datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d').day)
+                fila=ab.getFilaAlimento(dias['Desayuno'],hojaAlimentos)
+                container=hojaAlimentos["Calidad"].loc[fila]
+                medias.append(container)
+        elif(bandera == 1):
+            if not (pd.isnull(dias['Almuerzo'])):
+                fechas.append(datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d').day)
+                fila=ab.getFilaAlimento(dias['Almuerzo'],hojaAlimentos)
+                container=hojaAlimentos["Calidad"].loc[fila]
+                medias.append(container)
+        elif(bandera == 2):
+            if not (pd.isnull(dias['Comida'])):
+                fechas.append(datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d').day)
+                fila=ab.getFilaAlimento(dias['Comida'],hojaAlimentos)
+                container=hojaAlimentos["Calidad"].loc[fila]
+                medias.append(container)
+        elif(bandera == 3):
+            if not (pd.isnull(dias['Merienda'])):
+                fechas.append(datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d').day)
+                fila=ab.getFilaAlimento(dias['Merienda'],hojaAlimentos)
+                container=hojaAlimentos["Calidad"].loc[fila]
+                medias.append(container)
+        elif(bandera == 4):
+            if not (pd.isnull(dias['Cena'])):
+                fechas.append(datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d').day)
+                fila=ab.getFilaAlimento(dias['Cena'],hojaAlimentos)
+                container=hojaAlimentos["Calidad"].loc[fila]
+                medias.append(container)
         
     vs.gráfico(selfi,fechas,medias)

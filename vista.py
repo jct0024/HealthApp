@@ -225,14 +225,12 @@ def seleccionarYActualizarResto(loc,tipoComida,arrrayBoton,btnSel,selected,bande
         btnRefresh = loc.btnRefrCen;
     seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style,btnRefresh)       
     
-    #Cadena de texto que muestra el menu de hoy
-    textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
     #Cambiamos los contenedores de las 5 comidas
-    loc.lblDesTotal.config(text=textoTotal)
-    loc.lblAlmTotal.config(text=textoTotal)
-    loc.lblComTotal.config(text=textoTotal)
-    loc.lblMerTotal.config(text=textoTotal)
-    loc.lblCenTotal.config(text=textoTotal)
+    loc.lblDesTotal.config(text="Comido hoy:\n desayuno:"+str(menuDeHoy[0])+"\nAmuerzo:"+str(menuDeHoy[1])+"\nComida:"+str(menuDeHoy[2])+"\nMerienda:"+str(menuDeHoy[3])+"\nCena:"+str(menuDeHoy[4]))
+    loc.lblAlmTotal.config(text="Comido hoy:\n desayuno:"+str(menuDeHoy[0])+"\nAmuerzo:"+str(menuDeHoy[1])+"\nComida:"+str(menuDeHoy[2])+"\nMerienda:"+str(menuDeHoy[3])+"\nCena:"+str(menuDeHoy[4]))
+    loc.lblComTotal.config(text="Comido hoy:\n desayuno:"+str(menuDeHoy[0])+"\nAmuerzo:"+str(menuDeHoy[1])+"\nComida:"+str(menuDeHoy[2])+"\nMerienda:"+str(menuDeHoy[3])+"\nCena:"+str(menuDeHoy[4]))
+    loc.lblMerTotal.config(text="Comido hoy:\n desayuno:"+str(menuDeHoy[0])+"\nAmuerzo:"+str(menuDeHoy[1])+"\nComida:"+str(menuDeHoy[2])+"\nMerienda:"+str(menuDeHoy[3])+"\nCena:"+str(menuDeHoy[4]))
+    loc.lblCenTotal.config(text="Comido hoy:\n desayuno:"+str(menuDeHoy[0])+"\nAmuerzo:"+str(menuDeHoy[1])+"\nComida:"+str(menuDeHoy[2])+"\nMerienda:"+str(menuDeHoy[3])+"\nCena:"+str(menuDeHoy[4]))
     #Actualizamos el dato de las kcalorias que llevo comidas
     loc.LblLoQueLlevoDes.config(text="Llevo Comido: "+str(datosAlimCliente[0])+" Kcal")
     loc.LblLoQueLlevoAlm.config(text="Llevo Comido: "+str(datosAlimCliente[0])+" Kcal")

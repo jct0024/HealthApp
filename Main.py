@@ -128,27 +128,44 @@ class Historial(tk.Frame):
         self.canvas = FigureCanvasTkAgg(f,self.grafo)
         self.canvas.draw()
         self.canvas.get_tk_widget().pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
-        btnGrafo = tk.Button(self.frameBotones,text='Grafico total mensual',command=partial(cd.graficoTotal,self,[0,1,2,3],[0,1,4,9],hojaAlimentos),relief=GROOVE,bg=colorDetalles)
-        btnGrafo2 = tk.Button(self.frameBotones,text='Otro',command=partial(vs.gráfico,self,[0,1,2,3],[3,2,1,0]),relief=GROOVE,bg=colorDetalles)
+        btnGrafoTotal = tk.Button(self.frameBotones,text='Grafico total mensual',command=partial(cd.graficoTotal,self,hojaAlimentos),relief=GROOVE,bg=colorDetalles)
+        btnGrafoDes = tk.Button(self.frameBotones,text='Gráfico desayuno',command=partial(cd.graficoMejoraComida,self,hojaAlimentos,0),relief=GROOVE,bg=colorDetalles)
+        btnGrafoAlm = tk.Button(self.frameBotones,text='Gráfico almuerzo',command=partial(cd.graficoMejoraComida,self,hojaAlimentos,1),relief=GROOVE,bg=colorDetalles)
+        btnGrafoCom = tk.Button(self.frameBotones,text='Gráfico comida',command=partial(cd.graficoMejoraComida,self,hojaAlimentos,2),relief=GROOVE,bg=colorDetalles)
+        btnGrafoMer = tk.Button(self.frameBotones,text='Gráfico merienda',command=partial(cd.graficoMejoraComida,self,hojaAlimentos,3),relief=GROOVE,bg=colorDetalles)
+        btnGrafoCen = tk.Button(self.frameBotones,text='Gráfico cena',command=partial(cd.graficoMejoraComida,self,hojaAlimentos,4),relief=GROOVE,bg=colorDetalles)
         self.history.pack()
         self.frameBotones.pack(side=LEFT)
         self.grafo.pack(side=tk.RIGHT)
         
+        buttonSemana = tk.Button(self.frameBotones, text="Semana ingerida",command=lambda: controller.show_frame("histSemanal"),relief=GROOVE,bg=colorDetalles)
         #Volver al iniciao
-        button = tk.Button(self.frameBotones, text="Volver al inicio",command=lambda: controller.show_frame("menuPrincipal"),relief=GROOVE,bg=colorDetalles)
-        button2 = tk.Button(self.frameBotones, text="Semana ingerida",command=lambda: controller.show_frame("histSemanal"),relief=GROOVE,bg=colorDetalles)
-        btnGrafo.pack(fill=X)
-        btnGrafo2.pack(fill=X)
-        button2.pack(side=BOTTOM,fill=X)
-        button.pack(side=BOTTOM,fill=X)
+        buttonComeBack = tk.Button(self.frameBotones, text="Volver al inicio",command=lambda: controller.show_frame("menuPrincipal"),relief=GROOVE,bg=colorDetalles)
+        
+        btnGrafoTotal.pack(fill=X)
+        btnGrafoDes.pack(fill=X)
+        btnGrafoAlm.pack(fill=X)
+        btnGrafoCom.pack(fill=X)
+        btnGrafoMer.pack(fill=X)
+        btnGrafoCen.pack(fill=X)
+        buttonSemana.pack(fill=X)
+        buttonComeBack.pack(fill=X)
 class histSemanal(tk.Frame):
     def __init__(self,parent,controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        usr,pws =vs.getUsuario();
-        histUA = ab.cargarHistorial(usr)
         label = tk.Label(self, text="Historial", font=controller.title_font,bg=fondoGeneral)
         label.pack(side="top", fill="x", pady=10)
+        usr,pws =vs.getUsuario();
+        scrollbar = tk.Scrollbar(self)
+        scrollbar.pack(side = RIGHT, fill = Y)
+        mylist = tk.Listbox(self, yscrollcommand = scrollbar.set)
+        histUA = ab.cargarHistorial(usr)
+        for index,dias in histUA.iterrows():
+            text='Fecha: ',dias['Fecha'],'\n\tDesayuno: ',dias['Desayuno'],'\n\tAlmuerzo: ',dias['Almuerzo'],'\n\tComida: ',dias['Comida'],'\n\tMerienda: ',dias['Merienda'],'\n\tCena: ',dias['Cena']
+            mylist.insert(END,'--Fecha: '+dias['Fecha']+'--','\n\tDesayuno: '+str(dias['Desayuno']),'\n\tAlmuerzo: '+str(dias['Almuerzo']),'\n\tComida: '+str(dias['Comida']),'\n\tMerienda: '+str(dias['Merienda']),'\n\tCena: '+str(dias['Cena']))
+        mylist.pack()
+        scrollbar.config( command = mylist.yview )
         button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("Historial"),relief=GROOVE,bg=colorDetalles)
         button.pack()
 class InfoUsuario(tk.Frame):
@@ -387,7 +404,7 @@ class MostrarDieta(tk.Frame):
         self.btnSelDes.pack(fill=X)
         self.btnRefrDes.pack(fill=X)
         textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
-        self.lblDesTotal = tk.Label(self.tabDesayuno,text=textoTotal,bg=fondoGeneral)
+        self.lblDesTotal = tk.Label(self.tabDesayuno,text="Comido hoy:\n desayuno:"+str(menuDeHoy[0])+"\nAmuerzo:"+str(menuDeHoy[1])+"\nComida:"+str(menuDeHoy[2])+"\nMerienda:"+str(menuDeHoy[3])+"\nCena:"+str(menuDeHoy[4]),bg=fondoGeneral)
         self.lblDesTotal.pack(anchor=tk.W)
     def AlmuerzoF(self):
         self.label = tk.Label(self.tabAlmuerzo, text="-ALMUERZO-", font=self.controller.title_font,bg=fondoGeneral)
@@ -434,11 +451,11 @@ class MostrarDieta(tk.Frame):
         self.btnSelAlm.pack(fill=X)
         self.btnRefrAlm.pack(fill=X)
         textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
-        self.lblAlmTotal = tk.Label(self.tabAlmuerzo,text=textoTotal,bg=fondoGeneral)
+        self.lblAlmTotal = tk.Label(self.tabAlmuerzo,text="Comido hoy:\n desayuno:"+str(menuDeHoy[0])+"\nAmuerzo:"+str(menuDeHoy[1])+"\nComida:"+str(menuDeHoy[2])+"\nMerienda:"+str(menuDeHoy[3])+"\nCena:"+str(menuDeHoy[4]),bg=fondoGeneral)
         self.lblAlmTotal.pack(anchor=tk.W)
     def ComidaF(self):
         
-        self.label = tk.Label(self.tabComida, text="-COMIDA-", font=self.controller.title_font)
+        self.label = tk.Label(self.tabComida, text="-COMIDA-", font=self.controller.title_font,bg=fondoGeneral)
         self.label.pack(side="top", fill="x", pady=10)
         umbral=2
         selected = IntVar()
@@ -482,7 +499,7 @@ class MostrarDieta(tk.Frame):
         self.btnSelCom.pack(fill=X)
         self.btnRefrCom.pack(fill=X)
         textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
-        self.lblComTotal = tk.Label(self.tabComida,text=textoTotal,bg=fondoGeneral)
+        self.lblComTotal = tk.Label(self.tabComida,text="Comido hoy:\n desayuno:"+str(menuDeHoy[0])+"\nAmuerzo:"+str(menuDeHoy[1])+"\nComida:"+str(menuDeHoy[2])+"\nMerienda:"+str(menuDeHoy[3])+"\nCena:"+str(menuDeHoy[4]),bg=fondoGeneral)
         self.lblComTotal.pack(anchor=tk.W)
     def MeriendaF(self):
         self.label = tk.Label(self.tabMerienda, text="-MERIENDA-", font=self.controller.title_font,bg=fondoGeneral)
@@ -529,7 +546,7 @@ class MostrarDieta(tk.Frame):
         self.btnSelMer.pack(fill=X)
         self.btnRefrMer.pack(fill=X)
         textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
-        self.lblMerTotal = tk.Label(self.tabMerienda,text=textoTotal,bg=fondoGeneral)
+        self.lblMerTotal = tk.Label(self.tabMerienda,text="Comido hoy:\n desayuno:"+str(menuDeHoy[0])+"\nAmuerzo:"+str(menuDeHoy[1])+"\nComida:"+str(menuDeHoy[2])+"\nMerienda:"+str(menuDeHoy[3])+"\nCena:"+str(menuDeHoy[4]),bg=fondoGeneral)
         self.lblMerTotal.pack(anchor=tk.W)
     def CenaF(self):
         self.label = tk.Label(self.tabCena, text="-CENA-", font=self.controller.title_font,bg=fondoGeneral)
@@ -575,7 +592,7 @@ class MostrarDieta(tk.Frame):
         self.btnSelCen.pack(fill=X)
         self.btnRefrCen.pack(fill=X)
         textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
-        self.lblCenTotal = tk.Label(self.tabCena,text=textoTotal,bg=fondoGeneral)
+        self.lblCenTotal = tk.Label(self.tabCena,text="Comido hoy:\n desayuno:"+str(menuDeHoy[0])+"\nAmuerzo:"+str(menuDeHoy[1])+"\nComida:"+str(menuDeHoy[2])+"\nMerienda:"+str(menuDeHoy[3])+"\nCena:"+str(menuDeHoy[4]),bg=fondoGeneral)
         self.lblCenTotal.pack(anchor=tk.W)
 
 if __name__ == "__main__":
