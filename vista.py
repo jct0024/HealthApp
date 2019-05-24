@@ -6,11 +6,10 @@ Created on Sun Mar 24 12:51:31 2019
 """
 
 import tkinter as tk;
-from tkinter import ttk, messagebox
+from tkinter import  messagebox
 import AdminBase as ab;
 from functools import partial;
 import CalculosDieta as cd
-import Main as m;
 import matplotlib
 matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -311,7 +310,7 @@ def gráfico(selfi,x,y):
     selfi.lin.set_data(x,y)
     ax = selfi.canvas.figure.axes[0]
     ax.set_xlim(min(x),max(x))
-    ax.set_ylim(min(y),max(y)) 
+    ax.set_ylim(0.7,4) 
     selfi.canvas.draw()
 def value(hojaUsuarios,selfi,controller):
     fila = ab.getFilaUsuario(selfi.user,hojaUsuarios)

@@ -9,6 +9,7 @@ import numpy as np;
 import AdminBase as ab;
 import vista as vs;
 from tkinter import messagebox
+import datetime
 """
 Calcula el número de calorias que el usuario ha de gastar en base a:
    altura, peso, edad,sexo, actividad realizada y sus objetivos(bjar,subir o mantener peso)
@@ -226,43 +227,38 @@ def repartoKcalSobrantes(kcal,listakcalcomidas, comida):
         cont = (int(listakcalcomidas[3])-int(kcal))
         listakcalcomidas[4] = listakcalcomidas[4] + cont       
     return listakcalcomidas
-def graficoCalidad(selfi,x,y,hojaAlimentos):
-    contDes=0;
-    contAlm=0;
-    contCom=0;
-    contMer=0;
-    contCen=0;
-    countDes=0;
-    countAlm=0;
-    countCom=0;
-    countMer=0;
-    countCen=0;
+def graficoTotal(selfi,x,y,hojaAlimentos):
+
+    fechas = [];
+    medias = [];
+    mes = 0
     for index,dias in selfi.histUA.iterrows():
+        if (mes == 30):
+            exit
+        mes+=1
+        fechas.append(datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d').day)
+        container =0;
+        contador = 0;
         if not (pd.isnull(dias['Desayuno'])):
             fila=ab.getFilaAlimento(dias['Desayuno'],hojaAlimentos)
-            contDes+=hojaAlimentos["Calidad"].loc[fila]
-            countDes+=1
+            container+=hojaAlimentos["Calidad"].loc[fila]
+            contador+=1
         if not (pd.isnull(dias['Almuerzo'])):
             fila=ab.getFilaAlimento(dias['Almuerzo'],hojaAlimentos)
-            contAlm+=hojaAlimentos["Calidad"].loc[fila]
-            countAlm+=1
+            container+=hojaAlimentos["Calidad"].loc[fila]
+            contador+=1
         if not (pd.isnull(dias['Comida'])):
             fila=ab.getFilaAlimento(dias['Comida'],hojaAlimentos)
-            contCom+=hojaAlimentos["Calidad"].loc[fila]
-            countCom+=1
+            container+=hojaAlimentos["Calidad"].loc[fila]
+            contador+=1
         if not (pd.isnull(dias['Merienda'])):
             fila=ab.getFilaAlimento(dias['Merienda'],hojaAlimentos)
-            contMer+=hojaAlimentos["Calidad"].loc[fila]
-            countMer+=1
+            container+=hojaAlimentos["Calidad"].loc[fila]
+            contador+=1
         if not (pd.isnull(dias['Cena'])):
             fila=ab.getFilaAlimento(dias['Cena'],hojaAlimentos)
-            contCen+=hojaAlimentos["Calidad"].loc[fila]
-            countCen+=1
-    x=['Desayuno','Almuerzo','Comida','Merienda','Cena']
-    print(countCen,'/',countMer,'/',countCom,'/',countAlm,'/',countDes)
-    try:
-        y=[contDes/countDes,contAlm/countAlm,contCom/countCom,contMer/countMer,contCen/countCen]
-    except ValueError:
-        messagebox.showinfo("Error","Error base de datos vacia o corrupta")
+            container+=hojaAlimentos["Calidad"].loc[fila]
+            contador+=1
+        medias.append(container/contador)
         
-    vs.gráfico(selfi,x,y)
+    vs.gráfico(selfi,fechas,medias)

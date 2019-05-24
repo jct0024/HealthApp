@@ -128,7 +128,7 @@ class Historial(tk.Frame):
         self.canvas = FigureCanvasTkAgg(f,self.grafo)
         self.canvas.draw()
         self.canvas.get_tk_widget().pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
-        btnGrafo = tk.Button(self.frameBotones,text='Calidad/Comida',command=partial(cd.graficoCalidad,self,[0,1,2,3],[0,1,4,9],hojaAlimentos),relief=GROOVE,bg=colorDetalles)
+        btnGrafo = tk.Button(self.frameBotones,text='Grafico total mensual',command=partial(cd.graficoTotal,self,[0,1,2,3],[0,1,4,9],hojaAlimentos),relief=GROOVE,bg=colorDetalles)
         btnGrafo2 = tk.Button(self.frameBotones,text='Otro',command=partial(vs.gráfico,self,[0,1,2,3],[3,2,1,0]),relief=GROOVE,bg=colorDetalles)
         self.history.pack()
         self.frameBotones.pack(side=LEFT)
