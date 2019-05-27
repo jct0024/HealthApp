@@ -212,7 +212,7 @@ def MostrarInfo(i,listaFiltrada,etiquetaComida):
 Función que sirve de transacción para que al pulsar el botón haga dos funciones y asi mantener la funcionalidad
 '''
 def seleccionarYActualizarResto(loc,tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,listaComida,barProgTotal,listMacDiarios,style,umbral):
-        #Llamamos a la función seleccionar
+    #Recogemos el boton refrescar concreto pues solo necesitamos pasar uno por parametro 
     if(tipoComida == "desayuno"):
         btnRefresh = loc.btnRefrDes;
     if(tipoComida == "almuerzo"):
