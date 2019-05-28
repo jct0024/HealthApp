@@ -42,10 +42,6 @@ def getBandera():
     return bandera;
 def getUsuario():
     return usr,contraseña;
-def show_frame(frames, page_name):
-    '''Show a frame for the given page name'''
-    frame = frames[page_name]
-    frame.tkraise()
 '''
 Funcion que te recoge como parametros, el tipo de comida que es, los checkButton sobre los que tiene que actuar
 y el btnSel, que es el boton seleccionar que ha de editar.
@@ -342,6 +338,7 @@ def value(hojaUsuarios,selfi,controller):
             hojaUsuarios['tipo'].loc[fila] = "subir"
         ab.guardarUsuario(hojaUsuarios)
         messagebox.showinfo("Datos actualizados","Datos actualizados correctamente, veras los cambios al reiniciar el programa")
+        
 def estiloTotal(idEstilo):
     if(idEstilo == 0):
         config=['powder blue','spring green']

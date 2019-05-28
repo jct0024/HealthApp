@@ -65,7 +65,9 @@ class SampleApp(tk.Tk):
         self.frames["MostrarDieta"].grid(row=0, column=0, sticky="nsew")
         self.frames["MostrarDieta"].config(bg=fondoGeneral)
         
-        
+        self.frames["addComida"] = addComida(parent=container, controller=self)
+        self.frames["addComida"].grid(row=0, column=0, sticky="nsew")
+        self.frames["addComida"].config(bg=fondoGeneral)
         self.show_frame("menuPrincipal")
 
     def show_frame(self, page_name):
@@ -330,8 +332,10 @@ class MostrarDieta(tk.Frame):
 
         ###-Comun todas comidas-######
         self.barProgTotal.pack(side=RIGHT)
-        self.button = tk.Button(self, text="Volver al inicio", command=lambda: self.controller.show_frame("menuPrincipal"),relief=GROOVE,bg=colorDetalles)
-        self.button.pack(side=LEFT)
+        self.buttonInicio = tk.Button(self, text="Volver al inicio", command=lambda: self.controller.show_frame("menuPrincipal"),relief=GROOVE,bg=colorDetalles)
+        self.buttonAddComida = tk.Button(self, text="Añadir Alimento", command=lambda: self.controller.show_frame("addComida"),relief=GROOVE,bg=colorDetalles)
+        self.buttonInicio.pack(side=LEFT)
+        self.buttonAddComida.pack(side=LEFT)
 
         '''
         Aqui metemos la carga inicial de datos.
@@ -594,6 +598,97 @@ class MostrarDieta(tk.Frame):
         textoTotal=u"Comido hoy:\n desayuno:",str(menuDeHoy[0]),"\nAmuerzo:",str(menuDeHoy[1]),"\nComida:",str(menuDeHoy[2]),"\nMerienda:",str(menuDeHoy[3]),"\nCena:",str(menuDeHoy[4])
         self.lblCenTotal = tk.Label(self.tabCena,text="Comido hoy:\n desayuno:"+str(menuDeHoy[0])+"\nAmuerzo:"+str(menuDeHoy[1])+"\nComida:"+str(menuDeHoy[2])+"\nMerienda:"+str(menuDeHoy[3])+"\nCena:"+str(menuDeHoy[4]),bg=fondoGeneral)
         self.lblCenTotal.pack(anchor=tk.W)
+class addComida(tk.Frame):
+        def __init__(self, parent, controller):
+            tk.Frame.__init__(self, parent)
+            self.user,self.pwd = vs.getUsuario()
+            self.controller = controller
+            #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
+            self.c = 0;
+            
+            label = tk.Label(self, text="Añadiendo Menu", font=controller.title_font,bg=fondoGeneral)    
+            label.grid(column=0,row=0)
+            
+            label_Nom = Label(self, text="Nombre",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Nom.grid(column=0,row=1)
+            
+            self.entry_Nom = Entry(self,bg=fondoGeneral)
+            self.entry_Nom.grid(column=1,row=1)
+            
+            label_kcal = Label(self, text="KiloCalorias",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_kcal.grid(column=0,row=2)
+            
+            self.entry_kcal = Entry(self,bg=fondoGeneral)
+            self.entry_kcal.grid(column=1,row=2)
+            
+            label_gras = Label(self, text="Grasa",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_gras.grid(column=0,row=3)         
+            
+            self.entry_gras = Entry(self,bg=fondoGeneral)
+            self.entry_gras.grid(column=1,row=3)
+            
+            label_sat = Label(self, text="Saturadas",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_sat.grid(column=0,row=4)       
+            
+            self.entry_sat = Entry(self,bg=fondoGeneral)
+            self.entry_sat.grid(column=1,row=4)
+            
+            label_Hid = Label(self, text="Hidratos",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Hid.grid(column=0,row=5)       
+            
+            self.entry_Hid = Entry(self,bg=fondoGeneral)
+            self.entry_Hid.grid(column=1,row=5)
+            
+            label_Azuc = Label(self, text="Azucares",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Azuc.grid(column=0,row=5)       
+            
+            self.entry_Azuc = Entry(self,bg=fondoGeneral)
+            self.entry_Azuc.grid(column=1,row=5)
+
+            
+            label_Tip = Label(self, text="Tipo",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Tip.grid(column=0,row=6)
+            self.var = IntVar()
+            varDes = IntVar()
+            Checkbutton(self, text="Desayuno", variable=var1).place(x=235,y=330)
+            varAlm = IntVar()
+            Checkbutton(self, text="Almuerzo", variable=var2).place(x=290,y=330)
+            varCom = IntVar()
+            Checkbutton(self, text="Comida", variable=var1).place(x=235,y=330)
+            varMer = IntVar()
+            Checkbutton(self, text="Merienda", variable=var2).place(x=290,y=330)
+            varCen = IntVar()
+            Checkbutton(self, text="Cena", variable=var2).place(x=290,y=330)
+            
+            label_Cal = Label(self, text="Calidad: ",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Cal.grid(column=0,row=8)
+            self.varAct = IntVar()
+            Radiobutton(self, text="1 - Buena ",padx = 10, variable=self.varAct, value=1,bg=fondoGeneral).grid(column=0,row=9)
+            Radiobutton(self, text="2 - Regular ",padx = 10, variable=self.varAct, value=2,bg=fondoGeneral).grid(column=1,row=9)
+            Radiobutton(self, text="3 - Con moderación",padx = 10, variable=self.varAct, value=3,bg=fondoGeneral).grid(column=0,row=10)
+            Radiobutton(self, text="4 - Evitar",padx = 10, variable=self.varAct, value=4,bg=fondoGeneral).grid(column=1,row=10)
+            
+
+            '''
+            label_4 = Label(self, text="country",width=20,font=("bold", 10))
+            label_4.grid(column=0,row=13)
+            
+            list1 = ['Canada','India','UK','Nepal','Iceland','South Africa'];
+            c=StringVar()
+            droplist=OptionMenu(self,c, *list1)
+            droplist.config(width=15)
+            c.set('select your country') 
+            droplist.grid(column=0,row=14)
+
+
+            '''
+            buttonEnviar = Button(self, text='Aceptar y Guardar',command=partial(vs.value,hojaUsuarios,self, controller),bg=colorDetalles,relief=GROOVE).grid(column=0,row=15)
+            button = tk.Button(self, text="Cancelar",command=lambda: controller.show_frame("InfoUsuario"),relief=GROOVE,bg=colorDetalles)
+            button.grid(column=0,row=16)
+            
+            self.label_Error = Label(self, text="",width=20,font=("bold", 10),bg=fondoGeneral,foreground="red")
+            self.label_Error.grid(column=0,row=17)
+
 
 if __name__ == "__main__":
         #Variable que almacena lo que lleva comido el cliente en cuanto a datos
