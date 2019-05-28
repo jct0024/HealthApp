@@ -605,68 +605,86 @@ class addComida(tk.Frame):
             self.controller = controller
             #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
             self.c = 0;
-            
+            self.containerNom = tk.Frame(self)
+            self.containerKCal = tk.Frame(self)
+            self.containerGra = tk.Frame(self)
+            self.containerSat = tk.Frame(self)
+            self.containerHid = tk.Frame(self)
+            self.containerAzu = tk.Frame(self)
+            self.containerPro = tk.Frame(self)
+            self.containerTip = tk.Frame(self)
+            self.containerCal = tk.Frame(self)
+            self.containerButt = tk.Frame(self)
             label = tk.Label(self, text="Añadiendo Menu", font=controller.title_font,bg=fondoGeneral)    
-            label.grid(column=0,row=0)
+            label.pack()
+            self.containerNom.pack()
+            self.containerKCal.pack()
+            self.containerGra.pack()
+            self.containerSat.pack()
+            self.containerHid.pack()
+            self.containerAzu.pack()
+            self.containerPro.pack()
+            self.containerTip.pack()
+            self.containerCal.pack()
+            self.containerButt.pack()
+            label_Nom = Label(self.containerNom, text="Nombre",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Nom.pack(fill=Y)
             
-            label_Nom = Label(self, text="Nombre",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_Nom.grid(column=0,row=1)
+            self.entry_Nom = Entry(self.containerNom,bg=fondoGeneral)
+            self.entry_Nom.pack(fill=Y)
             
-            self.entry_Nom = Entry(self,bg=fondoGeneral)
-            self.entry_Nom.grid(column=1,row=1)
+            label_kcal = Label(self.containerKCal, text="KiloCalorias",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_kcal.pack()
             
-            label_kcal = Label(self, text="KiloCalorias",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_kcal.grid(column=0,row=2)
+            self.entry_kcal = Entry(self.containerKCal,bg=fondoGeneral)
+            self.entry_kcal.pack()
             
-            self.entry_kcal = Entry(self,bg=fondoGeneral)
-            self.entry_kcal.grid(column=1,row=2)
+            label_gras = Label(self.containerGra, text="Grasa",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_gras.pack()        
             
-            label_gras = Label(self, text="Grasa",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_gras.grid(column=0,row=3)         
+            self.entry_gras = Entry(self.containerGra,bg=fondoGeneral)
+            self.entry_gras.pack()
             
-            self.entry_gras = Entry(self,bg=fondoGeneral)
-            self.entry_gras.grid(column=1,row=3)
+            label_sat = Label(self.containerSat, text="Saturadas",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_sat.pack()     
             
-            label_sat = Label(self, text="Saturadas",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_sat.grid(column=0,row=4)       
+            self.entry_sat = Entry(self.containerSat,bg=fondoGeneral)
+            self.entry_sat.pack()
             
-            self.entry_sat = Entry(self,bg=fondoGeneral)
-            self.entry_sat.grid(column=1,row=4)
+            label_Hid = Label(self.containerHid, text="Hidratos",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Hid.pack()       
             
-            label_Hid = Label(self, text="Hidratos",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_Hid.grid(column=0,row=5)       
+            self.entry_Hid = Entry(self.containerHid,bg=fondoGeneral)
+            self.entry_Hid.pack()
             
-            self.entry_Hid = Entry(self,bg=fondoGeneral)
-            self.entry_Hid.grid(column=1,row=5)
+            label_Azuc = Label(self.containerAzu, text="Azucares",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Azuc.pack()       
             
-            label_Azuc = Label(self, text="Azucares",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_Azuc.grid(column=0,row=5)       
-            
-            self.entry_Azuc = Entry(self,bg=fondoGeneral)
-            self.entry_Azuc.grid(column=1,row=5)
+            self.entry_Azuc = Entry(self.containerAzu,bg=fondoGeneral)
+            self.entry_Azuc.pack()
 
             
-            label_Tip = Label(self, text="Tipo",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_Tip.grid(column=0,row=6)
+            label_Tip = Label(self.containerTip, text="Tipo",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Tip.pack()
             self.var = IntVar()
             varDes = IntVar()
-            Checkbutton(self, text="Desayuno", variable=var1).place(x=235,y=330)
+            Checkbutton(self.containerTip, text="Desayuno", variable=varDes).pack()
             varAlm = IntVar()
-            Checkbutton(self, text="Almuerzo", variable=var2).place(x=290,y=330)
+            Checkbutton(self.containerTip, text="Almuerzo", variable=varAlm).pack()
             varCom = IntVar()
-            Checkbutton(self, text="Comida", variable=var1).place(x=235,y=330)
+            Checkbutton(self.containerTip, text="Comida", variable=varCom).pack()
             varMer = IntVar()
-            Checkbutton(self, text="Merienda", variable=var2).place(x=290,y=330)
+            Checkbutton(self.containerTip, text="Merienda", variable=varMer).pack()
             varCen = IntVar()
-            Checkbutton(self, text="Cena", variable=var2).place(x=290,y=330)
+            Checkbutton(self.containerTip, text="Cena", variable=varCen).pack()
             
-            label_Cal = Label(self, text="Calidad: ",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_Cal.grid(column=0,row=8)
+            label_Cal = Label(self.containerCal, text="Calidad: ",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Cal.pack()
             self.varAct = IntVar()
-            Radiobutton(self, text="1 - Buena ",padx = 10, variable=self.varAct, value=1,bg=fondoGeneral).grid(column=0,row=9)
-            Radiobutton(self, text="2 - Regular ",padx = 10, variable=self.varAct, value=2,bg=fondoGeneral).grid(column=1,row=9)
-            Radiobutton(self, text="3 - Con moderación",padx = 10, variable=self.varAct, value=3,bg=fondoGeneral).grid(column=0,row=10)
-            Radiobutton(self, text="4 - Evitar",padx = 10, variable=self.varAct, value=4,bg=fondoGeneral).grid(column=1,row=10)
+            Radiobutton(self.containerCal, text="1 - Buena ",padx = 10, variable=self.varAct, value=1,bg=fondoGeneral).pack()
+            Radiobutton(self.containerCal, text="2 - Regular ",padx = 10, variable=self.varAct, value=2,bg=fondoGeneral).pack()
+            Radiobutton(self.containerCal, text="3 - Con moderación",padx = 10, variable=self.varAct, value=3,bg=fondoGeneral).pack()
+            Radiobutton(self.containerCal, text="4 - Evitar",padx = 10, variable=self.varAct, value=4,bg=fondoGeneral).pack()
             
 
             '''
@@ -682,12 +700,12 @@ class addComida(tk.Frame):
 
 
             '''
-            buttonEnviar = Button(self, text='Aceptar y Guardar',command=partial(vs.value,hojaUsuarios,self, controller),bg=colorDetalles,relief=GROOVE).grid(column=0,row=15)
-            button = tk.Button(self, text="Cancelar",command=lambda: controller.show_frame("InfoUsuario"),relief=GROOVE,bg=colorDetalles)
-            button.grid(column=0,row=16)
+            buttonEnviar = Button(self.containerButt, text='Aceptar y Guardar',command=partial(vs.value,hojaUsuarios,self, controller),bg=colorDetalles,relief=GROOVE).pack(fill=X)
+            button = tk.Button(self.containerButt, text="Cancelar",command=lambda: controller.show_frame("InfoUsuario"),relief=GROOVE,bg=colorDetalles)
+            button.pack(fill=X)
             
             self.label_Error = Label(self, text="",width=20,font=("bold", 10),bg=fondoGeneral,foreground="red")
-            self.label_Error.grid(column=0,row=17)
+            self.label_Error.pack()
 
 
 if __name__ == "__main__":
