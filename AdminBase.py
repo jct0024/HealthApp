@@ -6,6 +6,7 @@ Created on Mon Dec 10 10:36:25 2018
 """
 import pandas as pd;
 import datetime
+import CalculosDieta as cd
 from tkinter import messagebox
 def cargarBaseDeDatos():
     #Cargamos la base de datos
@@ -23,10 +24,16 @@ def cargarBaseDeDatos():
     archivo.close()
     
     return hojaAl,hojaUs,hojaPa,config;
+def cargarBaseAlimentos():
+    doc = pd.ExcelFile("BaseDeDatosDeAlimentos.xlsx")
+    hojaAl = pd.read_excel(doc,'Alimentos')
+    hojaPa = pd.read_excel(doc,'Patologias')
+    return hojaAl,hojaPa;
 '''
 Función que carga el historial del usuario para futuros calculosy gráficas para ello necesita solo la id del usuario,se 
 criba y se devuelve para ser almacenado.
 '''
+
 def cargarHistorial(usr):
     hist = pd.ExcelFile("Historial.xlsx");
     hojaHisAl = pd.read_excel(hist, 'UsrAl')
@@ -122,7 +129,7 @@ def getFilaAlimento(nombre,a):
 def guardaTodo(usr, menuDeHoy, historial,hojaAlimentos, hojaUsuarios, hojaPatologias,config):
     guardarHistorial (usr, menuDeHoy, historial)
     guardarUsuario(hojaUsuarios)
-    guardarDatos (hojaAlimentos, hojaUsuarios, hojaPatologias)
+    guardarDatos (hojaAlimentos, hojaPatologias)
 
     
     messagebox.showinfo("Ya se ha guardado","Datos guardados ya puede cerrar el programa")
@@ -149,8 +156,83 @@ def guardarHistorial (usr, menuDeHoy, historial):
     historial.to_excel(writer,'UsrAl',index=False)
     writer.save();
 #Guarda los datos en la hoja que se le pasa como argumento
-def guardarDatos (hojaAlimentos, hojaUsuarios, hojaPatologias):
+def guardarDatos (hojaAlimentos, hojaPatologias):
     writer = pd.ExcelWriter("BaseDeDatosDeAlimentos.xlsx")
     hojaAlimentos.to_excel(writer,'Alimentos',index=False)
     hojaPatologias.to_excel(writer,'Patologias',index=False)
     writer.save();
+def ComproYAlmacenamientoUsuario(hojaUsuarios,selfi,controller):
+    fila = getFilaUsuario(selfi.user,hojaUsuarios)
+    if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_Ape.get()) == 0 or len(selfi.entry_Eda.get()) == 0 or len(selfi.entry_Alt.get()) == 0 or len(selfi.entry_Pes.get()) == 0 or selfi.var.get() == 0 or selfi.varTipo.get() == 0 or selfi.varAct.get() == 0):
+        selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")
+    else:
+        try:
+            int(selfi.entry_Eda.get())
+            int(selfi.entry_Pes.get())
+            int(selfi.entry_Alt.get())
+            selfi.label_Error.config(text="")
+        except ValueError:
+            selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")
+            
+       
+        hojaUsuarios['nombre'].loc[fila] = selfi.entry_Nom.get()
+        hojaUsuarios['apellido'].loc[fila] = selfi.entry_Ape.get()
+        if(selfi.var.get() == 1):
+            hojaUsuarios['sexo'] .loc[fila]= 'H'
+        else:
+            hojaUsuarios['sexo'].loc[fila] = 'M'
+        hojaUsuarios['edad'].loc[fila] = int(selfi.entry_Eda.get())
+        hojaUsuarios['altura'].loc[fila] = int(selfi.entry_Alt.get())
+        hojaUsuarios['peso'].loc[fila] = int(selfi.entry_Pes.get())
+        hojaUsuarios['actividad'].loc[fila] = selfi.varAct.get()
+        if(selfi.varTipo.get() == 1):
+            hojaUsuarios['tipo'].loc[fila] = "bajar"
+        elif(selfi.varTipo.get() == 2):
+            hojaUsuarios['tipo'].loc[fila] = "mantener"
+        else:
+            hojaUsuarios['tipo'].loc[fila] = "subir"
+        guardarUsuario(hojaUsuarios)
+        messagebox.showinfo("Datos actualizados","Datos actualizados correctamente, veras los cambios al reiniciar el programa")
+        controller.show_frame("InfoUsuario")
+'''
+Función que te comprueba que los datos son correctos e inserta un nuevo menu a la base de datos
+Carga el actual estado de la base de datos, además de la lista de la cual esta haciendo uso el usuario, añade el nuevo alimento a ambas, asi cuando
+guarda el alimento, lo hace solo sobre ese cambio y no tiene que guardar todo su progreso, y cuando quiere guardar todo su progreso el alimento esta ya almacenado
+en la lista, lo cual evita que se sobreescriba y se borren los avances.
+'''
+def ComrproYAlmacenamientoAlimento(hojaAlimentos,selfi,controller):
+    print(selfi.varDes.get())
+    alimentos, patologias = cargarBaseAlimentos()
+    if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_kcal.get()) == 0 or len(selfi.entry_gras.get()) == 0 or len(selfi.entry_sat.get()) == 0 or len(selfi.entry_Hid.get()) == 0 or len(selfi.entry_Azuc.get()) == 0 or len(selfi.entry_Pro.get()) == 0 or selfi.varAct.get() == 0):
+        selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")
+    elif(selfi.varDes.get() == 0 and selfi.varAlm.get() == 0 and selfi.varCom.get() == 0 and selfi.varMer.get() == 0 and selfi.varCen.get() == 0 ):
+        selfi.label_Error.config(text="ERROR: Seleccione que tipo de comida es")
+    else:
+        try:
+            int(selfi.entry_kcal.get())
+            int(selfi.entry_gras.get())
+            int(selfi.entry_sat.get())
+            int(selfi.entry_Hid.get())
+            int(selfi.entry_Azuc.get())
+            int(selfi.entry_Pro.get())
+            selfi.label_Error.config(text="")
+        except ValueError:
+            selfi.label_Error.config(text="ERROR: Inserte un valor numerico válido")
+        tipo =cd.stringTipoToNumber(selfi.varDes.get(),selfi.varAlm.get(),selfi.varCom.get(),selfi.varMer.get(),selfi.varCen.get());
+        print('holi')        
+        nuevaFila= pd.DataFrame({'Nombre':[selfi.entry_Nom.get()],
+                                 'Calorias': [selfi.entry_kcal.get()],
+                                 'Grasa': [selfi.entry_gras.get()], 
+                                 'Saturadas':[selfi.entry_sat.get()],
+                                 'Hidratos':[selfi.entry_Hid.get()],
+                                 'Azucares':[selfi.entry_Azuc.get()],
+                                 'Proteina':[selfi.entry_Pro.get()],
+                                 'Tipo': [tipo],
+                                 'LRE':[0],
+                                 'Calidad': [selfi.varAct.get()]})
+        hojaAlimentos = hojaAlimentos.append(nuevaFila)
+        alimentos = alimentos.append(nuevaFila)
+        print(alimentos)
+        #Guardamos la 'imagen' de la base de datos sin retoques, solo con la nueva linea
+        guardarDatos(alimentos,patologias)
+        messagebox.showinfo("Datos actualizados","Datos actualizados correctamente, veras los cambios al reiniciar el programa")

@@ -303,3 +303,16 @@ def graficoMejoraComida(selfi,hojaAlimentos, bandera):
                 medias.append(container)
         
     vs.gráfico(selfi,fechas,medias)
+def stringTipoToNumber(des,alm,com,mer,cen):
+    intTipo=0;
+    if(des == 1):
+        intTipo+=16
+    if(alm==1):
+        intTipo+=8
+    if(com==1):
+        intTipo+=4
+    if(mer==1):
+        intTipo+=2
+    if(cen==1):
+        intTipo+=1
+    return intTipo;
