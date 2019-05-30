@@ -201,7 +201,6 @@ guarda el alimento, lo hace solo sobre ese cambio y no tiene que guardar todo su
 en la lista, lo cual evita que se sobreescriba y se borren los avances.
 '''
 def ComrproYAlmacenamientoAlimento(hojaAlimentos,selfi,controller):
-    print(selfi.varDes.get())
     alimentos, patologias = cargarBaseAlimentos()
     if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_kcal.get()) == 0 or len(selfi.entry_gras.get()) == 0 or len(selfi.entry_sat.get()) == 0 or len(selfi.entry_Hid.get()) == 0 or len(selfi.entry_Azuc.get()) == 0 or len(selfi.entry_Pro.get()) == 0 or selfi.varAct.get() == 0):
         selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")
@@ -236,3 +235,34 @@ def ComrproYAlmacenamientoAlimento(hojaAlimentos,selfi,controller):
         #Guardamos la 'imagen' de la base de datos sin retoques, solo con la nueva linea
         guardarDatos(alimentos,patologias)
         messagebox.showinfo("Datos actualizados","Datos actualizados correctamente, veras los cambios al reiniciar el programa")
+def NuevoUsuario(ventana,hojaUsuarios,dni, nombre, apellido, pwd, sexo, edad,altura,peso,actividad,tipo, mensajeError):
+        if(len(dni.get()) ==0 or len(nombre.get()) == 0 or len(apellido.get()) == 0 or len(pwd.get()) == 0 or len(edad.get()) == 0 or len(altura.get()) == 0 or len(peso.get()) == 0 or len(sexo.get()) == 0 or actividad.get() == 0 or tipo.get() == 0):
+            mensajeError.config(text="ERROR: Algun dato erroneo, comprueba todo")
+        else:
+            try:
+                int(edad.get())
+                int(altura.get())
+                int(peso.get())
+                mensajeError.config(text="")
+            except ValueError:
+                mensajeError.config(text="ERROR: Algun dato erroneo, comprueba todo")
+            
+        if(sexo.get() == 1):
+           sexo = 'H'
+        else:
+           sexo='M'
+        nuevaFila= pd.DataFrame({'id':[dni],
+                             'nombre': [nombre],
+                             'apellido': [apellido], 
+                             'password':[pwd],
+                             'sexo':[sexo],
+                             'edad':[edad],
+                             'altura':[altura],
+                             'peso': [peso],
+                             'actividad':[actividad],
+                             'patología': [tipo],
+                             'tipo':'blabla'})
+        hojaUsuarios = hojaUsuarios.append(nuevaFila)
+        #Guardamos la 'imagen' de la base de datos sin retoques, solo con la nueva linea
+        guardarUsuario(hojaUsuarios)
+        messagebox.showinfo("BIENVENIDO","Se registro en nuestra APP se ha desarrollado con exito¡")

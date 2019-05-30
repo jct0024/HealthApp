@@ -740,7 +740,7 @@ if __name__ == "__main__":
         txtP = ttk.Entry(login,width=15, show="*")
         btnInit = ttk.Button(login, text="Inicio",command=partial(vs.cambio,txtU,txtP,login,lblU,lblMensaje))
         btnExit = ttk.Button(login, text="Salir",command=login.destroy)  
-        btnRegist = ttk.Button(login, text="Registrarse",command=vs.registrarse)  
+        btnRegist = ttk.Button(login, text="Registrarse",command=partial(vs.registrarse,hojaUsuarios))  
         #POSICIONAMIENTOOOO
         lblU.pack()
         txtU.focus()
