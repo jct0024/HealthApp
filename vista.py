@@ -317,3 +317,88 @@ def estiloTotal(idEstilo):
     file.write(texto)
     file.close()
     messagebox.showinfo("!Todo correcto¡","Veras el nuevo diseño cuando reinicie el programa")
+def registrarse():
+    registro = tk.Tk();
+    registro.resizable(0,0)
+    registro.geometry('500x300')
+    registro.title("Registro")
+    #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
+    
+    label = tk.Label(registro, text="Editando información")    
+    label.grid(column=0,row=0)
+    
+    label_Nom = tk.Label(registro, text="Nombre",width=20,font=("bold", 10))
+    label_Nom.grid(column=0,row=1)
+    
+    entry_Nom = tk.Entry(registro)
+    entry_Nom.grid(column=1,row=1)
+    
+    label_Ape = tk.Label(registro, text="Apellidos",width=20,font=("bold", 10))
+    label_Ape.grid(column=0,row=2)
+    
+    entry_Ape = tk.Entry(registro)
+    entry_Ape.grid(column=1,row=2)
+    
+    label_Eda = tk.Label(registro, text="Edad",width=20,font=("bold", 10))
+    label_Eda.grid(column=0,row=3)         
+    
+    entry_Eda = tk.Entry(registro)
+    entry_Eda.grid(column=1,row=3)
+    
+    label_Alt = tk.Label(registro, text="Altura",width=20,font=("bold", 10))
+    label_Alt.grid(column=0,row=4)       
+    
+    entry_Alt = tk.Entry(registro)
+    entry_Alt.grid(column=1,row=4)
+    
+    label_Pes = tk.Label(registro, text="Peso",width=20,font=("bold", 10))
+    label_Pes.grid(column=0,row=5)       
+    
+    entry_Pes = tk.Entry(registro)
+    entry_Pes.grid(column=1,row=5)
+    
+    label_3 = tk.Label(registro, text="Sexo:",width=20,font=("bold", 10))
+    label_3.grid(column=0,row=6)
+    var = tk.IntVar()
+    tk.Radiobutton(registro, text="Hombre",padx = 5, variable=var, value=1).grid(column=0,row=7)
+    tk.Radiobutton(registro, text="Mujer",padx = 20, variable=var, value=2).grid(column=1,row=7)
+    
+    label_Act = tk.Label(registro, text="Actividad: ",width=20,font=("bold", 10))
+    label_Act.grid(column=0,row=8)
+    varAct = tk.IntVar()
+    tk.Radiobutton(registro, text="1 ",padx = 10, variable=varAct, value=1).grid(column=0,row=9)
+    tk.Radiobutton(registro, text="2 ",padx = 10, variable=varAct, value=2).grid(column=1,row=9)
+    tk.Radiobutton(registro, text="3 ",padx = 10, variable=varAct, value=3).grid(column=0,row=10)
+    tk.Radiobutton(registro, text="4 ",padx = 10, variable=varAct, value=4).grid(column=1,row=10)
+    
+    label_3 = tk.Label(registro, text="Tipo",width=20,font=("bold", 10))
+    label_3.grid(column=0,row=11)
+    varTipo = tk.IntVar()
+    tk.Radiobutton(registro, text="bajar",padx = 5, variable=varTipo, value=1).grid(column=0,row=12)
+    tk.Radiobutton(registro, text="mantener",padx = 20, variable=varTipo, value=2).grid(column=1,row=12)
+    tk.Radiobutton(registro, text="subir",padx = 20, variable=varTipo, value=3).grid(column=2,row=12)
+    '''
+    label_4 = Label(self, text="country",width=20,font=("bold", 10))
+    label_4.grid(column=0,row=13)
+    
+    list1 = ['Canada','India','UK','Nepal','Iceland','South Africa'];
+    c=StringVar()
+    droplist=OptionMenu(self,c, *list1)
+    droplist.config(width=15)
+    c.set('select your country') 
+    droplist.grid(column=0,row=14)
+    
+    label_4 = Label(self, text="Programming",width=20,font=("bold", 10))
+    label_4.place(x=85,y=330)
+    var1 = IntVar()
+    Checkbutton(self, text="java", variable=var1).place(x=235,y=330)
+    var2 = IntVar()
+    Checkbutton(self, text="python", variable=var2).place(x=290,y=330)
+    '''
+    buttonEnviar = tk.Button(registro, text='Aceptar y Guardar',command=lambda:registro.destroy,relief=tk.GROOVE).grid(column=0,row=15)
+    button = tk.Button(registro, text="Cancelar",command=lambda:registro.destroy,relief=tk.GROOVE)
+    button.grid(column=0,row=16)
+    buttonEnviar.grid(column=0,row=15)
+    label_Error = tk.Label(registro, text="",width=20,font=("bold", 10),foreground="red")
+    label_Error.grid(column=0,row=17)
+    registro.mainloop(); 

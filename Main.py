@@ -737,9 +737,10 @@ if __name__ == "__main__":
         txtU = ttk.Entry(login,width=10)
         txtU.focus()
         lblP = ttk.Label(login,text="password",font=fuente)
-        txtP = ttk.Entry(login,width=10, show="*")
+        txtP = ttk.Entry(login,width=15, show="*")
         btnInit = ttk.Button(login, text="Inicio",command=partial(vs.cambio,txtU,txtP,login,lblU,lblMensaje))
         btnExit = ttk.Button(login, text="Salir",command=login.destroy)  
+        btnRegist = ttk.Button(login, text="Registrarse",command=vs.registrarse)  
         #POSICIONAMIENTOOOO
         lblU.pack()
         txtU.focus()
@@ -749,6 +750,7 @@ if __name__ == "__main__":
         lblMensaje.pack();
         btnInit.pack(side=LEFT);
         btnExit.pack(side=RIGHT);
+        btnRegist.pack(side=BOTTOM,fill=BOTH);
         login.mainloop(); 
         if(vs.getBandera()):
             app = SampleApp()
