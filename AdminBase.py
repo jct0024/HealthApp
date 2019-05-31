@@ -217,8 +217,7 @@ def ComrproYAlmacenamientoAlimento(hojaAlimentos,selfi,controller):
             selfi.label_Error.config(text="")
         except ValueError:
             selfi.label_Error.config(text="ERROR: Inserte un valor numerico válido")
-        tipo =cd.stringTipoToNumber(selfi.varDes.get(),selfi.varAlm.get(),selfi.varCom.get(),selfi.varMer.get(),selfi.varCen.get());
-        print('holi')        
+        tipo =cd.stringTipoToNumber(selfi.varDes.get(),selfi.varAlm.get(),selfi.varCom.get(),selfi.varMer.get(),selfi.varCen.get());   
         nuevaFila= pd.DataFrame({'Nombre':[selfi.entry_Nom.get()],
                                  'Calorias': [selfi.entry_kcal.get()],
                                  'Grasa': [selfi.entry_gras.get()], 
@@ -236,33 +235,49 @@ def ComrproYAlmacenamientoAlimento(hojaAlimentos,selfi,controller):
         guardarDatos(alimentos,patologias)
         messagebox.showinfo("Datos actualizados","Datos actualizados correctamente, veras los cambios al reiniciar el programa")
 def NuevoUsuario(ventana,hojaUsuarios,dni, nombre, apellido, pwd, sexo, edad,altura,peso,actividad,tipo, mensajeError):
-        if(len(dni.get()) ==0 or len(nombre.get()) == 0 or len(apellido.get()) == 0 or len(pwd.get()) == 0 or len(edad.get()) == 0 or len(altura.get()) == 0 or len(peso.get()) == 0 or len(sexo.get()) == 0 or actividad.get() == 0 or tipo.get() == 0):
+    
+    print(dni.get())
+    print(nombre.get())
+    print(apellido.get())
+    print(pwd.get())
+    print(sexo.get())
+    print(edad.get())
+    print(altura.get())
+    print(peso.get())
+    print(actividad)
+    print(tipo.get())
+    if(len(dni.get()) ==0 or len(nombre.get()) == 0 or len(apellido.get()) == 0 or len(pwd.get()) == 0 or len(edad.get()) == 0 or len(altura.get()) == 0 or len(peso.get()) == 0 or sexo.get() == 0 or actividad.get() == 0 or tipo.get() == 0):
             mensajeError.config(text="ERROR: Algun dato erroneo, comprueba todo")
-        else:
-            try:
-                int(edad.get())
-                int(altura.get())
-                int(peso.get())
-                mensajeError.config(text="")
-            except ValueError:
-                mensajeError.config(text="ERROR: Algun dato erroneo, comprueba todo")
-            
-        if(sexo.get() == 1):
-           sexo = 'H'
-        else:
-           sexo='M'
-        nuevaFila= pd.DataFrame({'id':[dni],
-                             'nombre': [nombre],
-                             'apellido': [apellido], 
-                             'password':[pwd],
-                             'sexo':[sexo],
-                             'edad':[edad],
-                             'altura':[altura],
-                             'peso': [peso],
-                             'actividad':[actividad],
-                             'patología': [tipo],
-                             'tipo':'blabla'})
-        hojaUsuarios = hojaUsuarios.append(nuevaFila)
+    else:
+        try:
+            int(edad.get())
+            int(altura.get())
+            int(peso.get())
+            mensajeError.config(text="")
+        except ValueError:
+            mensajeError.config(text="ERROR: Caracter alfabetico en cela númerica")
+        
+        if(tipo.get() == 1):
+            tip='bajar'
+        elif(tipo.get() == 2):
+            tip='mantener'
+        elif(tipo.get() == 3):
+            tip='subir'
+        nuevaFila= pd.DataFrame({'id':[dni.get()],
+                             'nombre': [nombre.get()],
+                             'apellido': [apellido.get()], 
+                             'password':[pwd.get()],
+                             'sexo':[sexo.get()],
+                             'edad':[edad.get()],
+                             'altura':[altura.get()],
+                             'peso': [peso.get()],
+                             'actividad':[actividad.get()],
+                             'patologia': [0],
+                             'tipo':[tip]})
+        hojaUsuarios = hojaUsuarios.append(nuevaFila,sort=False)
         #Guardamos la 'imagen' de la base de datos sin retoques, solo con la nueva linea
+        #print(hojaUsuarios)
         guardarUsuario(hojaUsuarios)
+        ventana.destroy()
         messagebox.showinfo("BIENVENIDO","Se registro en nuestra APP se ha desarrollado con exito¡")
+        
