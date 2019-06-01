@@ -602,7 +602,9 @@ class addComida(tk.Frame):
             self.controller = controller
             #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
             self.c = 0;
+            self.containerTit = tk.Frame(self,bg=fondoGeneral)
             self.containerNom = tk.Frame(self,bg=fondoGeneral)
+            self.containerGram = tk.Frame(self,bg=fondoGeneral)
             self.containerKCal = tk.Frame(self,bg=fondoGeneral)
             self.containerGra = tk.Frame(self,bg=fondoGeneral)
             self.containerSat = tk.Frame(self,bg=fondoGeneral)
@@ -614,7 +616,9 @@ class addComida(tk.Frame):
             self.containerButt = tk.Frame(self,bg=fondoGeneral)
             label = tk.Label(self, text="Añadiendo Menu", font=controller.title_font,bg=fondoGeneral)    
             label.pack()
+            self.containerTit.pack(fill=X)
             self.containerNom.pack(fill=X)
+            self.containerGram.pack(fill=X)
             self.containerKCal.pack(fill=X)
             self.containerGra.pack(fill=X)
             self.containerSat.pack(fill=X)
@@ -624,11 +628,25 @@ class addComida(tk.Frame):
             self.containerTip.pack(fill=X)
             self.containerCal.pack(fill=X)
             self.containerButt.pack(fill=X)
+            label = tk.Label(self.containerTit, text="\t", font=controller.title_font,bg=fondoGeneral)    
+            label.pack(side=LEFT)
+            label = tk.Label(self.containerTit, text="\tAlimento #1", font=controller.title_font,bg=fondoGeneral)    
+            label.pack(side=LEFT)
+            label = tk.Label(self.containerTit, text="\tAlimento #2", font=controller.title_font,bg=fondoGeneral)    
+            label.pack(side=LEFT)
+            label = tk.Label(self.containerTit, text="\tAlimento #3", font=controller.title_font,bg=fondoGeneral)    
+            label.pack(side=LEFT)
             label_Nom = Label(self.containerNom, text="Nombre: ",width=20,font=("bold", 10),bg=fondoGeneral)
             label_Nom.pack(side=LEFT)
             
             self.entry_Nom = Entry(self.containerNom,bg=fondoGeneral)
             self.entry_Nom.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            label_Gram = Label(self.containerGram, text="Gramos: ",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Gram.pack(side=LEFT)
+            
+            self.entry_Gram = Entry(self.containerGram,bg=fondoGeneral)
+            self.entry_Gram.pack(expand=1,fill=BOTH,side=LEFT)
             
             label_kcal = Label(self.containerKCal, text="KiloCalorias",width=20,font=("bold", 10),bg=fondoGeneral)
             label_kcal.pack(side=LEFT)
@@ -679,7 +697,7 @@ class addComida(tk.Frame):
             Checkbutton(self.containerTip, text="Merienda", variable=self.varMer,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
             self.varCen = IntVar()
             Checkbutton(self.containerTip, text="Cena", variable=self.varCen,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
-            
+            '''
             label_Cal = Label(self.containerCal, text="Calidad: ",width=20,font=("bold", 10),bg=fondoGeneral)
             label_Cal.pack(side=TOP)
             self.varAct = IntVar()
@@ -687,21 +705,9 @@ class addComida(tk.Frame):
             Radiobutton(self.containerCal, text="2 - Regular ",padx = 10, variable=self.varAct, value=2,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
             Radiobutton(self.containerCal, text="3 - Con moderación",padx = 10, variable=self.varAct, value=3,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
             Radiobutton(self.containerCal, text="4 - Evitar",padx = 10, variable=self.varAct, value=4,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
-            
-
             '''
-            label_4 = Label(self, text="country",width=20,font=("bold", 10))
-            label_4.grid(column=0,row=13)
-            
-            list1 = ['Canada','India','UK','Nepal','Iceland','South Africa'];
-            c=StringVar()
-            droplist=OptionMenu(self,c, *list1)
-            droplist.config(width=15)
-            c.set('select your country') 
-            droplist.grid(column=0,row=14)
 
 
-            '''
             buttonEnviar = Button(self.containerButt, text='Aceptar y Guardar',command=partial(ab.ComrproYAlmacenamientoAlimento,hojaUsuarios,self,controller),bg=colorDetalles,relief=GROOVE).pack(fill=X)
             button = tk.Button(self.containerButt, text="Cancelar",command=lambda: controller.show_frame("MostrarDieta"),relief=GROOVE,bg=colorDetalles)
             button.pack(fill=X)

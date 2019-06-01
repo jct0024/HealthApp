@@ -255,7 +255,7 @@ def NuevoUsuario(ventana,hojaUsuarios,dni, nombre, apellido, pwd, sexo, edad,alt
             int(peso.get())
             mensajeError.config(text="")
         except ValueError:
-            mensajeError.config(text="ERROR: Caracter alfabetico en cela númerica")
+            mensajeError.config(text="ERROR: Caracter alfabetico en celda númerica")
         
         if(tipo.get() == 1):
             tip='bajar'
@@ -274,9 +274,9 @@ def NuevoUsuario(ventana,hojaUsuarios,dni, nombre, apellido, pwd, sexo, edad,alt
                              'actividad':[actividad.get()],
                              'patologia': [0],
                              'tipo':[tip]})
+
         hojaUsuarios = hojaUsuarios.append(nuevaFila,sort=False)
         #Guardamos la 'imagen' de la base de datos sin retoques, solo con la nueva linea
-        #print(hojaUsuarios)
         guardarUsuario(hojaUsuarios)
         ventana.destroy()
         messagebox.showinfo("BIENVENIDO","Se registro en nuestra APP se ha desarrollado con exito¡")
