@@ -317,8 +317,49 @@ def graficoMejoraComida(selfi,hojaAlimentos, bandera):
 Hace los calculos correspondientes a la hora de añadir un nuevo menu, sumando todos los macronutrientes y los alimentos, 
 creando el plato completo y llevando a cabo los calculos para identificar la calidad en base a NUTRISCORE.
 '''
-def AñadirMenuCalculos(hojaUsuarios,self):
-    print('holi')
+def AñadirMenuCalculos(hojaUsuarios,selfi):
+    bandera=0
+    #ALIMENTO #1
+    if(len(selfi.entry_Nom.get()) != 0 or len(selfi.entry_Gram.get()) !=0 or len(selfi.entry_kcal.get()) != 0 or len(selfi.entry_gras.get()) != 0 or len(selfi.entry_sat.get()) != 0 or len(selfi.entry_Hid.get()) != 0 or len(selfi.entry_Azuc.get()) != 0 or len(selfi.entry_Pro.get()) != 0  ):
+        if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_Gram.get()) ==0 or len(selfi.entry_kcal.get()) == 0 or len(selfi.entry_gras.get()) == 0 or len(selfi.entry_sat.get()) == 0 or len(selfi.entry_Hid.get()) == 0 or len(selfi.entry_Azuc.get()) == 0 or len(selfi.entry_Pro.get()) == 0 ):
+            selfi.label_Error.config(text="ERROR: Algun dato erroneo del alimento #1")
+        else:
+            bandera = 1;
+    #ALIMENTO #2
+    if(len(selfi.entry_Nom2.get()) != 0 or len(selfi.entry_Gram2.get()) !=0 or len(selfi.entry_kcal2.get()) != 0 or len(selfi.entry_gras2.get()) != 0 or len(selfi.entry_sat2.get()) != 0 or len(selfi.entry_Hid2.get()) != 0 or len(selfi.entry_Azuc2.get()) != 0 or len(selfi.entry_Pro2.get()) != 0):
+        if(len(selfi.entry_Nom2.get()) ==0 or len(selfi.entry_Gram2.get()) ==0 or len(selfi.entry_kcal2.get()) == 0 or len(selfi.entry_gras2.get()) == 0 or len(selfi.entry_sat2.get()) == 0 or len(selfi.entry_Hid2.get()) == 0 or len(selfi.entry_Azuc2.get()) == 0 or len(selfi.entry_Pro2.get()) == 0):
+            selfi.label_Error.config(text="ERROR: Algun dato erroneo del alimento #2")
+        else:
+            bandera = 1;
+    #ALIMENTO #3
+    if(len(selfi.entry_Nom3.get()) != 0 or len(selfi.entry_Gram3.get()) !=0 or len(selfi.entry_kcal3.get()) != 0 or len(selfi.entry_gras3.get()) != 0 or len(selfi.entry_sat3.get()) != 0 or len(selfi.entry_Hid3.get()) != 0 or len(selfi.entry_Azuc3.get()) != 0 or len(selfi.entry_Pro3.get()) != 0):
+        if(len(selfi.entry_Nom3.get()) ==0 or len(selfi.entry_Gram3.get()) ==0 or len(selfi.entry_kcal3.get()) == 0 or len(selfi.entry_gras3.get()) == 0 or len(selfi.entry_sat3.get()) == 0 or len(selfi.entry_Hid3.get()) == 0 or len(selfi.entry_Azuc3.get()) == 0 or len(selfi.entry_Pro3.get()) == 0):
+            selfi.label_Error.config(text="ERROR: Algun dato erroneo del alimento #3")
+        else:
+            bandera = 1;
+    #ALIMENTO #4
+    if(len(selfi.entry_Nom4.get()) != 0 or len(selfi.entry_Gram4.get()) !=0 or len(selfi.entry_kcal4.get()) != 0 or len(selfi.entry_gras4.get()) != 0 or len(selfi.entry_sat4.get()) != 0 or len(selfi.entry_Hid4.get()) != 0 or len(selfi.entry_Azuc4.get()) != 0 or len(selfi.entry_Pro4.get()) != 0 ):
+        if(len(selfi.entry_Nom4.get()) ==0 or len(selfi.entry_Gram4.get()) ==0 or len(selfi.entry_kcal4.get()) == 0 or len(selfi.entry_gras4.get()) == 0 or len(selfi.entry_sat4.get()) == 0 or len(selfi.entry_Hid4.get()) == 0 or len(selfi.entry_Azuc4.get()) == 0 or len(selfi.entry_Pro4.get()) == 0 ):
+            selfi.label_Error.config(text="ERROR: Algun dato erroneo del alimento #4")
+        else:
+            bandera = 1;
+    if(bandera==0):
+        selfi.label_Error.config(text="ERROR: Rellene algún alimento")
+        
+    elif(selfi.varDes.get() == 0 and selfi.varAlm.get() == 0 and selfi.varCom.get() == 0 and selfi.varMer.get() == 0 and selfi.varCen.get() == 0 ):
+        selfi.label_Error.config(text="ERROR: Seleccione que tipo de comida es")
+    else:
+        try:
+            int(selfi.entry_kcal.get())
+            int(selfi.entry_gras.get())
+            int(selfi.entry_sat.get())
+            int(selfi.entry_Hid.get())
+            int(selfi.entry_Azuc.get())
+            int(selfi.entry_Pro.get())
+            selfi.label_Error.config(text="")
+        except ValueError:
+            selfi.label_Error.config(text="ERROR: Inserte un valor numerico válido")
+    
 '''
 Función que toma un "conjunto de bits" y te los transforma a un número entero, para
 ser almacenados y procesados por la base de datos.
