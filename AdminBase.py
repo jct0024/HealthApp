@@ -200,7 +200,7 @@ Carga el actual estado de la base de datos, además de la lista de la cual esta 
 guarda el alimento, lo hace solo sobre ese cambio y no tiene que guardar todo su progreso, y cuando quiere guardar todo su progreso el alimento esta ya almacenado
 en la lista, lo cual evita que se sobreescriba y se borren los avances.
 '''
-def ComrproYAlmacenamientoAlimento(hojaAlimentos,selfi,controller):
+def ComrproYAlmacenamientoAlimento(hojaAlimentos,selfi):
     alimentos, patologias = cargarBaseAlimentos()
     if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_kcal.get()) == 0 or len(selfi.entry_gras.get()) == 0 or len(selfi.entry_sat.get()) == 0 or len(selfi.entry_Hid.get()) == 0 or len(selfi.entry_Azuc.get()) == 0 or len(selfi.entry_Pro.get()) == 0 or selfi.varAct.get() == 0):
         selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")

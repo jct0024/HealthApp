@@ -19,6 +19,7 @@ class SampleApp(tk.Tk):
         
         self.title_font = font.Font(family='Helvetica', size=18, weight="bold", slant="italic")
         self.geometry('800x500')
+        self.minsize(800,500)
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
@@ -605,6 +606,7 @@ class addComida(tk.Frame):
             self.containerTit = tk.Frame(self,bg=fondoGeneral)
             self.containerNom = tk.Frame(self,bg=fondoGeneral)
             self.containerGram = tk.Frame(self,bg=fondoGeneral)
+            self.containerExpl = tk.Frame(self,bg=fondoGeneral)
             self.containerKCal = tk.Frame(self,bg=fondoGeneral)
             self.containerGra = tk.Frame(self,bg=fondoGeneral)
             self.containerSat = tk.Frame(self,bg=fondoGeneral)
@@ -619,6 +621,7 @@ class addComida(tk.Frame):
             self.containerTit.pack(fill=X)
             self.containerNom.pack(fill=X)
             self.containerGram.pack(fill=X)
+            self.containerExpl.pack(fill=X)
             self.containerKCal.pack(fill=X)
             self.containerGra.pack(fill=X)
             self.containerSat.pack(fill=X)
@@ -628,25 +631,50 @@ class addComida(tk.Frame):
             self.containerTip.pack(fill=X)
             self.containerCal.pack(fill=X)
             self.containerButt.pack(fill=X)
-            label = tk.Label(self.containerTit, text="\t", font=controller.title_font,bg=fondoGeneral)    
+            etiquetas_font = font.Font(family='Times', size=16, weight="bold")
+            label = tk.Label(self.containerTit, text="\t     ", font=controller.title_font,bg=fondoGeneral)    
             label.pack(side=LEFT)
-            label = tk.Label(self.containerTit, text="\tAlimento #1", font=controller.title_font,bg=fondoGeneral)    
-            label.pack(side=LEFT)
-            label = tk.Label(self.containerTit, text="\tAlimento #2", font=controller.title_font,bg=fondoGeneral)    
-            label.pack(side=LEFT)
-            label = tk.Label(self.containerTit, text="\tAlimento #3", font=controller.title_font,bg=fondoGeneral)    
-            label.pack(side=LEFT)
+            label = tk.Label(self.containerTit, text="Alimento #1", font=etiquetas_font,bg=fondoGeneral)    
+            label.pack(side=LEFT,expand=1,fill=BOTH)
+            label = tk.Label(self.containerTit, text="Alimento #2", font=etiquetas_font,bg=fondoGeneral)    
+            label.pack(side=LEFT,expand=1,fill=BOTH)
+            label = tk.Label(self.containerTit, text="Alimento #3", font=etiquetas_font,bg=fondoGeneral)    
+            label.pack(side=LEFT,expand=1,fill=BOTH)
+            label = tk.Label(self.containerTit, text="Alimento #4", font=etiquetas_font,bg=fondoGeneral)    
+            label.pack(side=LEFT,expand=1,fill=BOTH)
+            
             label_Nom = Label(self.containerNom, text="Nombre: ",width=20,font=("bold", 10),bg=fondoGeneral)
             label_Nom.pack(side=LEFT)
             
             self.entry_Nom = Entry(self.containerNom,bg=fondoGeneral)
             self.entry_Nom.pack(expand=1,fill=BOTH,side=LEFT)
             
+            self.entry_Nom2 = Entry(self.containerNom,bg=fondoGeneral)
+            self.entry_Nom2.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Nom3 = Entry(self.containerNom,bg=fondoGeneral)
+            self.entry_Nom3.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Nom4 = Entry(self.containerNom,bg=fondoGeneral)
+            self.entry_Nom4.pack(expand=1,fill=BOTH,side=LEFT)
+
             label_Gram = Label(self.containerGram, text="Gramos: ",width=20,font=("bold", 10),bg=fondoGeneral)
             label_Gram.pack(side=LEFT)
             
             self.entry_Gram = Entry(self.containerGram,bg=fondoGeneral)
             self.entry_Gram.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Gram2 = Entry(self.containerGram,bg=fondoGeneral)
+            self.entry_Gram2.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Gram3 = Entry(self.containerGram,bg=fondoGeneral)
+            self.entry_Gram3.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Gram4 = Entry(self.containerGram,bg=fondoGeneral)
+            self.entry_Gram4.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            label_kcal = Label(self.containerExpl, text="A continuación añada la información correspondiente a 100 gramos:",width=20,bg=fondoGeneral)
+            label_kcal.pack(expand=1,fill=BOTH)
             
             label_kcal = Label(self.containerKCal, text="KiloCalorias",width=20,font=("bold", 10),bg=fondoGeneral)
             label_kcal.pack(side=LEFT)
@@ -654,11 +682,29 @@ class addComida(tk.Frame):
             self.entry_kcal = Entry(self.containerKCal,bg=fondoGeneral)
             self.entry_kcal.pack(expand=1,fill=BOTH,side=LEFT)
             
+            self.entry_kcal1 = Entry(self.containerKCal,bg=fondoGeneral)
+            self.entry_kcal1.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_kcal2 = Entry(self.containerKCal,bg=fondoGeneral)
+            self.entry_kcal2.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_kcal3 = Entry(self.containerKCal,bg=fondoGeneral)
+            self.entry_kcal3.pack(expand=1,fill=BOTH,side=LEFT)
+            
             label_gras = Label(self.containerGra, text="Grasa",width=20,font=("bold", 10),bg=fondoGeneral)
             label_gras.pack(side=LEFT)        
             
             self.entry_gras = Entry(self.containerGra,bg=fondoGeneral)
             self.entry_gras.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_gras1 = Entry(self.containerGra,bg=fondoGeneral)
+            self.entry_gras1.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_gras2 = Entry(self.containerGra,bg=fondoGeneral)
+            self.entry_gras2.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_gras3 = Entry(self.containerGra,bg=fondoGeneral)
+            self.entry_gras3.pack(expand=1,fill=BOTH,side=LEFT)
             
             label_sat = Label(self.containerSat, text="Saturadas",width=20,font=("bold", 10),bg=fondoGeneral)
             label_sat.pack(side=LEFT)     
@@ -666,23 +712,59 @@ class addComida(tk.Frame):
             self.entry_sat = Entry(self.containerSat,bg=fondoGeneral)
             self.entry_sat.pack(expand=1,fill=BOTH,side=LEFT)
             
+            self.entry_sat1 = Entry(self.containerSat,bg=fondoGeneral)
+            self.entry_sat1.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_sat2 = Entry(self.containerSat,bg=fondoGeneral)
+            self.entry_sat2.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_sat3 = Entry(self.containerSat,bg=fondoGeneral)
+            self.entry_sat3.pack(expand=1,fill=BOTH,side=LEFT)
+            
             label_Hid = Label(self.containerHid, text="Hidratos",width=20,font=("bold", 10),bg=fondoGeneral)
             label_Hid.pack(side=LEFT)       
             
             self.entry_Hid = Entry(self.containerHid,bg=fondoGeneral)
             self.entry_Hid.pack(expand=1,fill=BOTH,side=LEFT)
             
+            self.entry_Hid1 = Entry(self.containerHid,bg=fondoGeneral)
+            self.entry_Hid1.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Hid2 = Entry(self.containerHid,bg=fondoGeneral)
+            self.entry_Hid2.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Hid3 = Entry(self.containerHid,bg=fondoGeneral)
+            self.entry_Hid3.pack(expand=1,fill=BOTH,side=LEFT)
+            
             label_Azuc = Label(self.containerAzu, text="Azucares",width=20,font=("bold", 10),bg=fondoGeneral)
             label_Azuc.pack(side=LEFT)       
             
             self.entry_Azuc = Entry(self.containerAzu,bg=fondoGeneral)
             self.entry_Azuc.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Azuc1 = Entry(self.containerAzu,bg=fondoGeneral)
+            self.entry_Azuc1.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Azuc2 = Entry(self.containerAzu,bg=fondoGeneral)
+            self.entry_Azuc2.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Azuc3 = Entry(self.containerAzu,bg=fondoGeneral)
+            self.entry_Azuc3.pack(expand=1,fill=BOTH,side=LEFT)
 
-            label_Pro = Label(self.containerPro, text="Azucares",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Pro = Label(self.containerPro, text="Proteina",width=20,font=("bold", 10),bg=fondoGeneral)
             label_Pro.pack(side=LEFT)       
             
             self.entry_Pro = Entry(self.containerPro,bg=fondoGeneral)
             self.entry_Pro.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Pro1 = Entry(self.containerPro,bg=fondoGeneral)
+            self.entry_Pro1.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Pro2 = Entry(self.containerPro,bg=fondoGeneral)
+            self.entry_Pro2.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Pro3 = Entry(self.containerPro,bg=fondoGeneral)
+            self.entry_Pro3.pack(expand=1,fill=BOTH,side=LEFT)
             
             label_Tip = Label(self.containerTip, text="Tipo",width=20,font=("bold", 10),bg=fondoGeneral)
             label_Tip.pack(side=TOP)
@@ -697,18 +779,8 @@ class addComida(tk.Frame):
             Checkbutton(self.containerTip, text="Merienda", variable=self.varMer,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
             self.varCen = IntVar()
             Checkbutton(self.containerTip, text="Cena", variable=self.varCen,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
-            '''
-            label_Cal = Label(self.containerCal, text="Calidad: ",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_Cal.pack(side=TOP)
-            self.varAct = IntVar()
-            Radiobutton(self.containerCal, text="1 - Buena ",padx = 10, variable=self.varAct, value=1,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
-            Radiobutton(self.containerCal, text="2 - Regular ",padx = 10, variable=self.varAct, value=2,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
-            Radiobutton(self.containerCal, text="3 - Con moderación",padx = 10, variable=self.varAct, value=3,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
-            Radiobutton(self.containerCal, text="4 - Evitar",padx = 10, variable=self.varAct, value=4,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
-            '''
 
-
-            buttonEnviar = Button(self.containerButt, text='Aceptar y Guardar',command=partial(ab.ComrproYAlmacenamientoAlimento,hojaUsuarios,self,controller),bg=colorDetalles,relief=GROOVE).pack(fill=X)
+            buttonEnviar = Button(self.containerButt, text='Aceptar y Guardar',command=partial(ab.ComrproYAlmacenamientoAlimento,hojaUsuarios,self),bg=colorDetalles,relief=GROOVE).pack(fill=X)
             button = tk.Button(self.containerButt, text="Cancelar",command=lambda: controller.show_frame("MostrarDieta"),relief=GROOVE,bg=colorDetalles)
             button.pack(fill=X)
             
@@ -720,7 +792,6 @@ if __name__ == "__main__":
         #Variable que almacena lo que lleva comido el cliente en cuanto a datos
         datosAlimCliente = np.zeros(5)
         #Array que guarda lo que ha comido hoy el cliente
-        dictTem = {'verde': ['powder blue','spring green'], 'rojo': ['red','white']}
         
         menuDeHoy = ["","","","",""]
         #Variable que almacena lo que tiene que comer

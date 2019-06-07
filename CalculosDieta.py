@@ -227,6 +227,10 @@ def repartoKcalSobrantes(kcal,listakcalcomidas, comida):
         cont = (int(listakcalcomidas[3])-int(kcal))
         listakcalcomidas[4] = listakcalcomidas[4] + cont       
     return listakcalcomidas
+'''
+Función que realiza los calculos necesarios para mostrarte por pantalla tu mejoría 
+en cuanto a la media del día de calidad entre todas las comidas
+'''
 def graficoTotal(selfi,hojaAlimentos):
 
     fechas = [];
@@ -262,6 +266,12 @@ def graficoTotal(selfi,hojaAlimentos):
         medias.append(container/contador)
         
     vs.gráfico(selfi,fechas,medias)
+'''
+Función que te muestra por pantalla los gráficos en base a la calidad y los días, de una 
+comida concreta del usuario, para ver mas al detalle los avances.
+Coge como parametros selfi (Tronco o raiz de la clase padre con todos sus argumentos), hoja de alimentos (para buscar sus caracteristicas), 
+y bandera para ver que tipo de comida es
+'''
 def graficoMejoraComida(selfi,hojaAlimentos, bandera):
     
     fechas = [];
@@ -303,6 +313,16 @@ def graficoMejoraComida(selfi,hojaAlimentos, bandera):
                 medias.append(container)
         
     vs.gráfico(selfi,fechas,medias)
+'''
+Hace los calculos correspondientes a la hora de añadir un nuevo menu, sumando todos los macronutrientes y los alimentos, 
+creando el plato completo y llevando a cabo los calculos para identificar la calidad en base a NUTRISCORE.
+'''
+def AñadirMenuCalculos(hojaUsuarios,self):
+    print('holi')
+'''
+Función que toma un "conjunto de bits" y te los transforma a un número entero, para
+ser almacenados y procesados por la base de datos.
+'''
 def stringTipoToNumber(des,alm,com,mer,cen):
     intTipo=0;
     if(des == 1):

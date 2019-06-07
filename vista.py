@@ -303,6 +303,8 @@ def crearArrayBandera(menuDeHoy):
 def gráfico(selfi,x,y):
     selfi.lin.set_data(x,y)
     ax = selfi.canvas.figure.axes[0]
+    ax.set_xlabel("Dias")
+    ax.set_ylabel("Calidad")
     ax.set_xlim(min(x),max(x))
     ax.set_ylim(0.7,4) 
     selfi.canvas.draw()
