@@ -317,7 +317,7 @@ def graficoMejoraComida(selfi,hojaAlimentos, bandera):
 Hace los calculos correspondientes a la hora de añadir un nuevo menu, sumando todos los macronutrientes y los alimentos, 
 creando el plato completo y llevando a cabo los calculos para identificar la calidad en base a NUTRISCORE.
 '''
-def AñadirMenuCalculos(hojaUsuarios,selfi):
+def AñadirMenuCalculos(hojaAlimentos,selfi):
     bandera=0
     nAlimento = [False, False, False, False, False]
     #ALIMENTO #1
@@ -325,24 +325,28 @@ def AñadirMenuCalculos(hojaUsuarios,selfi):
         if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_Gram.get()) ==0 or len(selfi.entry_kcal.get()) == 0 or len(selfi.entry_gras.get()) == 0 or len(selfi.entry_sat.get()) == 0 or len(selfi.entry_Hid.get()) == 0 or len(selfi.entry_Azuc.get()) == 0 or len(selfi.entry_Pro.get()) == 0 ):
             selfi.label_Error.config(text="ERROR: Algun dato erroneo del alimento #1")
         else:
+            nAlimento[0]= True
             bandera = 1;
     #ALIMENTO #2
     if(len(selfi.entry_Nom2.get()) != 0 or len(selfi.entry_Gram2.get()) !=0 or len(selfi.entry_kcal2.get()) != 0 or len(selfi.entry_gras2.get()) != 0 or len(selfi.entry_sat2.get()) != 0 or len(selfi.entry_Hid2.get()) != 0 or len(selfi.entry_Azuc2.get()) != 0 or len(selfi.entry_Pro2.get()) != 0):
         if(len(selfi.entry_Nom2.get()) ==0 or len(selfi.entry_Gram2.get()) ==0 or len(selfi.entry_kcal2.get()) == 0 or len(selfi.entry_gras2.get()) == 0 or len(selfi.entry_sat2.get()) == 0 or len(selfi.entry_Hid2.get()) == 0 or len(selfi.entry_Azuc2.get()) == 0 or len(selfi.entry_Pro2.get()) == 0):
             selfi.label_Error.config(text="ERROR: Algun dato erroneo del alimento #2")
         else:
+            nAlimento[1]= True
             bandera = 1;
     #ALIMENTO #3
     if(len(selfi.entry_Nom3.get()) != 0 or len(selfi.entry_Gram3.get()) !=0 or len(selfi.entry_kcal3.get()) != 0 or len(selfi.entry_gras3.get()) != 0 or len(selfi.entry_sat3.get()) != 0 or len(selfi.entry_Hid3.get()) != 0 or len(selfi.entry_Azuc3.get()) != 0 or len(selfi.entry_Pro3.get()) != 0):
         if(len(selfi.entry_Nom3.get()) ==0 or len(selfi.entry_Gram3.get()) ==0 or len(selfi.entry_kcal3.get()) == 0 or len(selfi.entry_gras3.get()) == 0 or len(selfi.entry_sat3.get()) == 0 or len(selfi.entry_Hid3.get()) == 0 or len(selfi.entry_Azuc3.get()) == 0 or len(selfi.entry_Pro3.get()) == 0):
             selfi.label_Error.config(text="ERROR: Algun dato erroneo del alimento #3")
         else:
+            nAlimento[2]= True
             bandera = 1;
     #ALIMENTO #4
     if(len(selfi.entry_Nom4.get()) != 0 or len(selfi.entry_Gram4.get()) !=0 or len(selfi.entry_kcal4.get()) != 0 or len(selfi.entry_gras4.get()) != 0 or len(selfi.entry_sat4.get()) != 0 or len(selfi.entry_Hid4.get()) != 0 or len(selfi.entry_Azuc4.get()) != 0 or len(selfi.entry_Pro4.get()) != 0 ):
         if(len(selfi.entry_Nom4.get()) ==0 or len(selfi.entry_Gram4.get()) ==0 or len(selfi.entry_kcal4.get()) == 0 or len(selfi.entry_gras4.get()) == 0 or len(selfi.entry_sat4.get()) == 0 or len(selfi.entry_Hid4.get()) == 0 or len(selfi.entry_Azuc4.get()) == 0 or len(selfi.entry_Pro4.get()) == 0 ):
             selfi.label_Error.config(text="ERROR: Algun dato erroneo del alimento #4")
         else:
+            nAlimento[3]= True
             bandera = 1;
     if(bandera==0):
         selfi.label_Error.config(text="ERROR: Rellene algún alimento")
@@ -386,7 +390,72 @@ def AñadirMenuCalculos(hojaUsuarios,selfi):
             selfi.label_Error.config(text="")
         except ValueError:
             selfi.label_Error.config(text="ERROR: Inserte un valor numerico válido")
-    
+    #FIN DE LAS PRUEBAS DE ERROR
+    #############################
+    #INICIO DE LOS CALCULOS
+    proporcion1=0;proporcion2=0; proporcion3=0;proporcion4=0;
+    kcal1=0;kcal2=0;kcal3=0;kcal4=0;
+    grasas1=0;grasas2=0;grasas3=0;grasas4=0;
+    saturadas1=0;saturadas2=0;saturadas3=0;saturadas4=0
+    hidratos1=0;hidratos2=0;hidratos3=0;hidratos4=0;
+    azucar1=0;azucar2=0;azucar3=0;azucar4=0;
+    proteinas1=0;proteinas2=0;proteinas3=0;proteinas4=0;
+    kcalTotal=0;
+    grasasTotal=0;
+    saturadasTotal=0;
+    hidratosTotal=0;
+    azucarTotal=0;
+    proteinasTotal=0;
+    nombre="";
+    calidad = 0;
+    if(nAlimento[0]):
+        proporcion1 = int(selfi.entry_Gram.get())/100
+        kcal1=int(selfi.entry_kcal.get())*proporcion1;
+        gramos1 = selfi.entry_Gram;
+        nombre+=str(gramos1.get())+" "+selfi.entry_Nom.get()
+        grasas1=int(selfi.entry_gras.get())*proporcion1;
+        saturadas1=int(selfi.entry_sat.get())*proporcion1;
+        hidratos1=int(selfi.entry_Hid.get())*proporcion1;
+        azucar1=int(selfi.entry_Azuc.get())*proporcion1;
+        proteinas1=int(selfi.entry_Pro.get())*proporcion1;
+    if(nAlimento[1]):
+        proporcion2 = int(selfi.entry_Gram2.get())/100
+        kcal2=int(selfi.entry_kcal2.get())*proporcion2;
+        gramos2 = selfi.entry_Gram2;
+        nombre+=str(gramos2.get())+" "+selfi.entry_Nom2.get()
+        grasas2=int(selfi.entry_gras2.get())*proporcion2;
+        saturadas2=int(selfi.entry_sat2.get())*proporcion2;
+        hidratos2=int(selfi.entry_Hid2.get())*proporcion2;
+        azucar2=int(selfi.entry_Azuc2.get())*proporcion2;
+        proteinas2=int(selfi.entry_Pro.get())*proporcion2;
+    if(nAlimento[2]):
+        proporcion3 = int(selfi.entry_Gram3.get())/100
+        kcal3 = int(selfi.entry_kcal3.get())*proporcion3;
+        gramos3 = selfi.entry_Gram3;
+        nombre+=str(gramos3.get())+" "+selfi.entry_Nom3.get()
+        grasas3 = int(selfi.entry_gras3.get())*proporcion3;
+        saturadas3=int(selfi.entry_sat3.get())*proporcion3;
+        hidratos3=int(selfi.entry_Hid3.get())*proporcion3;
+        azucar3=int(selfi.entry_Azuc3.get())*proporcion3;
+        proteinas3=int(selfi.entry_Pro3.get())*proporcion3;
+    if(nAlimento[3]):
+        proporcion4 = int(selfi.entry_Gram4.get())/100
+        kcal4=int(selfi.entry_kcal4.get())*proporcion4;
+        gramos4 = selfi.entry_Gram4;
+        nombre+=str(gramos4.get())+" "+selfi.entry_Nom4.get()
+        grasas4=int(selfi.entry_gras4.get())*proporcion4;
+        saturadas4=int(selfi.entry_sat4.get())*proporcion4;
+        hidratos4=int(selfi.entry_Hid4.get())*proporcion4;
+        azucar4=int(selfi.entry_Azuc4.get())*proporcion4;
+        proteinas4=int(selfi.entry_Pro4.get())*proporcion4;
+    tipo= stringTipoToNumber(selfi.varDes.get(),selfi.varAlm.get(),selfi.varCom.get(),selfi.varMer.get(),selfi.varCen.get())
+    kcalTotal=kcal1+kcal2+kcal3+kcal4;
+    grasasTotal=grasas1+grasas2+grasas3+grasas4;
+    saturadasTotal=saturadas1+saturadas2+saturadas3+saturadas4;
+    hidratosTotal=hidratos1+hidratos2+hidratos3+hidratos4;
+    azucarTotal=azucar1+azucar2+azucar3+azucar4;
+    proteinasTotal=proteinas1+proteinas2+proteinas3+proteinas4;
+    ab.ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal,azucarTotal,proteinasTotal,tipo, calidad)
 '''
 Función que toma un "conjunto de bits" y te los transforma a un número entero, para
 ser almacenados y procesados por la base de datos.
