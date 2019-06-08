@@ -319,6 +319,7 @@ creando el plato completo y llevando a cabo los calculos para identificar la cal
 '''
 def AñadirMenuCalculos(hojaUsuarios,selfi):
     bandera=0
+    nAlimento = [False, False, False, False, False]
     #ALIMENTO #1
     if(len(selfi.entry_Nom.get()) != 0 or len(selfi.entry_Gram.get()) !=0 or len(selfi.entry_kcal.get()) != 0 or len(selfi.entry_gras.get()) != 0 or len(selfi.entry_sat.get()) != 0 or len(selfi.entry_Hid.get()) != 0 or len(selfi.entry_Azuc.get()) != 0 or len(selfi.entry_Pro.get()) != 0  ):
         if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_Gram.get()) ==0 or len(selfi.entry_kcal.get()) == 0 or len(selfi.entry_gras.get()) == 0 or len(selfi.entry_sat.get()) == 0 or len(selfi.entry_Hid.get()) == 0 or len(selfi.entry_Azuc.get()) == 0 or len(selfi.entry_Pro.get()) == 0 ):
@@ -351,11 +352,37 @@ def AñadirMenuCalculos(hojaUsuarios,selfi):
     else:
         try:
             int(selfi.entry_kcal.get())
+            int(selfi.entry_Gram.get())
             int(selfi.entry_gras.get())
             int(selfi.entry_sat.get())
             int(selfi.entry_Hid.get())
             int(selfi.entry_Azuc.get())
             int(selfi.entry_Pro.get())
+            
+            int(selfi.entry_kcal2.get())
+            int(selfi.entry_Gram2.get())
+            int(selfi.entry_gras2.get())
+            int(selfi.entry_sat2.get())
+            int(selfi.entry_Hid2.get())
+            int(selfi.entry_Azuc2.get())
+            int(selfi.entry_Pro2.get())
+            
+            int(selfi.entry_kcal3.get())
+            int(selfi.entry_Gram3.get())
+            int(selfi.entry_gras3.get())
+            int(selfi.entry_sat3.get())
+            int(selfi.entry_Hid3.get())
+            int(selfi.entry_Azuc3.get())
+            int(selfi.entry_Pro3.get())
+            
+            int(selfi.entry_kcal4.get())
+            int(selfi.entry_Gram4.get())
+            int(selfi.entry_gras4.get())
+            int(selfi.entry_sat4.get())
+            int(selfi.entry_Hid4.get())
+            int(selfi.entry_Azuc4.get())
+            int(selfi.entry_Pro4.get())
+
             selfi.label_Error.config(text="")
         except ValueError:
             selfi.label_Error.config(text="ERROR: Inserte un valor numerico válido")
