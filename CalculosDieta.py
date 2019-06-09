@@ -68,6 +68,7 @@ def distribuciónDeMacronutrientes(kcal,tipoDieta):
         listMacDiarios = [kcal,hidratos,proteinas,grasas]
     else:
         return None;
+    
 '''
 Crear Función que te devuelva en diferentes arrays, las kcal, 
 y gramos de comida correspondientes al desayuno, almuerzo, comida, merienda y cena
@@ -422,7 +423,7 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
         proporcion2 = int(selfi.entry_Gram2.get())/100
         kcal2=int(selfi.entry_kcal2.get())*proporcion2;
         gramos2 = selfi.entry_Gram2;
-        nombre+=str(gramos2.get())+" "+selfi.entry_Nom2.get()
+        nombre+=" + "+str(gramos2.get())+" "+selfi.entry_Nom2.get()
         grasas2=int(selfi.entry_gras2.get())*proporcion2;
         saturadas2=int(selfi.entry_sat2.get())*proporcion2;
         hidratos2=int(selfi.entry_Hid2.get())*proporcion2;
@@ -432,7 +433,7 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
         proporcion3 = int(selfi.entry_Gram3.get())/100
         kcal3 = int(selfi.entry_kcal3.get())*proporcion3;
         gramos3 = selfi.entry_Gram3;
-        nombre+=str(gramos3.get())+" "+selfi.entry_Nom3.get()
+        nombre+=" + "+str(gramos3.get())+" "+selfi.entry_Nom3.get()
         grasas3 = int(selfi.entry_gras3.get())*proporcion3;
         saturadas3=int(selfi.entry_sat3.get())*proporcion3;
         hidratos3=int(selfi.entry_Hid3.get())*proporcion3;
@@ -442,7 +443,7 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
         proporcion4 = int(selfi.entry_Gram4.get())/100
         kcal4=int(selfi.entry_kcal4.get())*proporcion4;
         gramos4 = selfi.entry_Gram4;
-        nombre+=str(gramos4.get())+" "+selfi.entry_Nom4.get()
+        nombre+=" + "+str(gramos4.get())+" "+selfi.entry_Nom4.get()
         grasas4=int(selfi.entry_gras4.get())*proporcion4;
         saturadas4=int(selfi.entry_sat4.get())*proporcion4;
         hidratos4=int(selfi.entry_Hid4.get())*proporcion4;
@@ -473,3 +474,101 @@ def stringTipoToNumber(des,alm,com,mer,cen):
     if(cen==1):
         intTipo+=1
     return intTipo;
+'''
+Función que coge como parametros la información nutricional necesaria para realizar
+el algoritmo Nutriscore del semaforo y lo realiza, dando como resultado un número del 1 al 5 
+que seria el color del semaforo como tal.
+Esto se realiza haciendo una criba de las difetentes caracteristicas
+'''
+def algoritmoNutriscore(kcal, azucar, saturadas,fibra, proteina):
+    #1 kilocaloria = 4,19 kilojulios
+    kj = int(kcal) * 4,18;
+    #Variable de los resultados negativos
+    A=0;
+    #Variable para los nutrientes buenos
+    C=0;
+    #Puntuación kilojulios
+    if(kj <= 335):
+        A+=0
+    elif(kj > 3350):
+        A+=10
+    elif(kj > 3015):
+        A+=9
+    elif(kj > 2680):
+        A+=8
+    elif(kj > 2345):
+        A+=7
+    elif(kj > 2010):
+        A+=6
+    elif(kj > 1675):
+        A+=5
+    elif(kj > 1340):
+        A+=4
+    elif(kj > 1005):
+        A+=3
+    elif(kj > 670):
+        A+=2
+    elif(kj > 335):
+        A+=1
+    #Puntuación azucares
+    if(azucar <= 4.5):
+        A+=0
+    elif(azucar > 45):
+        A+=10
+    elif(azucar > 40):
+        A+=9
+    elif(azucar > 36):
+        A+=8
+    elif(azucar > 31):
+        A+=7
+    elif(azucar > 27):
+        A+=6
+    elif(azucar > 22.5):
+        A+=5
+    elif(azucar > 18):
+        A+=4
+    elif(azucar > 13.5):
+        A+=3
+    elif(azucar > 9):
+        A+=2
+    elif(azucar > 4.5):
+        A+=1
+    #Putuacion Grasas saturadas
+    if(saturadas > 10):
+        A+=10
+    elif(saturadas > 9):
+        A+=9
+    elif(saturadas > 8):
+        A+=8
+    elif(saturadas > 7):
+        A+=7
+    elif(saturadas > 6):
+        A+=6
+    elif(saturadas > 5):
+        A+=5
+    elif(saturadas > 4):
+        A+=4
+    elif(saturadas > 3):
+        A+=3
+    elif(saturadas > 2):
+        A+=2
+    elif(saturadas > 1):
+        A+=1
+    #PUNTUACION BUENA
+    if(proteina>8):
+        C+=5
+    elif(proteina>6.4):
+        C+=4
+    elif(proteina>4.8):
+        C+=3
+    elif(proteina>3.2):
+        C+=2
+    elif(proteina>1.6):
+        C+=1
+    #Ponderación final del resultado
+    if(A<11):
+        total= A-C
+    else:
+        total= A-C
+    return total;
+        
