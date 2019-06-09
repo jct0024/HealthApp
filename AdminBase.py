@@ -151,7 +151,7 @@ def guardarHistorial (usr, menuDeHoy, historial):
         lala = historial.index[(historial.Fecha == fech) & (historial.Usuario == usr)]
         historial.iloc[lala] = hoy
     else:
-        historial=historial.append(hoy)    
+        historial=historial.append(hoy,sort=False)    
     writer = pd.ExcelWriter("Historial.xlsx")
     historial.to_excel(writer,'UsrAl',index=False)
     writer.save();
@@ -200,7 +200,7 @@ Carga el actual estado de la base de datos, además de la lista de la cual esta 
 guarda el alimento, lo hace solo sobre ese cambio y no tiene que guardar todo su progreso, y cuando quiere guardar todo su progreso el alimento esta ya almacenado
 en la lista, lo cual evita que se sobreescriba y se borren los avances.
 '''
-def ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kilocalorias, grasa,saturada, hidratos, azucar, proteina, tipo, calidad):
+def ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kilocalorias, grasa,saturada, hidratos,fibra, azucar, proteina,sodio, tipo, calidad):
     alimentos, patologias = cargarBaseAlimentos() 
     nuevaFila= pd.DataFrame({'Nombre':[nombre],
                              'Calorias': [kilocalorias],
@@ -213,7 +213,7 @@ def ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kilocalorias, grasa,sat
                              'LRE':[0],
                              'Calidad': [calidad]})
     hojaAlimentos = hojaAlimentos.append(nuevaFila)
-    alimentos = alimentos.append(nuevaFila)
+    alimentos = alimentos.append(nuevaFila,sort=False)
     print(alimentos)
     #Guardamos la 'imagen' de la base de datos sin retoques, solo con la nueva linea
     guardarDatos(alimentos,patologias)

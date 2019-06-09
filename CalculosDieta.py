@@ -399,64 +399,86 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
     grasas1=0;grasas2=0;grasas3=0;grasas4=0;
     saturadas1=0;saturadas2=0;saturadas3=0;saturadas4=0
     hidratos1=0;hidratos2=0;hidratos3=0;hidratos4=0;
+    fibra1=0;fibra2=0;fibra3=0;fibra4=0;
     azucar1=0;azucar2=0;azucar3=0;azucar4=0;
     proteinas1=0;proteinas2=0;proteinas3=0;proteinas4=0;
+    sodio1=0.0;sodio2=0.0;sodio3=0.0;sodio4=0.0;
     kcalTotal=0;
     grasasTotal=0;
     saturadasTotal=0;
     hidratosTotal=0;
+    fibraTotal=0;
     azucarTotal=0;
     proteinasTotal=0;
+    sodioTotal=0;
     nombre="";
     calidad = 0;
     if(nAlimento[0]):
-        proporcion1 = int(selfi.entry_Gram.get())/100
-        kcal1=int(selfi.entry_kcal.get())*proporcion1;
+        proporcion1 = float(selfi.entry_Gram.get())/100
+        kcal1=float(selfi.entry_kcal.get())*proporcion1;
         gramos1 = selfi.entry_Gram;
         nombre+=str(gramos1.get())+" "+selfi.entry_Nom.get()
-        grasas1=int(selfi.entry_gras.get())*proporcion1;
-        saturadas1=int(selfi.entry_sat.get())*proporcion1;
-        hidratos1=int(selfi.entry_Hid.get())*proporcion1;
-        azucar1=int(selfi.entry_Azuc.get())*proporcion1;
-        proteinas1=int(selfi.entry_Pro.get())*proporcion1;
+        grasas1=float(selfi.entry_gras.get())*proporcion1;
+        saturadas1=float(selfi.entry_sat.get())*proporcion1;
+        hidratos1=float(selfi.entry_Hid.get())*proporcion1;
+        fibra1=float(selfi.entry_Fibra.get())*proporcion1
+        azucar1=float(selfi.entry_Azuc.get())*proporcion1;
+        proteinas1=float(selfi.entry_Pro.get())*proporcion1;
+        sodio1=float(selfi.entry_Sod.get())*proporcion1;
     if(nAlimento[1]):
-        proporcion2 = int(selfi.entry_Gram2.get())/100
-        kcal2=int(selfi.entry_kcal2.get())*proporcion2;
+        proporcion2 = float(selfi.entry_Gram2.get())/100
+        kcal2=float(selfi.entry_kcal2.get())*proporcion2;
         gramos2 = selfi.entry_Gram2;
         nombre+=" + "+str(gramos2.get())+" "+selfi.entry_Nom2.get()
-        grasas2=int(selfi.entry_gras2.get())*proporcion2;
-        saturadas2=int(selfi.entry_sat2.get())*proporcion2;
-        hidratos2=int(selfi.entry_Hid2.get())*proporcion2;
-        azucar2=int(selfi.entry_Azuc2.get())*proporcion2;
-        proteinas2=int(selfi.entry_Pro.get())*proporcion2;
+        grasas2=float(selfi.entry_gras2.get())*proporcion2;
+        saturadas2=float(selfi.entry_sat2.get())*proporcion2;
+        hidratos2=float(selfi.entry_Hid2.get())*proporcion2;
+        fibra2=float(selfi.entry_Fibra2.get())*proporcion2
+        azucar2=float(selfi.entry_Azuc2.get())*proporcion2;
+        proteinas2=float(selfi.entry_Pro.get())*proporcion2;
+        sodio2=float(selfi.entry_Sod2.get())*proporcion2;
     if(nAlimento[2]):
-        proporcion3 = int(selfi.entry_Gram3.get())/100
-        kcal3 = int(selfi.entry_kcal3.get())*proporcion3;
+        proporcion3 = float(selfi.entry_Gram3.get())/100
+        kcal3 = float(selfi.entry_kcal3.get())*proporcion3;
         gramos3 = selfi.entry_Gram3;
         nombre+=" + "+str(gramos3.get())+" "+selfi.entry_Nom3.get()
-        grasas3 = int(selfi.entry_gras3.get())*proporcion3;
-        saturadas3=int(selfi.entry_sat3.get())*proporcion3;
-        hidratos3=int(selfi.entry_Hid3.get())*proporcion3;
-        azucar3=int(selfi.entry_Azuc3.get())*proporcion3;
-        proteinas3=int(selfi.entry_Pro3.get())*proporcion3;
+        grasas3 = float(selfi.entry_gras3.get())*proporcion3;
+        saturadas3=float(selfi.entry_sat3.get())*proporcion3;
+        hidratos3=float(selfi.entry_Hid3.get())*proporcion3;
+        fibra3=float(selfi.entry_Fibra3.get())*proporcion3
+        azucar3=float(selfi.entry_Azuc3.get())*proporcion3;
+        proteinas3=float(selfi.entry_Pro3.get())*proporcion3;
+        sodio3=float(selfi.entry_Sod3.get())*proporcion3;
     if(nAlimento[3]):
-        proporcion4 = int(selfi.entry_Gram4.get())/100
-        kcal4=int(selfi.entry_kcal4.get())*proporcion4;
+        proporcion4 = float(selfi.entry_Gram4.get())/100
+        kcal4=float(selfi.entry_kcal4.get())*proporcion4;
         gramos4 = selfi.entry_Gram4;
         nombre+=" + "+str(gramos4.get())+" "+selfi.entry_Nom4.get()
-        grasas4=int(selfi.entry_gras4.get())*proporcion4;
-        saturadas4=int(selfi.entry_sat4.get())*proporcion4;
-        hidratos4=int(selfi.entry_Hid4.get())*proporcion4;
-        azucar4=int(selfi.entry_Azuc4.get())*proporcion4;
-        proteinas4=int(selfi.entry_Pro4.get())*proporcion4;
+        grasas4=float(selfi.entry_gras4.get())*proporcion4;
+        saturadas4=float(selfi.entry_sat4.get())*proporcion4;
+        hidratos4=float(selfi.entry_Hid4.get())*proporcion4;
+        fibra4=float(selfi.entry_Fibra4.get())*proporcion4
+        azucar4=float(selfi.entry_Azuc4.get())*proporcion4;
+        proteinas4=float(selfi.entry_Pro4.get())*proporcion4;
+        sodio4=float(selfi.entry_Sod4.get())*proporcion4;
+    #Llamada a la función del calculo nutriscore
+    cal1=algoritmoNutriscore(kcal1,azucar1,saturadas1,fibra1,proteinas1,sodio1)
+    cal2=algoritmoNutriscore(kcal2,azucar2,saturadas2,fibra2,proteinas2,sodio2)
+    cal3=algoritmoNutriscore(kcal3,azucar3,saturadas3,fibra3,proteinas3,sodio3)
+    cal4=algoritmoNutriscore(kcal4,azucar4,saturadas4,fibra4,proteinas4,sodio4)
+    #Sumatorio de los resultados recogidos a lo largo de la funcion:
     tipo= stringTipoToNumber(selfi.varDes.get(),selfi.varAlm.get(),selfi.varCom.get(),selfi.varMer.get(),selfi.varCen.get())
     kcalTotal=kcal1+kcal2+kcal3+kcal4;
     grasasTotal=grasas1+grasas2+grasas3+grasas4;
     saturadasTotal=saturadas1+saturadas2+saturadas3+saturadas4;
     hidratosTotal=hidratos1+hidratos2+hidratos3+hidratos4;
+    fibraTotal=fibra1+fibra2+fibra3+fibra4;
     azucarTotal=azucar1+azucar2+azucar3+azucar4;
     proteinasTotal=proteinas1+proteinas2+proteinas3+proteinas4;
-    ab.ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal,azucarTotal,proteinasTotal,tipo, calidad)
+    calidad=(cal1+cal2+cal3+cal4)/4
+    sodioTotal=sodio1+sodio2+sodio3+sodio4
+
+    ab.ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, calidad)
 '''
 Función que toma un "conjunto de bits" y te los transforma a un número entero, para
 ser almacenados y procesados por la base de datos.
@@ -480,9 +502,9 @@ el algoritmo Nutriscore del semaforo y lo realiza, dando como resultado un núme
 que seria el color del semaforo como tal.
 Esto se realiza haciendo una criba de las difetentes caracteristicas
 '''
-def algoritmoNutriscore(kcal, azucar, saturadas,fibra, proteina):
+def algoritmoNutriscore(kcal, azucar, saturadas,fibra, proteina,sodio):
     #1 kilocaloria = 4,19 kilojulios
-    kj = int(kcal) * 4,18;
+    kj = float(kcal) * 4.18;
     #Variable de los resultados negativos
     A=0;
     #Variable para los nutrientes buenos
@@ -554,7 +576,29 @@ def algoritmoNutriscore(kcal, azucar, saturadas,fibra, proteina):
         A+=2
     elif(saturadas > 1):
         A+=1
-    #PUNTUACION BUENA
+    #Puntuacion SODIO
+    if(sodio>900):
+        A+=10
+    elif(sodio>810):
+        A+=9
+    elif(sodio>810):
+        A+=8
+    elif(sodio>720):
+        A+=7
+    elif(sodio>630):
+        A+=6
+    elif(sodio>540):
+        A+=5
+    elif(sodio>450):
+        A+=4
+    elif(sodio>360):
+        A+=3
+    elif(sodio>270):
+        A+=2
+    elif(sodio>180):
+        A+=1
+    #### PUNTUACION BUENA ####
+    #PROTEINA
     if(proteina>8):
         C+=5
     elif(proteina>6.4):
@@ -564,6 +608,17 @@ def algoritmoNutriscore(kcal, azucar, saturadas,fibra, proteina):
     elif(proteina>3.2):
         C+=2
     elif(proteina>1.6):
+        C+=1
+    #FIBRA
+    if(fibra>3.5):
+        C+=5
+    elif(fibra>2.8):
+        C+=4
+    elif(fibra>2.1):
+        C+=3
+    elif(fibra>1.4):
+        C+=2
+    elif(fibra>0.7):
         C+=1
     #Ponderación final del resultado
     if(A<11):

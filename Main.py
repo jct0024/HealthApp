@@ -611,8 +611,10 @@ class addComida(tk.Frame):
             self.containerGra = tk.Frame(self,bg=fondoGeneral)
             self.containerSat = tk.Frame(self,bg=fondoGeneral)
             self.containerHid = tk.Frame(self,bg=fondoGeneral)
+            self.containerFib = tk.Frame(self,bg=fondoGeneral)
             self.containerAzu = tk.Frame(self,bg=fondoGeneral)
             self.containerPro = tk.Frame(self,bg=fondoGeneral)
+            self.containerSod = tk.Frame(self,bg=fondoGeneral)
             self.containerTip = tk.Frame(self,bg=fondoGeneral)
             self.containerCal = tk.Frame(self,bg=fondoGeneral)
             self.containerButt = tk.Frame(self,bg=fondoGeneral)
@@ -626,8 +628,10 @@ class addComida(tk.Frame):
             self.containerGra.pack(fill=X)
             self.containerSat.pack(fill=X)
             self.containerHid.pack(fill=X)
+            self.containerFib.pack(fill=X)
             self.containerAzu.pack(fill=X)
             self.containerPro.pack(fill=X)
+            self.containerSod.pack(fill=X)
             self.containerTip.pack(fill=X)
             self.containerCal.pack(fill=X)
             self.containerButt.pack(fill=X)
@@ -738,6 +742,22 @@ class addComida(tk.Frame):
             self.entry_Hid4 = Entry(self.containerHid,bg=fondoGeneral)
             self.entry_Hid4.pack(expand=1,fill=BOTH,side=LEFT)
  
+    
+            label_Fibra = Label(self.containerFib, text="Fibra",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Fibra.pack(side=LEFT)       
+            
+            self.entry_Fibra = Entry(self.containerFib,bg=fondoGeneral)
+            self.entry_Fibra.pack(expand=1,fill=BOTH,side=LEFT)
+
+            self.entry_Fibra2 = Entry(self.containerFib,bg=fondoGeneral)
+            self.entry_Fibra2.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Fibra3 = Entry(self.containerFib,bg=fondoGeneral)
+            self.entry_Fibra3.pack(expand=1,fill=BOTH,side=LEFT)
+                        
+            self.entry_Fibra4 = Entry(self.containerFib,bg=fondoGeneral)
+            self.entry_Fibra4.pack(expand=1,fill=BOTH,side=LEFT)
+            
             
             label_Azuc = Label(self.containerAzu, text="Azucares",width=20,font=("bold", 10),bg=fondoGeneral)
             label_Azuc.pack(side=LEFT)       
@@ -769,6 +789,21 @@ class addComida(tk.Frame):
                         
             self.entry_Pro4 = Entry(self.containerPro,bg=fondoGeneral)
             self.entry_Pro4.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            label_Sod = Label(self.containerSod, text="Sodio",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Sod.pack(side=LEFT)       
+            
+            self.entry_Sod = Entry(self.containerSod,bg=fondoGeneral)
+            self.entry_Sod.pack(expand=1,fill=BOTH,side=LEFT)
+
+            self.entry_Sod2 = Entry(self.containerSod,bg=fondoGeneral)
+            self.entry_Sod2.pack(expand=1,fill=BOTH,side=LEFT)
+            
+            self.entry_Sod3 = Entry(self.containerSod,bg=fondoGeneral)
+            self.entry_Sod3.pack(expand=1,fill=BOTH,side=LEFT)
+                        
+            self.entry_Sod4 = Entry(self.containerSod,bg=fondoGeneral)
+            self.entry_Sod4.pack(expand=1,fill=BOTH,side=LEFT)
             
             
             label_Tip = Label(self.containerTip, text="Tipo",width=20,font=("bold", 10),bg=fondoGeneral)
