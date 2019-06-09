@@ -9,6 +9,7 @@ from PIL import ImageTk, Image
 import numpy as np;
 import os
 import matplotlib
+import webbrowser
 matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
@@ -617,6 +618,7 @@ class addComida(tk.Frame):
             self.containerSod = tk.Frame(self,bg=fondoGeneral)
             self.containerTip = tk.Frame(self,bg=fondoGeneral)
             self.containerCal = tk.Frame(self,bg=fondoGeneral)
+            self.cointainerLink = tk.Frame(self,bg=fondoGeneral)
             self.containerButt = tk.Frame(self,bg=fondoGeneral)
             label = tk.Label(self, text="Añadiendo Menu", font=controller.title_font,bg=fondoGeneral)    
             label.pack()
@@ -634,6 +636,7 @@ class addComida(tk.Frame):
             self.containerSod.pack(fill=X)
             self.containerTip.pack(fill=X)
             self.containerCal.pack(fill=X)
+            self.cointainerLink.pack(fill=X)
             self.containerButt.pack(fill=X)
             etiquetas_font = font.Font(family='Times', size=16, weight="bold")
             label = tk.Label(self.containerTit, text="\t     ", font=controller.title_font,bg=fondoGeneral)    
@@ -819,7 +822,13 @@ class addComida(tk.Frame):
             Checkbutton(self.containerTip, text="Merienda", variable=self.varMer,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
             self.varCen = IntVar()
             Checkbutton(self.containerTip, text="Cena", variable=self.varCen,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
-
+            
+            link = Label(self.cointainerLink, text= "Se le aconseja la siguiente página web para rellenar la información nutricional:",bg=fondoGeneral) 
+            link1 = Label(self.cointainerLink, text= "Bedca",fg="blue", cursor="hand2",bg=fondoGeneral) 
+            link.pack(side=LEFT)
+            link1.pack(side=LEFT)
+            link1.bind("<Button-1>", lambda e: webbrowser.open_new("http://www.bedca.net/"))
+            
             buttonEnviar = Button(self.containerButt, text='Aceptar y Guardar',command=partial(cd.AñadirMenuCalculos,hojaUsuarios,self),bg=colorDetalles,relief=GROOVE).pack(fill=X)
             button = tk.Button(self.containerButt, text="Cancelar",command=lambda: controller.show_frame("MostrarDieta"),relief=GROOVE,bg=colorDetalles)
             button.pack(fill=X)
