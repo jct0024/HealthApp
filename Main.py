@@ -830,9 +830,14 @@ class addComida(tk.Frame):
             link1.bind("<Button-1>", lambda e: webbrowser.open_new("http://www.bedca.net/"))
             
             buttonEnviar = Button(self.containerButt, text='Aceptar y Guardar',command=partial(cd.AñadirMenuCalculos,hojaUsuarios,self),bg=colorDetalles,relief=GROOVE).pack(fill=X)
-            button = tk.Button(self.containerButt, text="Cancelar",command=lambda: controller.show_frame("MostrarDieta"),relief=GROOVE,bg=colorDetalles)
-            button.pack(fill=X)
+            button = tk.Button(self.containerButt, text="Cancelar",command=lambda: controller.show_frame("MostrarDieta"),relief=GROOVE,bg=colorDetalles).pack(fill=X)
             
+            f = Figure(figsize=(5,4))
+            canvas = FigureCanvasTkAgg(f, master=self)
+            canvas.get_tk_widget().pack(side=LEFT)
+            p = f.gca()
+            p.hist([1,1,2,0])
+            canvas.draw();
             self.label_Error = Label(self, text="",width=20,font=("bold", 10),bg=fondoGeneral,foreground="red")
             self.label_Error.pack(fill=BOTH)
 
