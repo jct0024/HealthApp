@@ -93,33 +93,17 @@ def listasPorTipo(listaDeAlimentos):
     merienda = pd.DataFrame();
     cena = pd.DataFrame();
     for indice, comida in listaDeAlimentos.iterrows():
-        if(int(comida["Tipo"])==31):
+        if(int(comida["Tipo"])==31 or int(comida["Tipo"])==30 or int(comida["Tipo"])==29 or int(comida["Tipo"])==28 or int(comida["Tipo"])==27 or int(comida["Tipo"])==26 or int(comida["Tipo"])==25 or int(comida["Tipo"])==24 or int(comida["Tipo"])==23 or int(comida["Tipo"])==22 or int(comida["Tipo"])==21 or int(comida["Tipo"])==20 or int(comida["Tipo"])==19 or int(comida["Tipo"])==18 or int(comida["Tipo"])==17 or int(comida["Tipo"])==16):
             desayuno = desayuno.append(listaDeAlimentos.loc[indice]);
+        if(int(comida["Tipo"])==8 or int(comida["Tipo"])==9 or int(comida["Tipo"])==10 or int(comida["Tipo"])==11 or int(comida["Tipo"])==12 or int(comida["Tipo"])==13 or int(comida["Tipo"])==14 or int(comida["Tipo"])==15 or int(comida["Tipo"])==24 or int(comida["Tipo"])==25 or int(comida["Tipo"])==26 or int(comida["Tipo"])==27 or int(comida["Tipo"])==28 or int(comida["Tipo"])==29 or int(comida["Tipo"])==30 or int(comida["Tipo"])==31):
             almuerzo = almuerzo.append(listaDeAlimentos.loc[indice]);
+        if(int(comida["Tipo"])==4 or int(comida["Tipo"])==5 or int(comida["Tipo"])==6 or int(comida["Tipo"])==7 or int(comida["Tipo"])==12 or int(comida["Tipo"])==13 or int(comida["Tipo"])==14 or int(comida["Tipo"])==15 or int(comida["Tipo"])==20 or int(comida["Tipo"])==21 or int(comida["Tipo"])==22 or int(comida["Tipo"])==23 or int(comida["Tipo"])==28 or int(comida["Tipo"])==29 or int(comida["Tipo"])==30 or int(comida["Tipo"])==31):
             comida2 = comida2.append(listaDeAlimentos.loc[indice]);
+        if(int(comida["Tipo"])==2 or int(comida["Tipo"])==3 or int(comida["Tipo"])==6 or int(comida["Tipo"])==7 or int(comida["Tipo"])==10 or int(comida["Tipo"])==11 or int(comida["Tipo"])==14 or int(comida["Tipo"])==15 or int(comida["Tipo"])==18 or int(comida["Tipo"])==19 or int(comida["Tipo"])==22 or int(comida["Tipo"])==23 or int(comida["Tipo"])==26 or int(comida["Tipo"])==27 or int(comida["Tipo"])==30 or int(comida["Tipo"])==31):
             merienda = merienda.append(listaDeAlimentos.loc[indice]);
+        if(int(comida["Tipo"])==1 or int(comida["Tipo"])==3 or int(comida["Tipo"])==5 or int(comida["Tipo"])==7 or int(comida["Tipo"])==9 or int(comida["Tipo"])==11 or int(comida["Tipo"])==13 or int(comida["Tipo"])==15 or int(comida["Tipo"])==17 or int(comida["Tipo"])==19 or int(comida["Tipo"])==21 or int(comida["Tipo"])==23 or int(comida["Tipo"])==25 or int(comida["Tipo"])==27 or int(comida["Tipo"])==29 or int(comida["Tipo"])==31):
             cena = cena.append(listaDeAlimentos.loc[indice]);
-        elif(int(comida["Tipo"])==26):
-            desayuno = desayuno.append(listaDeAlimentos.loc[indice]);
-            almuerzo = almuerzo.append(listaDeAlimentos.loc[indice]);
-            merienda = merienda.append(listaDeAlimentos.loc[indice]);
-        elif(int(comida["Tipo"])==5):
-            comida2 = comida2.append(listaDeAlimentos.loc[indice]);
-            cena = cena.append(listaDeAlimentos.loc[indice]);
-        elif(int(comida["Tipo"])==15):
-            almuerzo = almuerzo.append(listaDeAlimentos.loc[indice]);
-            comida2 = comida2.append(listaDeAlimentos.loc[indice]);
-            merienda = merienda.append(listaDeAlimentos.loc[indice]);
-            cena = cena.append(listaDeAlimentos.loc[indice]);
-        elif(int(comida["Tipo"])==7):
-            comida2 = comida2.append(listaDeAlimentos.loc[indice]);
-            merienda = merienda.append(listaDeAlimentos.loc[indice]);
-            cena = cena.append(listaDeAlimentos.loc[indice]);
-        elif(int(comida["Tipo"])==16):
-            desayuno = desayuno.append(listaDeAlimentos.loc[indice]);
-        elif(int(comida["Tipo"])==10):
-            merienda = merienda.append(listaDeAlimentos.loc[indice]);
-            almuerzo = almuerzo.append(listaDeAlimentos.loc[indice]);
+
     return desayuno, almuerzo, comida2, merienda, cena;
 
 '''
