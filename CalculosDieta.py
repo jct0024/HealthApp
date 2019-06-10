@@ -631,5 +631,15 @@ def algoritmoNutriscore(kcal, azucar, saturadas,fibra, proteina,sodio):
         total= A-C
     else:
         total= A-C
-    return total;
+    if(total < 0 ):
+        calidad=1;
+    elif(total >=0 and total <=2):
+        calidad=2;
+    elif(total > 2 and total <=10):
+        calidad=3;
+    elif(total>10 and total <=18):
+        calidad=4;
+    else:
+        calidad=5;
+    return calidad;
         
