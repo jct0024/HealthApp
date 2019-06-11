@@ -438,16 +438,28 @@ def registrarse(hojaUsuarios,hojaPatologias):
     label_Err.pack()
     registro.mainloop(); 
 def InformacionNuevaComida(hojaUsuarios, selfi):
-    info = tk.Tk();
-    info.resizable(0,0)
-    info.geometry('700x350')
-    info.title("Registro")
-    nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad = cd.AñadirMenuCalculos(hojaUsuarios,selfi)
-    #HISTOGRAMA DE CALIDAD
-    f = Figure(figsize=(5,4))
-    canvas = FigureCanvasTkAgg(f, master=info)
-    canvas.get_tk_widget().pack(side=tk.LEFT)
-    p = f.gca()
-    p.hist(arrayCalidad)
-    canvas.draw();
-    info.mainloop(); 
+    
+    nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad, error = cd.AñadirMenuCalculos(hojaUsuarios,selfi)
+    if not (error):
+        info = tk.Tk();
+        info.resizable(0,0)
+        info.geometry('700x350')
+        info.title("Registro")
+        containerGen = tk.Frame(info)
+        containerGen.pack(fill=tk.X)
+        containerBut = tk.Frame(info)
+        containerBut.pack(fill=tk.X)
+        #HISTOGRAMA DE CALIDAD
+        f = Figure(figsize=(5,4))
+        canvas = FigureCanvasTkAgg(f, master=containerGen)
+        canvas.get_tk_widget().pack(side=tk.LEFT)
+        p = f.gca()
+        p.hist(arrayCalidad,bins=[1,2,3,4,5])
+        canvas.draw();
+        labelInfor= tk.Label(containerGen, text="hola")
+        labelInfor.pack(side=tk.LEFT)
+        buttonEnviar = tk.Button(containerBut, text='Aceptar y Guardar',relief=tk.GROOVE)
+        buttonEnviar.pack(fill=tk.X)
+        button = tk.Button(containerBut, text="Cancelar",relief=tk.GROOVE)
+        button.pack(fill=tk.X)
+        info.mainloop(); 

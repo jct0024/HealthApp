@@ -844,6 +844,7 @@ class addComida(tk.Frame):
             link1.pack(side=LEFT)
             link1.bind("<Button-1>", lambda e: webbrowser.open_new("http://www.bedca.net/"))
             buttonEnviar = Button(self.containerButt, text='Validar',command=partial(vs.InformacionNuevaComida,hojaUsuarios,self),bg=colorDetalles,relief=GROOVE).pack(fill=X)
+
             #buttonEnviar = Button(self.containerButt, text='Aceptar y Guardar',command=partial(cd.AñadirMenuCalculos,hojaUsuarios,self),bg=colorDetalles,relief=GROOVE).pack(fill=X)
             button = tk.Button(self.containerButt, text="Cancelar",command=lambda: controller.show_frame("MostrarDieta"),relief=GROOVE,bg=colorDetalles).pack(fill=X)
             '''

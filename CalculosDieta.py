@@ -109,7 +109,13 @@ def listasPorTipo(listaDeAlimentos):
 '''
 Ordena la comida en base a la minima diferencia entre lo que debo comer y el 
 objetivo que tengo para esta comida especifica
-
+MEJORAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Hay una función para que según el tipo de dieta te distribuya las kcalorias entre grasas. carbohidratos y proteinas.
+Esa función no se usa en ningun momento, queda pendiente URGENTE de arreglar
+En xxxDeber, debo hacer los calculos multiplicando las kilocalorias del macrinutriente especifico (Halladas en la función hablada antes) 
+y multiplicarlo por el tanto por ciento  de grasas (por ejemplo) que he de comer en el desayuno (Y hacer el sumatorio como se hace hasta ahora)
+además
+El objetivo son las kcalorias por comida especifica, y se le multiplica el % del macronutriente que le corresponda.
 '''
 def OrdMinimaDiferencia(listComida,objetivo,tipoComida,dat,kcaldiarias):
     dif=0;
@@ -120,7 +126,7 @@ def OrdMinimaDiferencia(listComida,objetivo,tipoComida,dat,kcaldiarias):
       graDeber = kcaldiarias*0.0375
       carDeber = kcaldiarias*0.15
       protDeber = kcaldiarias*0.06
-      #deber = objetivo
+      #Objetivo = kcalorias que deberia comer en el desayuno (comida concretra)
       carb = objetivo*0.606060
       gra = objetivo*0.15
       prot = objetivo*0.2424
@@ -300,11 +306,33 @@ creando el plato completo y llevando a cabo los calculos para identificar la cal
 '''
 def AñadirMenuCalculos(hojaAlimentos,selfi):
     bandera=0
+    error=False;
     nAlimento = [False, False, False, False, False]
+    proporcion1=0;proporcion2=0; proporcion3=0;proporcion4=0;
+    kcal1=0;kcal2=0;kcal3=0;kcal4=0;
+    grasas1=0;grasas2=0;grasas3=0;grasas4=0;
+    saturadas1=0;saturadas2=0;saturadas3=0;saturadas4=0
+    hidratos1=0;hidratos2=0;hidratos3=0;hidratos4=0;
+    fibra1=0;fibra2=0;fibra3=0;fibra4=0;
+    azucar1=0;azucar2=0;azucar3=0;azucar4=0;
+    proteinas1=0;proteinas2=0;proteinas3=0;proteinas4=0;
+    sodio1=0.0;sodio2=0.0;sodio3=0.0;sodio4=0.0;
+    cal1=0;cal2=0;cal3=0;cal4=0;
+    arrayCalidad=[]
+    kcalTotal=0;
+    grasasTotal=0;
+    saturadasTotal=0;
+    hidratosTotal=0;
+    fibraTotal=0;
+    azucarTotal=0;
+    proteinasTotal=0;
+    sodioTotal=0;
+    nombre="";
     #ALIMENTO #1
     if(len(selfi.entry_Nom.get()) != 0 or len(selfi.entry_Gram.get()) !=0 or len(selfi.entry_kcal.get()) != 0 or len(selfi.entry_gras.get()) != 0 or len(selfi.entry_sat.get()) != 0 or len(selfi.entry_Hid.get()) != 0 or len(selfi.entry_Azuc.get()) != 0 or len(selfi.entry_Pro.get()) != 0  ):
         if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_Gram.get()) ==0 or len(selfi.entry_kcal.get()) == 0 or len(selfi.entry_gras.get()) == 0 or len(selfi.entry_sat.get()) == 0 or len(selfi.entry_Hid.get()) == 0 or len(selfi.entry_Azuc.get()) == 0 or len(selfi.entry_Pro.get()) == 0 ):
             selfi.label_Error.config(text="ERROR: Algun dato erroneo del alimento #1")
+            error=True;
         else:
             nAlimento[0]= True
             bandera = 1;
@@ -312,6 +340,7 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
     if(len(selfi.entry_Nom2.get()) != 0 or len(selfi.entry_Gram2.get()) !=0 or len(selfi.entry_kcal2.get()) != 0 or len(selfi.entry_gras2.get()) != 0 or len(selfi.entry_sat2.get()) != 0 or len(selfi.entry_Hid2.get()) != 0 or len(selfi.entry_Azuc2.get()) != 0 or len(selfi.entry_Pro2.get()) != 0):
         if(len(selfi.entry_Nom2.get()) ==0 or len(selfi.entry_Gram2.get()) ==0 or len(selfi.entry_kcal2.get()) == 0 or len(selfi.entry_gras2.get()) == 0 or len(selfi.entry_sat2.get()) == 0 or len(selfi.entry_Hid2.get()) == 0 or len(selfi.entry_Azuc2.get()) == 0 or len(selfi.entry_Pro2.get()) == 0):
             selfi.label_Error.config(text="ERROR: Algun dato erroneo del alimento #2")
+            error=True;
         else:
             nAlimento[1]= True
             bandera = 1;
@@ -319,6 +348,7 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
     if(len(selfi.entry_Nom3.get()) != 0 or len(selfi.entry_Gram3.get()) !=0 or len(selfi.entry_kcal3.get()) != 0 or len(selfi.entry_gras3.get()) != 0 or len(selfi.entry_sat3.get()) != 0 or len(selfi.entry_Hid3.get()) != 0 or len(selfi.entry_Azuc3.get()) != 0 or len(selfi.entry_Pro3.get()) != 0):
         if(len(selfi.entry_Nom3.get()) ==0 or len(selfi.entry_Gram3.get()) ==0 or len(selfi.entry_kcal3.get()) == 0 or len(selfi.entry_gras3.get()) == 0 or len(selfi.entry_sat3.get()) == 0 or len(selfi.entry_Hid3.get()) == 0 or len(selfi.entry_Azuc3.get()) == 0 or len(selfi.entry_Pro3.get()) == 0):
             selfi.label_Error.config(text="ERROR: Algun dato erroneo del alimento #3")
+            error=True;
         else:
             nAlimento[2]= True
             bandera = 1;
@@ -326,14 +356,16 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
     if(len(selfi.entry_Nom4.get()) != 0 or len(selfi.entry_Gram4.get()) !=0 or len(selfi.entry_kcal4.get()) != 0 or len(selfi.entry_gras4.get()) != 0 or len(selfi.entry_sat4.get()) != 0 or len(selfi.entry_Hid4.get()) != 0 or len(selfi.entry_Azuc4.get()) != 0 or len(selfi.entry_Pro4.get()) != 0 ):
         if(len(selfi.entry_Nom4.get()) ==0 or len(selfi.entry_Gram4.get()) ==0 or len(selfi.entry_kcal4.get()) == 0 or len(selfi.entry_gras4.get()) == 0 or len(selfi.entry_sat4.get()) == 0 or len(selfi.entry_Hid4.get()) == 0 or len(selfi.entry_Azuc4.get()) == 0 or len(selfi.entry_Pro4.get()) == 0 ):
             selfi.label_Error.config(text="ERROR: Algun dato erroneo del alimento #4")
+            error=True;                         
         else:
             nAlimento[3]= True
             bandera = 1;
     if(bandera==0):
         selfi.label_Error.config(text="ERROR: Rellene algún alimento")
-        
+        error=True;
     elif(selfi.varDes.get() == 0 and selfi.varAlm.get() == 0 and selfi.varCom.get() == 0 and selfi.varMer.get() == 0 and selfi.varCen.get() == 0 ):
         selfi.label_Error.config(text="ERROR: Seleccione que tipo de comida es")
+        error=True;
     else:
         try:
             if(nAlimento[0]):
@@ -367,33 +399,13 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
                 float(selfi.entry_sat4.get())
                 float(selfi.entry_Hid4.get())
                 float(selfi.entry_Azuc4.get())
-                float(selfi.entry_Pro4.get())
-            
+                float(selfi.entry_Pro4.get())  
             selfi.label_Error.config(text="")
             #FIN DE LAS PRUEBAS DE ERROR
             #############################
             #INICIO DE LOS CALCULOS
-            proporcion1=0;proporcion2=0; proporcion3=0;proporcion4=0;
-            kcal1=0;kcal2=0;kcal3=0;kcal4=0;
-            grasas1=0;grasas2=0;grasas3=0;grasas4=0;
-            saturadas1=0;saturadas2=0;saturadas3=0;saturadas4=0
-            hidratos1=0;hidratos2=0;hidratos3=0;hidratos4=0;
-            fibra1=0;fibra2=0;fibra3=0;fibra4=0;
-            azucar1=0;azucar2=0;azucar3=0;azucar4=0;
-            proteinas1=0;proteinas2=0;proteinas3=0;proteinas4=0;
-            sodio1=0.0;sodio2=0.0;sodio3=0.0;sodio4=0.0;
-            cal1=0;cal2=0;cal3=0;cal4=0;
-            arrayCalidad=[]
-            kcalTotal=0;
-            grasasTotal=0;
-            saturadasTotal=0;
-            hidratosTotal=0;
-            fibraTotal=0;
-            azucarTotal=0;
-            proteinasTotal=0;
-            sodioTotal=0;
-            nombre="";
-            calidad = 0;
+
+            #calidad = 0;
             if(nAlimento[0]):
                 proporcion1 = float(selfi.entry_Gram.get())/100
                 kcal1=float(selfi.entry_kcal.get())*proporcion1;
@@ -466,14 +478,14 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
             proteinasTotal=proteinas1+proteinas2+proteinas3+proteinas4;
             #calidad=(cal1+cal2+cal3+cal4)/4
             sodioTotal=sodio1+sodio2+sodio3+sodio4
-            return nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad
+            
             #ab.ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, calidad)
         except ValueError:
             selfi.label_Error.config(text="ERROR: Inserte un valor numerico válido")
-            raise;
+            error=True;
         except:
             selfi.label_Error.config(text="ERROR INESPERADO")
-
+        return nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad, error    
 
 '''
 Función que toma un "conjunto de bits" y te los transforma a un número entero, para
