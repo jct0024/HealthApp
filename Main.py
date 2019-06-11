@@ -258,25 +258,17 @@ class editarInforUsuario(tk.Frame):
             Radiobutton(self, text="bajar",padx = 5, variable=self.varTipo, value=1,bg=fondoGeneral).grid(column=0,row=12)
             Radiobutton(self, text="mantener",padx = 20, variable=self.varTipo, value=2,bg=fondoGeneral).grid(column=1,row=12)
             Radiobutton(self, text="subir",padx = 20, variable=self.varTipo, value=3,bg=fondoGeneral).grid(column=2,row=12)
-            '''
-            label_4 = Label(self, text="country",width=20,font=("bold", 10))
-            label_4.grid(column=0,row=13)
             
-            list1 = ['Canada','India','UK','Nepal','Iceland','South Africa'];
-            c=StringVar()
-            droplist=OptionMenu(self,c, *list1)
-            droplist.config(width=15)
-            c.set('select your country') 
-            droplist.grid(column=0,row=14)
-            
-            label_4 = Label(self, text="Programming",width=20,font=("bold", 10))
-            label_4.place(x=85,y=330)
-            var1 = IntVar()
-            Checkbutton(self, text="java", variable=var1).place(x=235,y=330)
-            var2 = IntVar()
-            Checkbutton(self, text="python", variable=var2).place(x=290,y=330)
-            '''
-            buttonEnviar = Button(self, text='Aceptar y Guardar',command=partial(ab.ComproYAlmacenamientoUsuario,hojaUsuarios,self, controller),bg=colorDetalles,relief=GROOVE).grid(column=0,row=15)
+            listPatologias=list(hojaPatologias.iloc[:,1])
+            label_Pat =  tk.Label(self, text="Patología: ",width=20,font=("bold", 10))
+            label_Pat.grid(column=1,row=13)
+            patologia=tk.StringVar()
+            patologia.set(listPatologias[0])
+            droplist=tk.OptionMenu(self,patologia, *listPatologias)
+            droplist.config(width=90, font=('Helvetica', 12), relief=tk.GROOVE,bg=fondoGeneral)
+             
+            droplist.grid(column=1,row=13)
+            buttonEnviar = Button(self, text='Aceptar y Guardar',command=partial(ab.ComproYAlmacenamientoUsuario,hojaUsuarios,self, controller,hojaPatologias, patologia),bg=colorDetalles,relief=GROOVE).grid(column=0,row=15)
             button = tk.Button(self, text="Cancelar",command=lambda: controller.show_frame("InfoUsuario"),relief=GROOVE,bg=colorDetalles)
             button.grid(column=0,row=16)
             
@@ -831,13 +823,13 @@ class addComida(tk.Frame):
             
             buttonEnviar = Button(self.containerButt, text='Aceptar y Guardar',command=partial(cd.AñadirMenuCalculos,hojaUsuarios,self),bg=colorDetalles,relief=GROOVE).pack(fill=X)
             button = tk.Button(self.containerButt, text="Cancelar",command=lambda: controller.show_frame("MostrarDieta"),relief=GROOVE,bg=colorDetalles).pack(fill=X)
-            
-            f = Figure(figsize=(5,4))
-            canvas = FigureCanvasTkAgg(f, master=self)
-            canvas.get_tk_widget().pack(side=LEFT)
-            p = f.gca()
-            p.hist([1,1,2,0])
-            canvas.draw();
+            #HISTOGRAMA DE CALIDAD
+            self.f = Figure(figsize=(5,4))
+            self.canvas = FigureCanvasTkAgg(self.f, master=self)
+            self.canvas.get_tk_widget().pack(side=LEFT)
+            self.p = self.f.gca()
+            self.p.hist([1,1,2,0])
+            self.canvas.draw();
             self.label_Error = Label(self, text="",width=20,font=("bold", 10),bg=fondoGeneral,foreground="red")
             self.label_Error.pack(fill=BOTH)
 
@@ -871,7 +863,7 @@ if __name__ == "__main__":
         txtP = ttk.Entry(login,width=15, show="*")
         btnInit = ttk.Button(login, text="Inicio",command=partial(vs.cambio,txtU,txtP,login,lblU,lblMensaje))
         btnExit = ttk.Button(login, text="Salir",command=login.destroy)  
-        btnRegist = ttk.Button(login, text="Registrarse",command=partial(vs.registrarse,hojaUsuarios))  
+        btnRegist = ttk.Button(login, text="Registrarse",command=partial(vs.registrarse,hojaUsuarios,hojaPatologias))  
         #POSICIONAMIENTOOOO
         lblU.pack()
         txtU.focus()

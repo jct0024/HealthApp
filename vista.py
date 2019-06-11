@@ -306,7 +306,7 @@ def gráfico(selfi,x,y):
     ax.set_xlabel("Dias")
     ax.set_ylabel("Calidad")
     ax.set_xlim(min(x),max(x))
-    ax.set_ylim(0.7,4) 
+    ax.set_ylim(0.7,5) 
     selfi.canvas.draw()
     
 def estiloTotal(idEstilo):
@@ -319,12 +319,12 @@ def estiloTotal(idEstilo):
     file.write(texto)
     file.close()
     messagebox.showinfo("!Todo correcto¡","Veras el nuevo diseño cuando reinicie el programa")
-def registrarse(hojaUsuarios):
+def registrarse(hojaUsuarios,hojaPatologias):
     #login.destroy()
     
     registro = tk.Tk();
     registro.resizable(0,0)
-    registro.geometry('500x300')
+    registro.geometry('700x350')
     registro.title("Registro")
     #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
     label = tk.Label(registro, text="Rellene los datos")    
@@ -338,7 +338,7 @@ def registrarse(hojaUsuarios):
     containerALT = tk.Frame(registro)
     containerPES = tk.Frame(registro)
     containerACT = tk.Frame(registro)
-    #containerPAT = tk.Frame(registro).pack(fill=tk.X)
+    containerPAT = tk.Frame(registro)
     containerTIP = tk.Frame(registro)
     containerBut = tk.Frame(registro)
     containerERR = tk.Frame(registro)
@@ -351,6 +351,7 @@ def registrarse(hojaUsuarios):
     containerALT.pack(fill=tk.X)
     containerPES.pack(fill=tk.X)
     containerACT.pack(fill=tk.X)
+    containerPAT.pack(fill=tk.X)
     containerTIP.pack(fill=tk.X)
     containerBut.pack(fill=tk.X)
     containerERR.pack(fill=tk.X)
@@ -417,28 +418,22 @@ def registrarse(hojaUsuarios):
     tk.Radiobutton(containerTIP, text="bajar",padx = 5, variable=varTipDiet, value=1).pack(expand=1,side=tk.LEFT,fill=tk.Y)
     tk.Radiobutton(containerTIP, text="mantener",padx = 20, variable=varTipDiet, value=2).pack(expand=1,side=tk.LEFT,fill=tk.Y)
     tk.Radiobutton(containerTIP, text="subir",padx = 20, variable=varTipDiet, value=3).pack(expand=1,side=tk.LEFT,fill=tk.Y)
-    '''
-    label_4 = Label(self, text="country",width=20,font=("bold", 10))
-    label_4.grid(column=0,row=13)
+    listPatologias=list(hojaPatologias.iloc[:,1])
+    label_Pat =  tk.Label(containerPAT, text="Patología: ",width=20,font=("bold", 10))
+    label_Pat.pack(side=tk.LEFT)
     
-    list1 = ['Canada','India','UK','Nepal','Iceland','South Africa'];
-    c=StringVar()
-    droplist=OptionMenu(self,c, *list1)
-    droplist.config(width=15)
-    c.set('select your country') 
-    droplist.grid(column=0,row=14)
-    
-    label_4 = Label(self, text="Programming",width=20,font=("bold", 10))
-    label_4.place(x=85,y=330)
-    var1 = IntVar()
-    Checkbutton(self, text="java", variable=var1).place(x=235,y=330)
-    var2 = IntVar()
-    Checkbutton(self, text="python", variable=var2).place(x=290,y=330)
-    '''
+    patologia=tk.StringVar()
+    patologia.set(listPatologias[0])
+    droplist=tk.OptionMenu(containerPAT,patologia, *listPatologias)
+    droplist.config(width=90, font=('Helvetica', 12), relief=tk.GROOVE)
+     
+    droplist.pack(side=tk.LEFT)
+
     label_Err = tk.Label(containerERR, text="",width=20,font=("bold", 10),foreground="red")
-    buttonEnviar = tk.Button(containerBut, text='Aceptar y Guardar',command=partial(ab.NuevoUsuario,registro,hojaUsuarios,entry_Dni, entry_Nom,entry_Ape,entry_Pwd, varSex,entry_Eda,entry_Alt,entry_Pes,varAct2, varTipDiet,label_Err),relief=tk.GROOVE)
+    
+    buttonEnviar = tk.Button(containerBut, text='Aceptar y Guardar',command=partial(ab.NuevoUsuario,registro,hojaUsuarios,entry_Dni, entry_Nom,entry_Ape,entry_Pwd, varSex,entry_Eda,entry_Alt,entry_Pes,varAct2, varTipDiet,label_Err,patologia, hojaPatologias),relief=tk.GROOVE)
     buttonEnviar.pack(fill=tk.X)
-    button = tk.Button(containerBut, text="Cancelar",command=lambda:registro.destroy,relief=tk.GROOVE)
+    button = tk.Button(containerBut, text="Cancelar",command=lambda:registro.destroy(),relief=tk.GROOVE)
     button.pack(fill=tk.X)
     label_Err.pack()
     registro.mainloop(); 

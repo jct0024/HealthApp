@@ -6,7 +6,6 @@ Created on Mon Dec 10 10:36:25 2018
 """
 import pandas as pd;
 import datetime
-import CalculosDieta as cd
 from tkinter import messagebox
 def cargarBaseDeDatos():
     #Cargamos la base de datos
@@ -125,7 +124,17 @@ def getFilaAlimento(nombre,a):
         if(alimento["Nombre"] == nombre):
             break;
         indice+=1;
-    return i;    
+    return i; 
+def IdPatologiaPorNombre(nombre, p):
+    resultado=-1000;
+    indice=0;
+    for i in p.iloc[:,1]:
+        if(i == nombre):
+            resultado= p.iloc[indice,0]
+            break;
+        indice+=1;
+    return resultado;
+    
 def guardaTodo(usr, menuDeHoy, historial,hojaAlimentos, hojaUsuarios, hojaPatologias,config):
     guardarHistorial (usr, menuDeHoy, historial)
     guardarUsuario(hojaUsuarios)
@@ -161,7 +170,9 @@ def guardarDatos (hojaAlimentos, hojaPatologias):
     hojaAlimentos.to_excel(writer,'Alimentos',index=False)
     hojaPatologias.to_excel(writer,'Patologias',index=False)
     writer.save();
-def ComproYAlmacenamientoUsuario(hojaUsuarios,selfi,controller):
+def ComproYAlmacenamientoUsuario(hojaUsuarios,selfi,controller,hojaPatologias, patologia):
+    print(patologia.get())
+    idPatologia = IdPatologiaPorNombre(patologia.get(),hojaPatologias)
     fila = getFilaUsuario(selfi.user,hojaUsuarios)
     if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_Ape.get()) == 0 or len(selfi.entry_Eda.get()) == 0 or len(selfi.entry_Alt.get()) == 0 or len(selfi.entry_Pes.get()) == 0 or selfi.var.get() == 0 or selfi.varTipo.get() == 0 or selfi.varAct.get() == 0):
         selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")
@@ -185,6 +196,7 @@ def ComproYAlmacenamientoUsuario(hojaUsuarios,selfi,controller):
         hojaUsuarios['altura'].loc[fila] = int(selfi.entry_Alt.get())
         hojaUsuarios['peso'].loc[fila] = int(selfi.entry_Pes.get())
         hojaUsuarios['actividad'].loc[fila] = selfi.varAct.get()
+        hojaUsuarios['patologia'].loc[fila] = idPatologia
         if(selfi.varTipo.get() == 1):
             hojaUsuarios['tipo'].loc[fila] = "bajar"
         elif(selfi.varTipo.get() == 2):
@@ -214,22 +226,11 @@ def ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kilocalorias, grasa,sat
                              'Calidad': [calidad]})
     hojaAlimentos = hojaAlimentos.append(nuevaFila)
     alimentos = alimentos.append(nuevaFila,sort=False)
-    print(alimentos)
     #Guardamos la 'imagen' de la base de datos sin retoques, solo con la nueva linea
     guardarDatos(alimentos,patologias)
     messagebox.showinfo("Datos actualizados","Datos actualizados correctamente, veras los cambios al reiniciar el programa")
-def NuevoUsuario(ventana,hojaUsuarios,dni, nombre, apellido, pwd, sexo, edad,altura,peso,actividad,tipo, mensajeError):
-    
-    print(dni.get())
-    print(nombre.get())
-    print(apellido.get())
-    print(pwd.get())
-    print(sexo.get())
-    print(edad.get())
-    print(altura.get())
-    print(peso.get())
-    print(actividad)
-    print(tipo.get())
+def NuevoUsuario(ventana,hojaUsuarios,dni, nombre, apellido, pwd, sexo, edad,altura,peso,actividad,tipo, mensajeError, patologia, hojaPatologias):   
+    idPatologia = IdPatologiaPorNombre(patologia.get(),hojaPatologias)
     if(len(dni.get()) ==0 or len(nombre.get()) == 0 or len(apellido.get()) == 0 or len(pwd.get()) == 0 or len(edad.get()) == 0 or len(altura.get()) == 0 or len(peso.get()) == 0 or sexo.get() == 0 or actividad.get() == 0 or tipo.get() == 0):
             mensajeError.config(text="ERROR: Algun dato erroneo, comprueba todo")
     else:
@@ -256,7 +257,7 @@ def NuevoUsuario(ventana,hojaUsuarios,dni, nombre, apellido, pwd, sexo, edad,alt
                              'altura':[altura.get()],
                              'peso': [peso.get()],
                              'actividad':[actividad.get()],
-                             'patologia': [0],
+                             'patologia': [int(idPatologia)],
                              'tipo':[tip]})
 
         hojaUsuarios = hojaUsuarios.append(nuevaFila,sort=False)

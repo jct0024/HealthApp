@@ -109,11 +109,7 @@ def listasPorTipo(listaDeAlimentos):
 '''
 Ordena la comida en base a la minima diferencia entre lo que debo comer y el 
 objetivo que tengo para esta comida especifica
-MEJOOOOOORAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-Hay que hacer los calculos según sea: Desayuno, almuerzo... 
-y sacar de ahí las kcal en carb, proteina y grasas
-para sacar la diferencia de las tres con lo que deberiamos llevar, y hacer una media de la diferencia.
-ESTA MAAAAAL HAY QUE CORREGIRLO
+
 '''
 def OrdMinimaDiferencia(listComida,objetivo,tipoComida,dat,kcaldiarias):
     dif=0;
@@ -386,6 +382,8 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
             azucar1=0;azucar2=0;azucar3=0;azucar4=0;
             proteinas1=0;proteinas2=0;proteinas3=0;proteinas4=0;
             sodio1=0.0;sodio2=0.0;sodio3=0.0;sodio4=0.0;
+            cal1=0;cal2=0;cal3=0;cal4=0;
+            arrayCalidad=[]
             kcalTotal=0;
             grasasTotal=0;
             saturadasTotal=0;
@@ -449,6 +447,14 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
             cal2=algoritmoNutriscore(kcal2,azucar2,saturadas2,fibra2,proteinas2,sodio2)
             cal3=algoritmoNutriscore(kcal3,azucar3,saturadas3,fibra3,proteinas3,sodio3)
             cal4=algoritmoNutriscore(kcal4,azucar4,saturadas4,fibra4,proteinas4,sodio4)
+            if(cal1 != 0):
+                arrayCalidad.append(cal1)
+            if(cal2 != 0):
+                arrayCalidad.append(cal2)
+            if(cal3 != 0):
+                arrayCalidad.append(cal3)
+            if(cal4 != 0):
+                arrayCalidad.append(cal4)
             #Sumatorio de los resultados recogidos a lo largo de la funcion:
             tipo= stringTipoToNumber(selfi.varDes.get(),selfi.varAlm.get(),selfi.varCom.get(),selfi.varMer.get(),selfi.varCen.get())
             kcalTotal=kcal1+kcal2+kcal3+kcal4;
@@ -460,7 +466,7 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
             proteinasTotal=proteinas1+proteinas2+proteinas3+proteinas4;
             calidad=(cal1+cal2+cal3+cal4)/4
             sodioTotal=sodio1+sodio2+sodio3+sodio4
-        
+
             ab.ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, calidad)
         except ValueError:
             selfi.label_Error.config(text="ERROR: Inserte un valor numerico válido")
