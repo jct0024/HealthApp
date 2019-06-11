@@ -437,3 +437,17 @@ def registrarse(hojaUsuarios,hojaPatologias):
     button.pack(fill=tk.X)
     label_Err.pack()
     registro.mainloop(); 
+def InformacionNuevaComida(hojaUsuarios, selfi):
+    info = tk.Tk();
+    info.resizable(0,0)
+    info.geometry('700x350')
+    info.title("Registro")
+    nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad = cd.AñadirMenuCalculos(hojaUsuarios,selfi)
+    #HISTOGRAMA DE CALIDAD
+    f = Figure(figsize=(5,4))
+    canvas = FigureCanvasTkAgg(f, master=info)
+    canvas.get_tk_widget().pack(side=tk.LEFT)
+    p = f.gca()
+    p.hist(arrayCalidad)
+    canvas.draw();
+    info.mainloop(); 

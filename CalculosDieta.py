@@ -443,17 +443,17 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
                 proteinas4=float(selfi.entry_Pro4.get())*proporcion4;
                 sodio4=float(selfi.entry_Sod4.get())*proporcion4;
             #Llamada a la función del calculo nutriscore
-            cal1=algoritmoNutriscore(kcal1,azucar1,saturadas1,fibra1,proteinas1,sodio1)
-            cal2=algoritmoNutriscore(kcal2,azucar2,saturadas2,fibra2,proteinas2,sodio2)
-            cal3=algoritmoNutriscore(kcal3,azucar3,saturadas3,fibra3,proteinas3,sodio3)
-            cal4=algoritmoNutriscore(kcal4,azucar4,saturadas4,fibra4,proteinas4,sodio4)
-            if(cal1 != 0):
+            if(nAlimento[0]):
+                cal1=algoritmoNutriscore(kcal1,azucar1,saturadas1,fibra1,proteinas1,sodio1)
                 arrayCalidad.append(cal1)
-            if(cal2 != 0):
+            if(nAlimento[1]):
+                cal2=algoritmoNutriscore(kcal2,azucar2,saturadas2,fibra2,proteinas2,sodio2)
                 arrayCalidad.append(cal2)
-            if(cal3 != 0):
+            if(nAlimento[2]):
+                cal3=algoritmoNutriscore(kcal3,azucar3,saturadas3,fibra3,proteinas3,sodio3)
                 arrayCalidad.append(cal3)
-            if(cal4 != 0):
+            if(nAlimento[3]):
+                cal4=algoritmoNutriscore(kcal4,azucar4,saturadas4,fibra4,proteinas4,sodio4)
                 arrayCalidad.append(cal4)
             #Sumatorio de los resultados recogidos a lo largo de la funcion:
             tipo= stringTipoToNumber(selfi.varDes.get(),selfi.varAlm.get(),selfi.varCom.get(),selfi.varMer.get(),selfi.varCen.get())
@@ -464,10 +464,10 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
             fibraTotal=fibra1+fibra2+fibra3+fibra4;
             azucarTotal=azucar1+azucar2+azucar3+azucar4;
             proteinasTotal=proteinas1+proteinas2+proteinas3+proteinas4;
-            calidad=(cal1+cal2+cal3+cal4)/4
+            #calidad=(cal1+cal2+cal3+cal4)/4
             sodioTotal=sodio1+sodio2+sodio3+sodio4
-
-            ab.ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, calidad)
+            return nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad
+            #ab.ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, calidad)
         except ValueError:
             selfi.label_Error.config(text="ERROR: Inserte un valor numerico válido")
             raise;
