@@ -171,6 +171,7 @@ class histSemanal(tk.Frame):
         button.pack()
 class InfoUsuario(tk.Frame):
     def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
         self.user,self.pwd = vs.getUsuario()
         tk.Frame.__init__(self, parent)
         self.controller = controller
@@ -200,80 +201,102 @@ class InfoUsuario(tk.Frame):
 class editarInforUsuario(tk.Frame):
         def __init__(self, parent, controller):
             tk.Frame.__init__(self, parent)
+            label = Label(self, text="Editando información", font=controller.title_font,bg=fondoGeneral)    
+            label.pack()
+            containerNOM = tk.Frame(self,bg=fondoGeneral)
+            containerAPE = tk.Frame(self,bg=fondoGeneral)
+            containerSEX = tk.Frame(self,bg=fondoGeneral)
+            containerEDA = tk.Frame(self,bg=fondoGeneral)
+            containerALT = tk.Frame(self,bg=fondoGeneral)
+            containerPES = tk.Frame(self,bg=fondoGeneral)
+            containerACT = tk.Frame(self,bg=fondoGeneral)
+            containerPAT = tk.Frame(self,bg=fondoGeneral)
+            containerTIP = tk.Frame(self,bg=fondoGeneral)
+            containerBut = tk.Frame(self,bg=fondoGeneral)
+            containerERR = tk.Frame(self,bg=fondoGeneral)
+            containerNOM.pack(fill=X)
+            containerAPE.pack(fill=X)
+            containerSEX.pack(fill=X)
+            containerEDA.pack(fill=X)
+            containerALT.pack(fill=X)
+            containerPES.pack(fill=X)
+            containerACT.pack(fill=X)
+            containerPAT.pack(fill=X)
+            containerTIP.pack(fill=X)
+            containerBut.pack(fill=X)
+            containerERR.pack(fill=X)
             self.user,self.pwd = vs.getUsuario()
             self.controller = controller
             #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
             self.c = 0;
             
-            label = tk.Label(self, text="Editando información", font=controller.title_font,bg=fondoGeneral)    
-            label.grid(column=0,row=0)
             
-            label_Nom = Label(self, text="Nombre",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_Nom.grid(column=0,row=1)
             
-            self.entry_Nom = Entry(self,bg=fondoGeneral)
-            self.entry_Nom.grid(column=1,row=1)
+            label_Nom = Label(containerNOM, text="Nombre",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Nom.pack(side=LEFT)
             
-            label_Ape = Label(self, text="Apellidos",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_Ape.grid(column=0,row=2)
+            self.entry_Nom = Entry(containerNOM,bg=fondoGeneral)
+            self.entry_Nom.pack(expand=1,side=LEFT,fill=BOTH)
             
-            self.entry_Ape = Entry(self,bg=fondoGeneral)
-            self.entry_Ape.grid(column=1,row=2)
+            label_Ape = Label(containerAPE, text="Apellidos",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Ape.pack(side=LEFT)
             
-            label_Eda = Label(self, text="Edad",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_Eda.grid(column=0,row=3)         
+            self.entry_Ape = Entry(containerAPE,bg=fondoGeneral)
+            self.entry_Ape.pack(expand=1,side=LEFT,fill=BOTH)
             
-            self.entry_Eda = Entry(self,bg=fondoGeneral)
-            self.entry_Eda.grid(column=1,row=3)
+            label_Eda = Label(containerEDA, text="Edad",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Eda.pack(side=LEFT)       
             
-            label_Alt = Label(self, text="Altura",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_Alt.grid(column=0,row=4)       
+            self.entry_Eda = Entry(containerEDA,bg=fondoGeneral)
+            self.entry_Eda.pack(expand=1,side=LEFT,fill=BOTH)
             
-            self.entry_Alt = Entry(self,bg=fondoGeneral)
-            self.entry_Alt.grid(column=1,row=4)
+            label_Alt = Label(containerALT, text="Altura",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Alt.pack(side=LEFT)      
             
-            label_Pes = Label(self, text="Peso",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_Pes.grid(column=0,row=5)       
+            self.entry_Alt = Entry(containerALT,bg=fondoGeneral)
+            self.entry_Alt.pack(expand=1,side=LEFT,fill=BOTH)
             
-            self.entry_Pes = Entry(self,bg=fondoGeneral)
-            self.entry_Pes.grid(column=1,row=5)
+            label_Pes = Label(containerPES, text="Peso",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Pes.pack(side=LEFT)     
             
-            label_3 = Label(self, text="Sexo:",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_3.grid(column=0,row=6)
+            self.entry_Pes = Entry(containerPES,bg=fondoGeneral)
+            self.entry_Pes.pack(expand=1,side=LEFT,fill=BOTH)
+            
+            label_3 = Label(containerSEX, text="Sexo:",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_3.pack(side=LEFT)
             self.var = IntVar()
-            Radiobutton(self, text="Hombre",padx = 5, variable=self.var, value=1,bg=fondoGeneral).grid(column=0,row=7)
-            Radiobutton(self, text="Mujer",padx = 20, variable=self.var, value=2,bg=fondoGeneral).grid(column=1,row=7)
+            Radiobutton(containerSEX, text="Hombre",padx = 5, variable=self.var, value=1,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
+            Radiobutton(containerSEX, text="Mujer",padx = 20, variable=self.var, value=2,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
             
-            label_Act = Label(self, text="Actividad: ",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_Act.grid(column=0,row=8)
+            label_Act = Label(containerACT, text="Actividad: ",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Act.pack(side=LEFT)
             self.varAct = IntVar()
-            Radiobutton(self, text="1 ",padx = 10, variable=self.varAct, value=1,bg=fondoGeneral).grid(column=0,row=9)
-            Radiobutton(self, text="2 ",padx = 10, variable=self.varAct, value=2,bg=fondoGeneral).grid(column=1,row=9)
-            Radiobutton(self, text="3 ",padx = 10, variable=self.varAct, value=3,bg=fondoGeneral).grid(column=0,row=10)
-            Radiobutton(self, text="4 ",padx = 10, variable=self.varAct, value=4,bg=fondoGeneral).grid(column=1,row=10)
+            Radiobutton(containerACT, text="1 ",padx = 10, variable=self.varAct, value=1,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
+            Radiobutton(containerACT, text="2 ",padx = 10, variable=self.varAct, value=2,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
+            Radiobutton(containerACT, text="3 ",padx = 10, variable=self.varAct, value=3,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
+            Radiobutton(containerACT, text="4 ",padx = 10, variable=self.varAct, value=4,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
             
-            label_3 = Label(self, text="Tipo",width=20,font=("bold", 10),bg=fondoGeneral)
-            label_3.grid(column=0,row=11)
+            label_3 = Label(containerTIP, text="Tipo",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_3.pack(side=LEFT)
             self.varTipo = IntVar()
-            Radiobutton(self, text="bajar",padx = 5, variable=self.varTipo, value=1,bg=fondoGeneral).grid(column=0,row=12)
-            Radiobutton(self, text="mantener",padx = 20, variable=self.varTipo, value=2,bg=fondoGeneral).grid(column=1,row=12)
-            Radiobutton(self, text="subir",padx = 20, variable=self.varTipo, value=3,bg=fondoGeneral).grid(column=2,row=12)
+            Radiobutton(containerTIP, text="bajar",padx = 5, variable=self.varTipo, value=1,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
+            Radiobutton(containerTIP, text="mantener",padx = 20, variable=self.varTipo, value=2,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
+            Radiobutton(containerTIP, text="subir",padx = 20, variable=self.varTipo, value=3,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
             
             listPatologias=list(hojaPatologias.iloc[:,1])
-            label_Pat =  tk.Label(self, text="Patología: ",width=20,font=("bold", 10))
-            label_Pat.grid(column=1,row=13)
+            label_Pat =  Label(containerPAT, text="Patología: ",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Pat.pack(side=LEFT)
             patologia=tk.StringVar()
             patologia.set(listPatologias[0])
-            droplist=tk.OptionMenu(self,patologia, *listPatologias)
+            droplist=tk.OptionMenu(containerPAT,patologia, *listPatologias)
             droplist.config(width=90, font=('Helvetica', 12), relief=tk.GROOVE,bg=fondoGeneral)
              
-            droplist.grid(column=1,row=13)
-            buttonEnviar = Button(self, text='Aceptar y Guardar',command=partial(ab.ComproYAlmacenamientoUsuario,hojaUsuarios,self, controller,hojaPatologias, patologia),bg=colorDetalles,relief=GROOVE).grid(column=0,row=15)
-            button = tk.Button(self, text="Cancelar",command=lambda: controller.show_frame("InfoUsuario"),relief=GROOVE,bg=colorDetalles)
-            button.grid(column=0,row=16)
+            droplist.pack(expand=1,side=LEFT,fill=BOTH)
+            buttonEnviar = Button(containerBut, text='Aceptar y Guardar',command=partial(ab.ComproYAlmacenamientoUsuario,hojaUsuarios,self, controller,hojaPatologias, patologia),bg=colorDetalles,relief=GROOVE).pack(fill=X)
+            button = Button(containerBut, text="Cancelar",command=lambda: controller.show_frame("InfoUsuario"),relief=GROOVE,bg=colorDetalles).pack(fill=X)
             
-            self.label_Error = Label(self, text="",width=20,font=("bold", 10),bg=fondoGeneral,foreground="red")
-            self.label_Error.grid(column=0,row=17)
+            self.label_Error = Label(containerERR, text="",width=20,font=("bold", 10),bg=fondoGeneral,foreground="red")
+            self.label_Error.pack()
 
 
 class MostrarDieta(tk.Frame):
@@ -805,15 +828,15 @@ class addComida(tk.Frame):
             label_Tip.pack(side=TOP)
             self.var = IntVar()
             self.varDes = IntVar()
-            Checkbutton(self.containerTip, text="Desayuno", variable=self.varDes,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
+            Checkbutton(self.containerTip, text="Desayuno", variable=self.varDes,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
             self.varAlm = IntVar()
-            Checkbutton(self.containerTip, text="Almuerzo", variable=self.varAlm,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
+            Checkbutton(self.containerTip, text="Almuerzo", variable=self.varAlm,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
             self.varCom = IntVar()
-            Checkbutton(self.containerTip, text="Comida", variable=self.varCom,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
+            Checkbutton(self.containerTip, text="Comida", variable=self.varCom,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
             self.varMer = IntVar()
-            Checkbutton(self.containerTip, text="Merienda", variable=self.varMer,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
+            Checkbutton(self.containerTip, text="Merienda", variable=self.varMer,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
             self.varCen = IntVar()
-            Checkbutton(self.containerTip, text="Cena", variable=self.varCen,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=Y)
+            Checkbutton(self.containerTip, text="Cena", variable=self.varCen,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
             
             link = Label(self.cointainerLink, text= "Se le aconseja la siguiente página web para rellenar la información nutricional:",bg=fondoGeneral) 
             link1 = Label(self.cointainerLink, text= "Bedca",fg="blue", cursor="hand2",bg=fondoGeneral) 
@@ -823,6 +846,7 @@ class addComida(tk.Frame):
             
             buttonEnviar = Button(self.containerButt, text='Aceptar y Guardar',command=partial(cd.AñadirMenuCalculos,hojaUsuarios,self),bg=colorDetalles,relief=GROOVE).pack(fill=X)
             button = tk.Button(self.containerButt, text="Cancelar",command=lambda: controller.show_frame("MostrarDieta"),relief=GROOVE,bg=colorDetalles).pack(fill=X)
+            '''
             #HISTOGRAMA DE CALIDAD
             self.f = Figure(figsize=(5,4))
             self.canvas = FigureCanvasTkAgg(self.f, master=self)
@@ -830,6 +854,7 @@ class addComida(tk.Frame):
             self.p = self.f.gca()
             self.p.hist([1,1,2,0])
             self.canvas.draw();
+            '''
             self.label_Error = Label(self, text="",width=20,font=("bold", 10),bg=fondoGeneral,foreground="red")
             self.label_Error.pack(fill=BOTH)
 
