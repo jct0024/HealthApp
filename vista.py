@@ -437,29 +437,90 @@ def registrarse(hojaUsuarios,hojaPatologias):
     button.pack(fill=tk.X)
     label_Err.pack()
     registro.mainloop(); 
-def InformacionNuevaComida(hojaUsuarios, selfi):
-    
+def InformacionNuevaComida(hojaUsuarios, selfi,colorDetalles,colorFondo):
     nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad, error = cd.AñadirMenuCalculos(hojaUsuarios,selfi)
     if not (error):
         info = tk.Tk();
         info.resizable(0,0)
         info.geometry('700x350')
         info.title("Registro")
+        #Contenedores dentro del registro
         containerGen = tk.Frame(info)
         containerGen.pack(fill=tk.X)
         containerBut = tk.Frame(info)
         containerBut.pack(fill=tk.X)
+
         #HISTOGRAMA DE CALIDAD
         f = Figure(figsize=(5,4))
         canvas = FigureCanvasTkAgg(f, master=containerGen)
         canvas.get_tk_widget().pack(side=tk.LEFT)
         p = f.gca()
-        p.hist(arrayCalidad,bins=[1,2,3,4,5])
+        p.hist(arrayCalidad,bins=[1,2,3,4,5],histtype='barstacked',label="CALIDAD")
         canvas.draw();
-        labelInfor= tk.Label(containerGen, text="hola")
-        labelInfor.pack(side=tk.LEFT)
-        buttonEnviar = tk.Button(containerBut, text='Aceptar y Guardar',relief=tk.GROOVE)
+        
+        #Contenedores dentro del contenedor General
+        containerNom = tk.Frame(containerGen)
+        containerNom.pack(fill=tk.X)
+        containerKcal = tk.Frame(containerGen)
+        containerKcal.pack(fill=tk.X)
+        containerGra = tk.Frame(containerGen)
+        containerGra.pack(fill=tk.X)
+        containerSat = tk.Frame(containerGen)
+        containerSat.pack(fill=tk.X)
+        containerHid = tk.Frame(containerGen)
+        containerHid.pack(fill=tk.X)
+        containerFib = tk.Frame(containerGen)
+        containerFib.pack(fill=tk.X)
+        containerAzu = tk.Frame(containerGen)
+        containerAzu.pack(fill=tk.X)
+        containerPro = tk.Frame(containerGen)
+        containerPro.pack(fill=tk.X)
+        containerSod= tk.Frame(containerGen)
+        containerSod.pack(fill=tk.X)
+        containerTip = tk.Frame(containerGen)
+        containerTip.pack(fill=tk.X)
+        containerCal = tk.Frame(containerGen)
+        containerCal.pack(fill=tk.X)
+        
+        labelNom= tk.Label(containerNom, text="NOMBRE: "+nombre,bg=colorFondo)
+        labelNom.pack(side=tk.LEFT)
+        
+        labelKcal= tk.Label(containerKcal, text="KCALORIAS: "+str(kcalTotal),bg=colorFondo)
+        labelKcal.pack(side=tk.LEFT)
+        
+        labelGra= tk.Label(containerGra, text="GRASAS: "+str(grasasTotal),bg=colorFondo)
+        labelGra.pack(side=tk.LEFT)
+        
+        labelSat= tk.Label(containerSat, text="SATURADAS: "+str(saturadasTotal),bg=colorFondo)
+        labelSat.pack(side=tk.LEFT)
+        
+        labelHid= tk.Label(containerHid, text="HIDRATOS: "+str(hidratosTotal),bg=colorFondo)
+        labelHid.pack(side=tk.LEFT)
+        
+        labelFib= tk.Label(containerFib, text="FIBRA: "+str(fibraTotal),bg=colorFondo)
+        labelFib.pack(side=tk.LEFT)
+        
+        labelAzu= tk.Label(containerAzu, text="AZUCAR: "+str(azucarTotal),bg=colorFondo)
+        labelAzu.pack(side=tk.LEFT)
+        
+        labelPro= tk.Label(containerPro, text="PROTEINA: "+str(proteinasTotal),bg=colorFondo)
+        labelPro.pack(side=tk.LEFT)
+        
+        labelSod= tk.Label(containerSod, text="SODIO: "+str(sodioTotal),bg=colorFondo)
+        labelSod.pack(side=tk.LEFT)
+        
+        labelTipo= tk.Label(containerTip, text="TIPO: xxx",bg=colorFondo)
+        labelTipo.pack(side=tk.LEFT)
+        resultado=[0,0,0,0,0]
+        for i in arrayCalidad:
+            resultado[i]+=1
+        cal = resultado.index(max(resultado))
+        labelCal= tk.Label(containerCal, text="Calidad: "+str(cal),bg=colorFondo)
+        labelCal.pack(side=tk.LEFT)
+        
+        buttonEnviar = tk.Button(containerBut, text='Guardar',command=partial(cd.AñadirMenuCalculos,hojaUsuarios,selfi),bg=colorDetalles,relief=tk.GROOVE)
         buttonEnviar.pack(fill=tk.X)
-        button = tk.Button(containerBut, text="Cancelar",relief=tk.GROOVE)
+        
+        button = tk.Button(containerBut, text="Cancelar",command=lambda:info.destroy(),bg=colorDetalles,relief=tk.GROOVE)
         button.pack(fill=tk.X)
         info.mainloop(); 

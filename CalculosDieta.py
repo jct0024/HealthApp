@@ -410,7 +410,7 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
                 proporcion1 = float(selfi.entry_Gram.get())/100
                 kcal1=float(selfi.entry_kcal.get())*proporcion1;
                 gramos1 = selfi.entry_Gram;
-                nombre+=str(gramos1.get())+" "+selfi.entry_Nom.get()
+                nombre+=str(gramos1.get())+" gr de "+selfi.entry_Nom.get()
                 grasas1=float(selfi.entry_gras.get())*proporcion1;
                 saturadas1=float(selfi.entry_sat.get())*proporcion1;
                 hidratos1=float(selfi.entry_Hid.get())*proporcion1;
@@ -422,7 +422,7 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
                 proporcion2 = float(selfi.entry_Gram2.get())/100
                 kcal2=float(selfi.entry_kcal2.get())*proporcion2;
                 gramos2 = selfi.entry_Gram2;
-                nombre+=" + "+str(gramos2.get())+" "+selfi.entry_Nom2.get()
+                nombre+=" + "+str(gramos2.get())+" gr de "+selfi.entry_Nom2.get()
                 grasas2=float(selfi.entry_gras2.get())*proporcion2;
                 saturadas2=float(selfi.entry_sat2.get())*proporcion2;
                 hidratos2=float(selfi.entry_Hid2.get())*proporcion2;
@@ -434,7 +434,7 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
                 proporcion3 = float(selfi.entry_Gram3.get())/100
                 kcal3 = float(selfi.entry_kcal3.get())*proporcion3;
                 gramos3 = selfi.entry_Gram3;
-                nombre+=" + "+str(gramos3.get())+" "+selfi.entry_Nom3.get()
+                nombre+=" + "+str(gramos3.get())+" gr de "+selfi.entry_Nom3.get()
                 grasas3 = float(selfi.entry_gras3.get())*proporcion3;
                 saturadas3=float(selfi.entry_sat3.get())*proporcion3;
                 hidratos3=float(selfi.entry_Hid3.get())*proporcion3;
@@ -446,7 +446,7 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
                 proporcion4 = float(selfi.entry_Gram4.get())/100
                 kcal4=float(selfi.entry_kcal4.get())*proporcion4;
                 gramos4 = selfi.entry_Gram4;
-                nombre+=" + "+str(gramos4.get())+" "+selfi.entry_Nom4.get()
+                nombre+=" + "+str(gramos4.get())+" gr de "+selfi.entry_Nom4.get()
                 grasas4=float(selfi.entry_gras4.get())*proporcion4;
                 saturadas4=float(selfi.entry_sat4.get())*proporcion4;
                 hidratos4=float(selfi.entry_Hid4.get())*proporcion4;
@@ -456,16 +456,16 @@ def AñadirMenuCalculos(hojaAlimentos,selfi):
                 sodio4=float(selfi.entry_Sod4.get())*proporcion4;
             #Llamada a la función del calculo nutriscore
             if(nAlimento[0]):
-                cal1=algoritmoNutriscore(kcal1,azucar1,saturadas1,fibra1,proteinas1,sodio1)
+                cal1=algoritmoNutriscore(float(selfi.entry_kcal.get()),float(selfi.entry_Azuc.get()),float(selfi.entry_sat.get()),float(selfi.entry_Fibra.get()),float(selfi.entry_Pro.get()),float(selfi.entry_Sod.get()))
                 arrayCalidad.append(cal1)
             if(nAlimento[1]):
-                cal2=algoritmoNutriscore(kcal2,azucar2,saturadas2,fibra2,proteinas2,sodio2)
+                cal2=algoritmoNutriscore(float(selfi.entry_kcal2.get()),float(selfi.entry_Azuc2.get()),float(selfi.entry_sat2.get()),float(selfi.entry_Fibra2.get()),float(selfi.entry_Pro2.get()),float(selfi.entry_Sod2.get()))
                 arrayCalidad.append(cal2)
             if(nAlimento[2]):
-                cal3=algoritmoNutriscore(kcal3,azucar3,saturadas3,fibra3,proteinas3,sodio3)
+                cal3=algoritmoNutriscore(float(selfi.entry_kcal3.get()),float(selfi.entry_Azuc3.get()),float(selfi.entry_sat3.get()),float(selfi.entry_Fibra3.get()),float(selfi.entry_Pro3.get()),float(selfi.entry_Sod3.get()))
                 arrayCalidad.append(cal3)
             if(nAlimento[3]):
-                cal4=algoritmoNutriscore(kcal4,azucar4,saturadas4,fibra4,proteinas4,sodio4)
+                cal4=algoritmoNutriscore(float(selfi.entry_kcal4.get()),float(selfi.entry_Azuc4.get()),float(selfi.entry_sat4.get()),float(selfi.entry_Fibra4.get()),float(selfi.entry_Pro4.get()),float(selfi.entry_Sod4.get()))
                 arrayCalidad.append(cal4)
             #Sumatorio de los resultados recogidos a lo largo de la funcion:
             tipo= stringTipoToNumber(selfi.varDes.get(),selfi.varAlm.get(),selfi.varCom.get(),selfi.varMer.get(),selfi.varCen.get())
