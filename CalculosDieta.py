@@ -304,7 +304,7 @@ def graficoMejoraComida(selfi,hojaAlimentos, bandera):
 Hace los calculos correspondientes a la hora de añadir un nuevo menu, sumando todos los macronutrientes y los alimentos, 
 creando el plato completo y llevando a cabo los calculos para identificar la calidad en base a NUTRISCORE.
 '''
-def AñadirMenuCalculos(hojaAlimentos,selfi):
+def AñadirMenuCalculos(selfi):
     bandera=0
     error=False;
     nAlimento = [False, False, False, False, False]

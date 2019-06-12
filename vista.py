@@ -437,8 +437,8 @@ def registrarse(hojaUsuarios,hojaPatologias):
     button.pack(fill=tk.X)
     label_Err.pack()
     registro.mainloop(); 
-def InformacionNuevaComida(hojaUsuarios, selfi,colorDetalles,colorFondo):
-    nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad, error = cd.AñadirMenuCalculos(hojaUsuarios,selfi)
+def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
+    nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad, error = cd.AñadirMenuCalculos(selfi)
     if not (error):
         info = tk.Tk();
         info.resizable(0,0)
@@ -512,13 +512,14 @@ def InformacionNuevaComida(hojaUsuarios, selfi,colorDetalles,colorFondo):
         labelTipo= tk.Label(containerTip, text="TIPO: xxx",bg=colorFondo)
         labelTipo.pack(side=tk.LEFT)
         resultado=[0,0,0,0,0]
+        print(arrayCalidad)
         for i in arrayCalidad:
             resultado[i]+=1
         cal = resultado.index(max(resultado))
         labelCal= tk.Label(containerCal, text="Calidad: "+str(cal),bg=colorFondo)
         labelCal.pack(side=tk.LEFT)
-        
-        buttonEnviar = tk.Button(containerBut, text='Guardar',command=partial(cd.AñadirMenuCalculos,hojaUsuarios,selfi),bg=colorDetalles,relief=tk.GROOVE)
+        #ab.ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, calidad)
+        buttonEnviar = tk.Button(containerBut, text='Guardar',command=partial(ab.ComrproYAlmacenamientoAlimento,hojaAlimentos, nombre, kcalTotal,grasasTotal, saturadasTotal, hidratosTotal, fibraTotal , azucarTotal, proteinasTotal, sodioTotal,tipo ,cal),bg=colorDetalles,relief=tk.GROOVE)
         buttonEnviar.pack(fill=tk.X)
         
         button = tk.Button(containerBut, text="Cancelar",command=lambda:info.destroy(),bg=colorDetalles,relief=tk.GROOVE)

@@ -171,7 +171,6 @@ def guardarDatos (hojaAlimentos, hojaPatologias):
     hojaPatologias.to_excel(writer,'Patologias',index=False)
     writer.save();
 def ComproYAlmacenamientoUsuario(hojaUsuarios,selfi,controller,hojaPatologias, patologia):
-    print(patologia.get())
     idPatologia = IdPatologiaPorNombre(patologia.get(),hojaPatologias)
     fila = getFilaUsuario(selfi.user,hojaUsuarios)
     if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_Ape.get()) == 0 or len(selfi.entry_Eda.get()) == 0 or len(selfi.entry_Alt.get()) == 0 or len(selfi.entry_Pes.get()) == 0 or selfi.var.get() == 0 or selfi.varTipo.get() == 0 or selfi.varAct.get() == 0):
@@ -219,8 +218,10 @@ def ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kilocalorias, grasa,sat
                              'Grasa': [grasa], 
                              'Saturadas':[saturada],
                              'Hidratos':[hidratos],
+                             'Fibra':[fibra],
                              'Azucares':[azucar],
                              'Proteina':[proteina],
+                             'Sodio':[sodio],
                              'Tipo': [tipo],
                              'LRE':[0],
                              'Calidad': [calidad]})
