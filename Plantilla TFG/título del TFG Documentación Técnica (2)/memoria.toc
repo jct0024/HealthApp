@@ -1,8 +1,8 @@
 \babel@toc {spanish}{}
 \babel@toc {spanish}{}
 \contentsline {chapter}{\'{I}ndice general}{\es@scroman {iii}}{section*.1}% 
-\contentsline {chapter}{\'{I}ndice de figuras}{\es@scroman {iv}}{section*.2}% 
-\contentsline {chapter}{\'{I}ndice de tablas}{\es@scroman {v}}{section*.3}% 
+\contentsline {chapter}{\'{I}ndice de figuras}{\es@scroman {v}}{section*.2}% 
+\contentsline {chapter}{\'{I}ndice de tablas}{\es@scroman {vi}}{section*.3}% 
 \contentsline {chapter}{Introducci\IeC {\'o}n}{1}{chapter*.4}% 
 \contentsline {chapter}{Objetivos del proyecto}{5}{chapter*.5}% 
 \contentsline {section}{\numberline {2.1}Objetivos generales}{5}{section.2.1}% 
@@ -22,5 +22,39 @@
 \contentsline {subsubsection}{Tkinter}{13}{section*.12}% 
 \contentsline {subsubsection}{Otras}{13}{section*.13}% 
 \contentsline {chapter}{Aspectos relevantes del desarrollo del proyecto}{15}{chapter*.14}% 
-\contentsline {chapter}{Trabajos relacionados}{17}{chapter*.15}% 
-\contentsline {chapter}{Conclusiones y L\IeC {\'\i }neas de trabajo futuras}{19}{chapter*.16}% 
+\contentsline {section}{\numberline {5.1}La idea}{15}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Formato de trabajo}{16}{section.5.2}% 
+\contentsline {section}{\numberline {5.3}Algoritmos del programa}{17}{section.5.3}% 
+\contentsline {subsection}{Algoritmos de recomendaci\IeC {\'o}n}{17}{section*.15}% 
+\contentsline {subsection}{Persistencia de los datos}{18}{section*.16}% 
+\contentsline {subsection}{Distinci\IeC {\'o}n entre tipos de comida}{18}{section*.17}% 
+\contentsline {subsection}{SCRUM}{19}{section*.18}% 
+\contentsline {section}{\numberline {5.4}Conocimientos aprendidos en la carrera}{20}{section.5.4}% 
+\contentsline {subsection}{INTRODUCCI\IeC {\'O}N}{20}{section*.19}% 
+\contentsline {subsection}{Conocimientos sobre python}{20}{section*.20}% 
+\contentsline {subsection}{Conocimientos sobre la gesti\IeC {\'o}n de proyectos}{21}{section*.21}% 
+\contentsline {subsection}{Investigaci\IeC {\'o}n}{21}{section*.22}% 
+\contentsline {section}{\numberline {5.5}Conocimientos externos a la carrera}{21}{section.5.5}% 
+\contentsline {subsection}{INTRODUCCI\IeC {\'O}N}{21}{section*.23}% 
+\contentsline {subsection}{Psicolog\IeC {\'\i }a}{22}{section*.24}% 
+\contentsline {subsubsection}{Aprender a aprender}{22}{section*.25}% 
+\contentsline {subsection}{Nutrici\IeC {\'o}n}{22}{section*.26}% 
+\contentsline {subsubsection}{"Calidad" de los alimentos}{22}{section*.27}% 
+\contentsline {subsection}{Nutriscore}{23}{section*.28}% 
+\contentsline {subsubsection}{Imperfecciones}{23}{section*.29}% 
+\contentsline {subsection}{Interfaces Gr\IeC {\'a}ficas}{23}{section*.30}% 
+\contentsline {section}{\numberline {5.6}Fases del proyecto}{24}{section.5.6}% 
+\contentsline {subsection}{Cronograma: }{24}{section*.31}% 
+\contentsline {chapter}{Trabajos relacionados}{25}{chapter*.32}% 
+\contentsline {section}{\numberline {6.1}Estudios:}{25}{section.6.1}% 
+\contentsline {subsection}{Estudios DASH}{25}{section*.33}% 
+\contentsline {subsection}{Las pruebas de grasas saturadas}{26}{section*.34}% 
+\contentsline {subsection}{El programa de prevenci\IeC {\'o}n de diabetes (DPP)}{26}{section*.35}% 
+\contentsline {subsection}{Pounds Lost}{26}{section*.36}% 
+\contentsline {subsection}{Seven countries Study}{27}{section*.37}% 
+\contentsline {section}{\numberline {6.2}Aplicaciones Similares}{28}{section.6.2}% 
+\contentsline {subsection}{FatSecret}{28}{section*.38}% 
+\contentsline {subsection}{DietPro}{28}{section*.39}% 
+\contentsline {subsection}{MyFitnessPal}{28}{section*.40}% 
+\contentsline {subsection}{LifeSum}{29}{section*.41}% 
+\contentsline {chapter}{Conclusiones y L\IeC {\'\i }neas de trabajo futuras}{31}{chapter*.42}% 
