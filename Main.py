@@ -385,7 +385,7 @@ class MostrarDieta(tk.Frame):
         i=0;
         umbral=2
         self.desayuno = self.desayuno.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
-        self.desayuno = cd.OrdMinimaDiferencia(self.desayuno,self.listDistribuciónKcal[0],"desayuno",datosAlimCliente,self.kcal_Por_Dia)
+        self.desayuno = cd.OrdMinimaDiferencia(self.desayuno,self.listDistribuciónKcal[0],"desayuno",datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios)
         self.filtDesayuno = self.desayuno.loc[self.desayuno["Calidad"] <= umbral]
         self.filtDesayuno = self.filtDesayuno.sort_values(by=["LRE"])
         self.objetivo = tk.Label(self.tabDesayuno,text="Objetivo: "+str(np.round(self.listMacDiarios[0]))+" Kcal // Objetivo Desayuno: "+str(np.round(self.listDistribuciónKcal[0])),bg=fondoGeneral)
@@ -436,7 +436,7 @@ class MostrarDieta(tk.Frame):
         self.label_Informacion_Alm.pack(fill=BOTH,side=LEFT,anchor=tk.W)
         i=0;
         self.almuerzo = self.almuerzo.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
-        self.almuerzo = cd.OrdMinimaDiferencia(self.almuerzo,self.listDistribuciónKcal[1],"almuerzo",datosAlimCliente,self.kcal_Por_Dia)
+        self.almuerzo = cd.OrdMinimaDiferencia(self.almuerzo,self.listDistribuciónKcal[1],"almuerzo",datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios)
         self.filtAlmuerzo = self.almuerzo.loc[self.almuerzo["Calidad"] <= umbral]
         self.filtAlmuerzo = self.filtAlmuerzo.sort_values(by=["LRE"])
         self.objetivo = tk.Label(self.tabAlmuerzo,text="Objetivo tital: "+str(np.round(self.listMacDiarios[0]))+" Kcal // Objetivo Almuerzo: "+str(np.round(self.listDistribuciónKcal[1])),bg=fondoGeneral)
@@ -484,7 +484,7 @@ class MostrarDieta(tk.Frame):
         self.label_Informacion_Com.pack(fill=BOTH,side=LEFT,anchor=tk.W)
         i=0;
         self.comida = self.comida.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
-        self.comida = cd.OrdMinimaDiferencia(self.comida,self.listDistribuciónKcal[1],"almuerzo",datosAlimCliente,self.kcal_Por_Dia)
+        self.comida = cd.OrdMinimaDiferencia(self.comida,self.listDistribuciónKcal[1],"almuerzo",datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios)
         self.filtComida = self.comida.loc[self.comida["Calidad"] <= umbral]
         self.filtComida = self.filtComida.sort_values(by=["LRE"])
         self.objetivo = tk.Label(self.tabComida,text="Objetivo: "+str(np.round(self.listMacDiarios[0]))+" Kcal // Objetivo Comida: "+str(np.round(self.listDistribuciónKcal[2])),bg=fondoGeneral)
@@ -531,7 +531,7 @@ class MostrarDieta(tk.Frame):
         self.label_Informacion_Mer.pack(fill=BOTH,side=LEFT,anchor=tk.W)
         i=0;
         self.merienda = self.merienda.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
-        self.merienda = cd.OrdMinimaDiferencia(self.merienda,self.listDistribuciónKcal[1],"almuerzo",datosAlimCliente,self.kcal_Por_Dia)
+        self.merienda = cd.OrdMinimaDiferencia(self.merienda,self.listDistribuciónKcal[1],"almuerzo",datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios)
         self.filtMerienda = self.merienda.loc[self.merienda["Calidad"] <= umbral]
         self.filtMerienda = self.filtMerienda.sort_values(by=["LRE"])
         self.objetivo = tk.Label(self.tabMerienda,text="Objetivo: "+str(np.round(self.listMacDiarios[0]))+" Kcal // Objetivo Merienda: "+str(np.round(self.listDistribuciónKcal[3])),bg=fondoGeneral)
@@ -578,7 +578,7 @@ class MostrarDieta(tk.Frame):
         self.label_Informacion_Cen.pack(fill=BOTH,side=LEFT,anchor=tk.W)
         i=0;
         self.cena = self.cena.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
-        self.cena = cd.OrdMinimaDiferencia(self.cena,self.listDistribuciónKcal[1],"cena",datosAlimCliente,self.kcal_Por_Dia)
+        self.cena = cd.OrdMinimaDiferencia(self.cena,self.listDistribuciónKcal[1],"cena",datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios)
         self.filtCena = self.cena.loc[self.cena["Calidad"] <= umbral]
         self.filtCena = self.filtCena.sort_values(by=["LRE"])
         self.objetivo = tk.Label(self.tabCena,text="Objetivo: "+str(np.round(self.listMacDiarios[0]))+" Kcal // Objetivo Cena: "+str(np.round(self.listDistribuciónKcal[4])),bg=fondoGeneral)

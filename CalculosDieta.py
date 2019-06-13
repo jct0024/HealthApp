@@ -52,9 +52,9 @@ def distribuciónDeMacronutrientes(kcal,tipoDieta):
         Por esta razon dividimos entre 2 a los hidratos y luego otra vez entre 4 para trasnformar las kcal en gramos
         hacemos lo mismo con las proteinas y las grasas, solo que las grasas son 8 kcal/gramo, es decir 4 * 8 = 32.
         '''
-        hidratos = kcal/8 #En gramos todo
-        proteinas = kcal/16
-        grasas = kcal/32
+        hidratos = kcal/2 #En gramos todo
+        proteinas = kcal/4
+        grasas = kcal/4
         listMacDiarios = [kcal,hidratos,proteinas,grasas]
         return listMacDiarios
     '''
@@ -62,9 +62,9 @@ def distribuciónDeMacronutrientes(kcal,tipoDieta):
     saber cual seria la distribución correcta.
     '''
     if (tipoDieta == 'baja en grasa'):
-        hidratos = kcal/8 #En gramos todo
-        proteinas = kcal/16
-        grasas = kcal/32
+        hidratos = kcal/2 #En gramos todo
+        proteinas = kcal/4
+        grasas = kcal/4
         listMacDiarios = [kcal,hidratos,proteinas,grasas]
     else:
         return None;
@@ -117,52 +117,53 @@ y multiplicarlo por el tanto por ciento  de grasas (por ejemplo) que he de comer
 además
 El objetivo son las kcalorias por comida especifica, y se le multiplica el % del macronutriente que le corresponda.
 '''
-def OrdMinimaDiferencia(listComida,objetivo,tipoComida,dat,kcaldiarias):
+def OrdMinimaDiferencia(listComida,objetivo,tipoComida,dat,kcaldiarias,listMacDiarios):
     dif=0;
     listComida.loc[:,"dif"]=0;
     if(tipoComida == "desayuno"):
       #Es el tanto por ciento correspondiente a cada macronutriente en base al objetivo de la comida
       # Se calcula = %pesoMacronutrienteSobreKcalDiarias*100/%pesodelacomidadelmomentocar
-      graDeber = kcaldiarias*0.0375
-      carDeber = kcaldiarias*0.15
-      protDeber = kcaldiarias*0.06
+      graDeber = listMacDiarios[3]*0.15
+      carDeber = listMacDiarios[1]*0.3
+      protDeber = listMacDiarios[2]*0.24
       #Objetivo = kcalorias que deberia comer en el desayuno (comida concretra)
-      carb = objetivo*0.606060
-      gra = objetivo*0.15
-      prot = objetivo*0.2424
+      carb = graDeber
+      gra = carDeber
+      prot = protDeber
     #PENDIENTE DE CALCULAR EL RESTO DE COMIDAS EMPEZANDO POR AQUI
     elif(tipoComida == "almuerzo"):
-      graDeber = kcaldiarias*0.015+kcaldiarias*0.0375
-      carDeber = kcaldiarias*0.1+kcaldiarias*0.15
-      protDeber = kcaldiarias*0.02+kcaldiarias*0.06
+      graDeber = listMacDiarios[3]*0.25
+      carDeber = listMacDiarios[1]*0.55
+      protDeber = listMacDiarios[2]*0.28
       #deber = objetivo+kcaldiarias*0.135
-      carb = objetivo*0.74074074
-      gra = objetivo*0.111111
-      prot = objetivo*0.14814814
+      carb = listMacDiarios[3]*0.10
+      gra = listMacDiarios[1]*0.25
+      prot = listMacDiarios[2]*0.14
     elif(tipoComida == "comida"):
-      graDeber = kcaldiarias*0.075+kcaldiarias*0.015+kcaldiarias*0.0375
-      carDeber = kcaldiarias*0.145+kcaldiarias*0.1+kcaldiarias*0.15
-      protDeber = kcaldiarias*0.085+kcaldiarias*0.02+kcaldiarias*0.06
+      graDeber = listMacDiarios[3]*0.45
+      carDeber =listMacDiarios[1]*0.80
+      protDeber = listMacDiarios[2]*0.62
       #deber = objetivo+kcaldiarias*0.135+kcaldiarias*0.305
-      carb = objetivo*0.4754098
-      gra = objetivo*0.245901
-      prot = objetivo*0.2786885
+      carb = listMacDiarios[3]*0.2
+      gra = listMacDiarios[1]*0.25
+      prot = listMacDiarios[2]*0.24
     elif(tipoComida == "merienda"):
-      graDeber = kcaldiarias*0.045+kcaldiarias*0.075+kcaldiarias*0.015+kcaldiarias*0.0375
-      carDeber = kcaldiarias*0.45+kcaldiarias*0.145+kcaldiarias*0.1+kcaldiarias*0.15
-      protDeber = kcaldiarias*0.025+kcaldiarias*0.085+kcaldiarias*0.02+kcaldiarias*0.06
+      graDeber = listMacDiarios[3]*0.65
+      carDeber = listMacDiarios[1]*0.9
+      protDeber = listMacDiarios[2]*0.76
       #deber = objetivo+kcaldiarias*0.135+kcaldiarias*0.305+kcaldiarias*0.115
-      carb = objetivo*0.39130434
-      gra = objetivo*0.39130434
-      prot = objetivo*0.2173913043
+      carb = listMacDiarios[3]*0.2
+      gra = listMacDiarios[1]*0.1
+      prot = listMacDiarios[2]*0.14
     else:
-      graDeber = kcaldiarias*0.0875+kcaldiarias*0.045+kcaldiarias*0.075+kcaldiarias*0.015+kcaldiarias*0.0375
-      carDeber = kcaldiarias*0.05+kcaldiarias*0.45+kcaldiarias*0.145+kcaldiarias*0.1+kcaldiarias*0.15
-      protDeber = kcaldiarias*0.06+kcaldiarias*0.025+kcaldiarias*0.085+kcaldiarias*0.02+kcaldiarias*0.06
-      #deber = objetivo+kcaldiarias*0.135+kcaldiarias*0.305+kcaldiarias*0.115+kcaldiarias*0.1975
-      carb = objetivo*0.2531645570
-      gra = objetivo*0.4430379747
-      prot = objetivo*0.3037974684
+      #Acumulado
+      graDeber = listMacDiarios[3]
+      carDeber = listMacDiarios[1]
+      protDeber = listMacDiarios[2]
+      #Propio de esta comida
+      carb = listMacDiarios[3]*0.35
+      gra = listMacDiarios[1]*0.10
+      prot = listMacDiarios[2]*0.24
     for i,comida in listComida.iterrows():        
         dif = np.abs(formulDif(dat,carb,prot,gra,comida,objetivo,carDeber,graDeber,protDeber))
         #dif = abs(objetivo-int(comida["Calorias"]))

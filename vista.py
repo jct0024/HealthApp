@@ -180,7 +180,7 @@ def refrescar(selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlimen
         _,_,_,_,comida = cd.listasPorTipo(hojaAlimentos);
         comida = comida.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
     comida = comida.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
-    comida = cd.OrdMinimaDiferencia(comida,listDistribuciónKcal,"desayuno",datosAlimCliente,kcal_Por_Dia)
+    comida = cd.OrdMinimaDiferencia(comida,listDistribuciónKcal,"desayuno",datosAlimCliente,kcal_Por_Dia,listMacDiarios)
     #Sustituimos la listaFiltrada con los nuevos valores.
     listaFiltrada = comida.loc[comida["Calidad"] <= umbral]
     listaFiltrada = listaFiltrada.sort_values(by=["LRE"])
@@ -278,7 +278,7 @@ def Actualizar(selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlime
         _,_,_,_,comida = cd.listasPorTipo(hojaAlimentos);
         comida = comida.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
     comida = comida.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
-    comida = cd.OrdMinimaDiferencia(comida,listDistribuciónKcal,"desayuno",datosAlimCliente,kcal_Por_Dia)
+    comida = cd.OrdMinimaDiferencia(comida,listDistribuciónKcal,"desayuno",datosAlimCliente,kcal_Por_Dia,listMacDiarios)
     #Sustituimos la listaFiltrada con los nuevos valores.
     listaFiltrada = comida.loc[comida["Calidad"] <= umbral]
     listaFiltrada = listaFiltrada.sort_values(by=["LRE"])
