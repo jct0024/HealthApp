@@ -58,3 +58,11 @@
 \contentsline {subsection}{MyFitnessPal}{28}{section*.40}% 
 \contentsline {subsection}{LifeSum}{29}{section*.41}% 
 \contentsline {chapter}{Conclusiones y L\IeC {\'\i }neas de trabajo futuras}{31}{chapter*.42}% 
+\contentsline {section}{\numberline {7.1}Conclusiones}{31}{section.7.1}% 
+\contentsline {section}{\numberline {7.2}Lineas de trabajo futuras}{33}{section.7.2}% 
+\contentsline {subsection}{Base de datos Online}{33}{section*.43}% 
+\contentsline {subsection}{Perfeccionamiento del algoritmo de recomendaci\IeC {\'o}n}{33}{section*.44}% 
+\contentsline {subsection}{Aumento de la base de datos}{33}{section*.45}% 
+\contentsline {subsection}{Autoaprendizaje del programa}{33}{section*.46}% 
+\contentsline {subsection}{Adaptaci\IeC {\'o}n a diferentes plataformas}{34}{section*.47}% 
+\contentsline {subsection}{Desarrollo empresarial}{34}{section*.48}% 
