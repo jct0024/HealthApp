@@ -2,8 +2,68 @@
 
 Esta parte de la memoria tiene como objetivo presentar las técnicas metodológicas y las herramientas de desarrollo que se han utilizado para llevar a cabo el proyecto. Si se han estudiado diferentes alternativas de metodologías, herramientas, bibliotecas se puede hacer un resumen de los aspectos más destacados de cada alternativa, incluyendo comparativas entre las distintas opciones y una justificación de las elecciones realizadas. 
 No se pretende que este apartado se convierta en un capítulo de un libro dedicado a cada una de las alternativas, sino comentar los aspectos más destacados de cada opción, con un repaso somero a los fundamentos esenciales y referencias bibliográficas para que el lector pueda ampliar su conocimiento sobre el tema.
-\subsection{Pandas}
-Pandas, libreria potente en python la cual depende de numpy, se usa en este proyecto para la carga de la base de datos desde un archivo Excell, 
-\subsection{Interfaz Gráfica}
-\subsubsection{Tkinter}
-\subsubsection{Otras}
+\section{¿Por qué Python?}
+La razón es la sencillez y capacidad de este lenguaje para el análisis y tratamiento de los datos gracias a librerías como Pandas o Numpy. Base gran parte de la metodología de análisis usada en este proyecto en el libro: Python for Data Analysis.
+\cite{pythonDataAnalisis}
+\\ 
+
+Las distintas posibilidades que se barajaron antes de empezar fueron Java, Android, R y Python. Al final me decanté por Python por diferentes motivos, el primero en ser descartado fue Java, tras un estudio inicial sobre lo que quería hacer y el como hacerlo, me di cuenta que necesitaba un lenguaje potente que me dejase tratar los datos con claridad para su análisis, y después de leer varios artículos como: REFERENCIA ARTICULOS, me percaté de que Java no era la mejor opción, estos artículos siempre te orientaban hacia Python y R. Entonces, ¿Por qué Android?, por la sencilla razón de que este trabajo está desarrollado para unir el mundo de la dietoterapia, y las ciencias de la Salud con la informática para hacer que el usuario tenga un fácil aprendizaje de dicha metodología. A mi parecer la forma más clara y rápida de llevar al usuario dicha tecnología es a través de su SmartPhone, pero se acabó descartando debido a la falta de conocimientos sobre sistemas Android. A estas alturas ya solo me quedaba elegir entre Python y R, tras indagar superficialmente sobre ambos lenguajes para el análisis y el tratamiento de datos, se llego a la conclusión que ambos lenguajes tienen una forma de trabajar muy similares, y entonces la decisión fue clara, debido a que he trabajado en numerosas ocasiones con Python y la sintaxis de R para mi era desconocida, al final, me decante por Python.
+\section{Metodología}
+\subsection{Introduccón}
+En este subapartado explicaremos el cómo y porque se ha tratado los datos en este TFG además de los diferentes cálculos internos que se realizan para el sistema de recomendaciones, cálculos, etc.
+\subsection{Excell y Pandas}
+Se ha usado la herramienta de Microsoft, Excel, para trabajar como una base de datos, y poder tratarlos en forma de DataFrame, esta particularidad, nos la da la librería de Pandas. Hay un Excel para la base de datos genérica, y otro para la base de históricos. Se leen los datos automáticamente en cuanto el usuario entra en la aplicación, pero solo se guarda si el usuario así lo desea.
+\subsection{DataFrame}
+Se usan los DataFrame, para llevar un registro de todos los datos que el programa necesita, se tiene en cuenta tanto las bases de datos de los alimentos, usuarios y comidas como lo que el usuario lleva en el día.
+\\
+Los alimentos se tratan en el momento en el que se registra el usuario, de manera que, se separan las comidas de la lista principal, creando 5 listas (Desayuno, Merienda, Comida, Almuerzo y Cena), se tratan por separado y se filtran por el umbral, el umbral es un medidor de calidad de la comida, para qué solo te muestre lo más sano en un principio, y se van actualizando sensibles a los cambios de la aplicación. Si se refresca la página aumenta el umbral para que sea mas amplia las posibilidades de comida, aunque esto signifique una peor alimentación. Con cada elección se actualizan el resto de las comidas, para que se ajuste al máximo la dieta a sus necesidades, se ordena por la formula que se hablará mas adelante, se crea la variable “dif” que sale de esta fórmula, y este es el eje principal de las recomendaciones, cada vez que se elige una comida, la comida se almacena para poder tratarla mas tarde, en cuanto se selecciona los botones se desactivan, y se cambia el botón seleccionar a editar, para que se pueda editar en cualquier momento. Cada vez que se elige una comida se reparte las calorías sobrantes/que faltan, y se recalculan las posibilidades.
+
+\subsection{Técnicas}
+\subsubsection{Introducción}
+Cada subapartado de este apartado fue descrito con mayor rigor, en el apartado tres sobre las técnicas a aprender para la realización de este proyecto. No obstante, teniendo en cuenta que son, además, métricas que han sido realizadas durante este proyecto, haciendo que el proyecto este estructurado, tal y como esta, se comentarán de manera breve para que el lector, tenga un breve recordatorio de estas técnicas.
+\section{Aprender a aprender}
+Como ya vimos, tras encuestar y hablar con varios graduados en Magisterio y psicología y tener respuestas diferentes, pero no obstantes similares, uno de los mejores métodos de enseñanza ausente del enseñante, es la técnica de autoaprendizaje, más comúnmente conocida como: aprender a aprender, como bien dice la página del Centro del Profesorado de Córdoba:
+\begin{quote}
+“Aprender a aprender supone disponer de habilidades para iniciarse en el aprendizaje y ser capaz de continuar aprendiendo de manera cada vez más eficaz y autónoma de acuerdo a los propios objetivos y necesidades.\\
+
+Esta competencia tiene dos dimensiones fundamentales. Por un lado, la adquisición de la conciencia de las propias capacidades (intelectuales, emocionales, físicas), del proceso y las estrategias necesarias para desarrollarlas, así como de lo que se puede hacer por uno mismo y de lo que se puede hacer con ayuda de otras personas o recursos. Por otro lado, disponer de un sentimiento de competencia personal, que redunda en la motivación, la confianza en uno mismo y el gusto por aprender. Significa ser consciente de lo que se sabe y de lo que es necesario aprender”. \cite{aprederAAprender}
+
+
+\end{quote}
+
+Es decir, el auto-aprendizaje no solo ayuda al usuario a aprender de manera autónoma, sino que le ayuda, a que todo aquello que ha conseguido, para el sea, de alguna forma, una meta, algo que lograr, algo suyo, que no se le va a olvidar tan fácilmente, como información memorizada, sino que será el resultado de pequeños logros personales que integrarán al usuario, una nueva información, como si fuese suya.
+\subsection{TMB}
+Se traduce como el calculo o tasa del metabolismo basal, por si no lo recuerdan, el metabolismo basal, es el gasto calórico que llevamos a cabo en reposo, por el mero hecho de respirar, a este calculo se le suman una serie de variables relacionadas con la actividad física del usuario y como resultado tenemos las kilocalorías diarias que el usuario gasta al día o que es equivalente que el usuario debe tomar para mantenerse en su peso, obviamente, este calculo es genérico, es muy utilizado por endocrinos, cuya finalidad no es hacer un seguimiento estricto de una dieta, sino un calculo aproximado de esta, para la correcta alimentación del paciente.\\
+Tras horas de estudio, se aproximó que la forma mas correcta de bajar o subir peso en base al cálculo del metabolismo basal, es dar un margen de 500 kilocalorías, arriba o abajo, según los propósitos de nuestro usuario. Se recalca, que es claro que es un cálculo genérico pero hasta el perfeccionamiento del proyecto, es el calculo mas adecuado que podemos realizar. Dicho calculo se sustenta a través de la siguiente formula:
+\textbf{Hombres:}
+\begin{equation}
+TMB =  ((10 * Peso(kg))+(6,25*Altura (cm))-(5*edad)+5)*ActividadFisica
+\end{equation}
+\textbf{Mujeres:}
+\begin{equation}
+TMB =  ((10 * Peso(kg))+(6,25*Altura (cm))-(5*edad)-161)*ActividadFisica
+\end{equation}
+Donde actividad física se corresponde con los siguientes valores:
+\tablaSmall{Valor de la actividad física en TMB}{l c c c c}{TablaActividadYMB}
+{ \multicolumn{1}{l}{Ejercicio } & Valor de ActividadFisica\\}{ 
+Poco ejercicio & 1,2\\
+Ejercicio ligero(1-3 dias/semana) & 1,35\\
+Ejercicio Moderado (3-5 diás/semana) & 1,55\\
+Ejercicio fuerte (6-7 dias/semana & 1,725\\
+Ejercicio muy fuerte (dos veces al día) & 1,9 \\
+} 
+\subsection{Nutriscore}
+tras varios meses de desarrollo, se discutió sobre como otorgar el valor a las comidas. Debía ser un valor calculado, y estandarizado para que todo el mundo pudiera entenderlo, y buscar información sobre dicho algoritmo en caso de quedar alguna duda. Después de varios días, se propuso implantar el algoritmo Nutriscore, o método del semáforo, pues eventualmente se iba a implantar en España. A lo largo de estas memorias, se explica con detenimiento el algoritmo y su funcionamiento.
+\section{Estructura del programa}
+\subsection{Introducción}
+En un principio se pensó en hace una estructura MVC clásica pero conforme el proyecto fue creciendo, y prácticamente de manera imperceptible se convirtió en una versión un tanto modificada de este modelo.\\
+La estructura se basa en cuatro módulos principales, además de las librerías pertinentes, obviamente. 
+\begin{enumerate}
+\item	\textbf{Main} – Tronco del programa
+\item	\textbf{Vistas} – Relacionado con la parte visual
+\item	\textbf{CalculosDieta} – Todo calculo usado en el programa
+\item	\textbf{AdminBase} – Todo proceso relacionado con la base de datos
+En los apartados siguientes se hablará de manera extensa sobre las librerías utilizadas y los módulos creados para el desarrollo
+
+\end{enumerate}
+ de esta aplicación, por el momento, este apartado será explicando en que deriva y se basa dicha estructura, conforme el MVC clásico y cuales son las consecuencias de esto.
