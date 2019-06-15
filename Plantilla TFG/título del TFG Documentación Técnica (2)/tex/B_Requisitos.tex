@@ -1,11 +1,69 @@
 \apendice{Especificación de Requisitos}
 
 \section{Introducción}
-
+En las siguientes apartados de este capitulo se describirá todos los requisitos y objetivos que inicialmente debía cubrir el programa o herramienta en cuanto a funcionalidad.
 \section{Objetivos generales}
-
+El objetivo principal de este TFG es la realización de un proyecto completo, que ponga a disposición del usuario, un sistema automatizado de planificación alimenticia, que automatice y facilite el autoaprendizaje, haciendo visible al usuario de manera directa, clara y concisa, de cómo influye cada decisión que toma en su día a día.\\
+Es la imagen de un gran proyecto de futuro, y como tal ha de tener las funcionalidades mínimas necesarias para su uso y entendimiento. es decir:
+\begin{itemize}
+\item Posibilidad de iniciar sesión o crear un nuevo usuario.
+\item Correcto sistema de recomendación y selección por el usuario
+\item Diferentes elementos indicativos de la calidad de selección del usuario en el programa.
+\item Estandarización de las unidades métricas de recomendación, calidad y repartición usadas durante la aplicación.
+\item Objetos visuales de progreso del usuario y elección.
+\item Guardado de datos y persistencia.
+\end{itemize}
 \section{Catalogo de requisitos}
-
+\subsubsection{Requisitos funcionales}
+\begin{enumerate}
+\item Probar correcto inicio de sesión y registro de nuevos usuarios.
+\item Probar que añadir un nuevo alimento funciona correctamente.
+\item Probar que según la patología del usuario haga una correcta distribución
+\item Probar las diferentes posibilidades de recomendación del menú y que el algoritmo te recomiende la adecuada.
+\item Probar que cada vez que seleccionas un alimento el resto de comidas se actualizan en base a tu selección.
+\item Calibrar la formula del sistema de recomendación para que sea lo mas precisa posible.
+\item Comprobar que conforme el usuario va actualizando las selecciones le puedan aparecer menus de distintas calidades.
+\end{enumerate}
+\subsubsection{Requisitos no funcionales}
+\begin{itemize}
+\item Crear diferentes estilos visuales para la ergonómica con el usuario.
+\item Debido a la lentitud de la interfaz, el software ha de ser lo más rápido posible.
+\item Para futuras extensiones el software ha de ser modular
+\end{itemize}
 \section{Especificación de requisitos}
+\subsection{Requisito 1}
+Versión: 1.0\\
+Importancia: Media\\
+Descripción:\\
+Para un correcto uso de la aplicación debían poderse añadir diferentes usuarios además, obviamente de poder iniciar sesión a los usuarios ya existentes en la aplicación. No resulto nada complicado, se crearón las condiciones necesarias y el formulario gráfico, para la correcta inscripción en el programa, haciendo las comprobaciones pertinentes para respetar siempre la consistencia de la base de datos.
 
-
+\subsection{Requisito 2}
+Versión: 2.0\\
+Importancia: Alta\\
+Descripción:\\
+Debido a la limitación de la base de datos, en cuanto a alimentos se refiere, era necesaria la posibilidad de añadir nuevos alimentos, para ello se llegaron a crear dos versiones:\\
+versión 1: El usuario debía meter la información completa del menú además de añadir el la calidad que viese pertinente, esto era además de un trabajo tedioso para el usuario, una posibilidad de romper la funcionalidad del programa haciendo que cualquier usuario pudiera poner su comidas favorita como la de mejor calidad.\\
+version 2: El usuario mete el menú por cada alimento y su información nutricional extraída de Bedca, la cual, esta valorada en 100 gramos, este calcula automáticamente el valor del menú y la calidad de dicho menú
+\subsection{Requisito 3}
+Versión: 1.0\\
+Importancia: Baja\\
+Descripción:\\
+Cada patología viene inscrita con un tipo de dieta, la cual, a la hora de realizar los cálculos de repartición correspondientes, interviene en el porcentaje de dichos cálculos. Esto se resolvió mediante clausulas condicionales que permitía crear esa variedad de forma sencilla.
+\subsection{Requisito 4 y 6}
+Versión: 3.0\\
+Importancia: Alta\\
+Descripción:\\
+El algoritmo de recomendación es el método o estrategia al que mas vueltas se le dio. \\
+Primero para su versión inicial, se pensó en recomendar solo a través del LRE y la calidad, lo que provoca un desequilibrio nutricional imperdonable que había que evitar.\\
+En la segunda versión, se añadió el atributo "dif" que hacía referencia a la diferencia calorica con la necesidad, esto provocaba un menor desajuste pero podríamos encontrarnos con una dieta donde todo fuera proteínas y estuviera destrozando al usuario en vez de ayudarle.\\
+Versión 3: Se corresponde con la formula actual, la cual permite que el alimento se ajuste lo máximo posible a las necesidades del usuario basandonse en las características que este busca en ese momento.
+\subsection{Requisito 5}
+Versión: 1.0\\
+Importancia: Alta\\
+Descripción:\\
+Para que el sistema de recomendación fuera lo más preciso posible, había que asegurarse que con cada elección, la recomendación pudiera ser diferente, ajustándose de esta manera más al usuario y dando una experiencia mas cercana a la personalización. De esta manera cada vez que se selecciona o deselecciona un alimento, el programa cambia todas las recomendaciones posibles.
+\subsection{Requisito 7}
+Versión: 1.0\\
+Importancia: Media\\
+Descripción:\\
+Es un requisito mínimo de toda aplicación que cuando el usuario cierre dicha se guarde su progreso actual, básicamente, eso es lo que cubre este requisito, la necesidad de poder abandonar el programa guardando correctamente y que de esta manera se conserve las elecciones realizadas en el programa.

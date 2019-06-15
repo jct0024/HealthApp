@@ -1,0 +1,46 @@
+\babel@toc {spanish}{}
+\babel@toc {spanish}{}
+\contentsline {chapter}{\'{I}ndice general}{\es@scroman {i}}{section*.1}% 
+\contentsline {chapter}{\'{I}ndice de figuras}{\es@scroman {iii}}{section*.2}% 
+\contentsline {chapter}{\'{I}ndice de tablas}{\es@scroman {iv}}{section*.3}% 
+\contentsline {appendix}{\chapternumberline {A}Plan de Proyecto Software}{1}{appendix.Alph1}% 
+\contentsline {section}{\numberline {A.1}Introducci\IeC {\'o}n}{1}{section.Alph1.1}% 
+\contentsline {section}{\numberline {A.2}Planificaci\IeC {\'o}n temporal}{1}{section.Alph1.2}% 
+\contentsline {subsection}{Fases}{2}{section*.4}% 
+\contentsline {section}{\numberline {A.3}Viabilidad}{4}{section.Alph1.3}% 
+\contentsline {subsection}{Viabilidad econ\IeC {\'o}mica}{4}{section*.5}% 
+\contentsline {subsubsection}{An\IeC {\'a}lisis DAFO}{4}{section*.6}% 
+\contentsline {subsubsection}{Matriz MCKINSEY}{5}{section*.7}% 
+\contentsline {subsubsection}{Crecimiento propio de una App}{5}{section*.8}% 
+\contentsline {subsection}{Viabilidad legal}{6}{section*.9}% 
+\contentsline {subsubsection}{Forma jur\IeC {\'\i }dica}{6}{section*.10}% 
+\contentsline {subsection}{Tr\IeC {\'a}mites para la constituci\IeC {\'o}n de la empresa}{6}{section*.11}% 
+\contentsline {appendix}{\chapternumberline {B}Especificaci\IeC {\'o}n de Requisitos}{11}{appendix.Alph2}% 
+\contentsline {section}{\numberline {B.1}Introducci\IeC {\'o}n}{11}{section.Alph2.1}% 
+\contentsline {section}{\numberline {B.2}Objetivos generales}{11}{section.Alph2.2}% 
+\contentsline {section}{\numberline {B.3}Catalogo de requisitos}{12}{section.Alph2.3}% 
+\contentsline {subsubsection}{Requisitos funcionales}{12}{section*.12}% 
+\contentsline {subsubsection}{Requisitos no funcionales}{12}{section*.13}% 
+\contentsline {section}{\numberline {B.4}Especificaci\IeC {\'o}n de requisitos}{12}{section.Alph2.4}% 
+\contentsline {subsection}{Requisito 1}{12}{section*.14}% 
+\contentsline {subsection}{Requisito 2}{13}{section*.15}% 
+\contentsline {subsection}{Requisito 3}{13}{section*.16}% 
+\contentsline {subsection}{Requisito 4 y 6}{13}{section*.17}% 
+\contentsline {subsection}{Requisito 5}{14}{section*.18}% 
+\contentsline {subsection}{Requisito 7}{14}{section*.19}% 
+\contentsline {appendix}{\chapternumberline {C}Especificaci\IeC {\'o}n de dise\IeC {\~n}o}{15}{appendix.Alph3}% 
+\contentsline {section}{\numberline {C.1}Introducci\IeC {\'o}n}{15}{section.Alph3.1}% 
+\contentsline {section}{\numberline {C.2}Dise\IeC {\~n}o de datos}{15}{section.Alph3.2}% 
+\contentsline {section}{\numberline {C.3}Dise\IeC {\~n}o procedimental}{15}{section.Alph3.3}% 
+\contentsline {section}{\numberline {C.4}Dise\IeC {\~n}o arquitect\IeC {\'o}nico}{15}{section.Alph3.4}% 
+\contentsline {appendix}{\chapternumberline {D}Documentaci\IeC {\'o}n t\IeC {\'e}cnica de programaci\IeC {\'o}n}{17}{appendix.Alph4}% 
+\contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{17}{section.Alph4.1}% 
+\contentsline {section}{\numberline {D.2}Estructura de directorios}{17}{section.Alph4.2}% 
+\contentsline {section}{\numberline {D.3}Manual del programador}{17}{section.Alph4.3}% 
+\contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{17}{section.Alph4.4}% 
+\contentsline {section}{\numberline {D.5}Pruebas del sistema}{17}{section.Alph4.5}% 
+\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{19}{appendix.Alph5}% 
+\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{19}{section.Alph5.1}% 
+\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{19}{section.Alph5.2}% 
+\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{19}{section.Alph5.3}% 
+\contentsline {section}{\numberline {E.4}Manual del usuario}{19}{section.Alph5.4}% 

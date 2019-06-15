@@ -1,83 +1,97 @@
 \capitulo{3}{Conceptos teóricos}
 
-En aquellos proyectos que necesiten para su comprensión y desarrollo de unos conceptos teóricos de una determinada materia o de un determinado dominio de conocimiento, debe existir un apartado que sintetice dichos conceptos.
+\section{Introducción}
+Se explicará todo concepto teórico interno y/o externo, usados sobre la metodología del programa para su correcto funcionamiento y la coherencia entre funciones, acercándose al máximo a la experiencia real que se quiere conseguir con este proyecto, a la hora de interconectar los datos con los métodos dando el mayor rigor en cuanto a veracidad.
+\section{Nutrición}
+Es uno de los ámbitos mas estudiados a lo largo de este proyecto, para la máxima veracidad de los resultados. En cada calculo y método que se realizan en el programa, se tienen en cuenta una serie de valores y datos, meticulosamente estudiados para poder usarlos en el programa.\\
+La nutrición como avance médico, es un tema que, a día de hoy, esta en pleno auge, como se comentará en numerosas ocasiones a lo largo de estas memorias, día a día va siendo mas palpable, el estrecho vinculo entre un buen estilo de vida y una buena calidad de vida en cuanto al termino de salud se refiere. Ya no solo en patologías directamente relacionadas con la alimentación, sino en otro tipo de patologías mas graves, las cuales se puede reducir enormemente el riesgo con una buena alimentación.\cite{prevCancer}
+\subsection{Reparto calórico}
 
-Algunos conceptos teóricos de \LaTeX \footnote{Créditos a los proyectos de Álvaro López Cantero: Configurador de Presupuestos y Roberto Izquierdo Amo: PLQuiz}.
-
-\section{Secciones}
-
-Las secciones se incluyen con el comando section.
-
-\subsection{Subsecciones}
-
-Además de secciones tenemos subsecciones.
-
-\subsubsection{Subsubsecciones}
-
-Y subsecciones. 
-
-
-\section{Referencias}
-
-Las referencias se incluyen en el texto usando cite \cite{wiki:latex}. Para citar webs, artículos o libros \cite{koza92}.
-
-
-\section{Imágenes}
-
-Se pueden incluir imágenes con los comandos standard de \LaTeX, pero esta plantilla dispone de comandos propios como por ejemplo el siguiente:
-
-\imagen{escudoInfor}{Autómata para una expresión vacía}
-
-
-
-\section{Listas de items}
-
-Existen tres posibilidades:
-
-\begin{itemize}
-	\item primer item.
-	\item segundo item.
-\end{itemize}
-
-\begin{enumerate}
-	\item primer item.
-	\item segundo item.
-\end{enumerate}
-
-\begin{description}
-	\item[Primer item] más información sobre el primer item.
-	\item[Segundo item] más información sobre el segundo item.
-\end{description}
-	
-\begin{itemize}
-\item 
-\end{itemize}
-
-\section{Tablas}
-
-Igualmente se pueden usar los comandos específicos de \LaTeX o bien usar alguno de los comandos de la plantilla.
-
-\tablaSmall{Herramientas y tecnologías utilizadas en cada parte del proyecto}{l c c c c}{herramientasportipodeuso}
-{ \multicolumn{1}{l}{Herramientas} & App AngularJS & API REST & BD & Memoria \\}{ 
-HTML5 & X & & &\\
-CSS3 & X & & &\\
-BOOTSTRAP & X & & &\\
-JavaScript & X & & &\\
-AngularJS & X & & &\\
-Bower & X & & &\\
-PHP & & X & &\\
-Karma + Jasmine & X & & &\\
-Slim framework & & X & &\\
-Idiorm & & X & &\\
-Composer & & X & &\\
-JSON & X & X & &\\
-PhpStorm & X & X & &\\
-MySQL & & & X &\\
-PhpMyAdmin & & & X &\\
-Git + BitBucket & X & X & X & X\\
-Mik\TeX{} & & & & X\\
-\TeX{}Maker & & & & X\\
-Astah & & & & X\\
-Balsamiq Mockups & X & & &\\
-VersionOne & X & X & X & X\\
+Aunque hay grandes mitos en el mundo de la alimentación como puede ser la idea de que comer grasas es malo, y que los carbohidratos por la noche engordan, si que es verdad que la predisposición del cuerpo ante la comida varía según la etapa del día. \\
+Durante el desayuno somos mas propensos a asimilar los alimentos en el desayuno, mientras que a la hora de la cena nuestro metabolismo está más ralentizado, por lo que hay que cenar con mayor moderación en cuanto a hidratos se refiere, pero no es aconsejable restringirlos.\\
+Para realizó un estudio, entre varias páginas y se calculó a través de los datos obtenidos el porcentaje total de cada macronutriente en cada comida.
+\subsubsection{Reparto total de los macronutrientes}
+Hay que tener en cuenta que este proyecto ha sido diseño para personas con diferentes patologías y que como tal, tendrán diferentes distribuciones, en un principio se pensó en todas las combinaciones posibles: baja en grasa, alta en grasa, baja en hidratos, alta en hidratos, etc.\\
+Pero tras hablar con una profesional endocrina en el Hospital Universitario de Burgos, me afirmo que: 
+\begin{quote}
+Nosotros no trabajamos con dietas altas o bajas en hidratos, pues son necesarios por igual para todo el mundo y por lo cual, la modificación de este solo puede traer problemas al paciente. Un diabético ha de tomar la cantidad normal de hidratos
+\end{quote}
+De este modo la Doctora nos proporcionó una tabla con las diferentes variaciones.
+\tablaSmall{Distintos tipos de dietas y su distribución}{l c c c c}{distribucionDietas}
+{ \multicolumn{1}{l}{Dietas} & Hidratos & Grasa & Proteínas & Ejemplos\\}{ 
+Normal & 55\% & 20\% & 25\% & Cualquier persona  \\
+Baja en grasa & 55\% & 15\% & 30\% & Problemas cardiovasculares \\
+Baja en proteína & 55\% & 25\% & 20\%  & Problemas de hígado \\
+Alta en proteína & 50\% & 15\% & 35\% & Alta actividad física \\
 } 
+\subsection{Reparto total calórico}
+Por supuesto, internamente se realizan múltiples cálculos, los cuales son necesarios ya sea para la correcta recomendación alimenticia del usuario, como para el correcto tratamiento de los datos. \\
+Debido a la diversidad de información encontrada en la web, fue muy complicado llegar a un punto estable donde los datos tuvieran una coherencia para todos y fueran veraces. Para esto se lleva a cabo una matriz donde se dividían las columnas por macronutrientes y las filas por el tipo de comida concreto. Esta matriz debía tener como resultado un porcentaje que cuadrase en varios ejes y un sub-porcentaje que cuadrase en el total, de esta manera se tenía controlado en todo momento la veracidad de los datos.
+\tablaSmall{Distintos tipos de dietas y su distribución}{l c c c c}{distribucionDietas}
+{ \multicolumn{1}{l}{Comidas} & Grasa & Hidratos & Proteínas & carga TOTAL \\}{ 
+Desayuno & 15\% & 30\% & 24\% & 24.75\%  \\
+Almuerzo & 10\% & 25\% & 14\% & 13.5\%\\
+Comida & 20\% & 25\% & 24\%  & 30.5\% \\
+Merienda & 20\% & 10\% & 14\% & 11.5\% \\
+Cena & 10\% & 10\% & 24\% & 19.75\% \\
+} 
+Se estudio para ello la diferente predisposición de las comidas, y los nutrientes internos de cada uno.
+\subsection{Nutriscore (Algoritmo del semaforo)}
+Había que buscar una calidad, un valor bandera, que apoyase los métodos de recomendación y los reforzase. Debía ser subjetivo, y que fuese un método existente para la mayor veracidad.\\
+Por ello se eligió el algoritmo Nutriscore, aquí no hubo demasiada duda o debate, es actualmente el algoritmo implantado en España para la distinción de alimentos y como ya se mencionará próximamente, consiste en el calculo en base a una serie de valores de unos nutrientes específicos categorizados como “buenos o malos” que dan como resultado un número, el cual a menor número mejor calidad.\\
+A continuación, se muestra en imagen el algoritmo seguido de una breve explicación:\\
+\imagen{Nutriscore}{Algoritmo Nutriscore}
+
+La imagen anterior muestra el algoritmo Nutriscore, el cual, se basa en el sumatorio de una serie de valores negativos ( Tabla roja), los cuales reciben una puntuación en base a la cantidad de ese nutriente informativo en nuestro alimento. Y una serie de valores positivos (Tabla verde), que funciona de la misma manera que lo anterior. Se hace la diferencia entre ambas puntuaciones y en base al resultado se le asigna un valor de la A a la E, con diferentes colores, que hace visible la calidad del alimento.
+\section{Prevenciones}
+Debido al propósito del proyecto como ayuda a la prevención o avance de enfermedades/patologías por parte del usuario, había que estudiar que tipo de prevenciones había y donde cabía el proyecto.
+Tipos:
+\begin{itemize}
+\item	Prevención Primaria: Evita la adquisición de la enfermedad. Estas técnicas actúan suprimiendo los factores desfavorables antes de que puedan llegar a general la enfermedad.
+\item	Prevención Secundaria: Detectar la enfermedad y evitar su posible progresión. Interviene cuando se inicia la enfermedad, y su función principal es que el diagnostico y tratamiento precoz mejores el pronostico y control de las enfermedades.
+\item	Prevención Terciaria: Comprende aquellas medidas dirigidas al tratamiento y a la rehabilitación, además de la ralentización de su progresión. Interviene cuando las lesiones son irreversibles, y la enfermedad está arraigada, pudiendo llegar a ser crónica.
+\end{itemize}
+\cite{prevencion}
+
+Una vez, pautado los puntos de prevención, ¿Dónde entre la nutrición?\\
+La detención primera es la más clara de todas, una buena alimentación junto con una serie de hábitos de vida saludables puede impedir enormemente el desarrollo de la enfermedad, siendo una de las recomendaciones mas repetidas por los profesionales a sus pacientes.
+En la detención secundaría también entra esta categoría, es más complicado encontrar fuentes que lo verifiquen, pero existen cada vez más estudios como: (Nombrar estudio citado en el apartado 6) que dicen que una buen habito de vida puede tener hasta mejores resultados que la medicación en algunos casos.
+En el caso de la detención terciaria es más complicado de asegurar, con el tiempo se va aceptando en mayor medida que un buen habito de vida puede ayudar a este tipo de prevenciones, y varios profesionales en la materia lo corroboran, pero la realidad es que, a falta de estudios concluyentes a día de hoy, no se puede afirmar con exactitud.\\
+Lo que si es cierto es que una buena alimentación, junto con actividad física moderada a lo largo de la vida, siempre es recomendable para la salud de cualquier persona.\\
+\section{Enseñanza}
+La idea principal del proyecto es evitar otra aplicación mas de dietas, las cuales suelen ser abandonadas por la mayoría de los españoles al paso del tiempo.\\
+Para ello se estudio varios métodos de enseñanza, aprendizaje a través de métodos multimedia, etc. 
+\subsection{Métodos multimedia}
+En los últimos años, el desarrollo de aplicaciones tanto móviles como de escrito han sido integradas activamente en los diferentes métodos de enseñanza. Se considera que las aplicaciones a día de hoy ofrecen muchas ventajas al mundo de la enseñanza:
+\begin{itemize}
+\item	Comunicación a tiempo real entre el método de enseñanza y el alumno estando siempre al alcance de éste
+\item	Cómoda distribución de tareas, siendo más fácil el orden y la organización.
+\item	Ayuda a la superación de las barreras geográficas.
+\end{itemize}
+
+Si que es verdad, que en educación, se a pronosticado a que lo largo de los años dominará el uso de la Tablet. Por ello uno de las progresiones de este proyecto, es su extensión a Tablets y Smartphones.\cite{enseñanza}
+\subsection{Autoaprendizaje}
+Teniendo en cuenta que, a través de la aplicación, no existía una figura que te enseñase, se necesitaba buscar un método en el que el usuario por su propia índole, aprendiese, y poco a poco fuese adecuando su nuevo habito de vida, en base a sus propias elecciones. Esto daba al usuario versatilidad, dándole la opción en todo momento de elegir que es lo que mas le apeteciese, recomendando la mejor opción y complicando que el usuario hago una mala elección, de esta manera se juega con la idea de hacer creer al usuario que es el, el que toma las buenas o malas decisiones.
+\section{Autoaprendizaje del programa}
+Pese a que en ningún momento se llego a implantar debido a que quedaba fuera del objetivo actual del proyecto. Se desarrollo un estudio sobre como poder añadir un autoaprendizaje a la aplicación para crear de la aplicación un sistema único, que aprenda del usuario que hace uso de ella, y de esta manera, abandonar la idea actualmente extendida de formulas genéricas, en cuanto a aplicaciones y cálculos del TMB se refiere y ofrecer una experiencia totalmente personalizada.\\
+Se realizó un estudio de redes neuronales, llegando a crear una red de tres capas, bastante básica, sin usar ningún de las librerías proporcionada por Python.\\
+Se pensó en añadir dicha neurona a un botón que sea: AUTOELECCIÓN pero esto solo reforzaría las elecciones mas comunes del usuario que no tienen por qué ser las mejores.\\
+Tras meditarlo con cautela, se pensó que en caso de tener una base de datos más extensa (suponiendo el triunfo de la aplicación y uso por varios clientes), uno de los posibles usos, sería el entrenamiento de la red en base al historial de todos los usuarios, y  tras pasar el usuario en forma de vector, ver cual sería de todos, el valor inicial optimo del TMB, (para ser exactos de la suma que se la añade más adelante para mantener, bajar o subir), y además crear una adaptabilidad de esto, haciendo que si la próxima vez que el usuario edite su peso, no ha bajado, subido o mantenido, lo que debería haber hecho, se le sume una cantidad estandarizada, de esta manera, el programa va aprendiendo a base del uso, y con el tiempo daría el resultado mas personal y exacto posible.\\
+\section{Métodos de recomendación}
+Se meditaron diferentes métodos de recomendación:
+\begin{itemize}
+\item	Filtro colaborativo Basado en modelos: Utilizan los datos para ajustar modelos que después pueden ser utilizados para proponer recomendaciones.
+\item	Filtro colaborativo basado en usuario: Es un tipo de filtro basado en memoria, y se basa en recomendar lo que usuarios similares a nuestro usuario han escogido.
+\item	“Vecino mas cercano”: Su calculo se basa en la correlación de Pearson, y es muy similar (por no decir idéntico) al filtro colaborativo basado en usuarios.
+\end{itemize}
+
+Todos estos métodos y más, son métodos ampliamente utilizados por grandes webs y distribuidores como amazon, Netflix, etc.\\
+ Pero para este proyecto presentaban dos grandes inconvenientes:
+\begin{itemize}
+\item	Como bien se vio en la asignatura de “Gestión de la información”, son métodos que requieren de muchos usuarios y productos para que funcionen de manera precisa, sino las recomendaciones pueden ser totalmente aleatorias, dando paso a una muy mala recomendación.
+\item	La mas importante, si este proyecto es creado por el desconocimiento extendido sobre la buena alimentación y sus beneficios no podemos compara un usuario con el resto de usaurios, pues a la larga, el programa se “estropeará”, y pasará a dividir a las personas en dos grandes grupos: Los que se cuidan bien y los que no. Y es precisamente lo que se quiere evitar.
+\end{itemize}
+
+Por ello, pese a ser uno de los filtros menos recomendados en la asignatura de Gestión de la información, irónicamente para este proyecto fue el más apropiado. Se paso a usar un filtro basado en contenidos, por lo general, este filtro necesita saber las características del usuario y del contenido de los productos (en este caso alimentos), para poder realizar la recomendación. Esto obviamente tiene por lo general un gran coste de información y por ello no es recomendable. Pero en este proyecto se parte con esa información. Básicamente, sabiendo exactamente las características que el usuario busca en esa comida, se le recomienda dicha el producto (Menú), que mas se adapte a lo que busca.
+
+
