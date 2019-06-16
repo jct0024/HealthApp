@@ -93,9 +93,9 @@ El diseño arquitectónico lo separaremos en dos partes principales para mejorar
 \imagen{ArquitecturaVisual}{Imagen de la consiguiente arquitectura visual para la correcta navegación}
 \subsection{Arquitectura Modular}
 Para esta arquitectura se tendrá en cuenta dos diagramas principales, dado la complejidad del Main, se realizará un diagrama general y otro particular para el interior del Main. Debido al tamaño de cada modulo, y para una visualización más clara primero se visualizará el diagrama de conexiones y luego el diagrama de clases de cada módulo.\\
+\subsubsection{Diagrama de módulos}
 Antes de ver la imagen de relaciones entre módulos, aclarar que cuando la flecha sale de un modulo al siguiente es que ese modulo hace uso del otro, pero no viceversa (Excepto en flechas bidireccionales).
 \imagen{DiagramaRelaciones}{Diagrama de las relaciones generales entre los distintos módulos}
-
 
 \textbf{\textsc{Vista}}
 \imagen{DiagramaVista}{Diagrama de clases del módulo/clase vista.}
@@ -103,3 +103,6 @@ Antes de ver la imagen de relaciones entre módulos, aclarar que cuando la flech
 \imagen{DiagramaAdmin}{Diagrama de clases del módulo/clase AdminBase.}
 \textbf{\textsc{CalculosDieta}}
 \imagen{DiagramaCalculos}{Diagrama de clases del módulo/clase CalculosDieta.}
+\subsubsection{Diagrama Interno del Main}
+Debido a la mecánica de la librería Tkinter, fue necesario crear cada Frame, dentro de la misma clase, para que esto creara el flujo que principalmente se usa durante el programa. Por ello hay una jerarquía propia de clases dentro del propio Main.
+\imagen{DiagramaMain}{Diagrama interno del Main}

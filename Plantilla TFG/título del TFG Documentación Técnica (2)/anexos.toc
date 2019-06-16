@@ -40,6 +40,8 @@
 \contentsline {section}{\numberline {C.4}Dise\IeC {\~n}o arquitect\IeC {\'o}nico}{21}{section.Alph3.4}% 
 \contentsline {subsection}{Arquitectura visual}{21}{section*.25}% 
 \contentsline {subsection}{Arquitectura Modular}{22}{section*.26}% 
+\contentsline {subsubsection}{Diagrama de m\IeC {\'o}dulos}{22}{section*.27}% 
+\contentsline {subsubsection}{Diagrama Interno del Main}{25}{section*.28}% 
 \contentsline {appendix}{\chapternumberline {D}Documentaci\IeC {\'o}n t\IeC {\'e}cnica de programaci\IeC {\'o}n}{27}{appendix.Alph4}% 
 \contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{27}{section.Alph4.1}% 
 \contentsline {section}{\numberline {D.2}Estructura de directorios}{27}{section.Alph4.2}% 
