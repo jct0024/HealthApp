@@ -88,5 +88,18 @@ Para concluir este pequeño apartado sobre el diseño procedimental, se mostrar�
 A continuación se mostrar un diagrama UML básico de la interacción del usuario con el programa en caso de haber iniciado sesión.
 \imagen{UMLGeneral}{Diagrama UML general del programa, una vez se ha iniciado sesión.}
 \section{Diseño arquitectónico}
+El diseño arquitectónico lo separaremos en dos partes principales para mejorar su entendimiento. La idea principal es separar la arquitectura visual entre Frames que de alguna manera tiene un sistema de herencia en la navegabilidad y la estructura modular, con las diferentes funciones internas.
+\subsection{Arquitectura visual}
+\imagen{ArquitecturaVisual}{Imagen de la consiguiente arquitectura visual para la correcta navegación}
+\subsection{Arquitectura Modular}
+Para esta arquitectura se tendrá en cuenta dos diagramas principales, dado la complejidad del Main, se realizará un diagrama general y otro particular para el interior del Main. Debido al tamaño de cada modulo, y para una visualización más clara primero se visualizará el diagrama de conexiones y luego el diagrama de clases de cada módulo.\\
+Antes de ver la imagen de relaciones entre módulos, aclarar que cuando la flecha sale de un modulo al siguiente es que ese modulo hace uso del otro, pero no viceversa (Excepto en flechas bidireccionales).
+\imagen{DiagramaRelaciones}{Diagrama de las relaciones generales entre los distintos módulos}
 
 
+\textbf{\textsc{Vista}}
+\imagen{DiagramaVista}{Diagrama de clases del módulo/clase vista.}
+\textbf{\textsc{AdminBase}}
+\imagen{DiagramaAdmin}{Diagrama de clases del módulo/clase AdminBase.}
+\textbf{\textsc{CalculosDieta}}
+\imagen{DiagramaCalculos}{Diagrama de clases del módulo/clase CalculosDieta.}
