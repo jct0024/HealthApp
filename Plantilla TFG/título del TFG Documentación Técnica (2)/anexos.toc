@@ -31,16 +31,21 @@
 \contentsline {appendix}{\chapternumberline {C}Especificaci\IeC {\'o}n de dise\IeC {\~n}o}{15}{appendix.Alph3}% 
 \contentsline {section}{\numberline {C.1}Introducci\IeC {\'o}n}{15}{section.Alph3.1}% 
 \contentsline {section}{\numberline {C.2}Dise\IeC {\~n}o de datos}{15}{section.Alph3.2}% 
-\contentsline {section}{\numberline {C.3}Dise\IeC {\~n}o procedimental}{15}{section.Alph3.3}% 
-\contentsline {section}{\numberline {C.4}Dise\IeC {\~n}o arquitect\IeC {\'o}nico}{15}{section.Alph3.4}% 
-\contentsline {appendix}{\chapternumberline {D}Documentaci\IeC {\'o}n t\IeC {\'e}cnica de programaci\IeC {\'o}n}{17}{appendix.Alph4}% 
-\contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{17}{section.Alph4.1}% 
-\contentsline {section}{\numberline {D.2}Estructura de directorios}{17}{section.Alph4.2}% 
-\contentsline {section}{\numberline {D.3}Manual del programador}{17}{section.Alph4.3}% 
-\contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{17}{section.Alph4.4}% 
-\contentsline {section}{\numberline {D.5}Pruebas del sistema}{17}{section.Alph4.5}% 
-\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{19}{appendix.Alph5}% 
-\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{19}{section.Alph5.1}% 
-\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{19}{section.Alph5.2}% 
-\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{19}{section.Alph5.3}% 
-\contentsline {section}{\numberline {E.4}Manual del usuario}{19}{section.Alph5.4}% 
+\contentsline {section}{\numberline {C.3}Dise\IeC {\~n}o procedimental}{16}{section.Alph3.3}% 
+\contentsline {subsection}{Introducci\IeC {\'o}n}{16}{section*.20}% 
+\contentsline {subsubsection}{Alta o modificaci\IeC {\'o}n de usuarios}{16}{section*.21}% 
+\contentsline {subsection}{Elegir Alimento}{17}{section*.22}% 
+\contentsline {subsection}{Carga Y almacenamiento bases de datos}{20}{section*.23}% 
+\contentsline {subsection}{Estructura general del programa}{20}{section*.24}% 
+\contentsline {section}{\numberline {C.4}Dise\IeC {\~n}o arquitect\IeC {\'o}nico}{21}{section.Alph3.4}% 
+\contentsline {appendix}{\chapternumberline {D}Documentaci\IeC {\'o}n t\IeC {\'e}cnica de programaci\IeC {\'o}n}{23}{appendix.Alph4}% 
+\contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{23}{section.Alph4.1}% 
+\contentsline {section}{\numberline {D.2}Estructura de directorios}{23}{section.Alph4.2}% 
+\contentsline {section}{\numberline {D.3}Manual del programador}{23}{section.Alph4.3}% 
+\contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{23}{section.Alph4.4}% 
+\contentsline {section}{\numberline {D.5}Pruebas del sistema}{23}{section.Alph4.5}% 
+\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{25}{appendix.Alph5}% 
+\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{25}{section.Alph5.1}% 
+\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{25}{section.Alph5.2}% 
+\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{25}{section.Alph5.3}% 
+\contentsline {section}{\numberline {E.4}Manual del usuario}{25}{section.Alph5.4}% 

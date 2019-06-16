@@ -11,7 +11,82 @@ El diseño tanto visual como de los datos, se decidió antes de empezar a realiz
 \item Manejo interno de los datos a través de DataFrames
 \end{itemize}
 \section{Diseño procedimental}
-
+\subsection{Introducción}
+Se ha definido la estructura del sistema, y a continuación se definirá la forma de funcionamiento de las grandes acciones realizadas por la aplicación a pro de la utilidad de dicha.
+\subsubsection{Alta o modificación de usuarios}
+Por lo general parten de la misma estructura del funcionamiento variando simplemente en un pequeño paso que será indicado en su momento. Antes de comenzar con el análisis detallado se mostrará a grandes rasgos, la estructura principal externa de este proceso, que básicamente es:
+\begin{enumerate}
+\item El usuario rellena sus datos y valida
+\item El programa comprueba que todo es correcto y si es así lo añade y sino lanza un error.
+\end{enumerate}
+Así es como funcionaría el algoritmo paso a paso:
+\begin{itemize}
+\item Inicio
+\item Solicitar los datos a rellenar
+\item Enviar dichos campos al modulo de administración (AdminBase) para su comprobación.
+\item Si algún dato es erróneo se muestra el mensaje de error, sino sigue su ejecución.
+\item Si es alta de usuario añade información del nuevo usuario a la base de datos.
+\item Si es Modificación de datos Busca al usuario existente y remplaza.
+\end{itemize}
+Se muestra el diagrama de interacción de los diferentes objetos.
+\imagen{UMLRegistro}{Diagrama UML sobre la interacción en el registro o modificación de un usuario}
+\subsection{Elegir Alimento}
+En este caso, es algo más complicado que lo anterior, pues hay varias vertientes, puedes refrescar hasta encontrar el alimento que buscas, y cuando lo seleccionas se actualizan el resto de frames.
+\begin{itemize}
+\item El Usuario refresca la página hasta encontrar su elección. 
+\item El usuario elige y se almacena en su registro diario esa elección
+\item El programa actualiza automáticamente el resto de Frames.
+\end{itemize}
+A continuación se detalla cada paso del procedimiento explicado anteriormente:
+\begin{enumerate}
+\item El Usuario se incorpora al Frame de selección.
+\item El Usuario decide si escoger una opción o buscar otra.
+\begin{itemize}
+\item Si escoge una opción se almacenan los datos, y se actualizan el resto de posibles elecciones.
+\item Si refresca la página en busca de otros alimentos, se suma los valores de uso a esas comidas y se recomiendan unas nuevas.
+\end{itemize}
+\item Sigue el programa, hasta que el usuario salga de la ventana, y se mantienen las elecciones registradas
+\end{enumerate}
+Diagrama UML de la interacción del programa en la selección:
+\imagen{UMLSeleccion}{Diagrama UML que muestra la interacción entre frames y funciones durante la selección}
+A continuación se visualizará un diagrama de flujo  similar al anterior pero sobre el refrescar de las opciones y con otro método diferente a UML:
+\imagen{DiagramaFlujoRefrescar}{Diagrama de flujo de la acción de refrescar opciones de menú}
+\subsection{Carga Y almacenamiento bases de datos}
+Se podría hacer un apartado por cada colección de la base de datos que se carga y almacena por separado, pero puesto a que la estructura es similar y existen métodos encargados de unificar estos procesos, partiendo de la atomicidad del programa.
+\begin{itemize}
+\item El usuario inicia la aplicación
+\item Se carga automáticamente los datos
+\begin{itemize}
+\item Se abre los diferentes Excel que simulan la base de datos.
+\item Se traducen a DataFrame con el nombre de columna como el nombre del objeto de la colección
+\end{itemize}
+\item Se tratan los arrays por separado evitando romper la consistencia de la base de datos.
+\item Cuando el usuario guarda los datos, se sustituye la base de datos por el DataFrame actual.
+\end{itemize}
+\imagen{UMLBD}{Diagrama UML de la interacción básica del programa con la base de datos.}
+\subsection{Estructura general del programa}
+Para concluir este pequeño apartado sobre el diseño procedimental, se mostrará el diagrama junto a su explicación de lo que es el funcionamiento e interacción de la estructura del programa por lo general.
+\begin{itemize}
+\item Se crea la ventana de Inicio.
+\item El usuario inicia sesión o se registra
+\begin{itemize}
+\item Registra: Añade toda la información si es correcta se le añade a la base de datos, sino se le muestra un mensaje de error.
+\item Inicia Sesión:
+\begin{itemize}
+\item Se le muestra la pantalla principal con tres vertientes.
+\begin{itemize}
+\item Información de Usuario
+\item Dieta
+\item Historial
+\end{itemize}
+\item El usuario hace el correcto uso de la aplicación
+\item Se guardan los diferentes cambios a voluntad del usuario
+\item Se cierra la aplicación.
+\end{itemize}
+\end{itemize}
+\end{itemize}
+A continuación se mostrar un diagrama UML básico de la interacción del usuario con el programa en caso de haber iniciado sesión.
+\imagen{UMLGeneral}{Diagrama UML general del programa, una vez se ha iniciado sesión.}
 \section{Diseño arquitectónico}
 
 
