@@ -45,11 +45,15 @@
 \contentsline {appendix}{\chapternumberline {D}Documentaci\IeC {\'o}n t\IeC {\'e}cnica de programaci\IeC {\'o}n}{27}{appendix.Alph4}% 
 \contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{27}{section.Alph4.1}% 
 \contentsline {section}{\numberline {D.2}Estructura de directorios}{27}{section.Alph4.2}% 
-\contentsline {section}{\numberline {D.3}Manual del programador}{27}{section.Alph4.3}% 
-\contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{27}{section.Alph4.4}% 
-\contentsline {section}{\numberline {D.5}Pruebas del sistema}{27}{section.Alph4.5}% 
-\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{29}{appendix.Alph5}% 
-\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{29}{section.Alph5.1}% 
-\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{29}{section.Alph5.2}% 
-\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{29}{section.Alph5.3}% 
-\contentsline {section}{\numberline {E.4}Manual del usuario}{29}{section.Alph5.4}% 
+\contentsline {section}{\numberline {D.3}Manual del programador}{28}{section.Alph4.3}% 
+\contentsline {subsection}{IDE}{29}{section*.29}% 
+\contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{31}{section.Alph4.4}% 
+\contentsline {section}{\numberline {D.5}Pruebas del sistema}{33}{section.Alph4.5}% 
+\contentsline {subsection}{Almacenamiento y carga de los datos}{33}{section*.30}% 
+\contentsline {subsection}{Navegabilidad}{34}{section*.31}% 
+\contentsline {subsection}{Algoritmos}{34}{section*.32}% 
+\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{37}{appendix.Alph5}% 
+\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{37}{section.Alph5.1}% 
+\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{37}{section.Alph5.2}% 
+\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{37}{section.Alph5.3}% 
+\contentsline {section}{\numberline {E.4}Manual del usuario}{37}{section.Alph5.4}% 

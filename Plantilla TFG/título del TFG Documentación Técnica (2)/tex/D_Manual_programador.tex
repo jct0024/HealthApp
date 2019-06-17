@@ -1,11 +1,103 @@
 \apendice{Documentación técnica de programación}
 
 \section{Introducción}
-
+En el siguiente apartado, se mostrarán los pasos a seguir, herramientas, etcétera. Para ponernos a trabajar con este proyecto.
+Se puede descargar desde: \href{https://github.com/jct0024/HealthApp}{Repositorio GitHub}
 \section{Estructura de directorios}
-
+Los directorios siguen la siguiente estructura:
+\begin{itemize}
+\item Carpeta principal / Inicial
+\begin{itemize}
+\item Directorio: Assets
+\item Directorio: Memorias
+\item AdminBase.py
+\item Main.py
+\item CalculosDieta.py
+\item Vista.py
+\item BaseDeDatosDeAlimentos.xlsx
+\item BaseDeDatosUsuarios.xlsx
+\item Historial
+\end{itemize}
+\item assets
+\begin{itemize}
+\item Manual.pdf
+\item Logotipo.PNG
+\end{itemize}
+\item Memorias
+\begin{itemize}
+\item Anexos.pdf
+\item Memorias.pdf
+\item Directorio: img (Almacenamiento de imágenes)
+\end{itemize}
+\end{itemize}
 \section{Manual del programador}
-
+A continuación veremos una pequeña guía para preparar el entorno de programación.
+\textbf{\textsc{Python}}
+El lenguaje usado durante este proyecto es Python, en su versión 3.6 (También funcional para 3.7), para ello tendremos que descargar e instalar el interprete de Python. Lo cual lo podremos hacer desde este enlace \href{https://www.python.org/downloads/release/python-368/}{Python 3.6.8}. Desde la misma página podremos descargar si lo deseamos la versión 3.7.\\
+Paso opcional: A continuación instalaremos Anaconda, el cual nos dará una serie de funciones y programas, además de una powershell propia que nos permitirá el manejo por la aplicación más cómodamente. Link: \href{https://www.anaconda.com/distribution/}{Anaconda}. Con esto, se nos instalará automáticamente tanto Spyder, como Notebook, y VisualCode. Cualquiera de estos tres editores son muy potentes y funcionan a la perfección para ejecutar el proyecto (Aconsejo que no se use NoteBook). Esta herramienta además viene con una serie de librerías principales ya instaladas y que ahorran trabajo al programador.\\
+En caso de no instalar anaconda, se debería instalar un editor, para su posterior ejecución. Editores recomendados para python:
+\begin{itemize}
+\item PyCharm
+\item VisualCode
+\item Spyder
+\item Ecplipe con API de python
+\end{itemize}
+Recordar que si se escoge un editor el cual no tenga la opción de ejecutar directamente desde el editor, se deberá hacer a través de la consola de comandos, para ello vaya a la carpeta donde tenga descargado el proyecto, y en la parte superior (Donde aparece la ruta del directorio), escriba cmd y ya debería cargarse la powershell desde la carpeta actual, acto seguido escriba main.py y el programa se ejecutará para su prueba o test.\\
+Debido a que el desarrollador puede tomar ambos caminos (Instalar o no Anaconda). A continuación se explicar como instalar el resto de librerías a través del comando pip (La funcionalidad o comando pip, viene con la instalación de python y en este caso se deberá escribir pip3 por ser la versión 3.
+\begin{itemize}
+\item pip3 install matplotlib
+\item pip3 install numpy
+\item pip3 install pandas
+\item pip3 install pyinstaller o auto-py-to-exe
+\item pip3 install tk
+\item pip3 install webbrowser
+\item pip3 install os-win
+\item pip3 install Pillow
+\item pip3 install functools
+\end{itemize}
+Por lo general la mayoría de librerías te ayudará simplemente a que el programa corra correctamente, excepto pyinstaller que ayudará a crear un ejecutable (En caso de auto-py-to-exe, es una librería más visual que pyinstaller, pero que a grandes rasgos hace lo mismo pues lo que hace es usar internamente el comando pyinstaller con las opciones propias en caso de que elijas alguna).\\
+Una vez tenemos preparado el entorno de Python podemos pasar a la instalación del IDE
+\subsection{IDE}
+En este aparado se hablará de como descargar y preparar el entorno para trabajar, como se realizó durante estos meses.
+\textbf{\textsc{Spyder}}
+Si se ha realizado la correcta instalación de anaconda, ya tendrá instalado este programa por defecto.
+\imagen{Spyder}{Interfaz del editor Spyder para Python.}
+\textbf{\textsc{Git}}
+Sistema de control versiones seleccionado para este proyecto. Windows no lo trae instalado por lo que deberemos descargarlo e instalarlo desde el siguiente enlace: \href{https://git-scm.com/}{Git}
+\textbf{\textsc{GitKraken}}
+Para una mejor gestión, hemos usado la herramienta de escritorio Gitkraken. Si se desea descargar se puede hacer entrando en \href{https://gitkraken.com/}{GitKraken}
+Descargamos el ejecutable y lo instalamos una vez abierto el porgrama deberemos ir a: File/Clone Repo. Y añadir la URL del proyecto GitHub. Si ya lo hemos clonado tenemos que dar a la opción: Open Repo y buscar la carpeta donde lo hayamos descargado previamente.
+\imagen{GitKraken}{GitKraken}
 \section{Compilación, instalación y ejecución del proyecto}
-
+Lo primero que hay que hacer, es abrir nuestro editor, en el caso de este proyecto Spyder. Una vez abierto el editor debemos abrir nuestros archivos *.py. Para ello pulsamos en archivo -> Abrir.\\
+No es necesario abrir todos los archivos, basta con abrir el archivo Main para su ejecución. Entonces nos vamos a la parte superior y pulsamos el boton ejecutar como bien vemos a continuación:
+\imagen{BotonEjecutar}{Boton ejecutar de Spyder.}
+Una vez pulsemos se abrirá en otra pantalla generada por Tkinter, el programa principal:
+\imagen{Generada}{Pantalla nueva generada por Tkinter.}
+Ante cualquier prueba que se desee realizar, como comprobar el valor de las variables, la veracidad de los datos, etcétera. Aparecerá en la pantalla de la terminal que por defecto viene posicionada abajo a la derecha:
+\imagen{TerminalSpyder}{Señalización de la terminal interna de Spyder}
 \section{Pruebas del sistema}
+Las pruebas del sistema son pruebas de la correcta salida de información, del transcurso entre frames de manera adecuada, de la veracidad de los resultados de los cálculos internos, etcétera.
+\subsection{Almacenamiento y carga de los datos}
+Consisten en una serie de pruebas donde se han abordado todas las posibles combinaciones de carga y almacenamiento de los datos. Por ejemplo:
+\begin{itemize}
+\item Nuevo Usuario, Nuevo Alimento, Editar Usuario, Hacer selección y refrescar selecciones todo de manera independiente.
+\item Combinaciones varias entre las opciones anterior, editando un usuario que acabo de crear, añadiendo un alimento y haciendo una selección, editando un usuario y haciendo una seleccion, etcétera. Y comprobando acto seguido de que se había guardado correctamente en la base de datos.
+\end{itemize}
+\textbf{Problemas encontrados:}\\
+Los DataFrames se ordenaban a la hora del almacenamiento provocando una inconsistencia de los datos con el programa. Los datos se guardan como objetos de Python en vez de como valores. Además, se tuvo que eliminar los indices de fila, debido a un problema de compatibilidad en la carga de los datos en otros ordenadores.
+\subsection{Navegabilidad}
+Se estuvo reiteradamente navegando por la interfaz gráfica haciendo uso de todas las funciones posibles del programa comprobando que este fuera fluido y no diera ningún tipo de problema a la hora de cambiar de Frame o generar nuevas ventanas.\\
+\textbf{Observaciones:}\\
+Se percibieron pequeños tiempos de espera además de que los Frames, son creados al inicio y mantiene su forma durante toda la navegabilidad del programa, haciéndolo una vez creado más rápido, pero dando problemas en cuanto a cambios gráficos se refiriese.
+\subsection{Algoritmos}
+Se llevaron a cabo las comprobaciones necesarias para ver que el sistema de recomendación y de reparto de datos funcionara correctamente. Para ello se llevó a cabo el siguiente tipo de pruebas:
+\begin{itemize}
+\item Comprobar el Calculo TMB para personas con diferentes capacidades físicas.
+\item Comprobar las recomendaciones resultantes a una serie de individuos específicos, comprobando todas las opciones recomendadas.
+\item Comprobar la distribución calórica de todos los tipos de dietas posibles.
+\item Comprobar la correcta actualización de los datos en cuanto a la selecciones
+\end{itemize}
+\textbf{Problemas encontrados:}\\
+Se encontraron una serie de problemas que fueron corregidos en el apto. El sistema de recomendación fallaba, pues se quedaba con el alimento con menor diferencia, pero, para que se entienda, es tan mala una diferencia de 800, que de -800, para ello se halló el valor absoluto de la formula.\\
+Resulta que se hallaban bien los tipos de dietas pero no eran llamados en ningún momento en el programa, siendo un programa estático. Como solución se añadió este reparto a la formula principal de recomendación.
