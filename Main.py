@@ -93,7 +93,7 @@ class menuPrincipal(tk.Frame):
         
         
         
-        label = tk.Label(self, text="This is the start page", font=controller.title_font,bg=fondoGeneral)
+        label = tk.Label(self, text="Página principal", font=controller.title_font,bg=fondoGeneral)
         self.bar = tk.Frame(self, relief=RIDGE, borderwidth=5)
         self.imgPath = './descarga.jpg'
         self.icon = ImageTk.PhotoImage(Image.open('./descarga.jpg'))
@@ -244,19 +244,19 @@ class editarInforUsuario(tk.Frame):
             self.entry_Ape = Entry(containerAPE,bg=fondoGeneral)
             self.entry_Ape.pack(expand=1,side=LEFT,fill=BOTH)
             
-            label_Eda = Label(containerEDA, text="Edad",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Eda = Label(containerEDA, text="Edad (Años)",width=20,font=("bold", 10),bg=fondoGeneral)
             label_Eda.pack(side=LEFT)       
             
             self.entry_Eda = Entry(containerEDA,bg=fondoGeneral)
             self.entry_Eda.pack(expand=1,side=LEFT,fill=BOTH)
             
-            label_Alt = Label(containerALT, text="Altura",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Alt = Label(containerALT, text="Altura (Cm)",width=20,font=("bold", 10),bg=fondoGeneral)
             label_Alt.pack(side=LEFT)      
             
             self.entry_Alt = Entry(containerALT,bg=fondoGeneral)
             self.entry_Alt.pack(expand=1,side=LEFT,fill=BOTH)
             
-            label_Pes = Label(containerPES, text="Peso",width=20,font=("bold", 10),bg=fondoGeneral)
+            label_Pes = Label(containerPES, text="Peso (Kg)",width=20,font=("bold", 10),bg=fondoGeneral)
             label_Pes.pack(side=LEFT)     
             
             self.entry_Pes = Entry(containerPES,bg=fondoGeneral)
@@ -275,6 +275,7 @@ class editarInforUsuario(tk.Frame):
             Radiobutton(containerACT, text="2 ",padx = 10, variable=self.varAct, value=2,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
             Radiobutton(containerACT, text="3 ",padx = 10, variable=self.varAct, value=3,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
             Radiobutton(containerACT, text="4 ",padx = 10, variable=self.varAct, value=4,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
+            Radiobutton(containerACT, text="5 ",padx = 10, variable=self.varAct, value=5,bg=fondoGeneral).pack(expand=1,side=LEFT,fill=BOTH)
             
             label_3 = Label(containerTIP, text="Tipo",width=20,font=("bold", 10),bg=fondoGeneral)
             label_3.pack(side=LEFT)

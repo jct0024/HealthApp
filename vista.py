@@ -203,8 +203,25 @@ Params: i Indice de la comida en la lista filtrada
 Params: tipo Tipo de comida para saber cual es el tipo de desayuno a criptar
 '''
 def MostrarInfo(i,listaFiltrada,etiquetaComida):
-    texto = "Nombre: "+str(listaFiltrada["Nombre"].iloc[i])+" \nCalorias: "+str(listaFiltrada["Calorias"].iloc[i])+"\nGrasa: "+str(listaFiltrada["Grasa"].iloc[i])+" (Saturadas: "+str(listaFiltrada["Saturadas"].iloc[i])+")"+"\nHidratos: "+str(listaFiltrada["Hidratos"].iloc[i])+"(Azucares"+str(listaFiltrada["Azucares"].iloc[i])+")\nProteina "+str(listaFiltrada["Proteina"].iloc[i])+"\nCalidad: "+str(listaFiltrada["Calidad"].iloc[i])
+    cal = CalidadNumberToString(listaFiltrada["Calidad"].iloc[i])
+    texto = "Nombre: "+str(listaFiltrada["Nombre"].iloc[i])+" \nCalorias: "+str(listaFiltrada["Calorias"].iloc[i])+"\nGrasa: "+str(listaFiltrada["Grasa"].iloc[i])+" (Saturadas: "+str(listaFiltrada["Saturadas"].iloc[i])+")"+"\nHidratos: "+str(listaFiltrada["Hidratos"].iloc[i])+"(Azucares"+str(listaFiltrada["Azucares"].iloc[i])+")\nProteina "+str(listaFiltrada["Proteina"].iloc[i])+"\nCalidad: "+cal
     etiquetaComida.config(text=texto);
+'''
+Función que recoge el valor númerico de la calidad calculado por el algoritmo nutriscore y te
+devuelve la letra correspondiente a dicha calidad
+'''
+def CalidadNumberToString(calidad):
+    if(calidad == 1):
+        cal= 'A'
+    elif(calidad ==2):
+        cal= 'B'
+    elif(calidad ==3):
+        cal= 'C'
+    elif(calidad ==4):
+        cal= 'D'
+    elif(calidad ==5):
+        cal= 'E' 
+    return cal;
 '''
 Función que sirve de transacción para que al pulsar el botón haga dos funciones y asi mantener la funcionalidad
 '''
@@ -234,6 +251,7 @@ def seleccionarYActualizarResto(loc,tipoComida,arrrayBoton,btnSel,selected,bande
     loc.LblLoQueLlevoCom.config(text="Llevo Comido: "+str(datosAlimCliente[0])+" Kcal")
     loc.LblLoQueLlevoMer.config(text="Llevo Comido: "+str(datosAlimCliente[0])+" Kcal")
     loc.LblLoQueLlevoCen.config(text="Llevo Comido: "+str(datosAlimCliente[0])+" Kcal")
+    umbral=1;
     if(tipoComida!="desayuno"):
         if(banderaSelect[0]== False):
             Actualizar(loc,"desayuno",loc.cont_opciones_Des2,loc.filtDesayuno,umbral, loc.desayuno,hojaAlimentos,loc.botonesDes,loc.n_opciones,loc.btnSelDes,loc.btnRefrDes,loc.label_Informacion_comida,loc.listDistribuciónKcal[0],datosAlimCliente,loc.kcal_Por_Dia,loc.listMacDiarios,menuDeHoy,loc.barProgTotal,loc.banderaSelect,loc.style)
@@ -393,19 +411,19 @@ def registrarse(hojaUsuarios,hojaPatologias):
     entry_Ape = tk.Entry(containerAPE)
     entry_Ape.pack(expand=1,fill=tk.BOTH,side=tk.LEFT)
     
-    label_Eda = tk.Label(containerEDA, text="Edad",width=20,font=("bold", 10))
+    label_Eda = tk.Label(containerEDA, text="Edad (Años)",width=20,font=("bold", 10))
     label_Eda.pack(side=tk.LEFT)    
     
     entry_Eda = tk.Entry(containerEDA)
     entry_Eda.pack(expand=1,fill=tk.BOTH,side=tk.LEFT)
     
-    label_Alt = tk.Label(containerALT, text="Altura",width=20,font=("bold", 10))
+    label_Alt = tk.Label(containerALT, text="Altura (cm)",width=20,font=("bold", 10))
     label_Alt.pack(side=tk.LEFT)      
     
     entry_Alt = tk.Entry(containerALT)
     entry_Alt.pack(expand=1,fill=tk.BOTH,side=tk.LEFT)
     
-    label_Pes = tk.Label(containerPES, text="Peso",width=20,font=("bold", 10))
+    label_Pes = tk.Label(containerPES, text="Peso (Kg)",width=20,font=("bold", 10))
     label_Pes.pack(side=tk.LEFT)      
     
     entry_Pes = tk.Entry(containerPES)
@@ -424,6 +442,7 @@ def registrarse(hojaUsuarios,hojaPatologias):
     tk.Radiobutton(containerACT, text="2 ",padx = 10,value=2, variable=varAct2).pack(expand=1,side=tk.LEFT,fill=tk.Y)
     tk.Radiobutton(containerACT, text="3 ",padx = 10,value=3, variable=varAct2).pack(expand=1,side=tk.LEFT,fill=tk.Y)
     tk.Radiobutton(containerACT, text="4 ",padx = 10,value=4, variable=varAct2).pack(expand=1,side=tk.LEFT,fill=tk.Y)
+    tk.Radiobutton(containerACT, text="5 ",padx = 10,value=5, variable=varAct2).pack(expand=1,side=tk.LEFT,fill=tk.Y)
     
     label_3 = tk.Label(containerTIP, text="Tipo",width=20,font=("bold", 10))
     label_3.pack(side=tk.LEFT)
@@ -531,8 +550,9 @@ def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
         labelTipo.pack(side=tk.LEFT)
         resultado=[0,0,0,0,0]
         for i in arrayCalidad:
-            resultado[i]+=1
-        cal = resultado.index(max(resultado))
+            resultado[i-1]+=1
+        cal = CalidadNumberToString(resultado.index(max(resultado)))
+        
         labelCal= tk.Label(containerCal, text="Calidad: "+str(cal),bg=colorFondo)
         labelCal.pack(side=tk.LEFT)
         #ab.ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, calidad)
