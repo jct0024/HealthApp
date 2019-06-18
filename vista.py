@@ -14,6 +14,7 @@ import matplotlib
 matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
+from PIL import ImageTk, Image
 bandera = False;
 usr = 0;
 contraseña = "";
@@ -211,15 +212,17 @@ Función que recoge el valor númerico de la calidad calculado por el algoritmo 
 devuelve la letra correspondiente a dicha calidad
 '''
 def CalidadNumberToString(calidad):
-    if(calidad == 1):
+    cal=""
+    calid = calidad+1;
+    if(calid == 1):
         cal= 'A'
-    elif(calidad ==2):
+    elif(calid ==2):
         cal= 'B'
-    elif(calidad ==3):
+    elif(calid ==3):
         cal= 'C'
-    elif(calidad ==4):
+    elif(calid ==4):
         cal= 'D'
-    elif(calidad ==5):
+    elif(calid ==5):
         cal= 'E' 
     return cal;
 '''
@@ -474,7 +477,7 @@ def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
     if not (error):
         info = tk.Tk();
         info.resizable(0,0)
-        info.geometry('700x350')
+        info.geometry('700x365')
         info.title("Registro")
         #Contenedores dentro del registro
         containerGen = tk.Frame(info)
@@ -518,6 +521,8 @@ def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
         containerTip.pack(fill=tk.X)
         containerCal = tk.Frame(containerGen)
         containerCal.pack(fill=tk.X)
+        containerIMG = tk.Frame(containerGen)
+        containerIMG.pack(fill=tk.X)
         
         labelNom= tk.Label(containerNom, text="NOMBRE: "+nombre,bg=colorFondo)
         labelNom.pack(side=tk.LEFT)
@@ -555,6 +560,13 @@ def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
         
         labelCal= tk.Label(containerCal, text="Calidad: "+str(cal),bg=colorFondo)
         labelCal.pack(side=tk.LEFT)
+
+        imgPath ='assets/'+str(cal)+'.PNG'
+        icon = ImageTk.PhotoImage(Image.open(imgPath), master=containerIMG)
+        icon_size = tk.Label(containerIMG)
+        icon_size.configure(image=icon)
+        icon_size.pack(side=tk.LEFT)
+
         #ab.ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, calidad)
         buttonEnviar = tk.Button(containerBut, text='Guardar',command=partial(ab.ComrproYAlmacenamientoAlimento,hojaAlimentos, nombre, kcalTotal,grasasTotal, saturadasTotal, hidratosTotal, fibraTotal , azucarTotal, proteinasTotal, sodioTotal,tipo ,cal),bg=colorDetalles,relief=tk.GROOVE)
         buttonEnviar.pack(fill=tk.X)

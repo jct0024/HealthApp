@@ -81,7 +81,7 @@ class SampleApp(tk.Tk):
     Posible evolución, que se pase el pdf como parametro y se pueda mostrat cualquier manual.
     '''
     def pdf(self):
-        os.system('ejemplo.pdf')
+        os.system('assets\ejemplo.pdf')
  
         
 class menuPrincipal(tk.Frame):
