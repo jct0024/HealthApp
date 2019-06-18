@@ -301,9 +301,21 @@ def crearArrayBandera(menuDeHoy):
         if menuDeHoy[i] != "":
             banderaSelect[i]= True;
     return banderaSelect
-def gráfico(selfi,x,y):
+def gráfico(selfi,x,y,bandera):
     selfi.lin.set_data(x,y)
     ax = selfi.canvas.figure.axes[0]
+    if(bandera==0):
+        ax.set_title("DESAYUNO")
+    elif(bandera==1):
+        ax.set_title("ALMUERZO")
+    elif(bandera==2):
+        ax.set_title("COMIDA")
+    elif(bandera==3):
+        ax.set_title("MERIENDA")
+    elif(bandera==4):
+        ax.set_title("CENA")
+    else:
+        ax.set_title("Media del día")
     ax.set_xlabel("Dias")
     ax.set_ylabel("Calidad")
     ax.set_xlim(min(x),max(x))
@@ -453,12 +465,17 @@ def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
 
         #HISTOGRAMA DE CALIDAD
         f = Figure(figsize=(5,4))
-        canvas = FigureCanvasTkAgg(f, master=containerGen)
-        canvas.get_tk_widget().pack(side=tk.LEFT)
-        p = f.gca()
-        p.hist(arrayCalidad,bins=[1,2,3,4,5],histtype='barstacked',label="CALIDAD")
-        canvas.draw();
         
+        
+        p = f.gca()
+        p.hist(arrayCalidad,bins=[1,2,3,4,5,6],histtype='barstacked',label="CALIDAD")
+
+        canvas = FigureCanvasTkAgg(f, master=containerGen)
+        canvas.draw();
+        canvas.get_tk_widget().pack(side=tk.LEFT)
+        ax = canvas.figure.axes[0]
+        ax.set_xlabel("Calidad")
+        ax.set_ylabel("Nº Alimentos")
         #Contenedores dentro del contenedor General
         containerNom = tk.Frame(containerGen)
         containerNom.pack(fill=tk.X)

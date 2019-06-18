@@ -23,15 +23,15 @@ def calculoTMB(usuario):
     else:
         TMB=TMB-161
     #Calculamos el TBM en base a la actividad que haga el usuario
-    if(usuario[8]==0):
+    if(usuario[8]==1):
         TMB = TMB*1.2;
-    elif(usuario[8]==1):
-        TMB = TMB*1.375;
     elif(usuario[8]==2):
-        TMB = TMB*1.55;
+        TMB = TMB*1.375;
     elif(usuario[8]==3):
-        TMB = TMB*1.725;
+        TMB = TMB*1.55;
     elif(usuario[8]==4):
+        TMB = TMB*1.725;
+    elif(usuario[8]==5):
         TMB = TMB*1.9;
     else:
         TMB = "ERROR"
@@ -250,7 +250,7 @@ def graficoTotal(selfi,hojaAlimentos):
             contador+=1
         medias.append(container/contador)
         
-    vs.gráfico(selfi,fechas,medias)
+    vs.gráfico(selfi,fechas,medias,-1)
 '''
 Función que te muestra por pantalla los gráficos en base a la calidad y los días, de una 
 comida concreta del usuario, para ver mas al detalle los avances.
@@ -297,7 +297,7 @@ def graficoMejoraComida(selfi,hojaAlimentos, bandera):
                 container=hojaAlimentos["Calidad"].loc[fila]
                 medias.append(container)
         
-    vs.gráfico(selfi,fechas,medias)
+    vs.gráfico(selfi,fechas,medias,bandera)
 '''
 Hace los calculos correspondientes a la hora de añadir un nuevo menu, sumando todos los macronutrientes y los alimentos, 
 creando el plato completo y llevando a cabo los calculos para identificar la calidad en base a NUTRISCORE.
