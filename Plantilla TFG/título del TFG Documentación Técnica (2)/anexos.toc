@@ -68,6 +68,6 @@
 \contentsline {subsubsection}{COMIDAS DEL D\IeC {\'I}A}{44}{section*.41}% 
 \contentsline {subsubsection}{REFRESCAR}{45}{section*.42}% 
 \contentsline {subsubsection}{A\IeC {\~N}ADIR PLATO}{45}{section*.43}% 
-\contentsline {subsection}{HISTORIAL}{45}{section*.44}% 
-\contentsline {subsubsection}{GR\IeC {\'A}FICOS}{46}{section*.45}% 
-\contentsline {subsubsection}{SEMANA INGERIDA}{46}{section*.46}% 
+\contentsline {subsection}{HISTORIAL}{47}{section*.44}% 
+\contentsline {subsubsection}{GR\IeC {\'A}FICOS}{48}{section*.45}% 
+\contentsline {subsubsection}{SEMANA INGERIDA}{49}{section*.46}% 
