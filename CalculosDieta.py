@@ -172,9 +172,6 @@ def OrdMinimaDiferencia(listComida,objetivo,tipoComida,dat,kcaldiarias,listMacDi
     return listComida;
 
 def formulDif(loQueLlevo,carb,prot,gras,comida,deboComida,carDeber,graDeber,protDeber):
-    #print("carb que deberia llevar: ",carDeber, "//Lo que llevo: ",loQueLlevo[2])
-    #print("resta carb que debería comer vslo que como", (carb-(comida["Hidratos"]*4)))
-    #print("kcal deberia vs calorias llevo", (deboComida-(comida["Calorias"])))
     if ((carDeber-loQueLlevo[1]*4) >= 0 ):
         comidaCarb = (carDeber-loQueLlevo[2]*4)/(carb-(comida["Hidratos"]*4)+(deboComida-(comida["Calorias"])))
     else:
@@ -329,6 +326,7 @@ def AñadirMenuCalculos(selfi):
     proteinasTotal=0;
     sodioTotal=0;
     nombre="";
+    tipo=None;
     #ALIMENTO #1
     if(len(selfi.entry_Nom.get()) != 0 or len(selfi.entry_Gram.get()) !=0 or len(selfi.entry_kcal.get()) != 0 or len(selfi.entry_gras.get()) != 0 or len(selfi.entry_sat.get()) != 0 or len(selfi.entry_Hid.get()) != 0 or len(selfi.entry_Azuc.get()) != 0 or len(selfi.entry_Pro.get()) != 0  ):
         if(len(selfi.entry_Nom.get()) ==0 or len(selfi.entry_Gram.get()) ==0 or len(selfi.entry_kcal.get()) == 0 or len(selfi.entry_gras.get()) == 0 or len(selfi.entry_sat.get()) == 0 or len(selfi.entry_Hid.get()) == 0 or len(selfi.entry_Azuc.get()) == 0 or len(selfi.entry_Pro.get()) == 0 ):

@@ -325,7 +325,6 @@ class MostrarDieta(tk.Frame):
         self.tab_control.add(self.tabComida, text='Comida')
         self.tab_control.add(self.tabMerienda, text='Merienda')
         self.tab_control.add(self.tabCena, text='Cena')
-        #NO BORRAAARR, DE MOMENTO NO LO NECESITAMOS, PERO ASI SE CAMBIARÍA EL COLOR DE LA BARRA.
         
         self.n_opciones = 3;
         self.style.configure("black.Horizontal.TProgressbar", background='green')
@@ -335,7 +334,6 @@ class MostrarDieta(tk.Frame):
         self.barProgTotal['value'] = (100*datosAlimCliente[0])/self.listMacDiarios[0];
         vs.actualizarBarra(menuDeHoy,'alimento',self.barProgTotal,datosAlimCliente,self.listMacDiarios,self.style)
         self.banderaSelect = vs.crearArrayBandera(menuDeHoy)
-        print(self.banderaSelect)
         ####-COMIDAS-####
         self.desayunoF()
         self.AlmuerzoF()

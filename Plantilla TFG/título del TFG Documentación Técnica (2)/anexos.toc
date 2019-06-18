@@ -2,7 +2,7 @@
 \babel@toc {spanish}{}
 \contentsline {chapter}{\'{I}ndice general}{\es@scroman {i}}{section*.1}% 
 \contentsline {chapter}{\'{I}ndice de figuras}{\es@scroman {iii}}{section*.2}% 
-\contentsline {chapter}{\'{I}ndice de tablas}{\es@scroman {iv}}{section*.3}% 
+\contentsline {chapter}{\'{I}ndice de tablas}{\es@scroman {v}}{section*.3}% 
 \contentsline {appendix}{\chapternumberline {A}Plan de Proyecto Software}{1}{appendix.Alph1}% 
 \contentsline {section}{\numberline {A.1}Introducci\IeC {\'o}n}{1}{section.Alph1.1}% 
 \contentsline {section}{\numberline {A.2}Planificaci\IeC {\'o}n temporal}{1}{section.Alph1.2}% 
@@ -56,4 +56,18 @@
 \contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{37}{section.Alph5.1}% 
 \contentsline {section}{\numberline {E.2}Requisitos de usuarios}{37}{section.Alph5.2}% 
 \contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{37}{section.Alph5.3}% 
-\contentsline {section}{\numberline {E.4}Manual del usuario}{37}{section.Alph5.4}% 
+\contentsline {section}{\numberline {E.4}Manual del usuario}{38}{section.Alph5.4}% 
+\contentsline {subsection}{Inicio}{38}{section*.33}% 
+\contentsline {subsubsection}{Crear un Usuario/Registrarse}{38}{section*.34}% 
+\contentsline {subsubsection}{INICIAR SESI\IeC {\'O}N}{40}{section*.35}% 
+\contentsline {subsection}{P\IeC {\'A}GINA PRINCIPAL}{40}{section*.36}% 
+\contentsline {subsubsection}{ARCHIVO}{41}{section*.37}% 
+\contentsline {subsubsection}{ESTILOS}{41}{section*.38}% 
+\contentsline {subsection}{INFORMACI\IeC {\'O}N DE USUARIO}{42}{section*.39}% 
+\contentsline {subsection}{DIETA DIARIA}{43}{section*.40}% 
+\contentsline {subsubsection}{COMIDAS DEL D\IeC {\'I}A}{44}{section*.41}% 
+\contentsline {subsubsection}{REFRESCAR}{45}{section*.42}% 
+\contentsline {subsubsection}{A\IeC {\~N}ADIR PLATO}{45}{section*.43}% 
+\contentsline {subsection}{HISTORIAL}{45}{section*.44}% 
+\contentsline {subsubsection}{GR\IeC {\'A}FICOS}{46}{section*.45}% 
+\contentsline {subsubsection}{SEMANA INGERIDA}{46}{section*.46}% 

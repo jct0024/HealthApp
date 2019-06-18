@@ -1,20 +1,24 @@
 \capitulo{5}{Aspectos relevantes del desarrollo del proyecto}
 
 \section{La idea}
-Uno de los aspectos a destacar en el desarrollo de este proyecto, es el nacimiento de dicho proyecto. Pues se trata de un trabajo de fin de grado, el cual, es un trabajo puro del alumno, donde tanto idea como desarrollo son realizados por él, y gran parte del tiempo gastado en el desarrollo fue en la ocurrencia de varias ideas, el pulimiento de dichas ideas, y la conversión de todo esto en lo que se convirtió en la idea final. Aunque dicha idea fuera cambiando a lo largo de su desarrollo.\\
+Uno de los aspectos a destacar en el desarrollo de este proyecto, es el nacimiento de dicho proyecto. Pues se trata de un trabajo de fin de grado, el cual, es un trabajo puro del alumno, donde tanto idea como desarrollo son realizados por él, y gran parte del tiempo gastado en el desarrollo fue en la ocurrencia y el pulimento de dichas ideas, y la conversión de todo esto en lo que se convirtió en la idea final. Aunque dicha idea fuera cambiando a lo largo de su desarrollo.\\
+
 Todo llego de la necesidad de crear un trabajo interesante, algo diferente y que fuera de actualidad, a esto se le sumo, que para un desarrollo mas ágil debía ser un tema conocido e interesante para su desarrollo. Entonces se llevo a cabo un periodo de investigación de las necesidades que azotan a las personas hoy en día, con las ultimas corriente de moda y que sobre todo pudiera resultar útil. Tras varios días se llegó a la conclusión de que actualmente la gente tiene una constante necesidad por cuidarse, por la vida sana, y que, además de ser una necesidad básica para cualquier persona, se estaba tornando en una moda explotable en cualquier página web, red social, etc.\\
+
 Una vez encontrado el groso del proyecto tocaba perfilar detalles, para ver a través de que medio se podía llevar “una mejor calidad de vida” al usuario. De aquí surgieron varias vertientes:\\
+
 \begin{itemize}
 \item	Deporte: descartada, por la inmensa cantidad de aplicaciones de planificación de entrenamiento que existes a día de hoy.
 \item	Nutrición: Inicialmente descartada, debido a las mismas razones que lo anterior, existen miles de aplicaciones tanto que te proponen una dieta como que te ayudan a seguirla.
 \item	Recordatorios: Con esto me refiero, a recordatorios de cuando hacer deporte, de cuando tomarse los medicamentes, etc. Se descarto rápidamente por ser una más, a la par que un proyecto banal.
-\item	Nutrición con otro enfoque: Aquí es donde llego la idea, una vez descartada estas tres, se pensó que estaba todo inventado y el proyecto se convertiría en otra forma de “reinventar la rueda”, hasta que nos percatamos, que no existe una aplicación que te enseñe a comer, y que tenga en cuenta las patologías aunque sean en menor medida. Ahí es cuando nació la idea, y se empezó a formar la idea de la estructura de lo que iba a ser el proyecto.
+\item	Nutrición con otro enfoque: Aquí es donde llego la idea, una vez descartadas las demás opciones. Se ideo  una aplicación que te enseñe a comer, y que tenga en cuenta las patologías aunque sean en menor medida. Ahí es cuando nació la idea, y se empezó a formar la idea de la estructura de lo que iba a ser el proyecto.
 
 \end{itemize}
 De este modo se empezó con el proyecto, partiendo totalmente de cero, hasta el punto de conseguir algo perfectamente funcional, cumplimentando los objetivos propuestos para dicho proyecto.
 
 \section{Formato de trabajo}
 Se desarrollo una metodología ágil de forma incremental, se empezó formalizando las bases hasta llegar a la etapa final. No se pasaba a la siguiente etapa sin haber terminado la anterior.\\
+
 Las tres principales etapas del proyecto fueron:
 \begin{enumerate}
 \item	Funcionamiento por interfaz Shell
@@ -23,29 +27,45 @@ Las tres principales etapas del proyecto fueron:
 \end{enumerate}
 
 De esta forma, se fueron creando todas las características de manera incremental, de forma que se dio mas importancia al claro desarrollo del proyecto, que a la velocidad de dicho desarrollo. Pese a esta importante decisión, en ningún momento el proyecto se atasco, y se pudo llevar a cabo de manera ágil, gracias a la reutilización de código entre capas, permitiendo una clara transparencia a la hora del desarrollo.\\
+
 Al no lanzarnos directamente con el entorno gráfico, el cual, nunca había sido visto a lo largo de la carrera, permitió que fueran más obvios los pequeños errores de implementación, de cálculos, etc. Para que cuando se pasará a la etapa de desarrollo gráfico, nos pudiéramos centrar en los errores, o correcciones que el entorno gráfico suponía, sin amontar pequeños fallos, que mas tarde dieran lugar a grandes errores.\\
 
 \section{Algoritmos del programa}
-Se quiere hacer énfasis en dichos algoritmos debido a que el programa utiliza una serie de algoritmos propios, ideados por el autor, que permite que el sistema de recomendación funcione como es debido. En este subapartado no se va a extender con la explicación de cada uno de los algoritmos utilizados, o métodos similares, creados por terceros y desarrollados por el alumno, sino aquellos que han sido ideados por él, y son un aspecto relevante en el desarrollo por el tiempo de ideación que han llevado dichos.
+Se quiere hacer énfasis en dichos algoritmos debido a que el programa utiliza una serie de algoritmos propios, ideados por el autor, que permite que el sistema de recomendación basado en contenidos funcione como es debido. En este apartado no se va a extender con la explicación de cada uno de los algoritmos utilizados, o métodos similares, creados por terceros y desarrollados por el alumno, sino aquellos que han sido ideados por él, y son un aspecto relevante en el desarrollo.
 \subsection{Algoritmos de recomendación}
 Es el algoritmo que estructura todo el sistema de programación, nace de la necesidad de que la recomendación se ajuste al máximo a las necesidades del usuario. Si se ordenaba única y exclusivamente por la calidad, nunca se verían los menús de peor calidad, además de que podría haber una desigualdad inmensa entre las calorías ingeridas y las necesitadas. Mas tarde, se pensó en hacer una formula basada en la diferencia calórica, cosa que se adecuaba mas a las necesidades del usuario, pero creaba un desajuste en los macronutrientes, pues el usuario podía llevar 300 kcal exclusivamente de grasa, y que le recomendase otras 300 también solo de grasa, rompiendo la idea de dieta equilibrada. Por ello, se ideo otro prototipo de formula.\\
+
 La formula tiene en cuenta la proporción de las necesidades calóricas del usuario, partiendo de cada macronutriente, se calcula la diferencia entre la diferencia de macronutrientes que debería llevar y los que llevo, todo llevo partido por la suma de la diferencia entre: Las kilocalorías que debo comer y las que tiene el alimento y la diferencia entre el macronutriente especifico y lo que el alimento tiene.\\
-FORMULAAAAAAAAAAAAAAAAAAAAAA
+\begin{equation}
+DiferenciaMacronutriente = \frac{(KMCD - A)}{((KCDT-KMM)+(KMTC-KTM))}
+\end{equation}
+Donde:\\
+
+KMCD: Número de Kcalorias del macronutriente (Hidratos,proteinas o grasas) de la Comida (Desayuno, almuerzo...) que debería llevar en esa comida\\
+A: Actual número de kcalorias de ese macronuetriente que llevo en todo el día (Si estoy en Comida: desayuno+almuerzo+comida).\\
+KCDT: Kilocalorias que debería comer en esta comida concreta para este macronutriente concreto.\\
+KMM: Kilocalorias del macronutriente concreto del menú.\\
+KMTC: Kilocalorias totales que debería comer en esta comida.\\
+ktm: kilocalorias totales que tiene el menú a recomendar.\\
 \subsection{Persistencia de los datos}
 Esto en verdad, no es implementado como tal por el alumno, sino más bien, es un recurso para romper una de las limitaciones que presentó utilizar Excel como simulación de la base de datos.\\
+
 Para evitar datos sobre escritos y problemas con los datos, se procuró durante todo el programa atomizar lo máximo posible cada método sobre la base de datos, haciendo que los cambios sean lo mas inconexos y manejables para el usuario. \\
 
 En el método añadir alimento se rompe esta norma, añadiendo un alimento en la base de datos que hay que guardar, pero sin guardar todos los cambios en el resto de los alimentos, por si el usuario no quisiera hacerlo. Para evitar esta falta de control por parte del usuario sobre la persistencia de sus datos, a la hora de almacenarlo, se carga el array de nuevo, y se añade esta nueva línea tanto al array usado durante el programa, como al nuevo array de alimentos, este nuevo array se almacena en la base de datos, mientras que el otro sigue con su propósito en el programa. Si el usuario hace algún cambio y lo guarda, el nuevo alimento estará a salvo, si, por el contrario, el usuario decide salir sin guardar su progreso en el día, el nuevo alimento ya estará guardado en la base de datos.\\
 \subsection{Distinción entre tipos de comida}
-Uno de los retos a afrontar a lo largo de este proyecto fue simplemente, el como, se iba a indicar que tipo de comida/menú era. Sin duda no fue uno de los retos más complejos abordados a lo largo del proyecto, pero si uno de los más curiosos.
+Uno de los retos a afrontar a lo largo de este proyecto fue simplemente, el como se iba a indicar que tipo de comida/menú era. Sin duda no fue uno de los retos más complejos abordados a lo largo del proyecto, pero si uno de los más curiosos.\\
+
 Recordamos que un mismo menú, puede pertenecer a varias comidas del día, entonces se pensaron varios métodos hasta llegar al óptimo, los cuales explicaremos con brevedad a continuación:\\
 
 En un principio se planteo hacer una cadena de Strings separadas por algún delimitador cualquiera, y cargarlo en forma de String y separarlo por algún método (Por ejemplo Slice()), pero dio ciertos problemas de carga y almacenamiento, problemas no demasiados complejos, pero que aumentaban la complejidad algoritmo al buscar a través de un bucle todas las posibilidades complicando esto, y se pensó en una concatenación de bits donde 1 es que era esa comida y 0 que no, es decir: 11010, Significa que no es ni comida ni cena. Esto presentaba el mismo problema que la cadena de caracteres y era quizás más confuso para su compresión, Además del pequeño inconveniente de que si un menú no era desayuno ( Es decir empezaba en 0), en algunas ocasiones se almacenaba sin ese digito creando una desigualdad en el programa. Por estas razones se deicidio pasar al siguiente método, una mezcla de ambas, se iba a usar una cadena para calcular un único valor que cargar. Finalmente se paso esa cadena de bits a un valor numérico, de esta manera se asegura una única carga, y el tratamiento a través de cláusulas condicionales simples.\\
+
 Ejemplo:\\
 Un alimento que sea comida y cena: 00101 -> Se representará con el número 5. \\
 Esto permite la carga de un único elemento, sin posibilidad de fallo además de un calculo sencillo, cuyo mayor inconveniente es llevar a cabo todas las clausulas condicionales, para hacer la criba por tipo de comida.\\
 \subsection{SCRUM}
 Quizás uno de los aspectos más destacados a la hora de realizar el proyecto, fue la organización por parte del alumno, a través de la metodología SCRUM, que permitía al alumno mantenerse centrado en cada nueva tarea, no pasando a la siguiente hasta dejar esta zanjada del todo. \\
+
 Para la realización de esta metodología se tuvo en posesión una pizarra, en la cual se iba pegando post-it con una breve descripción de la tarea y una fecha máxima para la realización de esta. La pizarra era dividida en cuatro partes (pequeña adaptación del SCRUM).\\
 \begin{enumerate}
 \item	TODO – Por hacer, eran todas las tareas, pautas, e ideas que iban surgiendo a lo largo de la semana o tras las reuniones semanales. Había un máximo de cinco, para evitar que el proyecto se atascase por una carga excesiva de trabajo. De TODO se pasaba a in progress. 
@@ -60,9 +80,11 @@ Este método fue estudiado en la asignatura de gestión de proyectos por el alum
 Apartado donde se hablará de forma breve sobre todo conocimiento aprendido durante los años de carrera, relacionado directamente con el desarrollo del proyecto.
 \subsection{Conocimientos sobre python}
 A lo largo de la carrera, se han estudiado diferentes lenguajes de programación (Ej: Java, C, CSHARP...), entre los cuales se encontraba Python. Por ejemplo en asignaturas como Sistemas Inteligentes, Nuevas tecnologías, etc., o en mi paso por la politécnica de Varsovia, en asignaturas como “Algoritmia y computación matemática”, la cual, toda la asignatura consiste en un gran proyecto, donde se ponía a prueba los conocimientos algorítmicos en el lenguaje Python.\\
+
 Además, multitud de las librerías usadas durante este proyecto fueron utilizadas en dichas asignaturas, haciendo que el proyecto, partiera desde un punto avanzado facilitándome el aprendizaje.
 \subsection{Conocimientos sobre la gestión de proyectos}
 A fin de cuentas, la metodología que se ha usado para idear, planificar y desarrollar el proyecto, es el conjunto y suma de una serie de actitudes adquiridas a lo largo de los últimos años. Ya sea con asignaturas dedicadas específicamente para ello como fue Gestión de proyectos, como con el prueba y error, que ha hecho que se fuese aprendiendo la mejor manera de trabajar a nivel personal. Permitiendo que este proyecto, fuese con diferencia el mas amplio y hasta la fecha, mas cómodo, a la hora de ser elaborado.\\
+
 Metodologías como el SCRUM, Las pruebas de errores, la organización interna del scrum, las reuniones semanales sobre el estado del proyecto, etc.
 \subsection{Investigación}
 Básico, pero de vital importancia, es el nivel de capacidad de investigación y búsqueda de la información no es el mismo que al inicio del grado. La velocidad y capacidad, de saber buscar, es uno de los conocimientos más importantes que se adquieren a lo largo de la carrera. Conocimiento indirecto, pero presente en todas y cada una de las asignaturas que se han cursado, dicho nivel de investigación ha permitido que errores que antiguamente hubieran durado días, durasen horas, buscando en diferentes páginas y libros y contrastando cada información recibida a lo largo de este proceso de investigación
@@ -81,8 +103,8 @@ Es una parte fundamental del proyecto, la calidad marca el umbral por el cual se
 \subsection{Nutriscore}
 En un principio para que la calidad fuera lo mas precisa posible, y pensando en esta aplicación como proyecto de negocio, se pensó que, un nutricionista, experto en la materia, fuera quien añadiera los menús y la calidad de dichos. Esto a nivel de negocio, era la idea más optima, pero a nivel de proyecto, dejaba un vacío en la clara objetividad en la selección de calidad y en la limitación de la base de datos. Por esta razón se eligió el algoritmo del semáforo o NUTRISCORE, algoritmo que se basa en una serie de características buenas y malas de los alimentos, y según el resultado de la diferencia, la cual, se acaba cribando en uno de los cinco posibles valores: A,B,C,D Y E, ordenador de mejor a peor.\\
 
-IMAGEEEEEEEEEEEEEEEEEEEEEEEEEEN
-\\
+\imagen{Nutriscore}{Algoritmo nutriscore}
+
 De esta manera conseguimos que el usuario pueda añadir sus propios alimentos y no haga “trampa” con la calidad de la comida. Manteniendo la integridad de la aplicación lo máximo posible.
 \subsubsection{Imperfecciones}
 Este algoritmo no es perfecto, pues se basa única y exclusivamente en cifras, en las cifras de azúcar, de proteína, de sal, etc. Por lo cual, cosas saludables como puede ser el aceite de oliva virgen extra, tienen como resultado una pésima calidad, mientras que, quizás, ultraprocesados como cereales bajos en azucares, bebidas edulcoradas, y cosas similares. \\

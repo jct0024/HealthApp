@@ -8,7 +8,6 @@
 \usepackage{lmodern} % Scalable font
 \usepackage{microtype}
 \usepackage{placeins}
-
 \RequirePackage{booktabs}
 \RequirePackage[table]{xcolor}
 \RequirePackage{xtab}
@@ -356,9 +355,9 @@
 \newcommand{\nombre}{Jesús Carro Tomé} %%% cambio de comando
 
 % Datos de portada
-\title{título del TFG}
+\title{Aplicación de recomendación nutricional - HEALTHAPP}
 \author{\nombre}
-\tutor{nombre tutor}
+\tutor{Antonio Jesús Canepa}
 \date{\today}
 
 \begin{document}
@@ -375,11 +374,11 @@
 
 \noindent\includegraphics[width=\textwidth]{cabecera}\vspace{1cm}
 
-\noindent D. nombre tutor, profesor del departamento de nombre departamento, área de nombre área.
+\noindent D. Antonio Jesús Canepa, profesor del departamento de Ingeniería Civil, área de Lenguajes y sistemas informáticos.
 
 \noindent Expone:
 
-\noindent Que el alumno D. \nombre, con DNI 71308125Y, ha realizado el Trabajo final de Grado en Ingeniería Informática titulado título de TFG. 
+\noindent Que el alumno D. \nombre, con DNI 71308125Y, ha realizado el Trabajo final de Grado en Ingeniería Informática titulado Aplicación de recomendación nutricional - HEALTHAPP . 
 
 \noindent Y que dicho trabajo ha sido realizado por el alumno bajo la dirección del que suscribe, en virtud de lo cual se autoriza su presentación y defensa.
 
@@ -389,28 +388,12 @@ En Burgos, {\large \today}
 
 \vfill\vfill\vfill
 
-% Author and supervisor
-\begin{minipage}{0.45\textwidth}
-\begin{flushleft} %\large
-Vº. Bº. del Tutor:\\[2cm]
-D. nombre tutor
-\end{flushleft}
-\end{minipage}
-\hfill
-\begin{minipage}{0.45\textwidth}
-\begin{flushleft} %\large
-%Vº. Bº. del co-tutor:\\[2cm]
-%D. nombre co-tutor
-\end{flushleft}
-\end{minipage}
-\hfill
 
-\vfill
 
 % para casos con solo un tutor comentar lo anterior
 % y descomentar lo siguiente
 Vº. Bº. del Tutor:\\[2cm]
-D. nombre tutor
+D. Antonio Jesús Canepa
 
 
 \newpage\null\thispagestyle{empty}\newpage
@@ -423,12 +406,18 @@ D. nombre tutor
 % Abstract en castellano
 \renewcommand*\abstractname{Resumen}
 \begin{abstract}
-En este proyecto se llevará acabo una aplicación de escritorio, desarrollada en python, que propone en base a las caracteristicas físicas del usuario, una serie de opciones, enseñandole a comer saludablemente, y mostrandole sus progresos.
+Una de cada cinco muertes en el mundo se deben a la mala alimentación, y a las diferentes patologías que se agravan con está. Por ello, cada vez son mas los profesionales dedicados al ámbito de la salud y la nutrición, y cada vez es mas presente la presencia de dichos profesionales en centros sanitarios y Hospitales.\\
+
+Entre las numerosas aplicaciones que existen para la gestión de dietas y ejercicios, y las otras tantas que existen para la enseñanza a través de métodos multimedia. Apenas hay aplicaciones que ayuden a una persona sin conocimientos mínimos; a adecuar ese estilo de vida saludable y adquirir dichos conocimientos.\\
+
+Gran parte de nuestra calidad de vida depende de la motivación personal, del logro de conseguir nuevas metas, de la sensación de avanzar en aquello que nos propones. Por ello, el auto-aprendizaje es usado en varios ámbitos como método de enseñanza, debido a que el sujeto aprende en base a sus errores y logros, lo que produce una ambición de mejorar y seguir adelante.\\
+
+Por ello,a través de un optimo sistema de recomendación, y usando los algoritmos más novedosos en cuanto a la categorización de alimentos, este proyecto cumple con la necesidad de una aplicación que a través de ese aprendizaje, nos ayuden a cumplir las metas necesarias, para con el tiempo lograr el objetivo de adecuar un nuevo habito saludable de vida.
 \end{abstract}
 
 \renewcommand*\abstractname{Descriptores}
 \begin{abstract}
-Aplicación de escritorio, dietoterapía, analisis y administración de datos\ldots
+Dietoterapia, auto-aprendizaje, Python, Tkinter, Nutriscore, Nutricción, Sistema de recomendaciones, investigación\ldots
 \end{abstract}
 
 \clearpage
@@ -441,7 +430,8 @@ Se aborda la \textbf{dietoterapía} mezclada con las \textbf{nuevas tecnologías
 
 \renewcommand*\abstractname{Keywords}
 \begin{abstract}
-dietoterapía, salud, python, analisis de datos, mejor condicion fisica, \ldots
+Diet therapy, self-learning, Python, Tkinter, Nutriscore,Recommendations system,
+investigation \ldots
 \end{abstract}
 
 \clearpage

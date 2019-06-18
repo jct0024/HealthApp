@@ -87,8 +87,6 @@ def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAliment
             fila = ab.getFilaAlimento(menuDeHoy[3],hojaAlimentos)
         if(tipoComida == 'cena'):
             fila = ab.getFilaAlimento(menuDeHoy[4],hojaAlimentos)
-        print('###################################################################################')
-        print(hojaAlimentos["Nombre"].loc[fila])
         #Aumentamos el LRE del alimento en cuestión
         hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] -1; 
         datosAlimCliente[0] -= hojaAlimentos["Calorias"].loc[fila] 
@@ -113,7 +111,10 @@ def actualizarBarra(menuDeHoy,alimento,barProgTotal,datosAlimCliente,listMacDiar
     for i in menuDeHoy:
         if (i != ""):
             n+=1;
-    calidad = datosAlimCliente[4]/n
+    if not (n == 0):
+        calidad = datosAlimCliente[4]/n
+    else:
+        calidad=0;
     if(calidad<=1.5):      
         style.configure("green.Horizontal.TProgressbar", background='green')         
         barProgTotal.config(style="green.Horizontal.TProgressbar")
@@ -512,7 +513,6 @@ def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
         labelTipo= tk.Label(containerTip, text="TIPO: xxx",bg=colorFondo)
         labelTipo.pack(side=tk.LEFT)
         resultado=[0,0,0,0,0]
-        print(arrayCalidad)
         for i in arrayCalidad:
             resultado[i]+=1
         cal = resultado.index(max(resultado))

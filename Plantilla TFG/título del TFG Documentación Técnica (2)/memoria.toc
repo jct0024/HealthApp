@@ -6,14 +6,14 @@
 \contentsline {chapter}{Introducci\IeC {\'o}n}{1}{chapter*.4}% 
 \contentsline {chapter}{Objetivos del proyecto}{5}{chapter*.5}% 
 \contentsline {section}{\numberline {2.1}Objetivos generales}{5}{section.2.1}% 
-\contentsline {section}{\numberline {2.2}Objetivos espec\IeC {\'\i }ficos como finalidad}{6}{section.2.2}% 
+\contentsline {section}{\numberline {2.2}Objetivos Funcionales}{5}{section.2.2}% 
 \contentsline {section}{\numberline {2.3}Objetivos incrementales del desarrollo}{7}{section.2.3}% 
 \contentsline {chapter}{Conceptos te\IeC {\'o}ricos}{9}{chapter*.6}% 
 \contentsline {section}{\numberline {3.1}Introducci\IeC {\'o}n}{9}{section.3.1}% 
 \contentsline {section}{\numberline {3.2}Nutrici\IeC {\'o}n}{9}{section.3.2}% 
 \contentsline {subsection}{Reparto cal\IeC {\'o}rico}{9}{section*.7}% 
 \contentsline {subsubsection}{Reparto total de los macronutrientes}{10}{section*.8}% 
-\contentsline {subsection}{Reparto total cal\IeC {\'o}rico}{10}{section*.9}% 
+\contentsline {subsection}{Reparto total cal\IeC {\'o}rico}{11}{section*.9}% 
 \contentsline {subsection}{Nutriscore (Algoritmo del semaforo)}{11}{section*.10}% 
 \contentsline {section}{\numberline {3.3}Prevenciones}{12}{section.3.3}% 
 \contentsline {section}{\numberline {3.4}Ense\IeC {\~n}anza}{13}{section.3.4}% 
@@ -30,21 +30,21 @@
 \contentsline {subsection}{T\IeC {\'e}cnicas}{19}{section*.17}% 
 \contentsline {subsubsection}{Introducci\IeC {\'o}n}{19}{section*.18}% 
 \contentsline {section}{\numberline {4.3}Aprender a aprender}{19}{section.4.3}% 
-\contentsline {subsection}{TMB}{20}{section*.19}% 
-\contentsline {subsection}{Nutriscore}{21}{section*.20}% 
+\contentsline {subsection}{TMB}{19}{section*.19}% 
+\contentsline {subsection}{Nutriscore}{20}{section*.20}% 
 \contentsline {section}{\numberline {4.4}Estructura del programa}{21}{section.4.4}% 
 \contentsline {subsection}{Introducci\IeC {\'o}n}{21}{section*.21}% 
-\contentsline {subsection}{Calculos, Administraci\IeC {\'o}n y vista}{22}{section*.22}% 
-\contentsline {section}{\numberline {4.5}Librer\IeC {\'\i }as}{23}{section.4.5}% 
-\contentsline {subsection}{Pandas}{23}{section*.23}% 
+\contentsline {subsection}{C\IeC {\'a}lculos, Administraci\IeC {\'o}n y vista}{21}{section*.22}% 
+\contentsline {section}{\numberline {4.5}Librer\IeC {\'\i }as}{22}{section.4.5}% 
+\contentsline {subsection}{Pandas}{22}{section*.23}% 
 \contentsline {subsection}{Numpy}{23}{section*.24}% 
 \contentsline {subsection}{Interfaz Gr\IeC {\'a}fica}{23}{section*.25}% 
 \contentsline {subsection}{Dise\IeC {\~n}o}{24}{section*.26}% 
-\contentsline {section}{\numberline {4.6}M\IeC {\'o}dulos}{25}{section.4.6}% 
-\contentsline {subsection}{C\IeC {\'a}lculos Dieta}{25}{section*.27}% 
+\contentsline {section}{\numberline {4.6}M\IeC {\'o}dulos}{24}{section.4.6}% 
+\contentsline {subsection}{C\IeC {\'a}lculos Dieta}{24}{section*.27}% 
 \contentsline {subsubsection}{CalculoTMB, rapartoDeKcal y distribuci\IeC {\'o}nDeMacronutrientes}{25}{section*.28}% 
-\contentsline {subsubsection}{OrdMinimaDiferencia y formulDif}{26}{section*.29}% 
-\contentsline {subsubsection}{Gr\IeC {\'a}ficos}{27}{section*.30}% 
+\contentsline {subsubsection}{OrdMinimaDiferencia y formulDif}{25}{section*.29}% 
+\contentsline {subsubsection}{Gr\IeC {\'a}ficos}{26}{section*.30}% 
 \contentsline {subsection}{AdminBase y estructura de la base de datos}{27}{section*.31}% 
 \contentsline {subsubsection}{CargaBaseDeDatos y guardaDatos}{27}{section*.32}% 
 \contentsline {subsubsection}{Guardar Todo}{30}{section*.33}% 
@@ -53,53 +53,54 @@
 \contentsline {subsubsection}{Comprobaci\IeC {\'o}n usuario}{31}{section*.36}% 
 \contentsline {subsubsection}{Seleccionar y refrescar}{32}{section*.37}% 
 \contentsline {subsection}{Main}{33}{section*.38}% 
-\contentsline {section}{\numberline {4.7}Herramientas}{33}{section.4.7}% 
-\contentsline {subsubsection}{Anaconda}{33}{section*.39}% 
+\contentsline {section}{\numberline {4.7}Herramientas}{34}{section.4.7}% 
+\contentsline {subsubsection}{Anaconda}{34}{section*.39}% 
 \contentsline {subsubsection}{VisualCode}{34}{section*.40}% 
-\contentsline {subsubsection}{GitHub}{34}{section*.41}% 
-\contentsline {subsubsection}{GitKraken}{34}{section*.42}% 
-\contentsline {chapter}{Aspectos relevantes del desarrollo del proyecto}{35}{chapter*.43}% 
-\contentsline {section}{\numberline {5.1}La idea}{35}{section.5.1}% 
-\contentsline {section}{\numberline {5.2}Formato de trabajo}{36}{section.5.2}% 
-\contentsline {section}{\numberline {5.3}Algoritmos del programa}{37}{section.5.3}% 
-\contentsline {subsection}{Algoritmos de recomendaci\IeC {\'o}n}{37}{section*.44}% 
-\contentsline {subsection}{Persistencia de los datos}{38}{section*.45}% 
-\contentsline {subsection}{Distinci\IeC {\'o}n entre tipos de comida}{38}{section*.46}% 
-\contentsline {subsection}{SCRUM}{39}{section*.47}% 
-\contentsline {section}{\numberline {5.4}Conocimientos aprendidos en la carrera}{40}{section.5.4}% 
-\contentsline {subsection}{INTRODUCCI\IeC {\'O}N}{40}{section*.48}% 
-\contentsline {subsection}{Conocimientos sobre python}{40}{section*.49}% 
-\contentsline {subsection}{Conocimientos sobre la gesti\IeC {\'o}n de proyectos}{41}{section*.50}% 
-\contentsline {subsection}{Investigaci\IeC {\'o}n}{41}{section*.51}% 
-\contentsline {section}{\numberline {5.5}Conocimientos externos a la carrera}{41}{section.5.5}% 
-\contentsline {subsection}{INTRODUCCI\IeC {\'O}N}{41}{section*.52}% 
-\contentsline {subsection}{Psicolog\IeC {\'\i }a}{42}{section*.53}% 
-\contentsline {subsubsection}{Aprender a aprender}{42}{section*.54}% 
-\contentsline {subsection}{Nutrici\IeC {\'o}n}{42}{section*.55}% 
-\contentsline {subsubsection}{"Calidad" de los alimentos}{42}{section*.56}% 
-\contentsline {subsection}{Nutriscore}{43}{section*.57}% 
-\contentsline {subsubsection}{Imperfecciones}{43}{section*.58}% 
-\contentsline {subsection}{Interfaces Gr\IeC {\'a}ficas}{43}{section*.59}% 
-\contentsline {section}{\numberline {5.6}Fases del proyecto}{44}{section.5.6}% 
-\contentsline {subsection}{Cronograma: }{44}{section*.60}% 
-\contentsline {chapter}{Trabajos relacionados}{45}{chapter*.61}% 
-\contentsline {section}{\numberline {6.1}Estudios:}{45}{section.6.1}% 
-\contentsline {subsection}{Estudios DASH}{45}{section*.62}% 
-\contentsline {subsection}{Las pruebas de grasas saturadas}{46}{section*.63}% 
-\contentsline {subsection}{El programa de prevenci\IeC {\'o}n de diabetes (DPP)}{46}{section*.64}% 
-\contentsline {subsection}{Pounds Lost}{46}{section*.65}% 
-\contentsline {subsection}{Seven countries Study}{47}{section*.66}% 
-\contentsline {section}{\numberline {6.2}Aplicaciones Similares}{48}{section.6.2}% 
-\contentsline {subsection}{FatSecret}{48}{section*.67}% 
-\contentsline {subsection}{DietPro}{48}{section*.68}% 
-\contentsline {subsection}{MyFitnessPal}{48}{section*.69}% 
-\contentsline {subsection}{LifeSum}{49}{section*.70}% 
-\contentsline {chapter}{Conclusiones y L\IeC {\'\i }neas de trabajo futuras}{51}{chapter*.71}% 
-\contentsline {section}{\numberline {7.1}Conclusiones}{51}{section.7.1}% 
-\contentsline {section}{\numberline {7.2}Lineas de trabajo futuras}{53}{section.7.2}% 
-\contentsline {subsection}{Base de datos Online}{53}{section*.72}% 
-\contentsline {subsection}{Perfeccionamiento del algoritmo de recomendaci\IeC {\'o}n}{53}{section*.73}% 
-\contentsline {subsection}{Aumento de la base de datos}{53}{section*.74}% 
-\contentsline {subsection}{Autoaprendizaje del programa}{53}{section*.75}% 
-\contentsline {subsection}{Adaptaci\IeC {\'o}n a diferentes plataformas}{54}{section*.76}% 
-\contentsline {subsection}{Desarrollo empresarial}{54}{section*.77}% 
+\contentsline {subsubsection}{GitHub}{35}{section*.41}% 
+\contentsline {subsubsection}{GitKraken}{35}{section*.42}% 
+\contentsline {chapter}{Aspectos relevantes del desarrollo del proyecto}{37}{chapter*.43}% 
+\contentsline {section}{\numberline {5.1}La idea}{37}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Formato de trabajo}{38}{section.5.2}% 
+\contentsline {section}{\numberline {5.3}Algoritmos del programa}{39}{section.5.3}% 
+\contentsline {subsection}{Algoritmos de recomendaci\IeC {\'o}n}{39}{section*.44}% 
+\contentsline {subsection}{Persistencia de los datos}{40}{section*.45}% 
+\contentsline {subsection}{Distinci\IeC {\'o}n entre tipos de comida}{41}{section*.46}% 
+\contentsline {subsection}{SCRUM}{42}{section*.47}% 
+\contentsline {section}{\numberline {5.4}Conocimientos aprendidos en la carrera}{43}{section.5.4}% 
+\contentsline {subsection}{INTRODUCCI\IeC {\'O}N}{43}{section*.48}% 
+\contentsline {subsection}{Conocimientos sobre python}{43}{section*.49}% 
+\contentsline {subsection}{Conocimientos sobre la gesti\IeC {\'o}n de proyectos}{43}{section*.50}% 
+\contentsline {subsection}{Investigaci\IeC {\'o}n}{44}{section*.51}% 
+\contentsline {section}{\numberline {5.5}Conocimientos externos a la carrera}{44}{section.5.5}% 
+\contentsline {subsection}{INTRODUCCI\IeC {\'O}N}{44}{section*.52}% 
+\contentsline {subsection}{Psicolog\IeC {\'\i }a}{44}{section*.53}% 
+\contentsline {subsubsection}{Aprender a aprender}{45}{section*.54}% 
+\contentsline {subsection}{Nutrici\IeC {\'o}n}{45}{section*.55}% 
+\contentsline {subsubsection}{"Calidad" de los alimentos}{45}{section*.56}% 
+\contentsline {subsection}{Nutriscore}{45}{section*.57}% 
+\contentsline {subsubsection}{Imperfecciones}{46}{section*.58}% 
+\contentsline {subsection}{Interfaces Gr\IeC {\'a}ficas}{47}{section*.59}% 
+\contentsline {section}{\numberline {5.6}Fases del proyecto}{47}{section.5.6}% 
+\contentsline {subsection}{Cronograma: }{47}{section*.60}% 
+\contentsline {chapter}{Trabajos relacionados}{49}{chapter*.61}% 
+\contentsline {section}{\numberline {6.1}Estudios:}{49}{section.6.1}% 
+\contentsline {subsection}{Estudios DASH}{49}{section*.62}% 
+\contentsline {subsection}{Las pruebas de grasas saturadas}{50}{section*.63}% 
+\contentsline {subsection}{El programa de prevenci\IeC {\'o}n de diabetes (DPP)}{50}{section*.64}% 
+\contentsline {subsection}{Pounds Lost}{51}{section*.65}% 
+\contentsline {subsection}{Seven countries Study}{51}{section*.66}% 
+\contentsline {section}{\numberline {6.2}Aplicaciones Similares}{52}{section.6.2}% 
+\contentsline {subsection}{FatSecret}{52}{section*.67}% 
+\contentsline {subsection}{DietPro}{52}{section*.68}% 
+\contentsline {subsection}{MyFitnessPal}{53}{section*.69}% 
+\contentsline {subsection}{LifeSum}{53}{section*.70}% 
+\contentsline {chapter}{Conclusiones y L\IeC {\'\i }neas de trabajo futuras}{55}{chapter*.71}% 
+\contentsline {section}{\numberline {7.1}Conclusiones}{55}{section.7.1}% 
+\contentsline {section}{\numberline {7.2}Lineas de trabajo futuras}{57}{section.7.2}% 
+\contentsline {subsection}{Separaci\IeC {\'o}n modular y MVC}{57}{section*.72}% 
+\contentsline {subsection}{Base de datos Online}{57}{section*.73}% 
+\contentsline {subsection}{Perfeccionamiento del algoritmo de recomendaci\IeC {\'o}n}{57}{section*.74}% 
+\contentsline {subsection}{Aumento de la base de datos}{58}{section*.75}% 
+\contentsline {subsection}{Autoaprendizaje del programa}{58}{section*.76}% 
+\contentsline {subsection}{Adaptaci\IeC {\'o}n a diferentes plataformas}{58}{section*.77}% 
+\contentsline {subsection}{Desarrollo empresarial}{58}{section*.78}% 

@@ -1,28 +1,26 @@
 \capitulo{4}{Técnicas y herramientas}
 
-Esta parte de la memoria tiene como objetivo presentar las técnicas metodológicas y las herramientas de desarrollo que se han utilizado para llevar a cabo el proyecto. Si se han estudiado diferentes alternativas de metodologías, herramientas, bibliotecas se puede hacer un resumen de los aspectos más destacados de cada alternativa, incluyendo comparativas entre las distintas opciones y una justificación de las elecciones realizadas. 
-No se pretende que este apartado se convierta en un capítulo de un libro dedicado a cada una de las alternativas, sino comentar los aspectos más destacados de cada opción, con un repaso somero a los fundamentos esenciales y referencias bibliográficas para que el lector pueda ampliar su conocimiento sobre el tema.
-\section{¿Por qué Python?}
-La razón es la sencillez y capacidad de este lenguaje para el análisis y tratamiento de los datos gracias a librerías como Pandas o Numpy. Base gran parte de la metodología de análisis usada en este proyecto en el libro: Python for Data Analysis.
-\cite{pythonDataAnalisis}
-\\ 
+Apartado cuyo objetivo es presentar las técnicas metodológicas y las herramientas de desarrollo que se han utilizado para llevar a cabo el proyecto. Si se han estudiado diferentes alternativas de metodologías, herramientas, bibliotecas, etcétera.\\
 
+Se comenta los aspectos más destacados de cada opción, con un repaso somero a los fundamentos esenciales y referencias bibliográficas para que el lector pueda ampliar su conocimiento sobre el tema.
+\section{¿Por qué Python?}
+La razón es la sencillez y capacidad de este lenguaje para el análisis y tratamiento de los datos gracias a librerías como Pandas o Numpy. Base gran parte de la metodología de análisis usada en este proyecto en el libro: Python for Data Analysis. \cite{pythonDataAnalisis}
+\\ 
 Las distintas posibilidades que se barajaron antes de empezar fueron Java, Android, R y Python. Al final me decanté por Python por diferentes motivos, el primero en ser descartado fue Java, tras un estudio inicial sobre lo que quería hacer y el como hacerlo, me di cuenta que necesitaba un lenguaje potente que me dejase tratar los datos con claridad para su análisis, y después de leer varios artículos como: REFERENCIA ARTICULOS, me percaté de que Java no era la mejor opción, estos artículos siempre te orientaban hacia Python y R. Entonces, ¿Por qué Android?, por la sencilla razón de que este trabajo está desarrollado para unir el mundo de la dietoterapia, y las ciencias de la Salud con la informática para hacer que el usuario tenga un fácil aprendizaje de dicha metodología. A mi parecer la forma más clara y rápida de llevar al usuario dicha tecnología es a través de su SmartPhone, pero se acabó descartando debido a la falta de conocimientos sobre sistemas Android. A estas alturas ya solo me quedaba elegir entre Python y R, tras indagar superficialmente sobre ambos lenguajes para el análisis y el tratamiento de datos, se llego a la conclusión que ambos lenguajes tienen una forma de trabajar muy similares, y entonces la decisión fue clara, debido a que he trabajado en numerosas ocasiones con Python y la sintaxis de R para mi era desconocida, al final, me decante por Python.
 \section{Metodología}
 \subsection{Introduccón}
-En este subapartado explicaremos el cómo y porque se ha tratado los datos en este TFG además de los diferentes cálculos internos que se realizan para el sistema de recomendaciones, cálculos, etc.
+En este apartado explicaremos el cómo y porque se ha tratado los datos en este TFG además de los diferentes cálculos internos que se realizan para el sistema de recomendaciones, cálculos, etc.
 \subsection{Excell y Pandas}
-Se ha usado la herramienta de Microsoft, Excel, para trabajar como una base de datos, y poder tratarlos en forma de DataFrame, esta particularidad, nos la da la librería de Pandas. Hay un Excel para la base de datos genérica, y otro para la base de históricos. Se leen los datos automáticamente en cuanto el usuario entra en la aplicación, pero solo se guarda si el usuario así lo desea.
+Se ha usado la herramienta de Microsoft Excel, para trabajar como una base de datos, trabajando los datos en formato DataFrame. Los DataFrame son proporcionados por la librería Pandas. Hay un Excel para la base de datos genérica,otro para la base de históricos y otro para los usuarios. Se leen los datos automáticamente en cuanto el usuario entra en la aplicación, pero solo se guarda si el usuario así lo desea.
 \subsection{DataFrame}
 Se usan los DataFrame, para llevar un registro de todos los datos que el programa necesita, se tiene en cuenta tanto las bases de datos de los alimentos, usuarios y comidas como lo que el usuario lleva en el día.
 \\
-Los alimentos se tratan en el momento en el que se registra el usuario, de manera que, se separan las comidas de la lista principal, creando 5 listas (Desayuno, Merienda, Comida, Almuerzo y Cena), se tratan por separado y se filtran por el umbral, el umbral es un medidor de calidad de la comida, para qué solo te muestre lo más sano en un principio, y se van actualizando sensibles a los cambios de la aplicación. Si se refresca la página aumenta el umbral para que sea mas amplia las posibilidades de comida, aunque esto signifique una peor alimentación. Con cada elección se actualizan el resto de las comidas, para que se ajuste al máximo la dieta a sus necesidades, se ordena por la formula que se hablará mas adelante, se crea la variable “dif” que sale de esta fórmula, y este es el eje principal de las recomendaciones, cada vez que se elige una comida, la comida se almacena para poder tratarla mas tarde, en cuanto se selecciona los botones se desactivan, y se cambia el botón seleccionar a editar, para que se pueda editar en cualquier momento. Cada vez que se elige una comida se reparte las calorías sobrantes/que faltan, y se recalculan las posibilidades.
+Los alimentos se tratan en el momento en el que se registra el usuario, de manera que, se separan las comidas de la lista principal, creando 5 listas (Desayuno, Merienda, Comida, Almuerzo y Cena), se tratan por separado y se filtran. Cada modificación o inserción de un dato o usuario se hace sobre el DataFrame, el cual sustituirá a la base de datos durante el guardado.
 
 \subsection{Técnicas}
 \subsubsection{Introducción}
-Cada subapartado de este apartado fue descrito con mayor rigor, en el apartado tres sobre las técnicas a aprender para la realización de este proyecto. No obstante, teniendo en cuenta que son, además, métricas que han sido realizadas durante este proyecto, haciendo que el proyecto este estructurado, tal y como esta, se comentarán de manera breve para que el lector, tenga un breve recordatorio de estas técnicas.
+En este apartado se hablara brevemente de las técnicas usadas durante el proyecto, y la razón por la que se escogieron dichas técnicas. Posiblemente, haya argumentos repetidos en otros apartados similares, por ello se expresará exclusivamente finalidad y razonamiento.
 \section{Aprender a aprender}
-Como ya vimos, tras encuestar y hablar con varios graduados en Magisterio y psicología y tener respuestas diferentes, pero no obstantes similares, uno de los mejores métodos de enseñanza ausente del enseñante, es la técnica de autoaprendizaje, más comúnmente conocida como: aprender a aprender, como bien dice la página del Centro del Profesorado de Córdoba:
 \begin{quote}
 “Aprender a aprender supone disponer de habilidades para iniciarse en el aprendizaje y ser capaz de continuar aprendiendo de manera cada vez más eficaz y autónoma de acuerdo a los propios objetivos y necesidades.\\
 
@@ -34,6 +32,7 @@ Esta competencia tiene dos dimensiones fundamentales. Por un lado, la adquisici�
 Es decir, el auto-aprendizaje no solo ayuda al usuario a aprender de manera autónoma, sino que le ayuda, a que todo aquello que ha conseguido, para el sea, de alguna forma, una meta, algo que lograr, algo suyo, que no se le va a olvidar tan fácilmente, como información memorizada, sino que será el resultado de pequeños logros personales que integrarán al usuario, una nueva información, como si fuese suya.
 \subsection{TMB}
 Se traduce como el calculo o tasa del metabolismo basal, por si no lo recuerdan, el metabolismo basal, es el gasto calórico que llevamos a cabo en reposo, por el mero hecho de respirar, a este calculo se le suman una serie de variables relacionadas con la actividad física del usuario y como resultado tenemos las kilocalorías diarias que el usuario gasta al día o que es equivalente que el usuario debe tomar para mantenerse en su peso, obviamente, este calculo es genérico, es muy utilizado por endocrinos, cuya finalidad no es hacer un seguimiento estricto de una dieta, sino un calculo aproximado de esta, para la correcta alimentación del paciente.\\
+
 Tras horas de estudio, se aproximó que la forma mas correcta de bajar o subir peso en base al cálculo del metabolismo basal, es dar un margen de 500 kilocalorías, arriba o abajo, según los propósitos de nuestro usuario. Se recalca, que es claro que es un cálculo genérico pero hasta el perfeccionamiento del proyecto, es el calculo mas adecuado que podemos realizar. Dicho calculo se sustenta a través de la siguiente formula:
 \textbf{Hombres:}
 \begin{equation}
@@ -53,10 +52,11 @@ Ejercicio fuerte (6-7 dias/semana & 1,725\\
 Ejercicio muy fuerte (dos veces al día) & 1,9 \\
 } 
 \subsection{Nutriscore}
-tras varios meses de desarrollo, se discutió sobre como otorgar el valor a las comidas. Debía ser un valor calculado, y estandarizado para que todo el mundo pudiera entenderlo, y buscar información sobre dicho algoritmo en caso de quedar alguna duda. Después de varios días, se propuso implantar el algoritmo Nutriscore, o método del semáforo, pues eventualmente se iba a implantar en España. A lo largo de estas memorias, se explica con detenimiento el algoritmo y su funcionamiento.
+Tras un largo periodo de desarrollo, se discutió sobre como otorgar el valor a las comidas. Debía ser un valor calculado, y estandarizado para que todo el mundo pudiera entenderlo, y buscar información sobre dicho algoritmo en caso de quedar alguna duda. Después de varios días, se propuso implantar el algoritmo Nutriscore, o método del semáforo, pues eventualmente se iba a implantar en España. A lo largo de estas memorias, se explica con detenimiento el algoritmo y su funcionamiento.
 \section{Estructura del programa}
 \subsection{Introducción}
-En un principio se pensó en hace una estructura MVC clásica pero conforme el proyecto fue creciendo, y prácticamente de manera imperceptible se convirtió en una versión un tanto modificada de este modelo.\\
+En un principio se pensó en hacer una estructura MVC clásica pero conforme el proyecto fue creciendo, y prácticamente de manera imperceptible se convirtió en una versión un tanto modificada de este modelo.\\
+
 La estructura se basa en cuatro módulos principales, además de las librerías pertinentes, obviamente. 
 \begin{enumerate}
 \item	\textbf{Main} – Tronco del programa
@@ -67,9 +67,10 @@ La estructura se basa en cuatro módulos principales, además de las librerías 
 \end{enumerate}
 En los apartados siguientes se hablará de manera extensa sobre las librerías utilizadas y los módulos creados para el desarrollo
  de esta aplicación, por el momento, este apartado será explicando en que deriva y se basa dicha estructura, conforme el MVC clásico y cuales son las consecuencias de esto.
-\subsection{Calculos, Administración y vista}
+\subsection{Cálculos, Administración y vista}
 Podríamos llamar propiamente a este modelo el CAV, y se basa en separar toda función que se vaya a crear en el programa en estos tres pilares. \\
 Todo surgió de la necesidad de separar la administración de la base de datos con cualquier otro tipo de función en el programa, esto sin darme cuenta creaba una cuarta pata en el trípode que supone el MVC. Este fue uno de los motivos, pero el motivo principal fue menos precipitado, se iba creando un módulo cada vez que la lógica de una función necesitará un hueco donde encajar y ninguno de los módulos creados lo sostenía. Debido a mi forma de trabajar, me sentí cómodo de dividirlo así, creando inicialmente una estructura básica y modulada, pero no en exceso. Por un lado, todo elemento relacionado con la base de datos, por otro lado todo cálculo matemático realizado en el programa y por ultimo toda función que intervenga en la interacción usuario-aplicación.\\
+
 Esto tuvo en su momento sus inconvenientes, surgían funciones que encajaban en diferentes módulos debido a que igual era puramente visual, pero interactuaba con la base de datos, o llevaba a cabo unos cálculos para dibujártelos visualmente, por ello se llevo a cabo una serie de reglas sencillas:
 \begin{itemize}
 \item	Si su finalidad es puramente visual – Vista
@@ -86,13 +87,18 @@ La librería desarrollada por Wes McKinney, Pandas, es una librería usada para 
 \subsection{Numpy}
 Como ya he nombrado en varias ocasiones en este memoria, el libro: LIBROO, se basa principalmente en esta librería, como añadido, es la librería sobre la que he trabajado a lo largo de la carrera en cuanto a análisis de datos en Python, y la mas recomendada por los usuarios en la web, sobre esta librería se sustenta principalmente este proyecto, siendo la encargada, del tratamiento, procesamiento y calculo, de todos los datos que internamente realiza el programa.
 \subsection{Interfaz Gráfica}
-La librería utilizada para realizar y diseñar la interfaz gráfica fue Tkinter, tras buscar en diferentes páginas que encontraremos en la bibliografía, me decante por Tkinter debido a la falta de conocimientos en interfaces gráficas con Python, me decante por la mas fácil de aprender. Entre las opciones que baraje se encontraban: Tkinter, WxPython, PyQt y PyGTK.
+La librería utilizada para realizar y diseñar la interfaz gráfica fue Tkinter, tras buscar en diferentes páginas que encontraremos en la bibliografía, me decante por Tkinter debido a la falta de conocimientos en interfaces gráficas con Python, me decante por la mas fácil de aprender. Entre las opciones que baraje se encontraban: Tkinter, WxPython, PyQt y PyGTK.\\
+
 Tkinter traía una serie de ventajas, entre ellas que viene preinstalada con Python, era fácil de aprender, y hay una documentación amplia y extensa. Pero también tiene sus desventajas, incluye pocos elementos gráficos, tiene un limitado control y la navegabilidad mas sencilla se hace complicada, y sobre todo lo que mas noto es su lentitud, cuanto mas elementos añadas, mas lento va la interfaz, no tiene alguna especie de cache o memoria que guarde lo que has “dibujado”, sino que los dibuja cada vez que salen en pantalla, lo hace sobre cada botón etiqueta, etc.\\
+
 La segunda opción que se me paso por la cabeza, fue WxPython,  tenia grandes ventajas, como la rapidez,  la flexibilidad que este ofrecía y sobre todo su mayor ventaja son todas las opciones que tiene para crear una interfaz gráfica compleja y “profesional”, tras barajar, estas opciones y compararlas con las de Tkinter, me di cuenta que todo lo que te ofrecía WxPython, era innecesario para la interfaz tan simplista que necesitaba para mi proyecto, y el aprendizaje era más complejo, además de ser mas complicado encontrar información o documentación sobre esta librería. El mayor problema de esta librería era que tiene una comunidad muy activa, la cual, esta constantemente insertando cambios, esto era un problema para proyectos largos, pues creaba problemas de compatibilidad, pero para este proyecto, no era algo que me resultará un inconveniente.\\
+
 El resto de librerías fueron descartadas, al poco de buscar información sobre ellas debido a que daban las mismas ventajas o similares que la WxPython, pero tenían mas inconvenientes, al menos para el tema que aborda este proyecto.
 \subsection{Diseño}
 Se decidió realizar un diseño simple, sin complicaciones, ni laberintos internos de pura navegabilidad que haga del manual de usuario un mapa para guiarse a través del programa. Esta decisión trivial se llevó a cabo debido al principal objetivo del proyecto, el aprendizaje de la dietoterapia, esta aplicación esta, básicamente, orientada a todos los públicos, por lo que si se construye una aplicación tediosa, solo complicaría el uso y aprendizaje del usuario.\\
+
 Se basa en un menú principal ramificado en tres vertientes: Usuario, Dieta y Registro (en el programa aparecen con otros nombres, pues aquí se explica la lógica del diseño). En la vertiente usuario, esta la información del usuario y la posibilidad de cambiar dichos datos para un avance del programa. En la rama de la dieta, se encuentra el tronco principal de la aplicación, se muestra las recomendaciones alimenticias, a parte de darte libertad a la hora de escoger y decidir que deseas comer en el día de hoy. Por último, estaría el registro o historial, es decir todo aquello que necesites para llevar un registro de tu progreso y concienciar de esta manera al usuario.\\
+
 Respecto a los colores, se decido un tema básico que no agote la vista del usuario, ni tenga múltiples colores deslumbrantes, da la posibilidad al usuario de elegir entre una serie de estilos predefinidos para que escoja el que mejor se ajuste a sus gustos y necesidades.\\
 \section{Módulos}
 \subsection{Cálculos Dieta}
@@ -112,9 +118,10 @@ A la par se calcula el número de Kilocalorías que se tiene que tomar de hidrat
 
 \subsubsection{OrdMinimaDiferencia y  formulDif}
 Antiguamente eran dos funciones, pero se prescindió de una tras comprobar que la función \textbf{OrdMinimaDiferencia}, internamente y de manera indirecta ya lo implementaba. Estas dos funciones son usadas juntas estando formulDif dentro de OrdMinimaDiferencia.\\
+
 son el pilar base de esta aplicación, en cuanto al calculo de comidas se refiere, OrdMinimaDiferencia, coge como parámetros la lista de las comidas, el objetivo, el tipo de comida, lo que ya llevo comido y las kilocalorías diarias. En base a esto hace un calculo de lo que debería llevar de cada macronutriente concreto en cada comida concreta en el total del día(Siendo esto el sumatorio de las comidas anteriores), lo que debería llevar de cada macronutriente específico en esa comida específica, luego se recorre todas las comidas de las bases de datos calculando cual es la que mas se ajusta a lo que necesitamos, una vez cogemos la comida le pasamos todo lo calculado anteriormente, y se lo pasamos a formulDif, para llevar a cabo la fórmula, que consiste en:
 \begin{equation}
-DiferenciaMacronutriente = (KMCD - A)/((KCDT-KMM)+(KMTC-KTM))
+DiferenciaMacronutriente = \frac{(KMCD - A)}{((KCDT-KMM)+(KMTC-KTM))}
 \end{equation}
 Donde:
 
@@ -128,31 +135,40 @@ ktm: kilocalorias totales que tiene el menú a recomendar.\\
 De esta manera cuanto mayor sea la diferencia entre lo que debo llevar y lo que llevo, y menor sea la diferencia entre lo que deseo y las características del alimento, mayor será la puntuación de ese alimento para su recomendación ( \textbf{Nota: Se ordena de mayor diferencia a menor}).\\
 Por ultimo se realiza la media entre los tres macronutrientes principales:
 \begin{equation}
-DiferenciaTotal = (DiferenciaHidratos+DiferenciaProteina+DiferenciaGrasas)/3
+DiferenciaTotal = \frac{(DiferenciaHidratos+DiferenciaProteina+DiferenciaGrasas)}{3}
 \end{equation} 
 En el caso de que en algún macronutriente nos hallamos pasado y la diferencia de negativa, ese macronutriente no se tendrá en cuenta.
 \subsubsection{Gráficos}
-Para comenzar, he de transmitir que no estoy conforme al completo respecto a que al calculo de los gráficos este dentro de este módulo, pero debido al estado avanzado del proyecto, y la existencia de tres módulos, que siguen un patrón, base de datos, vista y cálculos, se decidió no romper esta estructura, y añadir estos cálculos a calculo dieta, y dividir los grafos en su parte visual (Que veremos a posteriori en el modulo VISTA) y su parte de cálculo1.\\
 Hay dos tipos de gráficos por lo general, que buscan mostrar al usuario de manera clara y transparente su progreso a lo largo del uso del programa, dicho progreso se verá a través de la calidad, por ello, dividirlo en dos tipos de gráficos
 Gráfico total, que hace una media de la calidad, es decir del como has comido en todo el día, del ultimo mes, y te lo muestra por pantalla, permitiéndote ver si hay mejora o no.\\
+
 Los otros tipos de gráficos son por comida, una vez el usuario, vea su progreso general, este puedo mirar los gráficos del desayuno, comida, merienda… Así poder ver que comida le cuesta mas o menos de manera sencilla y clara.\\
+
 \subsection{AdminBase y estructura de la base de datos}
-En este apartado hablaremos de como esta estructurada la base de datos, y de como se cargan, se guardan y se trabajan con los datos desde el módulo AdminBase, el cual, es un modulo bastante simple, necesario para el trato de datos.
+En este apartado se expone la estructura la base de datos, y de como se cargan, se guardan y se trabajan con los datos desde el módulo AdminBase, el cual, es un modulo bastante simple, necesario para el trato de datos.
 \subsubsection{CargaBaseDeDatos y guardaDatos}
-Estas dos funciones cargan y guardan los datos de/en la base de datos respectivamente, como se decidió simular una base de datos con un Excel, se usa la librería Pandas, mencionada antes en este apartado para cargar las bases de datos en los respectivos arrays, nada más arrancar el programa, te guarda las tres bases de datos principales, Alimentos, usuarios, patologías e historial en cuatro vectores independientes, que se trabajaran con cada uno de ellos sin tener en cuenta al resto y se guarda el resultado de los cambios producidos durante la ejecución del programa. 
+Estas dos funciones cargan y guardan los datos de/en la base de datos respectivamente, como se decidió simular una base de datos con un Excel, se usa la librería Pandas, mencionada antes en este apartado para cargar las bases de datos en los respectivos arrays, nada más arrancar el programa, te guarda las tres bases de datos principales, Alimentos, usuarios, patologías e historial en cuatro vectores independientes, que se trabajaran con cada uno de ellos sin tener en cuenta al resto y se guarda el resultado de los cambios producidos durante la ejecución del programa. \\
+
 Recordemos que estos cuatro valores se sacan de tres Excel diferentes, un Excel nombrado BaseDeDatosDeAlimentos que contiene la lista de alimentos y patologías, otro llamado BaseDeDatosUsuarios, en un principio estos dos estaban juntos, pero separarlos en dos Excel diferentes nos permite la mejor trata de datos a la hora del almacenamiento, y el historial, el cual lleva consigo un listado de las fechas y los usuarios como clave primaria, junto a todo lo que han comido ese día.\\
+
 La base de datos se estructura en dos archivos Excel independientes, donde cada hoja seria lo equivalente a una colección de una base de datos, y cada fila seria un objeto dentro de dicha colección. A distinguir las siguientes hojas:\\
+
 \textbf{\textsc{ALIMENTOS}}\\
 La hoja de alimentos, en verdad, sería una hoja de menús ya construidos los cuales tienen 10 campos, sobre los que actualmente se trabajan 8,pero se mantiene su estructura para posibles ampliaciones.\\
+
 La clave primaria de esta colección sería el nombre, en un futuro esta pensado añadir un id, o depende la metodología de desarrollo de la base de datos, ese id se generaría de manera automática teniendo en cuenta que no sigue ningún tipo de normal en relación con el alimento.
 Los campos son:
 \imagen{A}{Estructura base de datos alimentos}
 Nombre (PK), Calorías, Grasa, Saturadas, Hidratos,Fibra, Azucares, Proteína,Sodio, Tipo, LRE, Calidad
 De los primeros siete campos no hay mucho mas que añadir, que lo que el propio nombre indica, no obstante, se hará una pequeña aclaración de los últimos tres.\\
+
 El tipo, marca el tipo de comida que es, se pensó en que metodología usar, teniendo en cuanta que un mismo menú puede ser a la vez, desayuno, almuerzo y merienda, cena y comida, y un largo etcétera. Por ello se pensaron dos posibilidades, la primera poner la inicial, letra o nombre de la comida para la que valga ese menú, tratarlo como un array y descomponerlo en su debido momento, pero en el futuro caso de que se diera la posibilidad al usuario de editar un alimento de manera que no le apareciese entre una comida específica se complicaba algo más, y la segunda opción era tratarlo como una cadena de bits: desayuno-almuerzo-comida-merienda-cena, donde el valor 1 sería si es valido para esa comida y 0 si no lo es. Por ejemplo:\\
 1-1-0-1-0 \\
+
 Significa que es desayuno, almuerzo y merienda, pero no comida o cena, luego esto se traduce en el número decimal, que en este caso sería 26.\\
+
 El LRE, recibe ese nombre por un juego de palabras con la gestión de procesos de un sistema operativo LRU (last reciently used), pues lo que hace es llevar una métrica de la frecuencia con la que el usuario toma esa opción, literalmente significa “last reciently eat”. \\
+
 La Calidad, como el propio nombre indica, es la calidad del alimento, es la variable de indicar la diferencia entre 100 kilocalorías de ensalada y 100 kilocalorías de azúcar, tiene un rango de valores entre el uno y el cuatro,  siendo cuatro la peor calidad de todos, y uno por el contrario la mejor, la calidad va estrechamente relacionada con el umbral del momento y la comida dentro del programa, esta variable, empieza con el valor uno (siendo este el mas bajo posible) y según vas refrescando va aumentando para que las posibilidades de menú aumenten con el número de veces que refresques la comida. El umbral sirve para cribar del DataFrame de la comida que estemos trabajando, todos los alimentos cuya calidad sea superior al valor del umbral en el momento de selección, de esta manera se le complicará al usuario la posibilidad de hacer una mala elección a la hora de organizar su menú, además que se verá reflejado en el momento en la barra de progresión.\\
 
 \textbf{\textsc{Usuarios}}\\
@@ -161,6 +177,7 @@ La hoja de usuarios alberga los datos de todos los usuarios que usan la aplicaci
 La clave primaria sería el DNI del usuario, el cual, se encuentra dentro del campo ID. La hoja se estructura de la siguiente manera:\\
 Id (PK)-nombre-apellido-password-sexo-edad-altura-peso-actividad-patología (FK de la tabla Patologías) y tipo.\\
 Tanto id, como nombre, apellido y password, son los datos privados del usuario, los cuales, son simplemente informativos y no tienen ningún valor adicional en el calculo de la dieta y los resultados. En cambio, el sexo, la edad, altura, peso, actividad, patología y tipo, influyen de manera directa con el calculo de la dieta, como pasaba en la hoja de alimentos en los primeros campos su nombre, explica su significado. A tener en cuenta, que el valor del campo patología es numérico para mayor privacidad y conexión con la base de datos de Patologías, pues es el id de cada patología y en base a su id se busca la información sobre dicha fila. En el caso de valer -1, significa que el usuario no tiene ningún tipo de patología y su uso es exclusivamente para el aprendizaje y seguimiento de la dietoterapia adecuada. La actividad tiene valores entre 0 y 4, donde cero significa el máximo nivel de sedentarismo y 4 el máximo nivel de actividad. Por ultimo el tipo, hace referencia, a los objetivos que el usuario tiene respecto a si mismo, si quiere mantenerse, subir de peso, o bajar.\\
+
 \textbf{\textsc{Patologías}}\\
 En esta hoja, la cual se encuentra dentro de las BaseDeDatosDeAlimentos, se encuentra la información básica de las patologías nombre, id, y el tipo de dieta que lleva alto o bajo en carbohidratos, proteínas o grasas. Esto se carga al inicio del programa, se comprueba si el usuario padece alguna patología y se selecciona el tipo de dieta correspondiente.
 \imagen{BasePatologias}{Estructura base de datos Patologías}
@@ -176,33 +193,49 @@ Función que se encarga de juntar en una única función el almacenamiento de to
 En este apartado se respaldaran las tres funciones que se encargan de dar la información de una fila concreta de una de las colecciones de la base de datos.
 \subsection{Vista}
 Para empezar, recordar que se ha seguido una adaptación de la estructura  típico MVC, donde se sustituye el modelo y el controlador propio y se tiene una vista adaptada, esto ya fue explicado al inicio de este apartado, a continuación me centrare en la vista.\\
+
 En el módulo vista se muestran, o llevan a cabo toda función que tendrá influencia en lo que el usuario ve, es decir, actualización de pantallas, muestra de datos, transacciones entre las dos ventanas principales, el cambio de los gráficos, etc.\\
+
 El modulo vista contiene tres variables calves globales, que son el DNI del usuario (usr), la contraseña del usuario (contraseña) y la bandera. De los dos primeros poco hay que explicar, pero del ultimo sí, esto se hará en el siguiente apartado, junto a la debida explicación de las funciones que hacen uso de ello.\\
 \subsubsection{Comprobación usuario}
 Empezando por la función “cambio”, que se nombro de esta manera porque indica un cambio en la funcionalidad del programa, explicamos esto:\\
 El programa sigue su curso, cuando se cierra la ventana de log-in, o acceso, según como se haya procesado la información en cambio cuando la ventana se cierra, el programa continúa con su normal ejecución o se cierra completamente.\\
-Cambio comprueba que la combinación usuario y contraseña sea válida en caso de ser así cambia el valor de bandera a verdadero (True), indicando así que el acceso a sido un éxito, si no, la bandera seguirá a False, y se mostrara por pantalla un mensaje de error.
+
+Cambio comprueba que la combinación usuario y contraseña sea válida en caso de ser así cambia el valor de bandera a verdadero (True), indicando así que el acceso a sido un éxito, si no, la bandera seguirá a False, y se mostrara por pantalla un mensaje de error.\\
+
 Cuando la tupla usuario y contraseña es validad cierra la pantalla de “log-in”, lo que hace que en el “main” se siga con su normal ejecución, lo cual lleva, de manera directa a una condición que comprueba que la bandera es verdadera, si lo es relanza la aplicación principal, sino cierra el programa, y se termina toda ejecución.\\
+
 Como el propio nombre indica getBandera devuelve este valior al main.\\
+
 \subsubsection{Seleccionar y refrescar}
 Sin duda alguna esto presento uno de los mayores retos de la aplicación debido a las deficiencias que presenta Python para construir interfaces gráficas, y dentro de dichas deficiencias generales, se añadía la dificultad que presentaba el simplismo de la librería tkinter para dichas interfaces.\\
+
 Todo surgió de la necesidad de actualizar lo que se mostraba por pantalla cada vez que hacía una elección, pues si se quería sacar de este proyecto la mayor precisión posible del sistema de recomendación, cada elección, cada cambio de variable, debía suponer nuevas recomendaciones, esto en un principio parecía sencillo, pero Tkinter no permite la recarga de los datos, sino que al inicio del programa lo “dibuja”, todo de manera simultánea, impidiendo una actualización del frame cada vez que haya un cambio, por ello se crearon una serie de funciones, necesarias las cuales se engloban en una mayor, para que de una llamada realice todas las funciones necesarias.\textbf{seleccionarYActualizarResto}, esta función se encarga principalmente de actualizar todos los datos en pantalla, el menú que hemos comido hoy, ademñas de llamar a la función  \textbf{seleccionar}, la cual guarda la opción escogida y bloquea las posibles opciones, y acto seguido recorre las otros cuatro frames recalculando todas las listas, todas los resultados y sus respectivos LRE, etc. \\
+
 Se ha decidido que para evitar errores de coherencia el programa solo actualizará aquellos frames no bloqueados por el método seleccionar, sacrificando un pequeño porcentaje de la precisión, para conseguir un funcionamiento mas fluido sin errores de compatibilidad o múltiples selecciones.\\
 \subsection{Main}
-Es la columna vertebral del programa, el cual, se encarga de cargar y procesar toda la información relevante que más adelante se va a ir editando en el programa, el main tiene una única función y el resto se divide en clases que se instancian en esta función.
+Es la columna vertebral del programa, el cual, se encarga de cargar y procesar toda la información relevante que más adelante se va a ir editando en el programa, el main tiene una única función y el resto se divide en clases que se instancian en esta función.\\
+
 La función principal hace de flujo de entrada y salida, donde un if condicional hace la función de interruptor permitiendo que la aplicación original, distribuida en clases se lance, o se cierre, como se ha explicado anteriormente.\\
+
 Todo se basa en una especie de jerarquía de objetos, en el que el objeto principal (Menú principal), contiene otros tres objetos que estos a su vez contienen otros tantos, creando una simple estructura de árbol, entendible por cualquier programador. \\
+
 De entre las tres subclases, instanciadas dentro del Menú principal (Usuario, Dieta, Historial), cabe destacar la de Dieta, pues esta a su ver tiene una clase por cada comida, estas clases son actualizadas constantemente en cuanto se hace algún cambio en el programa, esto es una abstracción del \textbf{ patrón de diseño observador}, en el que las clases observan esperando el cambio para actualizar sus recomendaciones.\\
+
 Se quiso evitar un main lioso con cosas que no son propias del dicho, por ello se separo en lo que es el main, y las clases las cuales, se encargan del funcionamiento principal del programa. De alguna forma, podríamos ver el main como los cimientos del programa completo, y los diferentes módulos, son los encargados de terminar de construir el programa.
 \section{Herramientas}
 Una vez explicadas el por que de cada decisión que se ha tomado a lo largo del desarrollo del programa, y expuesto cada decisión meticulosamente, procurando que cualquier duda del lector respecto a como se ha trabajado quede resuelta; Nos centraremos en mencionar de manera breve, dando una ligera explicación del por qué, se han usado las herramientas que se han usado para el desarrollo del programa.
 \subsubsection{Anaconda}
 Distribución de código abierto, la cual, esta indicada para el análisis, procesamiento y computo de datos, de Python y R, trae consigo una serie de programas y características entre los que destacaremos: Spyder y VisualCode.\\
+
 Sobre la razón, por la cual, se decidió usar anaconda es básica, la propia definición lo dice, a fin de cuentas, es una distribución para el análisis de datos con Python y R, lo cual, es de manera encubierta, el principal trabajo en este proyecto.
 \subsubsection{VisualCode}
 Al igual que Spyder, es un entorno de desarrollo incluido en el paquete de anaconda, con la diferencia de que VisualCode, es ampliamente utilizado por la comunidad de programadores para múltiples lenguajes, y frameworks, como angular2, javascript, c3, Python, ect.\\
+
 Se pensó largo y tendido sobre que entorno utilizar entre Spyder y VisualCode, y durante los primeros periodos de la aplicación, se turnaron ambos sin ninguna razón aparante, con el tiempo, me sentí más cómodo trabajando con Spyder, y lo fui adoptando como entorno principal, delegando en VisualCode la tarea de hacer debug, debido a la notable mejora que este presenta sobre Spyder.\\
+
 Indicar que antes de empezar se probaron varios entornos como NoteBook, PyCharm, y eclipse añadiendo el API de Python, pero se acabo decantando por estas dos herramientas nombradas anteriormente.\\
+
 \subsubsection{GitHub}
 Proyección de la metodología GIT para el almacenamiento y control de versiones, sin duda GIT es actualmente la estructura más usada en el mundo de la programación, y GitHub, una de las herramientas más conocidas y valoradas que hay.  Con el tiempo, fue mi mayor aliado, permitiéndome recuperar antiguas versiones con el programa era corrompido por algún error lógico, y dando una seguridad de soporte sobre el desarrollo del proyecto.
 \subsubsection{GitKraken}

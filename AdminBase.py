@@ -12,7 +12,6 @@ def cargarBaseDeDatos():
     #doc = wx.Book("BaseDeDatosDeAlimentos.xlsx")
     doc = pd.ExcelFile("BaseDeDatosDeAlimentos.xlsx")
     docU = pd.ExcelFile("BaseDeDatosUsuarios.xlsx")
-    #print(doc.sheetnames) #Si añadimos hojas a la base de datos, podremos saber la información.
     #Seleccionamos la hoja de excell que contendrá dicha información-
 
     hojaAl = pd.read_excel(doc,'Alimentos')
