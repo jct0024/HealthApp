@@ -358,9 +358,9 @@ class MostrarDieta(tk.Frame):
         self.n_FilaUser = ab.comprobarUsuario(self.user,self.pwd);
         #Kcalorias que el usuario debe tomar al dia en base a su dieta
         self.kcal_Por_Dia = cd.calculoTMB(hojaUsuarios.iloc[self.n_FilaUser,:])
-        if (hojaPatologias.iloc[int(ab.getFilaPatologia(hojaUsuarios.iloc[ab.getFilaUsuario(self.user,hojaUsuarios),9],hojaPatologias)),2] == 'normal' or hojaPatologias.iloc[int(ab.getFilaPatologia(hojaUsuarios.iloc[ab.getFilaUsuario(self.user,hojaUsuarios),9],hojaPatologias)),2] == 'bajo azucares'):    
-            #Lista en la cual se encuentran los macronutrientes que el usuario ha de comer en kcal, hidratos, proteina y grasas
-            self.listMacDiarios = np.array(cd.distribuciónDeMacronutrientes(self.kcal_Por_Dia,'normal'))
+        #if (hojaPatologias.iloc[int(ab.getFilaPatologia(hojaUsuarios.iloc[ab.getFilaUsuario(self.user,hojaUsuarios),9],hojaPatologias)),2] == 'normal' or hojaPatologias.iloc[int(ab.getFilaPatologia(hojaUsuarios.iloc[ab.getFilaUsuario(self.user,hojaUsuarios),9],hojaPatologias)),2] == 'bajo azucares'):    
+        #Lista en la cual se encuentran los macronutrientes que el usuario ha de comer en kcal, hidratos, proteina y grasas
+        self.listMacDiarios = np.array(cd.distribuciónDeMacronutrientes(self.kcal_Por_Dia,hojaPatologias.iloc[int(ab.getFilaPatologia(hojaUsuarios.iloc[ab.getFilaUsuario(self.user,hojaUsuarios),9],hojaPatologias)),2]))
         #Distribución en Kcal en desayuno, almuerzo, comido, merienda y cena.
         self.listDistribuciónKcal = np.array(cd.repartoDeKcal(self.listMacDiarios[0]))
         #Sacamos las patologias que tiene el usuario.
@@ -381,7 +381,7 @@ class MostrarDieta(tk.Frame):
         self.label.pack(side="top", fill="x", pady=10)
         selected = IntVar()
         i=0;
-        umbral=2
+        umbral=1
         self.desayuno = self.desayuno.sort_values(by=['Grasa'],ascending=False).sort_values(by=['Proteina'],ascending=False).sort_values(by=['Hidratos'],ascending=False)
         self.desayuno = cd.OrdMinimaDiferencia(self.desayuno,self.listDistribuciónKcal[0],"desayuno",datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios)
         self.filtDesayuno = self.desayuno.loc[self.desayuno["Calidad"] <= umbral]
@@ -425,7 +425,7 @@ class MostrarDieta(tk.Frame):
     def AlmuerzoF(self):
         self.label = tk.Label(self.tabAlmuerzo, text="-ALMUERZO-", font=self.controller.title_font,bg=fondoGeneral)
         self.label.pack(side="top", fill="x", pady=10)
-        umbral=2
+        umbral=1
         selected = IntVar()
         self.cont_comida_inf = tk.Frame(self.tabAlmuerzo,bg=fondoGeneral);
         self.cont_opciones_Alm =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
@@ -473,7 +473,7 @@ class MostrarDieta(tk.Frame):
         
         self.label = tk.Label(self.tabComida, text="-COMIDA-", font=self.controller.title_font,bg=fondoGeneral)
         self.label.pack(side="top", fill="x", pady=10)
-        umbral=2
+        umbral=1
         selected = IntVar()
         self.cont_comida_inf = tk.Frame(self.tabComida,bg=fondoGeneral);
         self.cont_opciones_Com =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
@@ -520,7 +520,7 @@ class MostrarDieta(tk.Frame):
     def MeriendaF(self):
         self.label = tk.Label(self.tabMerienda, text="-MERIENDA-", font=self.controller.title_font,bg=fondoGeneral)
         self.label.pack(side="top", fill="x", pady=10)
-        umbral=2
+        umbral=1
         selected = IntVar()
         self.cont_comida_inf = tk.Frame(self.tabMerienda,bg=fondoGeneral);
         self.cont_opciones_Mer =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)
@@ -567,7 +567,7 @@ class MostrarDieta(tk.Frame):
     def CenaF(self):
         self.label = tk.Label(self.tabCena, text="-CENA-", font=self.controller.title_font,bg=fondoGeneral)
         self.label.pack(side="top", fill="x", pady=10)
-        umbral=2
+        umbral=1
         selected = IntVar()
         self.cont_comida_inf = tk.Frame(self.tabCena,bg=fondoGeneral);
         self.cont_opciones_Cen =tk.Frame(self.cont_comida_inf,bg=fondoGeneral)

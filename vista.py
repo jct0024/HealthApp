@@ -157,12 +157,12 @@ POR HACER
 hay que cambiar la lista de filtrar para que te cargue los nuevos valores.
 '''
 
-def refrescar(selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlimentos, dictBotones,n_opciones,btnSelect,btnRefresh,etiquetaInfor,listDistribuciónKcal,datosAlimCliente,kcal_Por_Dia,listMacDiarios,menuDeHoy,barProgTotal,banderaSelect,style):
+def refrescar(selfi,tipoComida, container,listaFiltrada,umb,comida,hojaAlimentos, dictBotones,n_opciones,btnSelect,btnRefresh,etiquetaInfor,listDistribuciónKcal,datosAlimCliente,kcal_Por_Dia,listMacDiarios,menuDeHoy,barProgTotal,banderaSelect,style):
     for cont in range(0,n_opciones):
         fila=ab.getFilaAlimento(listaFiltrada["Nombre"].iloc[cont],hojaAlimentos);
         hojaAlimentos["LRE"].loc[fila] =hojaAlimentos["LRE"].loc[fila] + 1; 
     #Aumentamos el umbral    
-    umbral +=1;
+    umbral =umb+0.4;
     selected = tk.IntVar()
     #Según la comida que estemos trabajando, se recalcula con el nuevo LRE, se carga y se vueve a ordenar
     if(tipoComida=="desayuno"):

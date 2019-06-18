@@ -49,25 +49,27 @@ def distribuciónDeMacronutrientes(kcal,tipoDieta):
             Hidratos = 50%
             Proteinas = 25%
             Grasas = 25%
-        Por esta razon dividimos entre 2 a los hidratos y luego otra vez entre 4 para trasnformar las kcal en gramos
-        hacemos lo mismo con las proteinas y las grasas, solo que las grasas son 8 kcal/gramo, es decir 4 * 8 = 32.
         '''
-        hidratos = kcal/2 #En gramos todo
-        proteinas = kcal/4
-        grasas = kcal/4
+        hidratos = kcal*0.55 
+        proteinas = kcal*0.25
+        grasas = kcal*0.20
         listMacDiarios = [kcal,hidratos,proteinas,grasas]
-        return listMacDiarios
-    '''
-    Retocar para que la grasa sea menos o mayor según sea necesario, esto queda pendiente de estudio, para 
-    saber cual seria la distribución correcta.
-    '''
-    if (tipoDieta == 'baja en grasa'):
-        hidratos = kcal/2 #En gramos todo
-        proteinas = kcal/4
-        grasas = kcal/4
+    elif (tipoDieta == 'baja en grasa'):
+        hidratos = kcal*0.55
+        proteinas = kcal*0.30
+        grasas = kcal*0.15
         listMacDiarios = [kcal,hidratos,proteinas,grasas]
-    else:
-        return None;
+    elif (tipoDieta == 'alta en proteina'):
+        hidratos = kcal*0.50
+        proteinas = kcal*0.35
+        grasas = kcal*0.15
+        listMacDiarios = [kcal,hidratos,proteinas,grasas]
+    elif (tipoDieta == 'baja en proteina'):
+        hidratos = kcal*0.55
+        proteinas = kcal*0.20
+        grasas = kcal*0.25
+        listMacDiarios = [kcal,hidratos,proteinas,grasas]
+    return listMacDiarios
     
 '''
 Crear Función que te devuelva en diferentes arrays, las kcal, 
