@@ -227,7 +227,8 @@ def graficoTotal(selfi,hojaAlimentos):
         if (mes == 30):
             exit
         mes+=1
-        fechas.append(datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d').day)
+        fecha = datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d')
+        fechas.append(fecha.strftime("%m-%d"))
         container =0;
         contador = 0;
         if not (pd.isnull(dias['Desayuno'])):
@@ -268,37 +269,44 @@ def graficoMejoraComida(selfi,hojaAlimentos, bandera):
         if (mes == 30):
             exit
         mes+=1
+        #fecha = datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d')
+        
         if(bandera == 0):
             if not (pd.isnull(dias['Desayuno'])):
-                fechas.append(datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d').day)
+                #fechas.append(datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d').day)
+                fecha = datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d')
+                fechas.append(fecha.strftime("%m-%d"))
                 fila=ab.getFilaAlimento(dias['Desayuno'],hojaAlimentos)
                 container=hojaAlimentos["Calidad"].loc[fila]
                 medias.append(container)
         elif(bandera == 1):
             if not (pd.isnull(dias['Almuerzo'])):
-                fechas.append(datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d').day)
+                fecha = datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d')
+                fechas.append(fecha.strftime("%m-%d"))
                 fila=ab.getFilaAlimento(dias['Almuerzo'],hojaAlimentos)
                 container=hojaAlimentos["Calidad"].loc[fila]
                 medias.append(container)
         elif(bandera == 2):
             if not (pd.isnull(dias['Comida'])):
-                fechas.append(datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d').day)
+                fecha = datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d')
+                fechas.append(fecha.strftime("%m-%d"))
                 fila=ab.getFilaAlimento(dias['Comida'],hojaAlimentos)
                 container=hojaAlimentos["Calidad"].loc[fila]
                 medias.append(container)
         elif(bandera == 3):
             if not (pd.isnull(dias['Merienda'])):
-                fechas.append(datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d').day)
+                fecha = datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d')
+                fechas.append(fecha.strftime("%m-%d"))
                 fila=ab.getFilaAlimento(dias['Merienda'],hojaAlimentos)
                 container=hojaAlimentos["Calidad"].loc[fila]
                 medias.append(container)
         elif(bandera == 4):
             if not (pd.isnull(dias['Cena'])):
-                fechas.append(datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d').day)
+                fecha = datetime.datetime.strptime(dias['Fecha'], '%Y-%m-%d')
+                fechas.append(fecha.strftime("%m-%d"))
                 fila=ab.getFilaAlimento(dias['Cena'],hojaAlimentos)
                 container=hojaAlimentos["Calidad"].loc[fila]
                 medias.append(container)
-        
     vs.gráfico(selfi,fechas,medias,bandera)
 '''
 Hace los calculos correspondientes a la hora de añadir un nuevo menu, sumando todos los macronutrientes y los alimentos, 

@@ -213,7 +213,7 @@ devuelve la letra correspondiente a dicha calidad
 '''
 def CalidadNumberToString(calidad):
     cal=""
-    calid = calidad+1;
+    calid = calidad;
     if(calid == 1):
         cal= 'A'
     elif(calid ==2):
@@ -322,8 +322,22 @@ def crearArrayBandera(menuDeHoy):
         if menuDeHoy[i] != "":
             banderaSelect[i]= True;
     return banderaSelect
+'''
+Función que representa el gráfico en patanlla.
+Recibe como parametros:
+    selfi - Todas las variables locales de la clase
+    x - Eje x en formato de fecha
+    y - Eje y con el valor de la calidad
+    badera- Valor que indica que tipo de gráfico es.
+'''
 def gráfico(selfi,x,y,bandera):
-    selfi.lin.set_data(x,y)
+    numero=[]
+    i=0
+    for index in x:
+        numero.append(i)
+        i+=1
+    #selfi.lin.set_xticks(np.range(len(x)),x)
+    selfi.lin.set_data(numero,y)
     ax = selfi.canvas.figure.axes[0]
     if(bandera==0):
         ax.set_title("DESAYUNO")
@@ -337,10 +351,16 @@ def gráfico(selfi,x,y,bandera):
         ax.set_title("CENA")
     else:
         ax.set_title("Media del día")
+    #Ponemos las etiquetas
     ax.set_xlabel("Dias")
     ax.set_ylabel("Calidad")
-    ax.set_xlim(min(x),max(x))
+    #Cambiamos el valor númerico por el de la fecha
+    ax.set_xticks(numero)
+    ax.set_xticklabels(x)
+    #Implantamos los máximos y minimos
+    ax.set_xlim(min(numero),max(numero))
     ax.set_ylim(0.7,5) 
+    #Se dibuja en pantalla-
     selfi.canvas.draw()
     
 def estiloTotal(idEstilo):
@@ -556,7 +576,7 @@ def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
         resultado=[0,0,0,0,0]
         for i in arrayCalidad:
             resultado[i-1]+=1
-        cal = CalidadNumberToString(resultado.index(max(resultado)))
+        cal = CalidadNumberToString(resultado.index(max(resultado))+1)
         
         labelCal= tk.Label(containerCal, text="Calidad: "+str(cal),bg=colorFondo)
         labelCal.pack(side=tk.LEFT)

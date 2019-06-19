@@ -95,8 +95,8 @@ class menuPrincipal(tk.Frame):
         
         label = tk.Label(self, text="Página principal", font=controller.title_font,bg=fondoGeneral)
         self.bar = tk.Frame(self, relief=RIDGE, borderwidth=5)
-        self.imgPath = './descarga.jpg'
-        self.icon = ImageTk.PhotoImage(Image.open('./descarga.jpg'))
+        self.imgPath = 'assets/descarga.jpg'
+        self.icon = ImageTk.PhotoImage(Image.open(self.imgPath))
         self.icon_size = Label(self.bar)
         self.icon_size.configure(image=self.icon)
         button1 = tk.Button(self, text="Información de Usuario",

@@ -10,8 +10,8 @@ from tkinter import messagebox
 def cargarBaseDeDatos():
     #Cargamos la base de datos
     #doc = wx.Book("BaseDeDatosDeAlimentos.xlsx")
-    doc = pd.ExcelFile("BaseDeDatosDeAlimentos.xlsx")
-    docU = pd.ExcelFile("BaseDeDatosUsuarios.xlsx")
+    doc = pd.ExcelFile("Dat/BaseDeDatosDeAlimentos.xlsx")
+    docU = pd.ExcelFile("Dat/BaseDeDatosUsuarios.xlsx")
     #Seleccionamos la hoja de excell que contendrá dicha información-
 
     hojaAl = pd.read_excel(doc,'Alimentos')
@@ -23,7 +23,7 @@ def cargarBaseDeDatos():
     
     return hojaAl,hojaUs,hojaPa,config;
 def cargarBaseAlimentos():
-    doc = pd.ExcelFile("BaseDeDatosDeAlimentos.xlsx")
+    doc = pd.ExcelFile("Dat/BaseDeDatosDeAlimentos.xlsx")
     hojaAl = pd.read_excel(doc,'Alimentos')
     hojaPa = pd.read_excel(doc,'Patologias')
     return hojaAl,hojaPa;
@@ -33,7 +33,7 @@ criba y se devuelve para ser almacenado.
 '''
 
 def cargarHistorial(usr):
-    hist = pd.ExcelFile("Historial.xlsx");
+    hist = pd.ExcelFile("Dat/Historial.xlsx");
     hojaHisAl = pd.read_excel(hist, 'UsrAl')
     hojaHisAl = hojaHisAl.loc[hojaHisAl.Usuario == usr]
     
@@ -56,7 +56,7 @@ def cargaHistorialHoy(hojaHisAl,menuDeHoy,datosAlimCliente,hojaAlimentos):
         
        if not (diaEntero.iloc[0].isnull().loc['Almuerzo']):
            menuDeHoy[1] = str(diaEntero.iloc[0].loc['Almuerzo'])
-           fila = getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+           fila = getFilaAlimento(menuDeHoy[1],hojaAlimentos)
            datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
            datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
            datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[fila] + datosAlimCliente[2]
@@ -65,7 +65,7 @@ def cargaHistorialHoy(hojaHisAl,menuDeHoy,datosAlimCliente,hojaAlimentos):
         
        if not (diaEntero.iloc[0].isnull().loc['Comida']):
            menuDeHoy[2] = str(diaEntero.iloc[0].loc['Comida'])
-           fila = getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+           fila = getFilaAlimento(menuDeHoy[2],hojaAlimentos)
            datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
            datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
            datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[fila] + datosAlimCliente[2]
@@ -74,7 +74,7 @@ def cargaHistorialHoy(hojaHisAl,menuDeHoy,datosAlimCliente,hojaAlimentos):
         
        if not (diaEntero.iloc[0].isnull().loc['Merienda']):
            menuDeHoy[3] = str(diaEntero.iloc[0].loc['Merienda'])
-           fila = getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+           fila = getFilaAlimento(menuDeHoy[3],hojaAlimentos)
            datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
            datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
            datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[fila] + datosAlimCliente[2]
@@ -83,7 +83,7 @@ def cargaHistorialHoy(hojaHisAl,menuDeHoy,datosAlimCliente,hojaAlimentos):
         
        if not (diaEntero.iloc[0].isnull().loc['Cena']):
            menuDeHoy[4] = str(diaEntero.iloc[0].loc['Cena'])    
-           fila = getFilaAlimento(menuDeHoy[0],hojaAlimentos)
+           fila = getFilaAlimento(menuDeHoy[4],hojaAlimentos)
            datosAlimCliente[0] = hojaAlimentos["Calorias"].loc[fila] + datosAlimCliente[0]
            datosAlimCliente[1] = hojaAlimentos["Grasa"].loc[fila] + datosAlimCliente[1]
            datosAlimCliente[2] = hojaAlimentos["Hidratos"].loc[fila] + datosAlimCliente[2]
@@ -142,7 +142,7 @@ def guardaTodo(usr, menuDeHoy, historial,hojaAlimentos, hojaUsuarios, hojaPatolo
     
     messagebox.showinfo("Ya se ha guardado","Datos guardados ya puede cerrar el programa")
 def guardarUsuario(hojaUsuarios):
-    writer = pd.ExcelWriter("BaseDeDatosUsuarios.xlsx")
+    writer = pd.ExcelWriter("Dat/BaseDeDatosUsuarios.xlsx")
     hojaUsuarios.to_excel(writer,'Usuarios',index=False)
     writer.save();
 def guardarHistorial (usr, menuDeHoy, historial):
@@ -160,12 +160,12 @@ def guardarHistorial (usr, menuDeHoy, historial):
         historial.iloc[lala] = hoy
     else:
         historial=historial.append(hoy,sort=False)    
-    writer = pd.ExcelWriter("Historial.xlsx")
+    writer = pd.ExcelWriter("Dat/Historial.xlsx")
     historial.to_excel(writer,'UsrAl',index=False)
     writer.save();
 #Guarda los datos en la hoja que se le pasa como argumento
 def guardarDatos (hojaAlimentos, hojaPatologias):
-    writer = pd.ExcelWriter("BaseDeDatosDeAlimentos.xlsx")
+    writer = pd.ExcelWriter("Dat/BaseDeDatosDeAlimentos.xlsx")
     hojaAlimentos.to_excel(writer,'Alimentos',index=False)
     hojaPatologias.to_excel(writer,'Patologias',index=False)
     writer.save();
