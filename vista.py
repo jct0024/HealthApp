@@ -408,7 +408,7 @@ def registrarse(hojaUsuarios,hojaPatologias):
     containerPAT.pack(fill=tk.X)
     containerTIP.pack(fill=tk.X)
     containerBut.pack(fill=tk.X)
-    containerERR.pack(fill=tk.X)
+    containerERR.pack(fill=tk.BOTH)
     label_Dni = tk.Label(containerDNI, text="DNI",width=20,font=("bold", 10))
     label_Dni.pack(side=tk.LEFT)
     
