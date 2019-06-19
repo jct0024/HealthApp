@@ -151,6 +151,9 @@ class Historial(tk.Frame):
         btnGrafoCen.pack(fill=X)
         buttonSemana.pack(fill=X)
         buttonComeBack.pack(fill=X)
+'''
+Clase encargada de mostrarte por pantalla la infroamción relativa al usuario a la ultima semana.
+'''
 class histSemanal(tk.Frame):
     def __init__(self,parent,controller):
         tk.Frame.__init__(self, parent)
@@ -163,9 +166,8 @@ class histSemanal(tk.Frame):
         mylist = tk.Listbox(self, yscrollcommand = scrollbar.set)
         histUA = ab.cargarHistorial(usr)
         for index,dias in histUA.iterrows():
-            text='Fecha: ',dias['Fecha'],'\n\tDesayuno: ',dias['Desayuno'],'\n\tAlmuerzo: ',dias['Almuerzo'],'\n\tComida: ',dias['Comida'],'\n\tMerienda: ',dias['Merienda'],'\n\tCena: ',dias['Cena']
             mylist.insert(END,'--Fecha: '+dias['Fecha']+'--','\n\tDesayuno: '+str(dias['Desayuno']),'\n\tAlmuerzo: '+str(dias['Almuerzo']),'\n\tComida: '+str(dias['Comida']),'\n\tMerienda: '+str(dias['Merienda']),'\n\tCena: '+str(dias['Cena']))
-        mylist.pack()
+        mylist.pack(fill=BOTH)
         scrollbar.config( command = mylist.yview )
         button = tk.Button(self, text="Volver al inicio",command=lambda: controller.show_frame("Historial"),relief=GROOVE,bg=colorDetalles)
         button.pack()
