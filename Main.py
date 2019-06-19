@@ -166,6 +166,8 @@ class histSemanal(tk.Frame):
         mylist = tk.Listbox(self, yscrollcommand = scrollbar.set)
         histUA = ab.cargarHistorial(usr)
         for index,dias in histUA.iterrows():
+            if(index == 7):
+                break;
             mylist.insert(END,'--Fecha: '+dias['Fecha']+'--','\n\tDesayuno: '+str(dias['Desayuno']),'\n\tAlmuerzo: '+str(dias['Almuerzo']),'\n\tComida: '+str(dias['Comida']),'\n\tMerienda: '+str(dias['Merienda']),'\n\tCena: '+str(dias['Cena']))
         mylist.pack(fill=BOTH)
         scrollbar.config( command = mylist.yview )
@@ -182,6 +184,7 @@ class InfoUsuario(tk.Frame):
         label = tk.Label(self, text="Información del usuario", font=controller.title_font,bg=fondoGeneral)
         label.pack(side="top", fill="x", pady=10)
         arrayLabelInfo={}
+    
         for i in hojaUsuarios.iloc[int(ab.getFilaUsuario(self.user,hojaUsuarios)),:]:
             if(str(hojaUsuarios.columns.values[self.c]) == "patologia"):
                 self.texto = str(hojaUsuarios.columns.values[self.c])+ ": "+str(hojaPatologias.iloc[i,1])
@@ -199,6 +202,8 @@ class InfoUsuario(tk.Frame):
         btnEditar.pack();
         
         button.pack(side=BOTTOM)
+
+
 
 class editarInforUsuario(tk.Frame):
         def __init__(self, parent, controller):
@@ -865,23 +870,30 @@ if __name__ == "__main__":
         fondoGeneral=config[0]
         colorDetalles=config[1]
         mensajeError = "";
+        #Inicializamos la ventana.
         login = tk.Tk();
         login.resizable(0,0)
-        login.geometry('180x200')
+        login.geometry('220x200')
         login.title("login")
-        #iNICIALIZACIÓN DE FUENTES, SEPARADORES...
+        #INICIALIZACIÓN DE FUENTES, SEPARADORES...
         fuente = font.Font(family="Helvetica",size=12, weight="bold")
         fuente2 = font.Font(family="Helvetica",size=7)
+        #Menu archivo
+        menu = Menu(login)
+        subMenuArchivo1 = Menu(menu)
+        subMenuArchivo1.add_command(label="Manual",command= lambda: os.system('assets\ejemplo.pdf'))
+        menu.add_cascade(label='Archivo',menu=subMenuArchivo1)
+        login.config(menu=menu)
         #CUERPO
         lblMensaje = ttk.Label(login,text="",foreground="red",font=fuente2)
         lblU = ttk.Label(login,text="DNI", font=fuente)
         txtU = ttk.Entry(login,width=10)
         txtU.focus()
-        lblP = ttk.Label(login,text="password",font=fuente)
+        lblP = ttk.Label(login,text="Contraseña",font=fuente)
         txtP = ttk.Entry(login,width=15, show="*")
         btnInit = ttk.Button(login, text="Inicio",command=partial(vs.cambio,txtU,txtP,login,lblU,lblMensaje))
         btnExit = ttk.Button(login, text="Salir",command=login.destroy)  
-        btnRegist = ttk.Button(login, text="Registrarse",command=partial(vs.registrarse,hojaUsuarios,hojaPatologias))  
+        
         #POSICIONAMIENTOOOO
         lblU.pack()
         txtU.focus()
@@ -891,8 +903,13 @@ if __name__ == "__main__":
         lblMensaje.pack();
         btnInit.pack(side=LEFT);
         btnExit.pack(side=RIGHT);
-        btnRegist.pack(side=BOTTOM,fill=BOTH);
+        frame = tk.Frame(login)
+        frame.pack(fill=BOTH)
+        btnRegist = ttk.Button(login, text="Registrarse ",command=partial(vs.registrarse,hojaUsuarios,hojaPatologias)) 
+        
+        btnRegist.pack(fill=X,side=BOTTOM);
         login.mainloop(); 
         if(vs.getBandera()):
+            hojaAlimentos, hojaUsuarios, hojaPatologias,config = ab.cargarBaseDeDatos()
             app = SampleApp()
             app.mainloop()

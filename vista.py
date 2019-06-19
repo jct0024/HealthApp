@@ -373,6 +373,7 @@ def estiloTotal(idEstilo):
     file.write(texto)
     file.close()
     messagebox.showinfo("!Todo correcto¡","Veras el nuevo diseño cuando reinicie el programa")
+
 def registrarse(hojaUsuarios,hojaPatologias):
     #login.destroy()
     
@@ -493,12 +494,15 @@ def registrarse(hojaUsuarios,hojaPatologias):
     label_Err.pack()
     registro.mainloop(); 
 def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
-    nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad, error = cd.AñadirMenuCalculos(selfi)
+    try:
+        nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad, error = cd.AñadirMenuCalculos(selfi)
+    except:
+        error=True;
     if not (error):
         info = tk.Tk();
         info.resizable(0,0)
-        info.geometry('700x365')
-        info.title("Registro")
+        info.geometry('700x500')
+        info.title("Información")
         #Contenedores dentro del registro
         containerGen = tk.Frame(info)
         containerGen.pack(fill=tk.X)
@@ -547,28 +551,28 @@ def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
         labelNom= tk.Label(containerNom, text="NOMBRE: "+nombre,bg=colorFondo)
         labelNom.pack(side=tk.LEFT)
         
-        labelKcal= tk.Label(containerKcal, text="KCALORIAS: "+str(kcalTotal),bg=colorFondo)
+        labelKcal= tk.Label(containerKcal, text="KCALORIAS: "+str(round(kcalTotal,2)),bg=colorFondo)
         labelKcal.pack(side=tk.LEFT)
         
-        labelGra= tk.Label(containerGra, text="GRASAS: "+str(grasasTotal),bg=colorFondo)
+        labelGra= tk.Label(containerGra, text="GRASAS: "+str(round(grasasTotal,2)),bg=colorFondo)
         labelGra.pack(side=tk.LEFT)
         
-        labelSat= tk.Label(containerSat, text="SATURADAS: "+str(saturadasTotal),bg=colorFondo)
+        labelSat= tk.Label(containerSat, text="SATURADAS: "+str(round(saturadasTotal,2)),bg=colorFondo)
         labelSat.pack(side=tk.LEFT)
         
-        labelHid= tk.Label(containerHid, text="HIDRATOS: "+str(hidratosTotal),bg=colorFondo)
+        labelHid= tk.Label(containerHid, text="HIDRATOS: "+str(round(hidratosTotal,2)),bg=colorFondo)
         labelHid.pack(side=tk.LEFT)
         
-        labelFib= tk.Label(containerFib, text="FIBRA: "+str(fibraTotal),bg=colorFondo)
+        labelFib= tk.Label(containerFib, text="FIBRA: "+str(round(fibraTotal,2)),bg=colorFondo)
         labelFib.pack(side=tk.LEFT)
         
-        labelAzu= tk.Label(containerAzu, text="AZUCAR: "+str(azucarTotal),bg=colorFondo)
+        labelAzu= tk.Label(containerAzu, text="AZUCAR: "+str(round(azucarTotal,2)),bg=colorFondo)
         labelAzu.pack(side=tk.LEFT)
         
-        labelPro= tk.Label(containerPro, text="PROTEINA: "+str(proteinasTotal),bg=colorFondo)
+        labelPro= tk.Label(containerPro, text="PROTEINA: "+str(round(proteinasTotal,2)),bg=colorFondo)
         labelPro.pack(side=tk.LEFT)
         
-        labelSod= tk.Label(containerSod, text="SODIO: "+str(sodioTotal),bg=colorFondo)
+        labelSod= tk.Label(containerSod, text="SODIO: "+str(round(sodioTotal,2)),bg=colorFondo)
         labelSod.pack(side=tk.LEFT)
         
         labelTipo= tk.Label(containerTip, text="TIPO: xxx",bg=colorFondo)

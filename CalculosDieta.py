@@ -488,13 +488,13 @@ def AñadirMenuCalculos(selfi):
             #calidad=(cal1+cal2+cal3+cal4)/4
             sodioTotal=sodio1+sodio2+sodio3+sodio4
             
-            #ab.ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, calidad)
+            return nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad, error
         except ValueError:
             selfi.label_Error.config(text="ERROR: Inserte un valor numerico válido")
             error=True;
         except:
             selfi.label_Error.config(text="ERROR INESPERADO")
-        return nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad, error    
+            error=True;
 
 '''
 Función que toma un "conjunto de bits" y te los transforma a un número entero, para

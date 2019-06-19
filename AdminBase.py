@@ -30,6 +30,10 @@ def cargarBaseDeDatos():
     archivo.close()
     
     return hojaAl,hojaUs,hojaPa,config;
+def cargarUsuarios():
+    docU = pd.ExcelFile("Dat/BaseDeDatosUsuarios.xlsx")
+    hojaUs = pd.read_excel(docU,'Usuarios')
+    return hojaUs
 def cargarBaseAlimentos():
     doc = pd.ExcelFile("Dat/BaseDeDatosDeAlimentos.xlsx")
     hojaAl = pd.read_excel(doc,'Alimentos')
@@ -351,7 +355,7 @@ def NuevoUsuario(ventana,hojaUsuarios,dni, nombre, apellido, pwd, sexo, edad,alt
                 guardarUsuario(hojaUsuarios)
                 ventana.destroy()
                 messagebox.showinfo("BIENVENIDO","Se registro en nuestra APP se ha desarrollado con exito¡")
-                mensajeError.config(text="")       
+                #mensajeError.config(text=" ")       
         except ValueError:
             mensajeError.config(text="ERROR: Caracter erroneo")
         except PermissionError:
