@@ -81,7 +81,7 @@ class SampleApp(tk.Tk):
     Posible evolución, que se pase el pdf como parametro y se pueda mostrat cualquier manual.
     '''
     def pdf(self):
-        os.system('assets\ejemplo.pdf')
+        os.system('assets\Manual.pdf')
  
         
 class menuPrincipal(tk.Frame):
@@ -95,9 +95,11 @@ class menuPrincipal(tk.Frame):
         
         label = tk.Label(self, text="Página principal", font=controller.title_font,bg=fondoGeneral)
         self.bar = tk.Frame(self, relief=RIDGE, borderwidth=5)
-        self.imgPath = 'assets/descarga.jpg'
-        self.icon = ImageTk.PhotoImage(Image.open(self.imgPath))
-        self.icon_size = Label(self.bar)
+        self.imgPath = 'assets/logo.png'
+        imagen = Image.open(self.imgPath)
+        imagen = imagen.resize((250, 250), Image.ANTIALIAS)
+        self.icon = ImageTk.PhotoImage(imagen)
+        self.icon_size = Label(self.bar,bg=fondoGeneral)
         self.icon_size.configure(image=self.icon)
         button1 = tk.Button(self, text="Información de Usuario",
                             command=lambda: controller.show_frame("InfoUsuario"),height = 2, width = 20,relief=GROOVE,bg=colorDetalles)
@@ -339,7 +341,16 @@ class MostrarDieta(tk.Frame):
         #self.style.configure("black.Horizontal.TProgressbar", background='orange')
         
         self.barProgTotal = ttk.Progressbar(self,length=150,style='black.Horizontal.TProgressbar')
-        self.barProgTotal['value'] = (100*datosAlimCliente[0])/self.listMacDiarios[0];
+        n=0;
+        calidad = 0;
+        for i in menuDeHoy:
+            if (i != ""):
+                n+=1;
+        if not (n == 0):
+            calidad = datosAlimCliente[4]/n
+        else:
+            calidad=0;
+        self.barProgTotal['value'] = (100*calidad)/5;
         vs.actualizarBarra(menuDeHoy,'alimento',self.barProgTotal,datosAlimCliente,self.listMacDiarios,self.style)
         self.banderaSelect = vs.crearArrayBandera(menuDeHoy)
         ####-COMIDAS-####

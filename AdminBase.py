@@ -25,7 +25,7 @@ def cargarBaseDeDatos():
     hojaAl = pd.read_excel(doc,'Alimentos')
     hojaUs = pd.read_excel(docU,'Usuarios')
     hojaPa = pd.read_excel(doc,'Patologias')
-    archivo = open('config.txt','r')
+    archivo = open('Dat/config.txt','r')
     config = str(archivo.read()).split(':')
     archivo.close()
     

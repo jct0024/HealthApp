@@ -117,24 +117,24 @@ def actualizarBarra(menuDeHoy,alimento,barProgTotal,datosAlimCliente,listMacDiar
     else:
         calidad=0;
     if(calidad<=1.5):      
-        style.configure("green.Horizontal.TProgressbar", background='green')         
+        style.configure("green.Horizontal.TProgressbar", background='lime green')         
         barProgTotal.config(style="green.Horizontal.TProgressbar")
-    elif(calidad>1.5 and calidad<=2):
-        style.configure("yellowgreen.Horizontal.TProgressbar", background='yellow green')
+    elif(calidad>1.5 and calidad<=2.4):
+        style.configure("yellowgreen.Horizontal.TProgressbar", background='lawn green')
         barProgTotal.config(style="yellowgreen.Horizontal.TProgressbar")
-    elif(calidad>2 and calidad<=2.5):
-        style.configure("yellow.Horizontal.TProgressbar", background='yellow')
+    elif(calidad>2.4 and calidad<=3.4):
+        style.configure("yellow.Horizontal.TProgressbar", background='gold')
         barProgTotal.config(style="yellow.Horizontal.TProgressbar")
-    elif(calidad>2.5 and calidad<3):
+    elif(calidad>3.4 and calidad<4.4):
         style.configure("orange.Horizontal.TProgressbar", background='orange')
         barProgTotal.config(style="orange.Horizontal.TProgressbar")
-    elif(calidad>3 and calidad<3.6):
+    elif(calidad>4.4 and calidad<4.8):
         style.configure("yellow.Horizontal.TProgressbar", background='orange red')
         barProgTotal.config(style="yellow.Horizontal.TProgressbar")
     else:
         style.configure("red.Horizontal.TProgressbar", background='red')
         barProgTotal.config(style="red.Horizontal.TProgressbar")
-    barProgTotal['value'] = int((100*datosAlimCliente[0])/listMacDiarios[0]);
+    barProgTotal['value'] = int((100*calidad)/5);
 
 '''
 Función Simple que te coge el tipo de comida en forma de string y te devuelve el indice correspondiente a esa comida
@@ -368,7 +368,7 @@ def estiloTotal(idEstilo):
         config=['powder blue','spring green']
     elif(idEstilo == 1):
         config=['thistle1','MediumPurple']
-    file = open('config.txt','w')
+    file = open('Dat/config.txt','w')
     texto = config[0]+":"+config[1]
     file.write(texto)
     file.close()
