@@ -528,7 +528,6 @@ class MostrarDieta(tk.Frame):
         else:
             self.btnSelCom = tk.Button(self.tabComida, text="Seleccionar",bg=colorDetalles)
         cont = self.btnSelCom.config(command=partial(vs.seleccionarYActualizarResto,self,"comida",self.botonesCom,self.btnSelCom,selected,self.banderaSelect,hojaAlimentos,datosAlimCliente,menuDeHoy,self.filtComida,self.barProgTotal,self.listMacDiarios,self.style,umbral))
-        #self.barProgTotal['value'] = int((100*datosAlimCliente[0])/self.listMacDiarios[0]);
         self.btnRefrCom.config(command=partial(vs.refrescar,self,"comida",self.cont_opciones_Com,self.filtComida,umbral,self.comida,hojaAlimentos,self.botonesCom,self.n_opciones,self.btnSelCom,self.btnRefrCom, self.label_Informacion_Com,self.listDistribuciónKcal[2],datosAlimCliente,self.kcal_Por_Dia,self.listMacDiarios,menuDeHoy,self.barProgTotal,self.banderaSelect,self.style))
         
         self.btnSelCom.pack(fill=X)
@@ -902,7 +901,7 @@ if __name__ == "__main__":
         txtU.focus()
         lblP = ttk.Label(login,text="Contraseña",font=fuente)
         txtP = ttk.Entry(login,width=15, show="*")
-        btnInit = ttk.Button(login, text="Inicio",command=partial(vs.cambio,txtU,txtP,login,lblU,lblMensaje))
+        btnInit = ttk.Button(login, text="Inicio",command=partial(vs.cambio,txtU,txtP,login,lblMensaje))
         btnExit = ttk.Button(login, text="Salir",command=login.destroy)  
         
         #POSICIONAMIENTOOOO

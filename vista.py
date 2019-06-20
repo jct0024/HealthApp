@@ -19,28 +19,39 @@ bandera = False;
 usr = 0;
 contraseña = "";
 '''
-Funcion que te comprueba que el usuario y contraseña son correctos
+Funcion que te comprueba que el usuario y contraseña son correctos Y te cambia de pantalla 
+en caso de que el inicio de sesión haya sido satisfactorio.
+Parametros:
+    usuaio - Usuario que intenta iniciar sesión
+    passwd - Contraseña insertada por el usuario
+    login - Pantalla principal en la que nos encontramos.
+    lblMensjae - Etiqueta del mensaje de error.
 '''
-def cambio(usuario,passwd,login,lblU,lblMensaje): 
-    if(usuario.get() != '' or passwd.get() != ''):
-        if(ab.comprobarUsuario(int(usuario.get()),str(passwd.get())) > -1):        
-            global bandera 
-            global usr
-            global contraseña;
-            usr =int(usuario.get())
-            contraseña = str(passwd.get())
-            bandera = True;
-            login.destroy();
-        else:
-            #lblU.config(foreground='red')
-            lblMensaje.config(text="ERROR:usuario o contraseña incorrectos")
+def cambio(usuario,passwd,login,lblMensaje): 
+    try:
+        if(usuario.get() != '' and passwd.get() != ''):
+            if(ab.comprobarUsuario(int(usuario.get()),str(passwd.get())) > -1):        
+                global bandera 
+                global usr
+                global contraseña;
+                usr =int(usuario.get())
+                contraseña = str(passwd.get())
+                bandera = True;
+                login.destroy();
+            else:
+                lblMensaje.config(text="ERROR:usuario o contraseña incorrectos")
+    except ValueError:
+        blMensaje.config(text="ERROR INESPERADO")
 '''
 Funcion que te devuelve el estado de la bandera
-parahacer mas adelante la comprobación, si se ha conectado el usuario exitosamente te bare las caracteristicas del programa
+para hacer mas adelante la comprobación, si se ha conectado el usuario exitosamente te bare las caracteristicas del programa
 sino se cierra completamente
 '''       
 def getBandera():
     return bandera;
+'''
+Función que devuelve el usuario y contraseña actual.
+'''
 def getUsuario():
     return usr,contraseña;
 '''
@@ -104,7 +115,7 @@ def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAliment
         btnRefresh['state']='normal'
         banderaSelect[indince]=False
 '''
-Función que actualiza la brra de progesión y la tiñe según el umbra
+Función que actualiza la barra de progesión y la tiñe según el umbra
 '''
 def actualizarBarra(menuDeHoy,alimento,barProgTotal,datosAlimCliente,listMacDiarios,style):
     n=0;
@@ -277,8 +288,6 @@ def seleccionarYActualizarResto(loc,tipoComida,arrrayBoton,btnSel,selected,bande
 '''
 Función que refresca la información y aumenta el umbral para que puedas comer "peor"
 te destruye la actual ventana y te la vuelve a crear de cero para refrescar.
-POR HACER
-hay que cambiar la lista de filtrar para que te cargue los nuevos valores.
 '''
 
 def Actualizar(selfi,tipoComida, container,listaFiltrada,umbral,comida,hojaAlimentos, dictBotones,n_opciones,btnSelect,btnRefresh,etiquetaInfor,listDistribuciónKcal,datosAlimCliente,kcal_Por_Dia,listMacDiarios,menuDeHoy,barProgTotal,banderaSelect,style):
@@ -362,7 +371,11 @@ def gráfico(selfi,x,y,bandera):
     ax.set_ylim(0.7,5) 
     #Se dibuja en pantalla-
     selfi.canvas.draw()
-    
+'''
+Función que carga y almacena el nuevo estilo seleccionado para la aplicación.
+Parametros:
+    idEstilo = Id del estilo a almacenar
+'''  
 def estiloTotal(idEstilo):
     if(idEstilo == 0):
         config=['powder blue','spring green']
@@ -373,7 +386,12 @@ def estiloTotal(idEstilo):
     file.write(texto)
     file.close()
     messagebox.showinfo("!Todo correcto¡","Veras el nuevo diseño cuando reinicie el programa")
-
+'''
+Función que muestra por pantalla el formulario para crear un nuevo usuario.
+Parametros:
+    hojaUsuarios - Array de la base de datos de los usuarios.
+    hojaPatologias - Array de la base de datos de las patologias.
+'''
 def registrarse(hojaUsuarios,hojaPatologias):
     #login.destroy()
     
@@ -493,6 +511,14 @@ def registrarse(hojaUsuarios,hojaPatologias):
     button.pack(fill=tk.X)
     label_Err.pack()
     registro.mainloop(); 
+'''
+Función que muestra la información (Nutrientes, Histograma, calidad, etcétera) de la nueva información a añadir.
+Parametros: 
+    hojaAlimentos - Array que contiene la base de datos alimentos
+    selfi - Variable que contiene las variables locales de la clase que invoca la función.
+    colorDetalles - Color de los detalles de la nueva página.
+    colorFondo - Color del fondo de la nueva página
+'''
 def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
     try:
         nombre, kcalTotal,grasasTotal, saturadasTotal,hidratosTotal, fibraTotal,azucarTotal,proteinasTotal,sodioTotal,tipo, arrayCalidad, error = cd.AñadirMenuCalculos(selfi)
