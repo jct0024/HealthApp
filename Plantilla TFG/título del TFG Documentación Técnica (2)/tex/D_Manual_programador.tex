@@ -34,7 +34,7 @@ Los directorios siguen la siguiente estructura:
 A continuación veremos una pequeña guía para preparar el entorno de programación.
 \textbf{\textsc{Python}}
 El lenguaje usado durante este proyecto es Python, en su versión 3.6 (También funcional para 3.7), para ello tendremos que descargar e instalar el interprete de Python. Lo cual lo podremos hacer desde este enlace \href{https://www.python.org/downloads/release/python-368/}{Python 3.6.8}. Desde la misma página podremos descargar si lo deseamos la versión 3.7.\\
-Paso opcional: A continuación instalaremos Anaconda, el cual nos dará una serie de funciones y programas, además de una powershell propia que nos permitirá el manejo por la aplicación más cómodamente. Link: \href{https://www.anaconda.com/distribution/}{Anaconda}. Con esto, se nos instalará automáticamente tanto Spyder, como Notebook, y VisualCode. Cualquiera de estos tres editores son muy potentes y funcionan a la perfección para ejecutar el proyecto (Aconsejo que no se use NoteBook). Esta herramienta además viene con una serie de librerías principales ya instaladas y que ahorran trabajo al programador.\\
+A continuación instalaremos Anaconda (No es estrictamente necesario, pero es el sistema usado para el desarrollo del proyecto), el cual nos dará una serie de funciones y programas, además de una powershell propia que nos permitirá el manejo por la aplicación más cómodamente. Link: \href{https://www.anaconda.com/distribution/}{Anaconda}. Con esto, se nos instalará automáticamente tanto Spyder, como Notebook, y VisualCode. Cualquiera de estos tres editores son muy potentes y funcionan a la perfección para ejecutar el proyecto (Aconsejo que no se use NoteBook). Esta herramienta además viene con una serie de librerías principales ya instaladas y que ahorran trabajo al programador.\\
 En caso de no instalar anaconda, se debería instalar un editor, para su posterior ejecución. Editores recomendados para python:
 \begin{itemize}
 \item PyCharm
@@ -48,14 +48,17 @@ Debido a que el desarrollador puede tomar ambos caminos (Instalar o no Anaconda)
 \item pip3 install matplotlib
 \item pip3 install numpy
 \item pip3 install pandas
-\item pip3 install pyinstaller o auto-py-to-exe
+\item pip3 install pyinstaller (o auto-py-to-exe - Libre elección)
 \item pip3 install tk
 \item pip3 install webbrowser
 \item pip3 install os-win
 \item pip3 install Pillow
 \item pip3 install functools
+\item pip3 install xlrd
+\item pip3 install openpyxl
+
 \end{itemize}
-Por lo general la mayoría de librerías te ayudará simplemente a que el programa corra correctamente, excepto pyinstaller que ayudará a crear un ejecutable (En caso de auto-py-to-exe, es una librería más visual que pyinstaller, pero que a grandes rasgos hace lo mismo pues lo que hace es usar internamente el comando pyinstaller con las opciones propias en caso de que elijas alguna).\\
+Pyinstaller, es una librería que sirve para crear archivos ejecutables desde un archivo con extensión ".py", otra alternativa, mas sencilla de usar es la librería auto-py-to-exe, la cual usa pyinstalare de manera interna, y nos da una interfaz gráfica bastante intuitiva para crear el ejecutable. El resto de librerías son las usadas para que el programa corra con normalidad.
 Una vez tenemos preparado el entorno de Python podemos pasar a la instalación del IDE
 \subsection{IDE}
 En este aparado se hablará de como descargar y preparar el entorno para trabajar, como se realizó durante estos meses.
