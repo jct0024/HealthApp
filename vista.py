@@ -41,7 +41,7 @@ def cambio(usuario,passwd,login,lblMensaje):
             else:
                 lblMensaje.config(text="ERROR:usuario o contraseña incorrectos")
     except ValueError:
-        blMensaje.config(text="ERROR INESPERADO")
+        lblMensaje.config(text="Error: DNI sin letra")
 '''
 Funcion que te devuelve el estado de la bandera
 para hacer mas adelante la comprobación, si se ha conectado el usuario exitosamente te bare las caracteristicas del programa

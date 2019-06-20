@@ -896,7 +896,7 @@ if __name__ == "__main__":
         login.config(menu=menu)
         #CUERPO
         lblMensaje = ttk.Label(login,text="",foreground="red",font=fuente2)
-        lblU = ttk.Label(login,text="DNI", font=fuente)
+        lblU = ttk.Label(login,text="DNI (sin letra)", font=fuente)
         txtU = ttk.Entry(login,width=10)
         txtU.focus()
         lblP = ttk.Label(login,text="Contraseña",font=fuente)
