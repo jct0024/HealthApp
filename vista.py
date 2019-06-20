@@ -399,8 +399,9 @@ def registrarse(hojaUsuarios,hojaPatologias):
     registro.resizable(0,0)
     registro.geometry('700x350')
     registro.title("Registro")
+    registro.iconbitmap('assets/logo.ico')
     #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
-    label = tk.Label(registro, text="Rellene los datos")    
+    label = tk.Label(registro, text="Rellene los datos:")    
     label.pack()
     containerDNI = tk.Frame(registro)
     containerNOM = tk.Frame(registro)
@@ -530,6 +531,7 @@ def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
         info.geometry('700x500')
         info.title("Información")
         info.configure(background=colorFondo)
+        info.iconbitmap('assets/logo.ico')
         #Contenedores dentro del registro
         containerGen = tk.Frame(info,bg=colorFondo)
         containerGen.pack(fill=tk.X)

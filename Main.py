@@ -21,6 +21,7 @@ class SampleApp(tk.Tk):
         self.title_font = font.Font(family='Helvetica', size=18, weight="bold", slant="italic")
         self.geometry('800x500')
         self.minsize(800,500)
+        self.iconbitmap('assets/logo.ico')
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
@@ -885,6 +886,7 @@ if __name__ == "__main__":
         login.resizable(0,0)
         login.geometry('220x200')
         login.title("login")
+        login.iconbitmap('assets/logo.ico')
         #INICIALIZACIÓN DE FUENTES, SEPARADORES...
         fuente = font.Font(family="Helvetica",size=12, weight="bold")
         fuente2 = font.Font(family="Helvetica",size=7)
