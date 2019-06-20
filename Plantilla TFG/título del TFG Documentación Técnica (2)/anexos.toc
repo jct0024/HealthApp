@@ -9,12 +9,12 @@
 \contentsline {subsection}{Fases}{2}{section*.4}% 
 \contentsline {section}{\numberline {A.3}Viabilidad}{4}{section.Alph1.3}% 
 \contentsline {subsection}{Viabilidad econ\IeC {\'o}mica}{4}{section*.5}% 
-\contentsline {subsubsection}{An\IeC {\'a}lisis DAFO}{4}{section*.6}% 
+\contentsline {subsubsection}{An\IeC {\'a}lisis DAFO}{5}{section*.6}% 
 \contentsline {subsubsection}{Matriz MCKINSEY}{5}{section*.7}% 
-\contentsline {subsubsection}{Crecimiento propio de una App}{5}{section*.8}% 
+\contentsline {subsubsection}{Crecimiento propio de una App}{6}{section*.8}% 
 \contentsline {subsection}{Viabilidad legal}{6}{section*.9}% 
 \contentsline {subsubsection}{Forma jur\IeC {\'\i }dica}{6}{section*.10}% 
-\contentsline {subsection}{Tr\IeC {\'a}mites para la constituci\IeC {\'o}n de la empresa}{6}{section*.11}% 
+\contentsline {subsection}{Tr\IeC {\'a}mites para la constituci\IeC {\'o}n de la empresa}{7}{section*.11}% 
 \contentsline {appendix}{\chapternumberline {B}Especificaci\IeC {\'o}n de Requisitos}{11}{appendix.Alph2}% 
 \contentsline {section}{\numberline {B.1}Introducci\IeC {\'o}n}{11}{section.Alph2.1}% 
 \contentsline {section}{\numberline {B.2}Objetivos generales}{11}{section.Alph2.2}% 
@@ -46,7 +46,7 @@
 \contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{27}{section.Alph4.1}% 
 \contentsline {section}{\numberline {D.2}Estructura de directorios}{27}{section.Alph4.2}% 
 \contentsline {section}{\numberline {D.3}Manual del programador}{28}{section.Alph4.3}% 
-\contentsline {subsection}{IDE}{29}{section*.29}% 
+\contentsline {subsection}{IDE}{30}{section*.29}% 
 \contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{31}{section.Alph4.4}% 
 \contentsline {section}{\numberline {D.5}Pruebas del sistema}{33}{section.Alph4.5}% 
 \contentsline {subsection}{Almacenamiento y carga de los datos}{33}{section*.30}% 
