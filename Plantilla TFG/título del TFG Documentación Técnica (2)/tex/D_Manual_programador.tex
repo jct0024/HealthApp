@@ -8,33 +8,35 @@ Los directorios siguen la siguiente estructura:
 \begin{itemize}
 \item Carpeta principal / Inicial
 \begin{itemize}
-\item Directorio: Assets
-\item Directorio: Memorias
-\item AdminBase.py
-\item Main.py
-\item CalculosDieta.py
-\item Vista.py
-\item BaseDeDatosDeAlimentos.xlsx
-\item BaseDeDatosUsuarios.xlsx
-\item Historial
-\end{itemize}
-\item assets
+\item Directorio: assets
 \begin{itemize}
 \item Manual.pdf
 \item Logotipo.PNG
 \end{itemize}
-\item Memorias
+\item Dorectprio: Dat
+\begin{itemize}
+\item BaseDeDatosDeAlimentos.xlsx
+\item BaseDeDatosUsuarios.xlsx
+\item Historial.xlsx
+\item config.txt
+\end{itemize}
+\item Directorio: Memorias
 \begin{itemize}
 \item Anexos.pdf
 \item Memorias.pdf
 \item Directorio: img (Almacenamiento de imágenes)
+\end{itemize}
+\item AdminBase.py
+\item Main.py
+\item CalculosDieta.py
+\item Vista.py
 \end{itemize}
 \end{itemize}
 \section{Manual del programador}
 A continuación veremos una pequeña guía para preparar el entorno de programación.
 \textbf{\textsc{Python}}
 El lenguaje usado durante este proyecto es Python, en su versión 3.6 (También funcional para 3.7), para ello tendremos que descargar e instalar el interprete de Python. Lo cual lo podremos hacer desde este enlace \href{https://www.python.org/downloads/release/python-368/}{Python 3.6.8}. Desde la misma página podremos descargar si lo deseamos la versión 3.7.\\
-A continuación instalaremos Anaconda (No es estrictamente necesario, pero es el sistema usado para el desarrollo del proyecto), el cual nos dará una serie de funciones y programas, además de una powershell propia que nos permitirá el manejo por la aplicación más cómodamente. Link: \href{https://www.anaconda.com/distribution/}{Anaconda}. Con esto, se nos instalará automáticamente tanto Spyder, como Notebook, y VisualCode. Cualquiera de estos tres editores son muy potentes y funcionan a la perfección para ejecutar el proyecto (Aconsejo que no se use NoteBook). Esta herramienta además viene con una serie de librerías principales ya instaladas y que ahorran trabajo al programador.\\
+A continuación instalaremos Anaconda (No es estrictamente necesario, pero es el sistema usado para el desarrollo del proyecto), el cual nos dará una serie de funciones y programas, además de una powershell propia. Link: \href{https://www.anaconda.com/distribution/}{Anaconda}. Con esto, se nos instalará automáticamente tanto Spyder, como Notebook, y VisualCode. Cualquiera de estos tres editores son muy potentes y funcionan a la perfección para ejecutar el proyecto (Aconsejo que no se use NoteBook). Esta herramienta además viene con una serie de librerías principales ya instaladas y que ahorran trabajo al programador.\\
 En caso de no instalar anaconda, se debería instalar un editor, para su posterior ejecución. Editores recomendados para python:
 \begin{itemize}
 \item PyCharm
@@ -42,23 +44,33 @@ En caso de no instalar anaconda, se debería instalar un editor, para su posteri
 \item Spyder
 \item Ecplipe con API de python
 \end{itemize}
-Recordar que si se escoge un editor el cual no tenga la opción de ejecutar directamente desde el editor, se deberá hacer a través de la consola de comandos, para ello vaya a la carpeta donde tenga descargado el proyecto, y en la parte superior (Donde aparece la ruta del directorio), escriba cmd y ya debería cargarse la powershell desde la carpeta actual, acto seguido escriba main.py y el programa se ejecutará para su prueba o test.\\
-Debido a que el desarrollador puede tomar ambos caminos (Instalar o no Anaconda). A continuación se explicar como instalar el resto de librerías a través del comando pip (La funcionalidad o comando pip, viene con la instalación de python y en este caso se deberá escribir pip3 por ser la versión 3.
+Recordar que si se escoge un editor el cual no tenga la opción de ejecutar directamente desde el editor, se deberá hacer a través de la consola de comandos, para ello vaya a la carpeta donde tenga descargado el proyecto, y en la parte superior (Donde aparece la ruta del directorio), escriba cmd y se cargará la powershell desde la carpeta actual, acto seguido escriba main.py y el programa se ejecutará para su prueba o test.\\
+
+Las siguientes librerías son las librerías principales usadas durante el proyecto:
 \begin{itemize}
-\item pip3 install matplotlib
-\item pip3 install numpy
-\item pip3 install pandas
-\item pip3 install pyinstaller (o auto-py-to-exe - Libre elección)
-\item pip3 install tk
-\item pip3 install webbrowser
-\item pip3 install os-win
-\item pip3 install Pillow
-\item pip3 install functools
-\item pip3 install xlrd
-\item pip3 install openpyxl
+\item matplotlib
+\item numpy
+\item pandas
+\item auto-py-to-exe
+\item webbrowser
+\item os-win
+\item Pillow
+\item functools
+\item xlrd
+\item openpyxl
 \end{itemize}
-Pyinstaller, es una librería que sirve para crear archivos ejecutables desde un archivo con extensión ".py", otra alternativa, mas sencilla de usar es la librería auto-py-to-exe, la cual usa pyinstalare de manera interna, y nos da una interfaz gráfica bastante intuitiva para crear el ejecutable. El resto de librerías son las usadas para que el programa corra con normalidad.\\
+auto-py-to-exe, es una librería que sirve para crear archivos ejecutables desde un archivo con extensión ".py",sencilla de usar, la cual usa pyinstaler de manera interna, y nos da una interfaz gráfica bastante intuitiva para crear el ejecutable. El resto de librerías son las usadas para que el programa corra con normalidad.\\
+
+\textbf{\textsc{Auto-py-to-exe}}
+Para usar la aplicación auto-py-to-exe, abriremos la consola de comandos con \textbf{cmd}, y escribiremos el comando: \textbf{\textsc{auto-py-to-exe}}
+\imagen{consolaAuto}{comando para el uso de auto-py-to-exe}
+Cuando insertemos ese comando se nos abrirá una ventana como la siguiente:
+\imagen{autopy}{Pantalla de la aplicación auto-py-to-exe}
+Para su correcto uso y se deberá añadir en \textbf{path file} el archivo principal (Main) que ejecuta todo nuestro programa. Para evitar problemas se marcará la opción \textbf{"One Directory"}, y más adelante la opción \textbf{Windows Based (console hidden)} Para evitar que se reproduzca la consola cada vez que lo ejecutemos (Si deseamos depurar el programa se aconseja usar la otra opción) y para terminar añadimos el icono de la aplicación en \textbf{Icon} y en \textbf{Additional Files} se elegirá la opción \textbf{add folder} y se añadirás las carpetas de "assets" y "Dat", una vez esto, se pulsará sobre el botón \textbf{Convert .py to .exe}, Si no hemos escogido carpeta de salida se hará sobre la carpeta propia del proyecto, si deseamos que se cree en cualquier otra carpeta específica se deberá añadir la ruta dentro de las opciones que se encuentran en \textbf{Advanced}\\
+
+\textbf{\textsc{INSTALACIÓN DE LAS LIBRERÍAS}}
 Para comodidad del desarrollador se dejará preparado el documento: \textbf{requeriments.txt} donde estarán almacenadas todas las librerías necesarias, si se desea instalar a través de este documento se ha de ejecutar el siguiente comando en la Sehll: \textbf{pip3 install -r requeriments.txt}.\\
+
 En caso de existir algún fallo con alguna librería; instalar manualmente la librería concreta con el comando nombrado anteriormente correspondiente.\\
 Una vez tenemos preparado el entorno de Python podemos pasar a la instalación del IDE
 \subsection{IDE}

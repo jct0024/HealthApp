@@ -65,6 +65,11 @@ def distribuciónDeMacronutrientes(kcal,tipoDieta):
         grasas = kcal*0.15
         listMacDiarios = [kcal,hidratos,proteinas,grasas]
     elif (tipoDieta == 'baja en proteina'):
+        hidratos = kcal*0.57
+        proteinas = kcal*0.20
+        grasas = kcal*0.23
+        listMacDiarios = [kcal,hidratos,proteinas,grasas]
+    elif (tipoDieta == 'alta en grasa'):
         hidratos = kcal*0.55
         proteinas = kcal*0.20
         grasas = kcal*0.25
@@ -413,8 +418,6 @@ def AñadirMenuCalculos(selfi):
             #FIN DE LAS PRUEBAS DE ERROR
             #############################
             #INICIO DE LOS CALCULOS
-
-            #calidad = 0;
             if(nAlimento[0]):
                 proporcion1 = float(selfi.entry_Gram.get())/100
                 kcal1=float(selfi.entry_kcal.get())*proporcion1;

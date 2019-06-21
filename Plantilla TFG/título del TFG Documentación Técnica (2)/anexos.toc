@@ -46,28 +46,28 @@
 \contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{27}{section.Alph4.1}% 
 \contentsline {section}{\numberline {D.2}Estructura de directorios}{27}{section.Alph4.2}% 
 \contentsline {section}{\numberline {D.3}Manual del programador}{28}{section.Alph4.3}% 
-\contentsline {subsection}{IDE}{30}{section*.29}% 
-\contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{31}{section.Alph4.4}% 
-\contentsline {section}{\numberline {D.5}Pruebas del sistema}{33}{section.Alph4.5}% 
-\contentsline {subsection}{Almacenamiento y carga de los datos}{33}{section*.30}% 
-\contentsline {subsection}{Navegabilidad}{34}{section*.31}% 
-\contentsline {subsection}{Algoritmos}{34}{section*.32}% 
-\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{37}{appendix.Alph5}% 
-\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{37}{section.Alph5.1}% 
-\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{37}{section.Alph5.2}% 
-\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{37}{section.Alph5.3}% 
-\contentsline {section}{\numberline {E.4}Manual del usuario}{37}{section.Alph5.4}% 
-\contentsline {subsection}{Inicio}{37}{section*.33}% 
-\contentsline {subsubsection}{Crear un Usuario/Registrarse}{38}{section*.34}% 
-\contentsline {subsubsection}{INICIAR SESI\IeC {\'O}N}{41}{section*.35}% 
-\contentsline {subsection}{P\IeC {\'A}GINA PRINCIPAL}{43}{section*.36}% 
-\contentsline {subsubsection}{ARCHIVO}{44}{section*.37}% 
-\contentsline {subsubsection}{ESTILOS}{45}{section*.38}% 
-\contentsline {subsection}{INFORMACI\IeC {\'O}N DE USUARIO}{46}{section*.39}% 
-\contentsline {subsection}{DIETA DIARIA}{48}{section*.40}% 
-\contentsline {subsubsection}{COMIDAS DEL D\IeC {\'I}A}{48}{section*.41}% 
-\contentsline {subsubsection}{REFRESCAR}{51}{section*.42}% 
-\contentsline {subsubsection}{A\IeC {\~N}ADIR PLATO}{52}{section*.43}% 
-\contentsline {subsection}{HISTORIAL}{56}{section*.44}% 
-\contentsline {subsubsection}{GR\IeC {\'A}FICOS}{58}{section*.45}% 
-\contentsline {subsubsection}{SEMANA INGERIDA}{58}{section*.46}% 
+\contentsline {subsection}{IDE}{32}{section*.29}% 
+\contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{33}{section.Alph4.4}% 
+\contentsline {section}{\numberline {D.5}Pruebas del sistema}{35}{section.Alph4.5}% 
+\contentsline {subsection}{Almacenamiento y carga de los datos}{35}{section*.30}% 
+\contentsline {subsection}{Navegabilidad}{36}{section*.31}% 
+\contentsline {subsection}{Algoritmos}{36}{section*.32}% 
+\contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{39}{appendix.Alph5}% 
+\contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{39}{section.Alph5.1}% 
+\contentsline {section}{\numberline {E.2}Requisitos de usuarios}{39}{section.Alph5.2}% 
+\contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{39}{section.Alph5.3}% 
+\contentsline {section}{\numberline {E.4}Manual del usuario}{39}{section.Alph5.4}% 
+\contentsline {subsection}{Inicio}{39}{section*.33}% 
+\contentsline {subsubsection}{Crear un Usuario/Registrarse}{40}{section*.34}% 
+\contentsline {subsubsection}{INICIAR SESI\IeC {\'O}N}{43}{section*.35}% 
+\contentsline {subsection}{P\IeC {\'A}GINA PRINCIPAL}{45}{section*.36}% 
+\contentsline {subsubsection}{ARCHIVO}{46}{section*.37}% 
+\contentsline {subsubsection}{ESTILOS}{47}{section*.38}% 
+\contentsline {subsection}{INFORMACI\IeC {\'O}N DE USUARIO}{48}{section*.39}% 
+\contentsline {subsection}{DIETA DIARIA}{50}{section*.40}% 
+\contentsline {subsubsection}{COMIDAS DEL D\IeC {\'I}A}{50}{section*.41}% 
+\contentsline {subsubsection}{REFRESCAR}{53}{section*.42}% 
+\contentsline {subsubsection}{A\IeC {\~N}ADIR PLATO}{54}{section*.43}% 
+\contentsline {subsection}{HISTORIAL}{58}{section*.44}% 
+\contentsline {subsubsection}{GR\IeC {\'A}FICOS}{60}{section*.45}% 
+\contentsline {subsubsection}{SEMANA INGERIDA}{60}{section*.46}% 
