@@ -340,37 +340,40 @@ Recibe como parametros:
     badera- Valor que indica que tipo de gráfico es.
 '''
 def gráfico(selfi,x,y,bandera):
-    numero=[]
-    i=0
-    for index in x:
-        numero.append(i)
-        i+=1
-    #selfi.lin.set_xticks(np.range(len(x)),x)
-    selfi.lin.set_data(numero,y)
-    ax = selfi.canvas.figure.axes[0]
-    if(bandera==0):
-        ax.set_title("DESAYUNO")
-    elif(bandera==1):
-        ax.set_title("ALMUERZO")
-    elif(bandera==2):
-        ax.set_title("COMIDA")
-    elif(bandera==3):
-        ax.set_title("MERIENDA")
-    elif(bandera==4):
-        ax.set_title("CENA")
-    else:
-        ax.set_title("Media del día")
-    #Ponemos las etiquetas
-    ax.set_xlabel("Dias")
-    ax.set_ylabel("Calidad")
-    #Cambiamos el valor númerico por el de la fecha
-    ax.set_xticks(numero)
-    ax.set_xticklabels(x)
-    #Implantamos los máximos y minimos
-    ax.set_xlim(min(numero),max(numero))
-    ax.set_ylim(0.7,5) 
-    #Se dibuja en pantalla-
-    selfi.canvas.draw()
+    try:
+        numero=[]
+        i=0
+        for index in x:
+            numero.append(i)
+            i+=1
+        #selfi.lin.set_xticks(np.range(len(x)),x)
+        selfi.lin.set_data(numero,y)
+        ax = selfi.canvas.figure.axes[0]
+        if(bandera==0):
+            ax.set_title("DESAYUNO")
+        elif(bandera==1):
+            ax.set_title("ALMUERZO")
+        elif(bandera==2):
+            ax.set_title("COMIDA")
+        elif(bandera==3):
+            ax.set_title("MERIENDA")
+        elif(bandera==4):
+            ax.set_title("CENA")
+        else:
+            ax.set_title("Media del día")
+        #Ponemos las etiquetas
+        ax.set_xlabel("Dias")
+        ax.set_ylabel("Calidad")
+        #Cambiamos el valor númerico por el de la fecha
+        ax.set_xticks(numero)
+        ax.set_xticklabels(x)
+        #Implantamos los máximos y minimos
+        ax.set_xlim(min(numero),max(numero))
+        ax.set_ylim(0.7,5) 
+        #Se dibuja en pantalla-
+        selfi.canvas.draw()
+    except ValueError:
+        pass;
 '''
 Función que carga y almacena el nuevo estilo seleccionado para la aplicación.
 Parametros:
@@ -397,7 +400,7 @@ def registrarse(hojaUsuarios,hojaPatologias):
     
     registro = tk.Tk();
     registro.resizable(0,0)
-    registro.geometry('700x350')
+    registro.geometry('700x400')
     registro.title("Registro")
     registro.iconbitmap('assets/logo.ico')
     #lista = np.aray(hojaUsuarios.iloc[int(ab.getFilaUsuario(user,hojaUsuarios)),:])
@@ -493,16 +496,15 @@ def registrarse(hojaUsuarios,hojaPatologias):
     tk.Radiobutton(containerTIP, text="bajar",padx = 5, variable=varTipDiet, value=1).pack(expand=1,side=tk.LEFT,fill=tk.Y)
     tk.Radiobutton(containerTIP, text="mantener",padx = 20, variable=varTipDiet, value=2).pack(expand=1,side=tk.LEFT,fill=tk.Y)
     tk.Radiobutton(containerTIP, text="subir",padx = 20, variable=varTipDiet, value=3).pack(expand=1,side=tk.LEFT,fill=tk.Y)
+    
     listPatologias=list(hojaPatologias.iloc[:,1])
     label_Pat =  tk.Label(containerPAT, text="Patología: ",width=20,font=("bold", 10))
     label_Pat.pack(side=tk.LEFT)
-    
     patologia=tk.StringVar()
     patologia.set(listPatologias[0])
-    droplist=tk.OptionMenu(containerPAT,patologia, *listPatologias)
-    droplist.config(width=90, font=('Helvetica', 12), relief=tk.GROOVE)
-     
-    droplist.pack(side=tk.LEFT)
+    droplist=tk.OptionMenu(containerPAT, patologia, *listPatologias)
+    droplist.config(width=80, font=('Helvetica', 10), relief=tk.GROOVE)
+    droplist.pack()
 
     label_Err = tk.Label(containerERR, text="",width=20,font=("bold", 10),foreground="red")
     

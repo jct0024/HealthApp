@@ -13,11 +13,11 @@ import webbrowser
 matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-class SampleApp(tk.Tk):
+class HealthApp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-        
+        self.title("HealthApp")
         self.title_font = font.Font(family='Helvetica', size=18, weight="bold", slant="italic")
         self.geometry('800x500')
         self.minsize(800,500)
@@ -142,7 +142,7 @@ class Historial(tk.Frame):
         self.frameBotones.pack(side=LEFT)
         self.grafo.pack(side=tk.RIGHT)
         
-        buttonSemana = tk.Button(self.frameBotones, text="Semana ingerida",command=lambda: controller.show_frame("histSemanal"),relief=GROOVE,bg=colorDetalles)
+        buttonSemana = tk.Button(self.frameBotones, text="Ultimos 7 Días",command=lambda: controller.show_frame("histSemanal"),relief=GROOVE,bg=colorDetalles)
         #Volver al iniciao
         buttonComeBack = tk.Button(self.frameBotones, text="Volver al inicio",command=lambda: controller.show_frame("menuPrincipal"),relief=GROOVE,bg=colorDetalles)
         
@@ -923,5 +923,5 @@ if __name__ == "__main__":
         login.mainloop(); 
         if(vs.getBandera()):
             hojaAlimentos, hojaUsuarios, hojaPatologias,config = ab.cargarBaseDeDatos()
-            app = SampleApp()
+            app = HealthApp()
             app.mainloop()
