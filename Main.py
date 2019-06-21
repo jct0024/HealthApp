@@ -27,14 +27,14 @@ class HealthApp(tk.Tk):
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
         usr,pws =vs.getUsuario();
-        histUA = ab.cargarHistorial(usr)
-        ab.cargaHistorialHoy(histUA,menuDeHoy,datosAlimCliente,hojaAlimentos)
+        self.histUA,self.historialTotal = ab.cargarHistorial(usr)
+        ab.cargaHistorialHoy(self.histUA,menuDeHoy,datosAlimCliente,hojaAlimentos)
         menu = Menu(self)
         subMenuArchivo = Menu(menu)
         subMenuEstilo = Menu(menu)
         subMenuArchivo.add_command(label="Manual",command=self.pdf)
         config = [fondoGeneral,colorDetalles]
-        subMenuArchivo.add_command(label="Guardar",command=partial(ab.guardaTodo,usr,menuDeHoy, histUA ,hojaAlimentos, hojaUsuarios, hojaPatologias,config))
+        subMenuArchivo.add_command(label="Guardar",command=partial(ab.guardaTodo,usr,menuDeHoy, self.historialTotal ,hojaAlimentos, hojaUsuarios, hojaPatologias,config))
         subMenuArchivo.add_separator()
         subMenuArchivo.add_command(label="Salir",command= lambda: self.destroy())
         menu.add_cascade(label='Archivo',menu=subMenuArchivo)
@@ -119,7 +119,7 @@ class Historial(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         usr,pws =vs.getUsuario();
-        self.histUA = ab.cargarHistorial(usr)
+        self.histUA = self.controller.histUA
 
         label = tk.Label(self, text="Historial", font=controller.title_font,bg=fondoGeneral)
         label.pack(side="top", fill="x", pady=10)
@@ -167,7 +167,7 @@ class histSemanal(tk.Frame):
         scrollbar = tk.Scrollbar(self)
         scrollbar.pack(side = RIGHT, fill = Y)
         mylist = tk.Listbox(self, yscrollcommand = scrollbar.set)
-        histUA = ab.cargarHistorial(usr)
+        histUA = self.controller.histUA
         for index,dias in histUA.iterrows():
             if(index == 7):
                 break;

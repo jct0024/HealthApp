@@ -346,6 +346,9 @@ def gráfico(selfi,x,y,bandera):
         for index in x:
             numero.append(i)
             i+=1
+        if(i <= 1):
+            print(i)
+            raise ValueError;
         #selfi.lin.set_xticks(np.range(len(x)),x)
         selfi.lin.set_data(numero,y)
         ax = selfi.canvas.figure.axes[0]
@@ -373,6 +376,7 @@ def gráfico(selfi,x,y,bandera):
         #Se dibuja en pantalla-
         selfi.canvas.draw()
     except ValueError:
+        messagebox.showinfo("DIAS INSUFICIENTES","Días insuficientes registrados para llevar a cabo un gráfico")
         pass;
 '''
 Función que carga y almacena el nuevo estilo seleccionado para la aplicación.

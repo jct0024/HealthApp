@@ -49,9 +49,9 @@ Parametros:
 def cargarHistorial(usr):
     hist = pd.ExcelFile("Dat/Historial.xlsx");
     hojaHisAl = pd.read_excel(hist, 'UsrAl')
-    hojaHisAl = hojaHisAl.loc[hojaHisAl.Usuario == usr]
+    histUsr = hojaHisAl.loc[hojaHisAl.Usuario == usr]
     
-    return(hojaHisAl)
+    return histUsr,hojaHisAl
 '''
 Modificamos el array 'menuDeHoy' con la información de hoy si es que hay.
 Parametros:
@@ -204,6 +204,7 @@ Parametros:
 def guardarHistorial (usr, menuDeHoy, historial):
     fech = str(datetime.date.today())
     h = historial.loc[historial.Fecha == fech]
+    print(historial)
     hoy = pd.DataFrame({"Fecha":[fech],
                     "Usuario":[usr],
                     "Desayuno":[menuDeHoy[0]],
