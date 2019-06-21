@@ -117,3 +117,15 @@ Se llevaron a cabo las comprobaciones necesarias para ver que el sistema de reco
 \textbf{Problemas encontrados:}\\
 Se encontraron una serie de problemas que fueron corregidos en el apto. El sistema de recomendación fallaba, pues se quedaba con el alimento con menor diferencia, pero, para que se entienda, es tan mala una diferencia de 800, que de -800, para ello se halló el valor absoluto de la formula.\\
 Resulta que se hallaban bien los tipos de dietas pero no eran llamados en ningún momento en el programa, siendo un programa estático. Como solución se añadió este reparto a la formula principal de recomendación.
+\subsection{Eliminación y apertura de las bases de datos}
+Se ha llevado a cabo una serie de pruebas respecto a las bases de datos, como la eliminación previa a la ejecución y durante la ejecución de las bases de datos.
+\begin{itemize}
+\item Se prueba a eliminar las bases de datos y el fichero configuración antes de abrir el programa
+\item Se prueba a cerrar todos los archivos de datos mencionados antes durante la ejecución
+\item Se prueba a abrir/ocupar las bases previo la ejecución.
+\item Se prueba a abrir/ocupar los archivos previo a la ejecución.
+\end{itemize}
+\textbf{Problemas encontrados}\\
+Si los archivos necesarios por la aplicación eran eliminados antes de la apertura de la aplicación, la aplicación se bloqueaba impidiendo la continuidad sin avisar al usuario de que podía estar. Si se eliminaba durante, mientras no se fuera a guardar el progreso, se podía ejecutar sin ningún problema, en caso contrario se bloqueaba sin avisar de que estaba ocurriendo. Si se abren los archivos antes o durante el inicio de la aplicación, es el mismo caso que el anterior, no existe ningún problema hasta que se vaya a guardar el progreso.\\
+
+Para solucionar estos problemas, se crea un tratamiento de excepciones, de tal manera, que recoge la excepción lanzada por el sistema, y la convierte en un cuadro informativo al usuario, explicándole detalladamente que es exactamente lo que ocurre.

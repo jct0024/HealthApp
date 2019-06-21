@@ -52,22 +52,23 @@
 \contentsline {subsection}{Almacenamiento y carga de los datos}{35}{section*.30}% 
 \contentsline {subsection}{Navegabilidad}{36}{section*.31}% 
 \contentsline {subsection}{Algoritmos}{36}{section*.32}% 
+\contentsline {subsection}{Eliminaci\IeC {\'o}n y apertura de las bases de datos}{37}{section*.33}% 
 \contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{39}{appendix.Alph5}% 
 \contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{39}{section.Alph5.1}% 
 \contentsline {section}{\numberline {E.2}Requisitos de usuarios}{39}{section.Alph5.2}% 
 \contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{39}{section.Alph5.3}% 
 \contentsline {section}{\numberline {E.4}Manual del usuario}{39}{section.Alph5.4}% 
-\contentsline {subsection}{Inicio}{39}{section*.33}% 
-\contentsline {subsubsection}{Crear un Usuario/Registrarse}{40}{section*.34}% 
-\contentsline {subsubsection}{INICIAR SESI\IeC {\'O}N}{43}{section*.35}% 
-\contentsline {subsection}{P\IeC {\'A}GINA PRINCIPAL}{45}{section*.36}% 
-\contentsline {subsubsection}{ARCHIVO}{46}{section*.37}% 
-\contentsline {subsubsection}{ESTILOS}{47}{section*.38}% 
-\contentsline {subsection}{INFORMACI\IeC {\'O}N DE USUARIO}{48}{section*.39}% 
-\contentsline {subsection}{DIETA DIARIA}{50}{section*.40}% 
-\contentsline {subsubsection}{COMIDAS DEL D\IeC {\'I}A}{50}{section*.41}% 
-\contentsline {subsubsection}{REFRESCAR}{53}{section*.42}% 
-\contentsline {subsubsection}{A\IeC {\~N}ADIR PLATO}{54}{section*.43}% 
-\contentsline {subsection}{HISTORIAL}{58}{section*.44}% 
-\contentsline {subsubsection}{GR\IeC {\'A}FICOS}{60}{section*.45}% 
-\contentsline {subsubsection}{SEMANA INGERIDA}{60}{section*.46}% 
+\contentsline {subsection}{Inicio}{39}{section*.34}% 
+\contentsline {subsubsection}{Crear un Usuario/Registrarse}{40}{section*.35}% 
+\contentsline {subsubsection}{INICIAR SESI\IeC {\'O}N}{43}{section*.36}% 
+\contentsline {subsection}{P\IeC {\'A}GINA PRINCIPAL}{45}{section*.37}% 
+\contentsline {subsubsection}{ARCHIVO}{46}{section*.38}% 
+\contentsline {subsubsection}{ESTILOS}{47}{section*.39}% 
+\contentsline {subsection}{INFORMACI\IeC {\'O}N DE USUARIO}{48}{section*.40}% 
+\contentsline {subsection}{DIETA DIARIA}{50}{section*.41}% 
+\contentsline {subsubsection}{COMIDAS DEL D\IeC {\'I}A}{50}{section*.42}% 
+\contentsline {subsubsection}{REFRESCAR}{53}{section*.43}% 
+\contentsline {subsubsection}{A\IeC {\~N}ADIR PLATO}{54}{section*.44}% 
+\contentsline {subsection}{HISTORIAL}{58}{section*.45}% 
+\contentsline {subsubsection}{GR\IeC {\'A}FICOS}{60}{section*.46}% 
+\contentsline {subsubsection}{SEMANA INGERIDA}{60}{section*.47}% 

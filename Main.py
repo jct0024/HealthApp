@@ -102,6 +102,7 @@ class menuPrincipal(tk.Frame):
         self.icon = ImageTk.PhotoImage(imagen)
         self.icon_size = Label(self.bar,bg=fondoGeneral)
         self.icon_size.configure(image=self.icon)
+        
         button1 = tk.Button(self, text="Información de Usuario",
                             command=lambda: controller.show_frame("InfoUsuario"),height = 2, width = 20,relief=GROOVE,bg=colorDetalles)
         button2 = tk.Button(self, text="Dieta diaria",
@@ -325,6 +326,7 @@ class MostrarDieta(tk.Frame):
         self.style.theme_use('clam')
         tk.Frame.__init__(self, parent)   
         self.controller = controller
+        #Tabulación de comidas
         self.tab_control = ttk.Notebook(self)
         self.tabDesayuno = tk.Frame(self.tab_control,bg=fondoGeneral);
         self.tabAlmuerzo = tk.Frame(self.tab_control,bg=fondoGeneral);
@@ -337,11 +339,28 @@ class MostrarDieta(tk.Frame):
         self.tab_control.add(self.tabMerienda, text='Merienda')
         self.tab_control.add(self.tabCena, text='Cena')
         
-        self.n_opciones = 3;
-        self.style.configure("black.Horizontal.TProgressbar", background='green')
-        #self.style.configure("black.Horizontal.TProgressbar", background='orange')
         
+        #Cara alegre
+        self.imgPath ='assets/caraVerde.png'
+        self.imagenVerde = Image.open( self.imgPath)
+        self.imagenVerde =  self.imagenVerde.resize((25, 25), Image.ANTIALIAS)
+        self.iconoV = ImageTk.PhotoImage( self.imagenVerde, master=self)   
+        self.iconverde = tk.Label(self,bg=fondoGeneral)
+        self.iconverde.configure(image= self.iconoV)
+        
+             
+        self.n_opciones = 3;
+        self.style.configure("black.Horizontal.TProgressbar", background='green')      
         self.barProgTotal = ttk.Progressbar(self,length=150,style='black.Horizontal.TProgressbar')
+        
+        #Cara triste
+        self.imgPath ='assets/caraRoja.png'
+        self.imagenRojo = Image.open( self.imgPath)
+        self.imagenRojo =  self.imagenRojo.resize((25, 25), Image.ANTIALIAS)
+        self.iconoRojo = ImageTk.PhotoImage( self.imagenRojo, master=self)   
+        self.iconRojo = tk.Label(self,bg=fondoGeneral)
+        self.iconRojo.configure(image= self.iconoRojo)
+        
         n=0;
         calidad = 0;
         for i in menuDeHoy:
@@ -361,9 +380,11 @@ class MostrarDieta(tk.Frame):
         self.MeriendaF()
         self.CenaF()
         self.tab_control.pack(expand=1, fill='both')
-
+        
         ###-Comun todas comidas-######
+        self.iconRojo.pack(side=tk.RIGHT)
         self.barProgTotal.pack(side=RIGHT)
+        self.iconverde.pack(side=tk.RIGHT)
         self.buttonInicio = tk.Button(self, text="Volver al inicio", command=lambda: self.controller.show_frame("menuPrincipal"),relief=GROOVE,bg=colorDetalles)
         self.buttonAddComida = tk.Button(self, text="Añadir Alimento", command=lambda: self.controller.show_frame("addComida"),relief=GROOVE,bg=colorDetalles)
         self.buttonInicio.pack(side=LEFT)
