@@ -18,27 +18,36 @@ Return:
 def cargarBaseDeDatos():
     #Cargamos la base de datos
     #doc = wx.Book("BaseDeDatosDeAlimentos.xlsx")
-    doc = pd.ExcelFile("Dat/BaseDeDatosDeAlimentos.xlsx")
-    docU = pd.ExcelFile("Dat/BaseDeDatosUsuarios.xlsx")
-    #Seleccionamos la hoja de excell que contendrá dicha información-
-
-    hojaAl = pd.read_excel(doc,'Alimentos')
-    hojaUs = pd.read_excel(docU,'Usuarios')
-    hojaPa = pd.read_excel(doc,'Patologias')
-    archivo = open('Dat/config.txt','r')
-    config = str(archivo.read()).split(':')
-    archivo.close()
+    try:
+        doc = pd.ExcelFile("Dat/BaseDeDatosDeAlimentos.xlsx")
+        docU = pd.ExcelFile("Dat/BaseDeDatosUsuarios.xlsx")
+        #Seleccionamos la hoja de excell que contendrá dicha información-
     
-    return hojaAl,hojaUs,hojaPa,config;
+        hojaAl = pd.read_excel(doc,'Alimentos')
+        hojaUs = pd.read_excel(docU,'Usuarios')
+        hojaPa = pd.read_excel(doc,'Patologias')
+        archivo = open('Dat/config.txt','r')
+        config = str(archivo.read()).split(':')
+        archivo.close()
+        
+        return hojaAl,hojaUs,hojaPa,config;
+    except FileNotFoundError:
+        messagebox.showerror("ERROR FATAL","Base da datos dañada o eliminada")
 def cargarUsuarios():
-    docU = pd.ExcelFile("Dat/BaseDeDatosUsuarios.xlsx")
-    hojaUs = pd.read_excel(docU,'Usuarios')
-    return hojaUs
+    try:
+        docU = pd.ExcelFile("Dat/BaseDeDatosUsuarios.xlsx")
+        hojaUs = pd.read_excel(docU,'Usuarios')
+        return hojaUs
+    except FileNotFoundError:
+        messagebox.showerror("ERROR FATAL","Base da datos dañada o eliminada")
 def cargarBaseAlimentos():
-    doc = pd.ExcelFile("Dat/BaseDeDatosDeAlimentos.xlsx")
-    hojaAl = pd.read_excel(doc,'Alimentos')
-    hojaPa = pd.read_excel(doc,'Patologias')
-    return hojaAl,hojaPa;
+    try:
+        doc = pd.ExcelFile("Dat/BaseDeDatosDeAlimentos.xlsx")
+        hojaAl = pd.read_excel(doc,'Alimentos')
+        hojaPa = pd.read_excel(doc,'Patologias')
+        return hojaAl,hojaPa;
+    except FileNotFoundError:
+        messagebox.showerror("ERROR FATAL","Base da datos dañada o eliminada")
 '''
 Función que carga el historial del usuario para futuros calculosy gráficas para ello necesita solo la id del usuario,se 
 criba y se devuelve para ser almacenado.
@@ -47,11 +56,14 @@ Parametros:
 '''
 
 def cargarHistorial(usr):
-    hist = pd.ExcelFile("Dat/Historial.xlsx");
-    hojaHisAl = pd.read_excel(hist, 'UsrAl')
-    histUsr = hojaHisAl.loc[hojaHisAl.Usuario == usr]
+    try:
+        hist = pd.ExcelFile("Dat/Historial.xlsx");
+        hojaHisAl = pd.read_excel(hist, 'UsrAl')
+        histUsr = hojaHisAl.loc[hojaHisAl.Usuario == usr]
     
-    return histUsr,hojaHisAl
+        return histUsr,hojaHisAl
+    except FileNotFoundError:
+        messagebox.showerror("ERROR FATAL","Base da datos dañada o eliminada")
 '''
 Modificamos el array 'menuDeHoy' con la información de hoy si es que hay.
 Parametros:
@@ -179,21 +191,26 @@ Parametros:
     config = configuración de estilos de la aplicación.
 '''
 def guardaTodo(usr, menuDeHoy, historial,hojaAlimentos, hojaUsuarios, hojaPatologias,config):
-    guardarHistorial (usr, menuDeHoy, historial)
-    guardarUsuario(hojaUsuarios)
-    guardarDatos (hojaAlimentos, hojaPatologias)
-
-    
-    messagebox.showinfo("Ya se ha guardado","Datos guardados ya puede cerrar el programa")
+    try:
+        guardarHistorial (usr, menuDeHoy, historial)
+        guardarUsuario(hojaUsuarios)
+        guardarDatos (hojaAlimentos, hojaPatologias)
+        messagebox.showinfo("Ya se ha guardado","Datos guardados ya puede cerrar el programa")
+    except PermissionError:
+        messagebox.showwarning("Cierre la base de datos","Imposible guardar, base de datos abierta¡")
 '''
 Función que te guarda los datos del usuario.
 Parametros:
     hojaUsuarios = Array con los datos ya cambiados de los usuarios.
 '''
 def guardarUsuario(hojaUsuarios):
-    writer = pd.ExcelWriter("Dat/BaseDeDatosUsuarios.xlsx")
-    hojaUsuarios.to_excel(writer,'Usuarios',index=False)
-    writer.save();
+    try:
+        writer = pd.ExcelWriter("Dat/BaseDeDatosUsuarios.xlsx")
+        hojaUsuarios.to_excel(writer,'Usuarios',index=False)
+        writer.save();
+        
+    except PermissionError:
+        raise PermissionError
 '''
 Funcion que almacena y guarda la información diaria del usaurio.
 Parametros:
@@ -202,24 +219,27 @@ Parametros:
     historial = Array con el historial completo para añadir la nueva fila.
 '''
 def guardarHistorial (usr, menuDeHoy, historial):
-    fech = str(datetime.date.today())
-    h = historial.loc[historial.Fecha == fech]
-    print(historial)
-    hoy = pd.DataFrame({"Fecha":[fech],
-                    "Usuario":[usr],
-                    "Desayuno":[menuDeHoy[0]],
-                    "Almuerzo":[menuDeHoy[1]],
-                    "Comida":[menuDeHoy[2]],
-                    "Merienda":[menuDeHoy[3]],
-                    "Cena":[menuDeHoy[4]]})
-    if(usr in list(h.Usuario)):
-        lala = historial.index[(historial.Fecha == fech) & (historial.Usuario == usr)]
-        historial.iloc[lala] = hoy
-    else:
-        historial=historial.append(hoy,sort=False)    
-    writer = pd.ExcelWriter("Dat/Historial.xlsx")
-    historial.to_excel(writer,'UsrAl',index=False)
-    writer.save();
+    try:
+        fech = str(datetime.date.today())
+        h = historial.loc[historial.Fecha == fech]
+        print(historial)
+        hoy = pd.DataFrame({"Fecha":[fech],
+                        "Usuario":[usr],
+                        "Desayuno":[menuDeHoy[0]],
+                        "Almuerzo":[menuDeHoy[1]],
+                        "Comida":[menuDeHoy[2]],
+                        "Merienda":[menuDeHoy[3]],
+                        "Cena":[menuDeHoy[4]]})
+        if(usr in list(h.Usuario)):
+            lala = historial.index[(historial.Fecha == fech) & (historial.Usuario == usr)]
+            historial.iloc[lala] = hoy
+        else:
+            historial=historial.append(hoy,sort=False)    
+        writer = pd.ExcelWriter("Dat/Historial.xlsx")
+        historial.to_excel(writer,'UsrAl',index=False)
+        writer.save();
+    except PermissionError:
+        messagebox.showwarning("Cierre la base de datos","Imposible guardar, base de datos abierta¡")
 '''
 Función que te guarda los datos de los alimentos y patologias en BaseDeDatosAlimentos.xlsx
 parametros:
@@ -227,10 +247,13 @@ parametros:
     hojaPatologias = Array de las patologias a almacenar.
 '''
 def guardarDatos (hojaAlimentos, hojaPatologias):
-    writer = pd.ExcelWriter("Dat/BaseDeDatosDeAlimentos.xlsx")
-    hojaAlimentos.to_excel(writer,'Alimentos',index=False)
-    hojaPatologias.to_excel(writer,'Patologias',index=False)
-    writer.save();
+    try:
+        writer = pd.ExcelWriter("Dat/BaseDeDatosDeAlimentos.xlsx")
+        hojaAlimentos.to_excel(writer,'Alimentos',index=False)
+        hojaPatologias.to_excel(writer,'Patologias',index=False)
+        writer.save();
+    except PermissionError:
+        raise PermissionError
 '''
 Funcion que te comprueba y guarda los datos recibidos como parámetros del usuario actualmente dado de alta en la aplicación
 Parametros:
@@ -279,7 +302,8 @@ def ComproYAlmacenamientoUsuario(hojaUsuarios,selfi,controller,hojaPatologias, p
         controller.show_frame("InfoUsuario")
     except ValueError:
         selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")
-   
+    except PermissionError:
+        messagebox.showwarning("Cierre la base de datos","Imposible guardar, !base de datos abierta¡") 
     
 '''
 Función que te comprueba que los datos son correctos e inserta un nuevo menu a la base de datos
@@ -288,24 +312,27 @@ guarda el alimento, lo hace solo sobre ese cambio y no tiene que guardar todo su
 en la lista, lo cual evita que se sobreescriba y se borren los avances.
 '''
 def ComrproYAlmacenamientoAlimento(hojaAlimentos,nombre, kilocalorias, grasa,saturada, hidratos,fibra, azucar, proteina,sodio, tipo, calidad):
-    alimentos, patologias = cargarBaseAlimentos() 
-    nuevaFila= pd.DataFrame({'Nombre':[nombre],
-                             'Calorias': [kilocalorias],
-                             'Grasa': [grasa], 
-                             'Saturadas':[saturada],
-                             'Hidratos':[hidratos],
-                             'Fibra':[fibra],
-                             'Azucares':[azucar],
-                             'Proteina':[proteina],
-                             'Sodio':[sodio],
-                             'Tipo': [tipo],
-                             'LRE':[0],
-                             'Calidad': [calidad]})
-    hojaAlimentos = hojaAlimentos.append(nuevaFila)
-    alimentos = alimentos.append(nuevaFila,sort=False)
-    #Guardamos la 'imagen' de la base de datos sin retoques, solo con la nueva linea
-    guardarDatos(alimentos,patologias)
-    messagebox.showinfo("Datos actualizados","Datos actualizados correctamente, veras los cambios al reiniciar el programa")
+    try:
+        alimentos, patologias = cargarBaseAlimentos() 
+        nuevaFila= pd.DataFrame({'Nombre':[nombre],
+                                 'Calorias': [kilocalorias],
+                                 'Grasa': [grasa], 
+                                 'Saturadas':[saturada],
+                                 'Hidratos':[hidratos],
+                                 'Fibra':[fibra],
+                                 'Azucares':[azucar],
+                                 'Proteina':[proteina],
+                                 'Sodio':[sodio],
+                                 'Tipo': [tipo],
+                                 'LRE':[0],
+                                 'Calidad': [calidad]})
+        hojaAlimentos = hojaAlimentos.append(nuevaFila)
+        alimentos = alimentos.append(nuevaFila,sort=False)
+        #Guardamos la 'imagen' de la base de datos sin retoques, solo con la nueva linea
+        guardarDatos(alimentos,patologias)
+        messagebox.showinfo("Datos actualizados","Datos actualizados correctamente, veras los cambios al reiniciar el programa")
+    except PermissionError:
+        messagebox.showwarning("Cierre la base de datos","Imposible guardar, !base de datos abierta¡") 
 '''
 Función que inserta un nuevo usuario en la base de datos, y comprueba la veracidad de los datos antes de ser insertados.
 Parametros:
@@ -366,6 +393,6 @@ def NuevoUsuario(ventana,hojaUsuarios,dni, nombre, apellido, pwd, sexo, edad,alt
         except ValueError:
             mensajeError.config(text="ERROR: Caracter erroneo")
         except PermissionError:
-            messagebox.showinfo("ERROR","Base de datos en Uso")
+            messagebox.showwarning("Aviso no se guardo","Base de datos abierta, imposible guardar")
 
         
