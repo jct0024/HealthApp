@@ -44,13 +44,13 @@
 \contentsline {subsection}{C\IeC {\'a}lculos Dieta}{24}{section*.27}% 
 \contentsline {subsubsection}{CalculoTMB, rapartoDeKcal y distribuci\IeC {\'o}nDeMacronutrientes}{25}{section*.28}% 
 \contentsline {subsubsection}{OrdMinimaDiferencia y formulDif}{25}{section*.29}% 
-\contentsline {subsubsection}{Gr\IeC {\'a}ficos}{26}{section*.30}% 
+\contentsline {subsubsection}{Gr\IeC {\'a}ficos}{27}{section*.30}% 
 \contentsline {subsection}{AdminBase y estructura de la base de datos}{27}{section*.31}% 
 \contentsline {subsubsection}{CargaBaseDeDatos y guardaDatos}{27}{section*.32}% 
 \contentsline {subsubsection}{Guardar Todo}{30}{section*.33}% 
 \contentsline {subsubsection}{getXXXX}{31}{section*.34}% 
 \contentsline {subsection}{Vista}{31}{section*.35}% 
-\contentsline {subsubsection}{Comprobaci\IeC {\'o}n usuario}{31}{section*.36}% 
+\contentsline {subsubsection}{Comprobaci\IeC {\'o}n usuario}{32}{section*.36}% 
 \contentsline {subsubsection}{Seleccionar y refrescar}{32}{section*.37}% 
 \contentsline {subsection}{Main}{33}{section*.38}% 
 \contentsline {section}{\numberline {4.7}Herramientas}{34}{section.4.7}% 

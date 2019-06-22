@@ -23,32 +23,32 @@
 \contentsline {figure}{\numberline {D.3}{\ignorespaces Interfaz del editor Spyder para Python.}}{32}{figure.Alph4.3}% 
 \contentsline {figure}{\numberline {D.4}{\ignorespaces GitKraken}}{33}{figure.Alph4.4}% 
 \contentsline {figure}{\numberline {D.5}{\ignorespaces Boton ejecutar de Spyder.}}{34}{figure.Alph4.5}% 
-\contentsline {figure}{\numberline {D.6}{\ignorespaces Pantalla nueva generada por Tkinter.}}{34}{figure.Alph4.6}% 
+\contentsline {figure}{\numberline {D.6}{\ignorespaces Pantalla nueva generada por la librer\IeC {\'\i }a Tkinter (Versi\IeC {\'o}n 2.0)}}{34}{figure.Alph4.6}% 
 \contentsline {figure}{\numberline {D.7}{\ignorespaces Se\IeC {\~n}alizaci\IeC {\'o}n de la terminal interna de Spyder}}{35}{figure.Alph4.7}% 
 \addvspace {10pt}
 \contentsline {figure}{\numberline {E.1}{\ignorespaces Pantalla de inicio del programa (Versi\IeC {\'o}n 2.0)}}{40}{figure.Alph5.1}% 
-\contentsline {figure}{\numberline {E.2}{\ignorespaces Pantalla de inicio, bot\IeC {\'o}n Registrar (Versi\IeC {\'o}n 1.0)}}{41}{figure.Alph5.2}% 
-\contentsline {figure}{\numberline {E.3}{\ignorespaces Ventana de registro del nuevo usuario se\IeC {\~n}alizada para el registro (Version 1.0)}}{43}{figure.Alph5.3}% 
-\contentsline {figure}{\numberline {E.4}{\ignorespaces Ventana de registro del nuevo usuario se\IeC {\~n}alizada para el cierre (Version 1.0)}}{43}{figure.Alph5.4}% 
-\contentsline {figure}{\numberline {E.5}{\ignorespaces Inicio de sesi\IeC {\'o}n detallado (Versi\IeC {\'o}n 2.0)}}{44}{figure.Alph5.5}% 
-\contentsline {figure}{\numberline {E.6}{\ignorespaces Imagen detallando el cierre del programa (Version 2.0)}}{45}{figure.Alph5.6}% 
-\contentsline {figure}{\numberline {E.7}{\ignorespaces P\IeC {\'a}gina principal de la aplicaci\IeC {\'o}n (Version 1.0)}}{46}{figure.Alph5.7}% 
-\contentsline {figure}{\numberline {E.8}{\ignorespaces Pantalla Principal se\IeC {\~n}alizando la opci\IeC {\'o}n Archivo (Versi\IeC {\'o}n 1.0)}}{46}{figure.Alph5.8}% 
-\contentsline {figure}{\numberline {E.9}{\ignorespaces Pantalla Principal se\IeC {\~n}alizando la opci\IeC {\'o}n estilos (Versi\IeC {\'o}n 1.0)}}{47}{figure.Alph5.9}% 
-\contentsline {figure}{\numberline {E.10}{\ignorespaces Bot\IeC {\'o}n para pasar e la ventana de la informaci\IeC {\'o}n del usuario (Versi\IeC {\'o}n 1.0)}}{48}{figure.Alph5.10}% 
-\contentsline {figure}{\numberline {E.11}{\ignorespaces Bot\IeC {\'o}n para editar la informaci\IeC {\'o}n (Versi\IeC {\'o}n 1.0)}}{49}{figure.Alph5.11}% 
-\contentsline {figure}{\numberline {E.12}{\ignorespaces Pantalla para editar la informaci\IeC {\'o}n del Usuario(Versi\IeC {\'o}n 1.0)}}{49}{figure.Alph5.12}% 
-\contentsline {figure}{\numberline {E.13}{\ignorespaces Bot\IeC {\'o}n para pasar a la dieta diaria(Versi\IeC {\'o}n 1.0)}}{50}{figure.Alph5.13}% 
-\contentsline {figure}{\numberline {E.14}{\ignorespaces Pantalla principal de mostrar dieta(Versi\IeC {\'o}n 1.0)}}{51}{figure.Alph5.14}% 
-\contentsline {figure}{\numberline {E.15}{\ignorespaces Informaci\IeC {\'o}n del plato y selecciones del d\IeC {\'\i }a (Version 1.0)}}{52}{figure.Alph5.15}% 
-\contentsline {figure}{\numberline {E.16}{\ignorespaces Selecci\IeC {\'o}n de comida y guardado de la elecci\IeC {\'o}n (Version 1.0)}}{53}{figure.Alph5.16}% 
-\contentsline {figure}{\numberline {E.17}{\ignorespaces Resultados del bot\IeC {\'o}n refrescar (Versi\IeC {\'o}n 1.0)}}{54}{figure.Alph5.17}% 
-\contentsline {figure}{\numberline {E.18}{\ignorespaces Caliad Nutriscore}}{54}{figure.Alph5.18}% 
-\contentsline {figure}{\numberline {E.19}{\ignorespaces Bot\IeC {\'o}n a\IeC {\~n}adir alimento (Versi\IeC {\'o}n 1.0)}}{55}{figure.Alph5.19}% 
-\contentsline {figure}{\numberline {E.20}{\ignorespaces Formulario para a\IeC {\~n}adir un nuevo alimento (Versi\IeC {\'o}n 2.0)}}{55}{figure.Alph5.20}% 
-\contentsline {figure}{\numberline {E.21}{\ignorespaces Partes del formulario (Versi\IeC {\'o}n 2.0)}}{57}{figure.Alph5.21}% 
-\contentsline {figure}{\numberline {E.22}{\ignorespaces Opciones del tipo comida (V.1.0)}}{57}{figure.Alph5.22}% 
-\contentsline {figure}{\numberline {E.23}{\ignorespaces Pantalla de validaci\IeC {\'o}n de alimento (Versi\IeC {\'o}n 1.2)}}{58}{figure.Alph5.23}% 
-\contentsline {figure}{\numberline {E.24}{\ignorespaces Bot\IeC {\'o}n Historial(Versi\IeC {\'o}n 1.0)}}{59}{figure.Alph5.24}% 
-\contentsline {figure}{\numberline {E.25}{\ignorespaces Pantalla del Historial (V.1.0)}}{60}{figure.Alph5.25}% 
-\contentsline {figure}{\numberline {E.26}{\ignorespaces Pantalla de muestra de la semana ingerida (Versi\IeC {\'o}n 1.0)}}{61}{figure.Alph5.26}% 
+\contentsline {figure}{\numberline {E.2}{\ignorespaces Pantalla de inicio, bot\IeC {\'o}n Registrar (Versi\IeC {\'o}n 1.0)}}{40}{figure.Alph5.2}% 
+\contentsline {figure}{\numberline {E.3}{\ignorespaces Ventana de registro del nuevo usuario se\IeC {\~n}alizada para el registro (Version 1.0)}}{42}{figure.Alph5.3}% 
+\contentsline {figure}{\numberline {E.4}{\ignorespaces Ventana de registro del nuevo usuario se\IeC {\~n}alizada para el cierre (Version 1.0)}}{42}{figure.Alph5.4}% 
+\contentsline {figure}{\numberline {E.5}{\ignorespaces Inicio de sesi\IeC {\'o}n detallado (Versi\IeC {\'o}n 2.0)}}{43}{figure.Alph5.5}% 
+\contentsline {figure}{\numberline {E.6}{\ignorespaces Imagen detallando el cierre del programa (Version 2.0}}{43}{figure.Alph5.6}% 
+\contentsline {figure}{\numberline {E.7}{\ignorespaces P\IeC {\'a}gina principal de la aplicaci\IeC {\'o}n (Version 1.0)}}{44}{figure.Alph5.7}% 
+\contentsline {figure}{\numberline {E.8}{\ignorespaces Pantalla Principal se\IeC {\~n}alizando la opci\IeC {\'o}n Archivo (Versi\IeC {\'o}n 1.0)}}{44}{figure.Alph5.8}% 
+\contentsline {figure}{\numberline {E.9}{\ignorespaces Pantalla Principal se\IeC {\~n}alizando la opci\IeC {\'o}n estilos (Versi\IeC {\'o}n 1.0)}}{45}{figure.Alph5.9}% 
+\contentsline {figure}{\numberline {E.10}{\ignorespaces Bot\IeC {\'o}n para pasar e la ventana de la informaci\IeC {\'o}n del usuario (Versi\IeC {\'o}n 1.0)}}{46}{figure.Alph5.10}% 
+\contentsline {figure}{\numberline {E.11}{\ignorespaces Bot\IeC {\'o}n para editar la informaci\IeC {\'o}n (Versi\IeC {\'o}n 1.0)}}{47}{figure.Alph5.11}% 
+\contentsline {figure}{\numberline {E.12}{\ignorespaces Pantalla para editar la informaci\IeC {\'o}n del Usuario(Versi\IeC {\'o}n 1.0)}}{47}{figure.Alph5.12}% 
+\contentsline {figure}{\numberline {E.13}{\ignorespaces Bot\IeC {\'o}n para pasar a la dieta diaria(Versi\IeC {\'o}n 1.0)}}{48}{figure.Alph5.13}% 
+\contentsline {figure}{\numberline {E.14}{\ignorespaces Pantalla principal de mostrar dieta(Versi\IeC {\'o}n 1.0)}}{49}{figure.Alph5.14}% 
+\contentsline {figure}{\numberline {E.15}{\ignorespaces Informaci\IeC {\'o}n del plato y selecciones del d\IeC {\'\i }a (Version 1.0)}}{50}{figure.Alph5.15}% 
+\contentsline {figure}{\numberline {E.16}{\ignorespaces Selecci\IeC {\'o}n de comida y guardado de la elecci\IeC {\'o}n (Version 1.0)}}{51}{figure.Alph5.16}% 
+\contentsline {figure}{\numberline {E.17}{\ignorespaces Resultados del bot\IeC {\'o}n refrescar (Versi\IeC {\'o}n 1.0)}}{52}{figure.Alph5.17}% 
+\contentsline {figure}{\numberline {E.18}{\ignorespaces Caliad Nutriscore}}{52}{figure.Alph5.18}% 
+\contentsline {figure}{\numberline {E.19}{\ignorespaces Bot\IeC {\'o}n a\IeC {\~n}adir alimento (Versi\IeC {\'o}n 1.0)}}{53}{figure.Alph5.19}% 
+\contentsline {figure}{\numberline {E.20}{\ignorespaces Formulario para a\IeC {\~n}adir un nuevo alimento (Versi\IeC {\'o}n 2.0)}}{53}{figure.Alph5.20}% 
+\contentsline {figure}{\numberline {E.21}{\ignorespaces Partes del formulario (Versi\IeC {\'o}n 2.0)}}{55}{figure.Alph5.21}% 
+\contentsline {figure}{\numberline {E.22}{\ignorespaces Opciones del tipo comida (V.1.0)}}{55}{figure.Alph5.22}% 
+\contentsline {figure}{\numberline {E.23}{\ignorespaces Pantalla de validaci\IeC {\'o}n de alimento (Versi\IeC {\'o}n 1.2)}}{56}{figure.Alph5.23}% 
+\contentsline {figure}{\numberline {E.24}{\ignorespaces Bot\IeC {\'o}n Historial(Versi\IeC {\'o}n 1.0)}}{57}{figure.Alph5.24}% 
+\contentsline {figure}{\numberline {E.25}{\ignorespaces Pantalla del Historial (V.1.0)}}{58}{figure.Alph5.25}% 
+\contentsline {figure}{\numberline {E.26}{\ignorespaces Pantalla de muestra de la semana ingerida (Versi\IeC {\'o}n 1.0)}}{59}{figure.Alph5.26}% 

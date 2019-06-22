@@ -42,7 +42,7 @@ TMB =  ((10 * Peso(kg))+(6,25*Altura (cm))-(5*edad)+5)*ActividadFisica
 \begin{equation}
 TMB =  ((10 * Peso(kg))+(6,25*Altura (cm))-(5*edad)-161)*ActividadFisica
 \end{equation}
-Donde actividad física se corresponde con los siguientes valores:
+Donde actividad física se corresponde con los siguientes valores mostrados en la Tabla 4.3,
 \tablaSmall{Valor de la actividad física en TMB}{l c c c c}{TablaActividadYMB}
 { \multicolumn{1}{l}{Ejercicio } & Valor de ActividadFisica\\}{ 
 Poco ejercicio & 1,2\\
@@ -105,7 +105,7 @@ Respecto a los colores, se decido un tema básico que no agote la vista del usua
 Es el modulo principal sobre el que se sustenta el programa, hace todos los cálculos de recomendación, kilocalorías, repartos, etc.\\
 En el manual del programador se extenderá mas sobre cada función, a continuación, se hará un breve comentario sobre cada función en base a la metodología.
 \subsubsection{CalculoTMB, rapartoDeKcal y distribuciónDeMacronutrientes}
-Estas tres funciones trabajan de manera paralela, el \textbf{calculoTMB}, lo que hace es calcular el gasto calórico basal, de aquí se saca el objetivo diario, una vez calculada la cantidad de Kilocalorías diarias, se reparten las kcal (\textbf{repartoDeKcal} )según sea desayuno, almuerzo, merienda o cena, se reparten en base a unos porcentajes calculados en base a distintas fuentes de información encontrados a lo largo del estudio sobre el que se sustenta este proyecto, no son porcentajes exactos, Se distribuyen de la siguiente manera:
+Estas tres funciones trabajan de manera paralela, el \textbf{calculoTMB}, lo que hace es calcular el gasto calórico basal, de aquí se saca el objetivo diario, una vez calculada la cantidad de Kilocalorías diarias, se reparten las kcal (\textbf{repartoDeKcal} )según sea desayuno, almuerzo, merienda o cena, se reparten en base a unos porcentajes calculados en base a distintas fuentes de información encontrados a lo largo del estudio sobre el que se sustenta este proyecto, no son porcentajes exactos. Su distribución es plasmada en la Tabla 4.4
 \tablaSmall{Porcentajes totales de cada comida}{l c c c c}{porcentajesTipoComida}
 { \multicolumn{1}{l}{Comida } & Porcentaje(\%) & Descripción\\}{ 
 Desayuno & 24,75 & Alta carga calórica, rica en hidratos\\
@@ -124,14 +124,16 @@ son el pilar base de esta aplicación, en cuanto al calculo de comidas se refier
 DiferenciaMacronutriente = \frac{(KMCD - A)}{((KCDT-KMM)+(KMTC-KTM))}
 \end{equation}
 Donde:
+\begin{itemize}
+\item \textbf{KMCD:} Número de Kcalorias del macronutriente (Hidratos,proteinas o grasas) de la Comida (Desayuno, almuerzo...) que debería llevar en esa comida
+\item \textbf{A:} Actual número de kcalorias de ese macronuetriente que llevo en todo el día (Si estoy en Comida: desayuno+almuerzo+comida).
+\item \textbf{KCDT:} Kilocalorias que debería comer en esta comida concreta para este macronutriente concreto.
+\item \textbf{KMM:} Kilocalorias del macronutriente concreto del menú.
+\item \textbf{KMTC:} Kilocalorias totales que debería comer en esta comida.
+\item \textbf{ktm:} kilocalorias totales que tiene el menú a recomendar.
 
-KMCD: Número de Kcalorias del macronutriente (Hidratos,proteinas o grasas) de la Comida (Desayuno, almuerzo...) que debería llevar en esa comida\\
-A: Actual número de kcalorias de ese macronuetriente que llevo en todo el día (Si estoy en Comida: desayuno+almuerzo+comida).\\
-KCDT: Kilocalorias que debería comer en esta comida concreta para este macronutriente concreto.\\
-KMM: Kilocalorias del macronutriente concreto del menú.\\
-KMTC: Kilocalorias totales que debería comer en esta comida.\\
-ktm: kilocalorias totales que tiene el menú a recomendar.\\
-\\
+\end{itemize}
+
 De esta manera cuanto mayor sea la diferencia entre lo que debo llevar y lo que llevo, y menor sea la diferencia entre lo que deseo y las características del alimento, mayor será la puntuación de ese alimento para su recomendación ( \textbf{Nota: Se ordena de mayor diferencia a menor}).\\
 Por ultimo se realiza la media entre los tres macronutrientes principales:
 \begin{equation}
@@ -180,7 +182,11 @@ Tanto id, como nombre, apellido y password, son los datos privados del usuario, 
 
 \textbf{\textsc{Patologías}}\\
 En esta hoja, la cual se encuentra dentro de las BaseDeDatosDeAlimentos, se encuentra la información básica de las patologías nombre, id, y el tipo de dieta que lleva alto o bajo en carbohidratos, proteínas o grasas. Esto se carga al inicio del programa, se comprueba si el usuario padece alguna patología y se selecciona el tipo de dieta correspondiente.
-\imagen{BasePatologias}{Estructura base de datos Patologías}
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=1]{BasePatologias} 
+\caption{Estructura base de datos Patologías}
+\end{figure}
 \subsubsection{Guardar Todo}
 Función que se encarga de juntar en una única función el almacenamiento de todos los datos con los que se trabaja en esta herramienta. Dentro de esta función encontramos:
 \begin{itemize}
