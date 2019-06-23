@@ -33,6 +33,21 @@ def cargarBaseDeDatos():
         return hojaAl,hojaUs,hojaPa,config;
     except FileNotFoundError:
         messagebox.showerror("ERROR FATAL","Base da datos dañada o eliminada")
+def cargaRegistro():
+    try:
+        docRegistro = pd.ExcelFile("Dat/RegistroMejora.xlsx")
+        hojaRegistro = pd.read_excel(docRegistro,'Registro')
+        return hojaRegistro
+    except FileNotFoundError:
+        messagebox.showerror("ERROR FATAL","Base da datos dañada o eliminada")    
+def cargaRegistroUsuario(dni):
+    try:
+        docRegistro = pd.ExcelFile("Dat/RegistroMejora.xlsx")
+        hojaRegistro = pd.read_excel(docRegistro,'Registro')
+        hojaRegistro[hojaRegistro.dni == dni]
+        return hojaRegistro[hojaRegistro.dni == dni]
+    except FileNotFoundError:
+        messagebox.showerror("ERROR FATAL","Base da datos dañada o eliminada")    
 def cargarUsuarios():
     try:
         docU = pd.ExcelFile("Dat/BaseDeDatosUsuarios.xlsx")
@@ -254,6 +269,79 @@ def guardarDatos (hojaAlimentos, hojaPatologias):
         writer.save();
     except PermissionError:
         raise PermissionError
+def guardaRegistroPeso(usr, registro, pesoNuevo, bandera, tipo):
+    try:
+        fech = str(datetime.date.today())
+        if(bandera==0):
+            valor=0;
+            if(tipo == 'subir'):
+                valor = 500;
+            elif(tipo == 'bajar'):
+                valor = -500
+            else:
+                valor = 0
+            ultimoRegistro = pd.DataFrame({"Fecha":[fech],
+                        "dni":[usr],
+                        "peso":[pesoNuevo],
+                        "valor":[valor],
+                        "tipo":[tipo],
+                        })
+            registro = registro.append(ultimoRegistro, sort=False)
+        elif(bandera==1):
+            fila = registro.index[registro.dni == usr]
+            ultimaFecha = pd.to_datetime(registro['Fecha'].iloc[fila])
+            
+            tipoAntiguo = registro['tipo'].iloc[fila]
+            for i in tipoAntiguo:               
+                t = i
+            if(str(i) == str(tipo)):
+                #ultimaFecha  = datetime.datetime.strptime(str(registro['Fecha'].iloc[fila]), '%Y-%m-%d')
+                difFecha = datetime.date.today()-ultimaFecha.dt.date
+                difFechaInt = int(difFecha.dt.components.days)
+                if(difFechaInt >= 7):
+                    objetivo = registro['tipo'].iloc[fila]
+                    for o in objetivo:
+                        objectTipo = o
+                    if(objectTipo == 'bajar'):
+                        kilos = -1*(2*difFechaInt/14)
+                    else:
+                        kilos = 2*difFechaInt/14
+
+                    difPeso = pesoNuevo - float(registro['peso'].iloc[fila]) 
+
+                    #Si ha cambiado lo que debería haber cambiado (margen de error del 10%)
+                    if (difPeso < (kilos*1.1) and difPeso > (kilos*0.9)):
+                        registro['Fecha'].iloc[fila] = fech
+                        registro['peso'].iloc[fila] = pesoNuevo
+                    elif(difPeso> (kilos*1.1)):
+                        registro['Fecha'].iloc[fila] = fech
+                        registro['peso'].iloc[fila] = pesoNuevo
+                        registro['valor'].iloc[fila] = float(registro['valor'].iloc[fila])*0.90
+                    else:
+                        registro['Fecha'].iloc[fila] = fech
+                        registro['peso'].iloc[fila] = pesoNuevo
+                        registro['valor'].iloc[fila] = float(registro['valor'].iloc[fila])*1.15        
+            else:
+
+                if(tipo == 'bajar'):
+                    registro['Fecha'].iloc[fila] = fech
+                    registro['valor'].iloc[fila] = -500
+                    registro['tipo'].iloc[fila] = tipo
+                elif(tipo =='subir'):
+                    registro['Fecha'].iloc[fila] = fech
+                    registro['valor'].iloc[fila] = 500
+                    registro['tipo'].iloc[fila] = tipo
+                else:
+                    registro['Fecha'].iloc[fila] = fech
+                    registro['valor'].iloc[fila] = 0
+                    registro['tipo'].iloc[fila] = tipo
+                
+ 
+        writer = pd.ExcelWriter("Dat/RegistroMejora.xlsx")
+        registro.to_excel(writer,'Registro',index=False)
+        writer.save();
+    except PermissionError:
+        raise PermissionError
 '''
 Funcion que te comprueba y guarda los datos recibidos como parámetros del usuario actualmente dado de alta en la aplicación
 Parametros:
@@ -266,6 +354,7 @@ Parametros:
 def ComproYAlmacenamientoUsuario(hojaUsuarios,selfi,controller,hojaPatologias, patologia):
     idPatologia = IdPatologiaPorNombre(patologia.get(),hojaPatologias)
     fila = getFilaUsuario(selfi.user,hojaUsuarios)
+    registro = cargaRegistro()
     try:
         if(len(selfi.entry_Nom.get()) != 0):
             hojaUsuarios['nombre'].loc[fila] = selfi.entry_Nom.get()
@@ -279,9 +368,8 @@ def ComproYAlmacenamientoUsuario(hojaUsuarios,selfi,controller,hojaPatologias, p
             hojaUsuarios['altura'].loc[fila] = int(selfi.entry_Alt.get())
         if(len(selfi.entry_Pes.get()) != 0):
             float(selfi.entry_Pes.get())
-            hojaUsuarios['peso'].loc[fila] = int(selfi.entry_Pes.get())
-        if(len(selfi.entry_Pes.get()) != 0):
-            hojaUsuarios['peso'].loc[fila] = int(selfi.entry_Pes.get())
+            guardaRegistroPeso(hojaUsuarios['id'].loc[fila], registro, float(selfi.entry_Pes.get()), 1, hojaUsuarios['tipo'].loc[fila])
+            hojaUsuarios['peso'].loc[fila] = float(selfi.entry_Pes.get())
         if(selfi.var.get() != 0):
             if(selfi.var.get() == 1):
                 hojaUsuarios['sexo'] .loc[fila]= 'H'
@@ -293,14 +381,16 @@ def ComproYAlmacenamientoUsuario(hojaUsuarios,selfi,controller,hojaPatologias, p
             elif(selfi.varTipo.get() == 2):
                 hojaUsuarios['tipo'].loc[fila] = "mantener"
             else:
-                hojaUsuarios['tipo'].loc[fila] = "subir"        
+                hojaUsuarios['tipo'].loc[fila] = "subir"     
+            guardaRegistroPeso(hojaUsuarios['id'].loc[fila], registro, float(selfi.entry_Pes.get()), 1, hojaUsuarios['tipo'].loc[fila])
         if(selfi.varAct.get() != 0):
             hojaUsuarios['actividad'].loc[fila] = selfi.varAct.get()
         selfi.label_Error.config(text="")
         guardarUsuario(hojaUsuarios)
         messagebox.showinfo("Datos actualizados","Datos actualizados correctamente, veras los cambios al reiniciar el programa")
         controller.show_frame("InfoUsuario")
-    except ValueError:
+    except ValueError as ve:
+        print(ve)
         selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")
     except PermissionError:
         messagebox.showwarning("Cierre la base de datos","Imposible guardar, !base de datos abierta¡") 
@@ -362,7 +452,7 @@ def NuevoUsuario(ventana,hojaUsuarios,dni, nombre, apellido, pwd, sexo, edad,alt
             int(edad.get())
             int(altura.get())
             float(peso.get())
-
+            registro = cargaRegistro()
             if(int(dni.get()) in list(hojaUsuarios.iloc[:,0])):
                 mensajeError.config(text="ERROR: Ya existe este DNI")
             else:
@@ -387,6 +477,7 @@ def NuevoUsuario(ventana,hojaUsuarios,dni, nombre, apellido, pwd, sexo, edad,alt
                 hojaUsuarios = hojaUsuarios.append(nuevaFila,sort=False)
                 #Guardamos la 'imagen' de la base de datos sin retoques, solo con la nueva linea
                 guardarUsuario(hojaUsuarios)
+                guardaRegistroPeso(int(dni.get()), registro, float(peso.get()), 0,tip)
                 ventana.destroy()
                 messagebox.showinfo("BIENVENIDO","Se registro en nuestra APP se ha desarrollado con exito¡")
                 #mensajeError.config(text=" ")       
