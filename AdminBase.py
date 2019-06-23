@@ -294,6 +294,7 @@ def guardaRegistroPeso(usr, registro, pesoNuevo, bandera, tipo):
             tipoAntiguo = registro['tipo'].iloc[fila]
             for i in tipoAntiguo:               
                 t = i
+            #Si no se ha cambiado el tipo de dieta (bajar, mantener o subir), se sigue con la progresión
             if(str(i) == str(tipo)):
                 #ultimaFecha  = datetime.datetime.strptime(str(registro['Fecha'].iloc[fila]), '%Y-%m-%d')
                 difFecha = datetime.date.today()-ultimaFecha.dt.date
@@ -304,16 +305,17 @@ def guardaRegistroPeso(usr, registro, pesoNuevo, bandera, tipo):
                         objectTipo = o
                     if(objectTipo == 'bajar'):
                         kilos = -1*(2*difFechaInt/14)
-                    else:
+                    elif(objectTipo == 'subir'):
                         kilos = 2*difFechaInt/14
-
+                    else:
+                        kilos=0;
                     difPeso = pesoNuevo - float(registro['peso'].iloc[fila]) 
 
                     #Si ha cambiado lo que debería haber cambiado (margen de error del 10%)
-                    if (difPeso < (kilos*1.1) and difPeso > (kilos*0.9)):
+                    if (difPeso < (kilos*1.15) and difPeso > (kilos*0.85)):
                         registro['Fecha'].iloc[fila] = fech
                         registro['peso'].iloc[fila] = pesoNuevo
-                    elif(difPeso> (kilos*1.1)):
+                    elif(difPeso> (kilos*1.15)):
                         registro['Fecha'].iloc[fila] = fech
                         registro['peso'].iloc[fila] = pesoNuevo
                         registro['valor'].iloc[fila] = float(registro['valor'].iloc[fila])*0.90
@@ -322,7 +324,6 @@ def guardaRegistroPeso(usr, registro, pesoNuevo, bandera, tipo):
                         registro['peso'].iloc[fila] = pesoNuevo
                         registro['valor'].iloc[fila] = float(registro['valor'].iloc[fila])*1.15        
             else:
-
                 if(tipo == 'bajar'):
                     registro['Fecha'].iloc[fila] = fech
                     registro['valor'].iloc[fila] = -500
