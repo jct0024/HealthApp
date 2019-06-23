@@ -298,8 +298,9 @@ class editarInforUsuario(tk.Frame):
             listPatologias=list(hojaPatologias.iloc[:,1])
             label_Pat =  Label(containerPAT, text="Patología: ",width=20,font=("bold", 10),bg=fondoGeneral)
             label_Pat.pack(side=LEFT)
+            usr = hojaUsuarios[hojaUsuarios.id == int(self.user)]
             patologia=tk.StringVar()
-            patologia.set(listPatologias[0])
+            patologia.set(listPatologias[int(usr['patologia'])])
             droplist=tk.OptionMenu(containerPAT,patologia, *listPatologias)
             droplist.config(width=90, font=('Helvetica', 12), relief=tk.GROOVE,bg=fondoGeneral)
              
