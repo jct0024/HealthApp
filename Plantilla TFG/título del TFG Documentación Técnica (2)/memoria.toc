@@ -69,7 +69,7 @@
 \contentsline {section}{\numberline {5.4}Conocimientos aprendidos en la carrera}{43}{section.5.4}% 
 \contentsline {subsection}{INTRODUCCI\IeC {\'O}N}{43}{section*.48}% 
 \contentsline {subsection}{Conocimientos sobre python}{43}{section*.49}% 
-\contentsline {subsection}{Conocimientos sobre la gesti\IeC {\'o}n de proyectos}{43}{section*.50}% 
+\contentsline {subsection}{Conocimientos sobre la gesti\IeC {\'o}n de proyectos}{44}{section*.50}% 
 \contentsline {subsection}{Investigaci\IeC {\'o}n}{44}{section*.51}% 
 \contentsline {section}{\numberline {5.5}Conocimientos externos a la carrera}{44}{section.5.5}% 
 \contentsline {subsection}{INTRODUCCI\IeC {\'O}N}{44}{section*.52}% 
@@ -81,7 +81,7 @@
 \contentsline {subsubsection}{Imperfecciones}{46}{section*.58}% 
 \contentsline {subsection}{Interfaces Gr\IeC {\'a}ficas}{47}{section*.59}% 
 \contentsline {section}{\numberline {5.6}Fases del proyecto}{47}{section.5.6}% 
-\contentsline {subsection}{Cronograma: }{47}{section*.60}% 
+\contentsline {subsection}{Cronograma: }{48}{section*.60}% 
 \contentsline {chapter}{Trabajos relacionados}{49}{chapter*.61}% 
 \contentsline {section}{\numberline {6.1}Estudios:}{49}{section.6.1}% 
 \contentsline {subsection}{Estudios DASH}{49}{section*.62}% 

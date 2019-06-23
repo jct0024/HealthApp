@@ -17,7 +17,7 @@ Una vez encontrado el groso del proyecto tocaba perfilar detalles, para ver a tr
 De este modo se empezó con el proyecto, partiendo totalmente de cero, hasta el punto de conseguir algo perfectamente funcional, cumplimentando los objetivos propuestos para dicho proyecto.
 
 \section{Formato de trabajo}
-Se desarrollo una metodología ágil de forma incremental, se empezó formalizando las bases hasta llegar a la etapa final. No se pasaba a la siguiente etapa sin haber terminado la anterior.\\
+Se desarrollo una metodología ágil de forma incremental, se empezó formalizando las bases hasta llegar a la etapa final. No se pasó a la siguiente etapa sin haber terminado la anterior.\\
 
 Las tres principales etapas del proyecto fueron:
 \begin{enumerate}
@@ -39,18 +39,21 @@ La formula tiene en cuenta la proporción de las necesidades calóricas del usua
 \begin{equation}
 DiferenciaMacronutriente = \frac{(KMCD - A)}{((KCDT-KMM)+(KMTC-KTM))}
 \end{equation}
-Donde:\\
+Donde:
+\begin{itemize}
+\item \textbf{KMCD:} Número de Kcalorias del macronutriente (Hidratos,proteinas o grasas) de la Comida (Desayuno, almuerzo...) que debería llevar en esa comida
+\item \textbf{A:} Actual número de kcalorias de ese macronuetriente que llevo en todo el día (Si estoy en Comida: desayuno+almuerzo+comida).
+\item \textbf{KCDT:} Kilocalorias que debería comer en esta comida concreta para este macronutriente concreto.
+\item \textbf{KMM:} Kilocalorias del macronutriente concreto del menú.
+\item \textbf{KMTC:} Kilocalorias totales que debería comer en esta comida.
+\item \textbf{ktm:} kilocalorias totales que tiene el menú a recomendar.
 
-KMCD: Número de Kcalorias del macronutriente (Hidratos,proteinas o grasas) de la Comida (Desayuno, almuerzo...) que debería llevar en esa comida\\
-A: Actual número de kcalorias de ese macronuetriente que llevo en todo el día (Si estoy en Comida: desayuno+almuerzo+comida).\\
-KCDT: Kilocalorias que debería comer en esta comida concreta para este macronutriente concreto.\\
-KMM: Kilocalorias del macronutriente concreto del menú.\\
-KMTC: Kilocalorias totales que debería comer en esta comida.\\
-ktm: kilocalorias totales que tiene el menú a recomendar.\\
+\end{itemize}
+
 \subsection{Persistencia de los datos}
 Esto en verdad, no es implementado como tal por el alumno, sino más bien, es un recurso para romper una de las limitaciones que presentó utilizar Excel como simulación de la base de datos.\\
 
-Para evitar datos sobre escritos y problemas con los datos, se procuró durante todo el programa atomizar lo máximo posible cada método sobre la base de datos, haciendo que los cambios sean lo mas inconexos y manejables para el usuario. \\
+Para solucionar una de las mayores limitaciones que presentaba usar una hoja de calculo como base de datos y evitar  datos sobre-escritos y problemas con los datos. Se procuró durante todo el programa atomizar al máximo posible cada método sobre la base de datos, haciendo que los cambios sean lo mas inconexos y manejables para el usuario. \\
 
 En el método añadir alimento se rompe esta norma, añadiendo un alimento en la base de datos que hay que guardar, pero sin guardar todos los cambios en el resto de los alimentos, por si el usuario no quisiera hacerlo. Para evitar esta falta de control por parte del usuario sobre la persistencia de sus datos, a la hora de almacenarlo, se carga el array de nuevo, y se añade esta nueva línea tanto al array usado durante el programa, como al nuevo array de alimentos, este nuevo array se almacena en la base de datos, mientras que el otro sigue con su propósito en el programa. Si el usuario hace algún cambio y lo guarda, el nuevo alimento estará a salvo, si, por el contrario, el usuario decide salir sin guardar su progreso en el día, el nuevo alimento ya estará guardado en la base de datos.\\
 \subsection{Distinción entre tipos de comida}
@@ -58,9 +61,9 @@ Uno de los retos a afrontar a lo largo de este proyecto fue simplemente, el como
 
 Recordamos que un mismo menú, puede pertenecer a varias comidas del día, entonces se pensaron varios métodos hasta llegar al óptimo, los cuales explicaremos con brevedad a continuación:\\
 
-En un principio se planteo hacer una cadena de Strings separadas por algún delimitador cualquiera, y cargarlo en forma de String y separarlo por algún método (Por ejemplo Slice()), pero dio ciertos problemas de carga y almacenamiento, problemas no demasiados complejos, pero que aumentaban la complejidad algoritmo al buscar a través de un bucle todas las posibilidades complicando esto, y se pensó en una concatenación de bits donde 1 es que era esa comida y 0 que no, es decir: 11010, Significa que no es ni comida ni cena. Esto presentaba el mismo problema que la cadena de caracteres y era quizás más confuso para su compresión, Además del pequeño inconveniente de que si un menú no era desayuno ( Es decir empezaba en 0), en algunas ocasiones se almacenaba sin ese digito creando una desigualdad en el programa. Por estas razones se deicidio pasar al siguiente método, una mezcla de ambas, se iba a usar una cadena para calcular un único valor que cargar. Finalmente se paso esa cadena de bits a un valor numérico, de esta manera se asegura una única carga, y el tratamiento a través de cláusulas condicionales simples.\\
+Se realizó un estudio sobre los diferentes métodos de distinción que se podían realizar. Se pensó en  cadenas de caracteres (String) separadas por un delimitador cualquiera, y cargarlo en forma de cadena de caracteres separandolo utilizando algún delimitador (Por ejemplo Slice() y delimitador ':'), pero esto provocó ciertos problemas de carga y almacenamiento, problemas no demasiados complejos, pero que aumentaban la complejidad algoritmo al buscar a través de un bucle todas las posibilidades complicando esto, y se pensó en una concatenación de bits donde 1 es que era esa comida y 0 que no, es decir: 11010, Significa que no es ni comida ni cena. Esto presentaba el mismo problema que la cadena de caracteres y era quizás más confuso para su compresión, Además del pequeño inconveniente de que si un menú no era desayuno ( Es decir empezaba en 0), en algunas ocasiones se almacenaba sin ese digito creando una desigualdad en el programa. Por estas razones se deicidio pasar al siguiente método, una mezcla de ambas, se iba a usar una cadena para calcular un único valor que cargar. Finalmente se paso esa cadena de bits a un valor numérico, de esta manera se asegura una única carga, y el tratamiento a través de cláusulas condicionales simples.\\
 
-Ejemplo:\\
+\textbf{Ejemplo:}\\
 Un alimento que sea comida y cena: 00101 -> Se representará con el número 5. \\
 Esto permite la carga de un único elemento, sin posibilidad de fallo además de un calculo sencillo, cuyo mayor inconveniente es llevar a cabo todas las clausulas condicionales, para hacer la criba por tipo de comida.\\
 \subsection{SCRUM}
@@ -68,13 +71,13 @@ Quizás uno de los aspectos más destacados a la hora de realizar el proyecto, f
 
 Para la realización de esta metodología se tuvo en posesión una pizarra, en la cual se iba pegando post-it con una breve descripción de la tarea y una fecha máxima para la realización de esta. La pizarra era dividida en cuatro partes (pequeña adaptación del SCRUM).\\
 \begin{enumerate}
-\item	TODO – Por hacer, eran todas las tareas, pautas, e ideas que iban surgiendo a lo largo de la semana o tras las reuniones semanales. Había un máximo de cinco, para evitar que el proyecto se atascase por una carga excesiva de trabajo. De TODO se pasaba a in progress. 
+\item	TODO: Por hacer, eran todas las tareas, pautas, e ideas que iban surgiendo a lo largo de la semana o tras las reuniones semanales. Había un máximo de cinco, para evitar que el proyecto se atascase por una carga excesiva de trabajo. De TODO se pasaba a in progress. 
 \item	IN-PROGRESS: En proceso, máximo dos cosas, una principal y una secundaria, la principal, consistía en el desarrollo de grandes métodos, cálculos, etc. Mientras que los secundarios, podían ser trabajos de investigación, rellenar datos o cualquier detalle que faltase de completas. De esta manera se evitaba la bifurcación del trabajo, haciendo del camino, pequeños objetivos, claros y directos a completar. Cuando el alumno pensaba que había terminado la tarea, la movía a “TO-VERIFY”.
 \item	TO-VERIFY: A verificar, es decir, falta la aprobación de los cambios realizados, si eran cambios propuestos en las reuniones semanales, eran zanjados en la siguiente reunión semanal; De esta forma se creaban distintos modelos y versiones de métodos, perfilando al máximo cada detalle en cada método. Las pequeñas tareas, eran resueltas, ya fuera en las reuniones semanales, o preguntando a personas, sobre como sería para ellos el correcto funcionamiento del programa.
 \item	DONE: Una vez todas las partes se ponían de acuerdo en que la tarea estaba terminada, pasaban a DONE, este apartado existía básicamente, para hacer mella en el trabajo que el alumno realizó durante la semana, haciendo palpable las semanas donde se tuvo una mayor o menor carga de trabajo, pudiendo regular esto, y teniendo de esta manera un avance constante.
 \end{enumerate}
-En progreso solo se podía encontrar una tarea, y si el tutor desechaba una tarea como incompleta pasaba a todo de manera que, de esta forma, semanalmente se cumplían con una serie de propósitos de forma clara y concisa, y no se apelotonaban todas las ideas y propuestas dejando pequeños cabos sueltos que arruinaran la representación final del proyecto. \\
-Este método fue estudiado en la asignatura de gestión de proyectos por el alumno, y culminado en su periodo de practicas con el instituto de castilla y león, el cual, usaban de manera muy similar a la adaptación del alumno; La metodología SCRUM para gestionar todos sus proyectos.
+En progreso solo se podía encontrar una tarea, y si el tutor catalogaba una tarea como incompleta pasaba a \textbf{TODO} de manera que, de esta forma, semanalmente se cumplían con una serie de propósitos de forma clara y concisa, y no se aglomeraban todas las ideas y propuestas dejando  cabos sueltos que podrían arruinar la representación final del proyecto. \\
+Este método fue estudiado en la asignatura de gestión de proyectos por el alumno, y culminado en su periodo de practicas con el instituto de Castilla y León, el cual, usaban de manera muy similar a la adaptación del alumno, La metodología SCRUM para gestionar todos sus proyectos.
 \section{Conocimientos aprendidos en la carrera}
 \subsection{INTRODUCCIÓN}
 Apartado donde se hablará de forma breve sobre todo conocimiento aprendido durante los años de carrera, relacionado directamente con el desarrollo del proyecto.
@@ -83,21 +86,22 @@ A lo largo de la carrera, se han estudiado diferentes lenguajes de programación
 
 Además, multitud de las librerías usadas durante este proyecto fueron utilizadas en dichas asignaturas, haciendo que el proyecto, partiera desde un punto avanzado facilitándome el aprendizaje.
 \subsection{Conocimientos sobre la gestión de proyectos}
-A fin de cuentas, la metodología que se ha usado para idear, planificar y desarrollar el proyecto, es el conjunto y suma de una serie de actitudes adquiridas a lo largo de los últimos años. Ya sea con asignaturas dedicadas específicamente para ello como fue Gestión de proyectos, como con el prueba y error, que ha hecho que se fuese aprendiendo la mejor manera de trabajar a nivel personal. Permitiendo que este proyecto, fuese con diferencia el mas amplio y hasta la fecha, mas cómodo, a la hora de ser elaborado.\\
+La metodología usada para idear, planificar y desarrollar el proyecto, es el conjunto y suma de una serie de actitudes adquiridas a lo largo de los últimos años. Tanto con asignaturas dedicadas específicamente para ello como  Gestión de proyectos, como con el prueba y error, que ha hecho que se fuese aprendiendo la mejor manera de trabajar a nivel personal. Permitiendo que este proyecto, fuese con diferencia el mas amplio y hasta la fecha, mas cómodo, a la hora de ser elaborado.\\
 
 Metodologías como el SCRUM, Las pruebas de errores, la organización interna del scrum, las reuniones semanales sobre el estado del proyecto, etc.
 \subsection{Investigación}
-Básico, pero de vital importancia, es el nivel de capacidad de investigación y búsqueda de la información no es el mismo que al inicio del grado. La velocidad y capacidad, de saber buscar, es uno de los conocimientos más importantes que se adquieren a lo largo de la carrera. Conocimiento indirecto, pero presente en todas y cada una de las asignaturas que se han cursado, dicho nivel de investigación ha permitido que errores que antiguamente hubieran durado días, durasen horas, buscando en diferentes páginas y libros y contrastando cada información recibida a lo largo de este proceso de investigación
+De vital importancia, es el nivel de capacidad de investigación y búsqueda de la información no es el mismo que al inicio del grado. La velocidad y capacidad, de saber buscar, es uno de los conocimientos más importantes que se adquieren a lo largo de la carrera. Conocimiento indirecto, pero presente en todas y cada una de las asignaturas que se han cursado, dicho nivel de investigación ha permitido que errores que antiguamente hubieran durado días, durasen horas, buscando en diferentes páginas y libros y contrastando cada información recibida a lo largo de este proceso de investigación.
 \section{Conocimientos externos a la carrera}
 \subsection{INTRODUCCIÓN}
 En este apartado, se explicarán los aspectos relevantes del desarrollo del proyecto externos a los conocimientos iniciales del alumno. Todo aquello que ha tenido que aprender para poder llegar al resultado final.
 \subsection{Psicología}
-Siendo sinceros, sería una parte de psicología, intercalada con otra parte de educación primaria. Para el desarrollo del proyecto, y el moldeado de lo que es la idea genérica de este; Ha sido necesario el estudio de ciertos campos para entender cual podría ser el mejor camino para el entendimiento con el usuario. Este proyecto no buscaba una forma rápida de llegar al cliente/usuario, sino constante, que el cliente convierta los cimientos de la aplicación, en su propio estilo de vida. Por ello se busco consejo a través de varias entrevistas a alumnos y graduados de psicología y magisterio, tras las cuales se llego al método: Aprender a aprender.
+Parte de psicología, intercalada con  parte de educación primaria. Para el desarrollo del proyecto, y el moldeado de lo que es la idea genérica de este; Ha sido necesario el estudio de ciertos campos para entender cual podría ser el mejor camino para el entendimiento con el usuario. Este proyecto no buscaba una forma rápida de llegar al cliente/usuario, sino constante, que el cliente convierta los cimientos de la aplicación, en su propio estilo de vida. Por ello se estudió las distintas formas de enseñanza, así como, el auge de la tecnología en el sistema educativo.
 \subsubsection{Aprender a aprender}
-Resulta ser uno de los mejores métodos de aprendizaje ausente que hay. Donde el aprendizaje ausente, como su propio nombre indica, consiste en el aprendizaje ausente de figura dedicada a la enseñanza, para poder llevar a cabo ese proceso evolutivo. Aquí el profesor, sería la aplicación, pero al no tener conciencia propia, ni libre capacidad de elección, el método de enseñanza habitual queda descartado. \\
-La idea principal nace de las ventajas que tiene implementar un estilo de vida, sobre el seguir ordenes estrictas. Tras varias entrevistas, se decanto por un estilo incremental, en el que se intenta concienciar al usuario de cada decisión que toma, haciendo que el aprendizaje se base en pequeñas metas personales, y en la concienciación del usuario para que el mismo se de cuenta de que es lo mejor para él y aunque de manera lenta pero segura, llegue a la meta que tenga como objetivo.
+Resulta ser uno de los mejores métodos de aprendizaje ausente que hay. Donde el aprendizaje ausente, como su propio nombre indica, consiste en el aprendizaje ausente de figura dedicada a la enseñanza, para poder llevar a cabo ese proceso evolutivo.\\
+En esta ocasión el profesor, sería la aplicación, pero al no tener conciencia propia, ni libre capacidad de elección, el método de enseñanza habitual queda descartado. \\
+La idea principal nace de las ventajas que tiene implementar un estilo de vida, sobre el seguir ordenes estrictas. Tras un periodo de investigación, se decanto por un estilo incremental, en el que se intenta concienciar al usuario de cada decisión que toma, haciendo que el aprendizaje se base en pequeñas metas personales, y en la concienciación del usuario para que, él mismo, se de cuenta de que es lo mejor para él y aunque de manera lenta pero segura, llegue a la meta que tenga como objetivo.
 \subsection{Nutrición}
-Se tenían conocimientos básicos sobre el mundo nutricional y el movimiento “real-fooding”  o comida real, que consiste en comer no solo las calorías necesarias para subir o bajar de peso, sino comida saludable; A efectos prácticos, esa es la idea principal sobre la que se fundamente el proyecto. Buscar la manera, de que el usuario, adquiera una mejor calidad de vida, a través de comida saludable, y que ya de paso, consiga sus objetivos principales.
+Se parte de  básicos sobre el mundo nutricional y el movimiento “real-fooding”  o comida real,el cual,consiste en comer no solo las calorías necesarias para subir o bajar de peso, sino comida saludable; A efectos prácticos, esa es la idea principal sobre la que se fundamente el proyecto. Buscar la manera, de que el usuario, adquiera una mejor calidad de vida, a través de comida saludable, y que ya de paso, consiga sus objetivos principales.
 \subsubsection{"Calidad" de los alimentos}
 Es una parte fundamental del proyecto, la calidad marca el umbral por el cual se cribaran los alimentos y se aconsejarán principalmente los alimentos de mejor calidad, y esto irá variando conforme el usuario busque nuevos alimentos, u opciones.
 \subsection{Nutriscore}
