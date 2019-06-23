@@ -304,9 +304,9 @@ def guardaRegistroPeso(usr, registro, pesoNuevo, bandera, tipo):
                     for o in objetivo:
                         objectTipo = o
                     if(objectTipo == 'bajar'):
-                        kilos = -1*(2*difFechaInt/14)
+                        kilos = -1*(3*difFechaInt/30)
                     elif(objectTipo == 'subir'):
-                        kilos = 2*difFechaInt/14
+                        kilos = 3*difFechaInt/30
                     else:
                         kilos=0;
                     difPeso = pesoNuevo - float(registro['peso'].iloc[fila]) 
