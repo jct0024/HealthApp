@@ -17,10 +17,10 @@ Se usan los DataFrame, para llevar un registro de todos los datos que el program
 \\
 Los alimentos se tratan en el momento en el que se registra el usuario, de manera que, se separan las comidas de la lista principal, creando 5 listas (Desayuno, Merienda, Comida, Almuerzo y Cena), se tratan por separado y se filtran. Cada modificación o inserción de un dato o usuario se hace sobre el DataFrame, el cual sustituirá a la base de datos durante el guardado.
 
-\subsection{Técnicas}
+\section{Técnicas}
 \subsubsection{Introducción}
 En este apartado se hablara brevemente de las técnicas usadas durante el proyecto, y la razón por la que se escogieron dichas técnicas. Posiblemente, haya argumentos repetidos en otros apartados similares, por ello se expresará exclusivamente finalidad y razonamiento.
-\section{Aprender a aprender}
+\subsection{Aprender a aprender}
 \begin{quote}
 “Aprender a aprender supone disponer de habilidades para iniciarse en el aprendizaje y ser capaz de continuar aprendiendo de manera cada vez más eficaz y autónoma de acuerdo a los propios objetivos y necesidades.\\
 
@@ -51,7 +51,39 @@ Ejercicio Moderado (3-5 diás/semana) & 1,55\\
 Ejercicio fuerte (6-7 dias/semana & 1,725\\
 Ejercicio muy fuerte (dos veces al día) & 1,9 \\
 } 
+\subsection{Tratamiento de Excepciones}
+A través del tratamiento de excepciones, y con el uso de la librería \textbf{messagebox} se informa al usuario de las distintas situaciones que se pueden dar durante el uso del programa. Existe tres tipos principales de cuadros de textos, que emergen informando al usuario de algún tipo de problemao simplemente de que una acción ha finalizado correctamente.\\
 
+
+\textbf{Información}\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1]{Informacion} 
+\caption{Ventana emergente de información}
+\end{figure}
+Muestra la información de que un proceso a concluido correctamente. También explican si el usuario ha de realizar algo una vez terminado el proceso para que termine la completa finalización de este.\\
+
+
+\textbf{Aviso}\\
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=1]{Aviso} 
+\caption{Ventana emergente que avisa que una acción no se ha podido realizar.}
+\end{figure}
+Pantalla que advierte que algo no ha salido bien. El usuario puede seguir con el uso del programa, pero si quiere realizar la acción que estaba realizando, deberá seguir las instrucciones proporcionadas en el cuadro de aviso.\\
+
+\textbf{Error}\\
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=1]{Error} 
+\caption{Ventana emergente que muestra que ha ocurrido un Error.}
+\end{figure}
+Pantalla que advierte de un Error grave, en el que se ha corrompido la estructura de datos del programa.\\
+
+A través de estos cuadros se traduce los diferentes problemas que puedan surgir en la utilización del programa; de manera gráfica y entendible por el usuario, haciendo el funcionamiento de este lo más transparente al usuario posible.
 \section{Estructura del programa}
 \subsection{Introducción}
 En un principio se pensó en hacer una estructura MVC clásica pero conforme el proyecto fue creciendo, y prácticamente de manera imperceptible se convirtió en una versión un tanto modificada de este modelo.\\
@@ -151,7 +183,7 @@ En este apartado se expone la estructura la base de datos, y de como se cargan, 
 Estas dos funciones cargan y guardan los datos de/en la base de datos respectivamente, como se decidió simular una base de datos con un Excel, se usa la librería Pandas, mencionada antes en este apartado para cargar las bases de datos en los respectivos arrays, nada más arrancar el programa, te guarda las tres bases de datos principales, Alimentos, usuarios, patologías e historial en cuatro vectores independientes, que se trabajaran con cada uno de ellos sin tener en cuenta al resto y se guarda el resultado de los cambios producidos durante la ejecución del programa. \\
 
 Recordemos que estos cuatro valores se sacan de tres Excel diferentes, un Excel nombrado BaseDeDatosDeAlimentos que contiene la lista de alimentos y patologías, otro llamado BaseDeDatosUsuarios, en un principio estos dos estaban juntos, pero separarlos en dos Excel diferentes nos permite la mejor trata de datos a la hora del almacenamiento, y el historial, el cual lleva consigo un listado de las fechas y los usuarios como clave primaria, junto a todo lo que han comido ese día.\\
-
+\subsubsection{Estructura de la base de datos}
 La base de datos se estructura en dos archivos Excel independientes, donde cada hoja seria lo equivalente a una colección de una base de datos, y cada fila seria un objeto dentro de dicha colección. A distinguir las siguientes hojas:\\
 
 \textbf{\textsc{ALIMENTOS}}\\
@@ -180,12 +212,36 @@ Id (PK)-nombre-apellido-password-sexo-edad-altura-peso-actividad-patología (FK 
 Tanto id, como nombre, apellido y password, son los datos privados del usuario, los cuales, son simplemente informativos y no tienen ningún valor adicional en el calculo de la dieta y los resultados. En cambio, el sexo, la edad, altura, peso, actividad, patología y tipo, influyen de manera directa con el calculo de la dieta, como pasaba en la hoja de alimentos en los primeros campos su nombre, explica su significado. A tener en cuenta, que el valor del campo patología es numérico para mayor privacidad y conexión con la base de datos de Patologías, pues es el id de cada patología y en base a su id se busca la información sobre dicha fila. En el caso de valer -1, significa que el usuario no tiene ningún tipo de patología y su uso es exclusivamente para el aprendizaje y seguimiento de la dietoterapia adecuada. La actividad tiene valores entre 0 y 4, donde cero significa el máximo nivel de sedentarismo y 4 el máximo nivel de actividad. Por ultimo el tipo, hace referencia, a los objetivos que el usuario tiene respecto a si mismo, si quiere mantenerse, subir de peso, o bajar.\\
 
 \textbf{\textsc{Patologías}}\\
-En esta hoja, la cual se encuentra dentro de las BaseDeDatosDeAlimentos, se encuentra la información básica de las patologías nombre, id, y el tipo de dieta que lleva alto o bajo en carbohidratos, proteínas o grasas. Esto se carga al inicio del programa, se comprueba si el usuario padece alguna patología y se selecciona el tipo de dieta correspondiente.
+En esta hoja, la cual se encuentra dentro de las BaseDeDatosDeAlimentos, se encuentra la información básica de las patologías nombre, id, y el tipo de dieta que lleva alto o bajo en carbohidratos, proteínas o grasas. Esto se carga al inicio del programa, se comprueba si el usuario padece alguna patología y se selecciona el tipo de dieta correspondiente.\\
 \begin{figure}[htb]
 \centering
 \includegraphics[scale=1]{BasePatologias} 
 \caption{Estructura base de datos Patologías}
 \end{figure}
+
+\textbf{\textsc{Registro}}\\
+Base de datos que se encuentra en la ruta: assets/RegistroMejora.xlsx, y se encarga de llevar un registro de la mejora del usuario en la aplicación. Esta base de datos guarda los datos imprescindibles para el ajuste de la formula del TMB respecto al usuario concreto.\\
+En el momento que un usuario se registra, tiene tres posibilidades de tipo de dieta:
+\begin{enumerate}
+\item \textbf{bajar:} Se crea un valor inicial igual a -400
+\item \textbf{Mantener:} Se crea un valor inicial igual a 10
+\item \textbf{Subir:} Se crea un valor inicial igual a 400. 
+\end{enumerate}
+El valor inicial a la hora del registro, es el suplemento que se añade al resultado de la formula del metabolismo basal, para que las calorias a ingerir por el usuario sean las necesarias para lograr el objetivo que se ha propuesto a través del tipo de dieta. Mantener tiene un valor inicial a 10, porque en caso de tener que reajustarse.
+Esta base de datos se estructura de la siguiente manera:
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=1]{registroMejora} 
+\caption{Estructura base de datos Registro}
+\end{figure}
+Esto se debe a:
+\begin{enumerate}
+\item \textbf{Fecha:} Guarda la ultima vez que se edito la información. De esta manera se puede calcular el peso que se debería haber progresado hasta dicha fecha. No admite cambios de menos de una semana, pues el resultado podría alterar el ajuste del valor.
+\item \textbf{dni:} DNI del usuario para saber de quien es el registro que se esta llevando.
+\item \textbf{Peso:} El peso de la ultima vez que el usuario edito la información respectiva a su peso. Esto ayuda al seguimiento de la dieta y sus objetivos.
+\item \textbf{Valor:} Valor que mas tarde se suma al calculo TMB y que ayuda a cumplimentar mejor su objetivo.
+\item \textbf{tipo:} Tipo de dieta u objetivo de la dieta del usuario. Sirve para saber si el usuario a cambiado de objetivo y en caso de no hacerlo, ver como va el progreso del usuario.
+\end{enumerate}
 \subsubsection{Guardar Todo}
 Función que se encarga de juntar en una única función el almacenamiento de todos los datos con los que se trabaja en esta herramienta. Dentro de esta función encontramos:
 \begin{itemize}
