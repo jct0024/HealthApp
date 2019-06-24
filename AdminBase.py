@@ -318,11 +318,11 @@ def guardaRegistroPeso(usr, registro, pesoNuevo, bandera, tipo):
                     elif(difPeso> (kilos*1.15)):
                         registro['Fecha'].iloc[fila] = fech
                         registro['peso'].iloc[fila] = pesoNuevo
-                        registro['valor'].iloc[fila] = float(registro['valor'].iloc[fila])*0.90
+                        registro['valor'].iloc[fila] = float(registro['valor'].iloc[fila])-50
                     else:
                         registro['Fecha'].iloc[fila] = fech
                         registro['peso'].iloc[fila] = pesoNuevo
-                        registro['valor'].iloc[fila] = float(registro['valor'].iloc[fila])*1.15        
+                        registro['valor'].iloc[fila] = float(registro['valor'].iloc[fila])+45       
             else:
                 if(tipo == 'bajar'):
                     registro['Fecha'].iloc[fila] = fech
@@ -386,6 +386,7 @@ def ComproYAlmacenamientoUsuario(hojaUsuarios,selfi,controller,hojaPatologias, p
             guardaRegistroPeso(hojaUsuarios['id'].loc[fila], registro, float(selfi.entry_Pes.get()), 1, hojaUsuarios['tipo'].loc[fila])
         if(selfi.varAct.get() != 0):
             hojaUsuarios['actividad'].loc[fila] = selfi.varAct.get()
+        hojaUsuarios['patologia'].loc[fila] = idPatologia
         selfi.label_Error.config(text="")
         guardarUsuario(hojaUsuarios)
         messagebox.showinfo("Datos actualizados","Datos actualizados correctamente, veras los cambios al reiniciar el programa")

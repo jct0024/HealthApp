@@ -106,9 +106,10 @@ def seleccionar(tipoComida,arrrayBoton,btnSel,selected,banderaSelect,hojaAliment
         datosAlimCliente[2] -= hojaAlimentos["Hidratos"].loc[fila] 
         datosAlimCliente[3] -= hojaAlimentos["Proteina"].loc[fila]
         datosAlimCliente[4] -= hojaAlimentos["Calidad"].loc[fila]
+        menuDeHoy[indince]=""
         #Restamos el % en la barra
         actualizarBarra(menuDeHoy,hojaAlimentos.loc[fila],barProgTotal,datosAlimCliente,listMacDiarios,style)
-        menuDeHoy[indince]=""
+        
         for i in arrrayBoton.values():
             i['state']='normal'
         btnSel.config(text="Seleccionar")

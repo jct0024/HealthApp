@@ -51,6 +51,8 @@ Ejercicio Moderado (3-5 diás/semana) & 1,55\\
 Ejercicio fuerte (6-7 dias/semana & 1,725\\
 Ejercicio muy fuerte (dos veces al día) & 1,9 \\
 } 
+El resultado de esta formula indica el número de calorías que gasta la persona al día. Para cumplir el objetivo de la persona (subir o bajar de peso), se le suele añadir o restar un valor estandarizado. Este valor equivale a 500 calorías si se quiere adelgazar aproximadamente un kilogramo por semana \cite{TMBadiccional}. \\
+Es este proyecto, para evitar la generalización de la formula, lo cual, es la principal razón de que la formula este siendo sustituida por la toma de medidas del cuerpo; Se ha creado una variable que inicialmente empieza en 500 calorías pero que va variando en base al progreso del peso del usuario. Si el Usuario se pasa o se queda corto del objetivo normal (Con un rango de error del 15\%), este valor variará ajustándose cada vez mas al usuario  (Si el usuario se excede se le reducirán 50 calorías, si se queda corto se le sumaran 40).
 \subsection{Tratamiento de Excepciones}
 A través del tratamiento de excepciones, y con el uso de la librería \textbf{messagebox} se informa al usuario de las distintas situaciones que se pueden dar durante el uso del programa. Existe tres tipos principales de cuadros de textos, que emergen informando al usuario de algún tipo de problemao simplemente de que una acción ha finalizado correctamente.\\
 
@@ -125,6 +127,19 @@ Tkinter traía una serie de ventajas, entre ellas que viene preinstalada con Pyt
 La segunda opción que se me paso por la cabeza, fue WxPython,  tenia grandes ventajas, como la rapidez,  la flexibilidad que este ofrecía y sobre todo su mayor ventaja son todas las opciones que tiene para crear una interfaz gráfica compleja y “profesional”, tras barajar, estas opciones y compararlas con las de Tkinter, me di cuenta que todo lo que te ofrecía WxPython, era innecesario para la interfaz tan simplista que necesitaba para mi proyecto, y el aprendizaje era más complejo, además de ser mas complicado encontrar información o documentación sobre esta librería. El mayor problema de esta librería era que tiene una comunidad muy activa, la cual, esta constantemente insertando cambios, esto era un problema para proyectos largos, pues creaba problemas de compatibilidad, pero para este proyecto, no era algo que me resultará un inconveniente.\\
 
 El resto de librerías fueron descartadas, al poco de buscar información sobre ellas debido a que daban las mismas ventajas o similares que la WxPython, pero tenían mas inconvenientes, al menos para el tema que aborda este proyecto.
+\subsection{MatplotLib}
+Librería de Python extendida en su uso, para el análisis y representación de los datos. Se utiliza a lo largo del proyecto para crear diferentes gráficos e histogramas para dar una perspectiva más visual de los resultados al usuario.
+\subsection{Pillow}
+Usada en su versión 6.0. Es una librería que permite la carga y posterior muestra de imágenes en una aplicación Python. Es usada en numerosas ocasiones a lo largo del proyecto, para visualizar el logotipo, o diferentes imágenes guía que ayudan al mejor entendimiento del programa.
+\subsection{webbrowser}
+Modulo que proviene de una interfaz de alto nivel para mostrar archivos web a los usuarios.
+\subsection{os}
+Librería utilizada durante el proyecto para la carga del manual en PDF por parte del programa. Es una librería cómoda que permite acceder y mostrar varios elementos que se encuentran en el sistema.
+\subsection{datetime}
+Librería normalmente preinstalada con Python, que da un control sobre la fecha y la hora del sistema. Sumamente útil para el control de registros  e historial.
+
+\subsection{auto-py-to-exe}
+No es usada durante el desarrollo del proyecto, pero si al finalizar dicho desarrollo para crear un archivo ejecutable (.exe). Utiliza internamente la librería pyinstaler, y hace uso de la librería Tkinter, para otorgar una interfaz gráfica al comando pyinstaller, haciendo más fácil su uso.
 \subsection{Diseño}
 Se decidió realizar un diseño simple, sin complicaciones, ni laberintos internos de pura navegabilidad que haga del manual de usuario un mapa para guiarse a través del programa. Esta decisión trivial se llevó a cabo debido al principal objetivo del proyecto, el aprendizaje de la dietoterapia, esta aplicación esta, básicamente, orientada a todos los públicos, por lo que si se construye una aplicación tediosa, solo complicaría el uso y aprendizaje del usuario.\\
 

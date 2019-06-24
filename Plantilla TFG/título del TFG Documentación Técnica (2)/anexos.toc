@@ -57,18 +57,19 @@
 \contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{39}{section.Alph5.1}% 
 \contentsline {section}{\numberline {E.2}Requisitos de usuarios}{39}{section.Alph5.2}% 
 \contentsline {section}{\numberline {E.3}Instalaci\IeC {\'o}n}{39}{section.Alph5.3}% 
-\contentsline {section}{\numberline {E.4}Manual del usuario}{40}{section.Alph5.4}% 
-\contentsline {subsection}{Inicio}{40}{section*.34}% 
-\contentsline {subsubsection}{Crear un Usuario/Registrarse}{40}{section*.35}% 
-\contentsline {subsubsection}{INICIAR SESI\IeC {\'O}N}{42}{section*.36}% 
-\contentsline {subsection}{P\IeC {\'A}GINA PRINCIPAL}{43}{section*.37}% 
-\contentsline {subsubsection}{ARCHIVO}{44}{section*.38}% 
-\contentsline {subsubsection}{ESTILOS}{45}{section*.39}% 
-\contentsline {subsection}{INFORMACI\IeC {\'O}N DE USUARIO}{46}{section*.40}% 
-\contentsline {subsection}{DIETA DIARIA}{48}{section*.41}% 
-\contentsline {subsubsection}{COMIDAS DEL D\IeC {\'I}A}{48}{section*.42}% 
-\contentsline {subsubsection}{REFRESCAR}{51}{section*.43}% 
-\contentsline {subsubsection}{A\IeC {\~N}ADIR PLATO}{52}{section*.44}% 
-\contentsline {subsection}{HISTORIAL}{56}{section*.45}% 
-\contentsline {subsubsection}{GR\IeC {\'A}FICOS}{58}{section*.46}% 
-\contentsline {subsubsection}{SEMANA INGERIDA}{58}{section*.47}% 
+\contentsline {section}{\numberline {E.4}Manual del usuario}{41}{section.Alph5.4}% 
+\contentsline {subsection}{Inicio}{41}{section*.34}% 
+\contentsline {subsubsection}{Crear un Usuario/Registrarse}{41}{section*.35}% 
+\contentsline {subsubsection}{INICIAR SESI\IeC {\'O}N}{44}{section*.36}% 
+\contentsline {subsection}{P\IeC {\'A}GINA PRINCIPAL}{45}{section*.37}% 
+\contentsline {subsubsection}{ARCHIVO}{45}{section*.38}% 
+\contentsline {subsubsection}{ESTILOS}{46}{section*.39}% 
+\contentsline {subsection}{INFORMACI\IeC {\'O}N DE USUARIO}{47}{section*.40}% 
+\contentsline {subsection}{DIETA DIARIA}{50}{section*.41}% 
+\contentsline {subsubsection}{COMIDAS DEL D\IeC {\'I}A}{50}{section*.42}% 
+\contentsline {subsubsection}{REFRESCAR}{53}{section*.43}% 
+\contentsline {subsubsection}{A\IeC {\~N}ADIR PLATO}{54}{section*.44}% 
+\contentsline {subsection}{HISTORIAL}{58}{section*.45}% 
+\contentsline {subsubsection}{GR\IeC {\'A}FICOS}{60}{section*.46}% 
+\contentsline {subsubsection}{SEMANA INGERIDA}{60}{section*.47}% 
+\contentsline {section}{\numberline {E.5}Gu\IeC {\'\i }a de errores, avisos e informes}{61}{section.Alph5.5}% 

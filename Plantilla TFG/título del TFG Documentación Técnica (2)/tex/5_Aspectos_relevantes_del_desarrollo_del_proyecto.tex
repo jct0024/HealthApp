@@ -49,11 +49,13 @@ Donde:
 \item \textbf{ktm:} kilocalorias totales que tiene el menú a recomendar.
 
 \end{itemize}
+\subsection{Reajuste del TMB}
+Durante el proyecto, se utilizó la formula nombrada anteriormente, para el calculo del Metabolismo Basal, esto da como resultado las calorías que el usuario consume en un día normal. A esta cantidad de calorías se le suele variar un cantidad de calorías que suele oscilar entre las 300 y 500 calorías. Para poder bajar o subir de peso de manera controlada (Aproximadamente 3 kilogramos al mes). Esta formula antiguamente estaba muy extendida entre nutricionistas y endocrinos a la hora de diagnosticar/proporcionar una dieta. Con los años, entro en desuso, debido a la generalidad que hacer la formula sobre las calorías que gasta cada persona, sin tener en cuenta metabolismos, posibles enfermedades, etcétera.\\
+
+Desde el principio fue un problema que limitaba las posibilidades del proyecto. Por ello, se desarrolló un método que permite, a través de una coleccióm de registros, llevar la cuenta de las variaciones de peso que sufre el usuario, y amoldar ese valor fijo, permitiendo su reajuste, y creando una formula que se adapta con mayor precisión a las necesidades del usuario.\\
 
 \subsection{Persistencia de los datos}
-Esto en verdad, no es implementado como tal por el alumno, sino más bien, es un recurso para romper una de las limitaciones que presentó utilizar Excel como simulación de la base de datos.\\
-
-Para solucionar una de las mayores limitaciones que presentaba usar una hoja de calculo como base de datos y evitar  datos sobre-escritos y problemas con los datos. Se procuró durante todo el programa atomizar al máximo posible cada método sobre la base de datos, haciendo que los cambios sean lo mas inconexos y manejables para el usuario. \\
+No es propiamente un algoritmo, sino  un recurso para solucionar una de las mayores limitaciones que presentaba usar una hoja de calculo como base de datos y evitar  datos sobre-escritos y problemas con los datos. Se procuró durante todo el programa atomizar al máximo posible cada método sobre la base de datos, haciendo que los cambios sean lo mas inconexos y manejables para el usuario. \\
 
 En el método añadir alimento se rompe esta norma, añadiendo un alimento en la base de datos que hay que guardar, pero sin guardar todos los cambios en el resto de los alimentos, por si el usuario no quisiera hacerlo. Para evitar esta falta de control por parte del usuario sobre la persistencia de sus datos, a la hora de almacenarlo, se carga el array de nuevo, y se añade esta nueva línea tanto al array usado durante el programa, como al nuevo array de alimentos, este nuevo array se almacena en la base de datos, mientras que el otro sigue con su propósito en el programa. Si el usuario hace algún cambio y lo guarda, el nuevo alimento estará a salvo, si, por el contrario, el usuario decide salir sin guardar su progreso en el día, el nuevo alimento ya estará guardado en la base de datos.\\
 \subsection{Distinción entre tipos de comida}
@@ -66,6 +68,14 @@ Se realizó un estudio sobre los diferentes métodos de distinción que se podí
 \textbf{Ejemplo:}\\
 Un alimento que sea comida y cena: 00101 -> Se representará con el número 5. \\
 Esto permite la carga de un único elemento, sin posibilidad de fallo además de un calculo sencillo, cuyo mayor inconveniente es llevar a cabo todas las clausulas condicionales, para hacer la criba por tipo de comida.\\
+
+\section{Conocimientos aprendidos en la carrera}
+\subsection{INTRODUCCIÓN}
+Apartado donde se hablará de forma breve sobre todo conocimiento aprendido durante los años de carrera, relacionado directamente con el desarrollo del proyecto.
+\subsection{Conocimientos sobre python}
+A lo largo de la carrera, se han estudiado diferentes lenguajes de programación (Ej: Java, C, CSHARP...), entre los cuales se encontraba Python. Por ejemplo en asignaturas como Sistemas Inteligentes, Nuevas tecnologías, etc., o en mi paso por la politécnica de Varsovia, en asignaturas como “Algoritmia y computación matemática”, la cual, toda la asignatura consiste en un gran proyecto, donde se ponía a prueba los conocimientos algorítmicos en el lenguaje Python.\\
+
+Además, multitud de las librerías usadas durante este proyecto fueron utilizadas en dichas asignaturas, haciendo que el proyecto, partiera desde un punto avanzado facilitándome el aprendizaje.
 \subsection{SCRUM}
 Quizás uno de los aspectos más destacados a la hora de realizar el proyecto, fue la organización por parte del alumno, a través de la metodología SCRUM, que permitía al alumno mantenerse centrado en cada nueva tarea, no pasando a la siguiente hasta dejar esta zanjada del todo. \\
 
@@ -77,18 +87,8 @@ Para la realización de esta metodología se tuvo en posesión una pizarra, en l
 \item	DONE: Una vez todas las partes se ponían de acuerdo en que la tarea estaba terminada, pasaban a DONE, este apartado existía básicamente, para hacer mella en el trabajo que el alumno realizó durante la semana, haciendo palpable las semanas donde se tuvo una mayor o menor carga de trabajo, pudiendo regular esto, y teniendo de esta manera un avance constante.
 \end{enumerate}
 En progreso solo se podía encontrar una tarea, y si el tutor catalogaba una tarea como incompleta pasaba a \textbf{TODO} de manera que, de esta forma, semanalmente se cumplían con una serie de propósitos de forma clara y concisa, y no se aglomeraban todas las ideas y propuestas dejando  cabos sueltos que podrían arruinar la representación final del proyecto. \\
-Este método fue estudiado en la asignatura de gestión de proyectos por el alumno, y culminado en su periodo de practicas con el instituto de Castilla y León, el cual, usaban de manera muy similar a la adaptación del alumno, La metodología SCRUM para gestionar todos sus proyectos.
-\section{Conocimientos aprendidos en la carrera}
-\subsection{INTRODUCCIÓN}
-Apartado donde se hablará de forma breve sobre todo conocimiento aprendido durante los años de carrera, relacionado directamente con el desarrollo del proyecto.
-\subsection{Conocimientos sobre python}
-A lo largo de la carrera, se han estudiado diferentes lenguajes de programación (Ej: Java, C, CSHARP...), entre los cuales se encontraba Python. Por ejemplo en asignaturas como Sistemas Inteligentes, Nuevas tecnologías, etc., o en mi paso por la politécnica de Varsovia, en asignaturas como “Algoritmia y computación matemática”, la cual, toda la asignatura consiste en un gran proyecto, donde se ponía a prueba los conocimientos algorítmicos en el lenguaje Python.\\
+Este método fue estudiado en la asignatura de gestión de proyectos por el alumno, y culminado en su periodo de practicas con el instituto de Castilla y León, el cual, usaban de manera muy similar a la adaptación del alumno, La metodología SCRUM para gestionar todos sus proyectos.\\
 
-Además, multitud de las librerías usadas durante este proyecto fueron utilizadas en dichas asignaturas, haciendo que el proyecto, partiera desde un punto avanzado facilitándome el aprendizaje.
-\subsection{Conocimientos sobre la gestión de proyectos}
-La metodología usada para idear, planificar y desarrollar el proyecto, es el conjunto y suma de una serie de actitudes adquiridas a lo largo de los últimos años. Tanto con asignaturas dedicadas específicamente para ello como  Gestión de proyectos, como con el prueba y error, que ha hecho que se fuese aprendiendo la mejor manera de trabajar a nivel personal. Permitiendo que este proyecto, fuese con diferencia el mas amplio y hasta la fecha, mas cómodo, a la hora de ser elaborado.\\
-
-Metodologías como el SCRUM, Las pruebas de errores, la organización interna del scrum, las reuniones semanales sobre el estado del proyecto, etc.
 \subsection{Investigación}
 De vital importancia, es el nivel de capacidad de investigación y búsqueda de la información no es el mismo que al inicio del grado. La velocidad y capacidad, de saber buscar, es uno de los conocimientos más importantes que se adquieren a lo largo de la carrera. Conocimiento indirecto, pero presente en todas y cada una de las asignaturas que se han cursado, dicho nivel de investigación ha permitido que errores que antiguamente hubieran durado días, durasen horas, buscando en diferentes páginas y libros y contrastando cada información recibida a lo largo de este proceso de investigación.
 \section{Conocimientos externos a la carrera}
