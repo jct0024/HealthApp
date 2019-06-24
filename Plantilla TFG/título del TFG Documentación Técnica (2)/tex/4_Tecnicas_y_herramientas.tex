@@ -4,14 +4,14 @@ Apartado cuyo objetivo es presentar las técnicas metodológicas y las herramien
 
 Se comenta los aspectos más destacados de cada opción, con un repaso somero a los fundamentos esenciales y referencias bibliográficas para que el lector pueda ampliar su conocimiento sobre el tema.
 \section{¿Por qué Python?}
-La razón es la sencillez y capacidad de este lenguaje para el análisis y tratamiento de los datos gracias a librerías como Pandas o Numpy. Base gran parte de la metodología de análisis usada en este proyecto en el libro: Python for Data Analysis. \cite{pythonDataAnalisis}
+La razón es la sencillez y capacidad de este lenguaje para el análisis y tratamiento de los datos, gracias a librerías como Pandas o Numpy. Base gran parte de la metodología de análisis usada en este proyecto en el libro: Python for Data Analysis. \cite{pythonDataAnalisis}
 \\ 
-Las distintas posibilidades que se barajaron antes de empezar fueron Java, Android, R y Python. Al final me decanté por Python por diferentes motivos, el primero en ser descartado fue Java, tras un estudio inicial sobre lo que quería hacer y el como hacerlo, me di cuenta que necesitaba un lenguaje potente que me dejase tratar los datos con claridad para su análisis, y después de leer varios artículos como: REFERENCIA ARTICULOS, me percaté de que Java no era la mejor opción, estos artículos siempre te orientaban hacia Python y R. Entonces, ¿Por qué Android?, por la sencilla razón de que este trabajo está desarrollado para unir el mundo de la dietoterapia, y las ciencias de la Salud con la informática para hacer que el usuario tenga un fácil aprendizaje de dicha metodología. A mi parecer la forma más clara y rápida de llevar al usuario dicha tecnología es a través de su SmartPhone, pero se acabó descartando debido a la falta de conocimientos sobre sistemas Android. A estas alturas ya solo me quedaba elegir entre Python y R, tras indagar superficialmente sobre ambos lenguajes para el análisis y el tratamiento de datos, se llego a la conclusión que ambos lenguajes tienen una forma de trabajar muy similares, y entonces la decisión fue clara, debido a que he trabajado en numerosas ocasiones con Python y la sintaxis de R para mi era desconocida, al final, me decante por Python.
+Las distintas posibilidades que se barajaron antes de empezar fueron Java, Android, R y Python. Al final se decanto por Python por diferentes motivos. El primero en ser descartado fue Java, tras un estudio inicial sobre como se quería desarrollar la aplicación, se necesitaba un lenguaje potente que  dejase tratar los datos con claridad para su análisis, y después de buscar entre diferentes fuentes; Java no era la mejor opción, estas fuentes siempre te orientaban hacia Python y/o R. Entonces, ¿Por qué Android?, por la sencilla razón de que este trabajo está desarrollado para unir el mundo de la dietoterapia, y las ciencias de la Salud con la informática para lograr que el usuario tenga un fácil aprendizaje de dicha metodología. La forma más clara y rápida de llevar al usuario dichas tecnologías es a través de un  SmartPhone, pero se acabó descartando debido a la falta de conocimientos sobre sistemas Android. A estas alturas ya solo existían dos opciones:  Python y R. Tras indagar superficialmente sobre ambos lenguajes para el análisis y el tratamiento de datos, se llego a la conclusión que ambos lenguajes tienen una forma de trabajar muy similares,y  debido a que durante los años de estudio el alumno ha trabajado en numerosas ocasiones con Python, se decantó por Python.
 \section{Metodología}
 \subsection{Introduccón}
-En este apartado explicaremos el cómo y porque se ha tratado los datos en este TFG además de los diferentes cálculos internos que se realizan para el sistema de recomendaciones, cálculos, etc.
+En este apartado se explicará el cómo y porque se ha tratado los datos en este trabajo,  además de los diferentes cálculos internos que se realizan para el sistema de recomendaciones, cálculos, etc.
 \subsection{Excell y Pandas}
-Se ha usado la herramienta de Microsoft Excel, para trabajar como una base de datos, trabajando los datos en formato DataFrame. Los DataFrame son proporcionados por la librería Pandas. Hay un Excel para la base de datos genérica,otro para la base de históricos y otro para los usuarios. Se leen los datos automáticamente en cuanto el usuario entra en la aplicación, pero solo se guarda si el usuario así lo desea.
+Se ha usado la herramienta de Microsoft Excel, para simular una base de datos, trabajando los datos en formato DataFrame. Los DataFrame son proporcionados por la librería Pandas. Existen diferentes hojas de calculo, que funcionan como colecciones de una base de datos. Estas hojas son explicadas mas adelante.
 \subsection{DataFrame}
 Se usan los DataFrame, para llevar un registro de todos los datos que el programa necesita, se tiene en cuenta tanto las bases de datos de los alimentos, usuarios y comidas como lo que el usuario lleva en el día.
 \\
@@ -19,7 +19,7 @@ Los alimentos se tratan en el momento en el que se registra el usuario, de maner
 
 \section{Técnicas}
 \subsubsection{Introducción}
-En este apartado se hablara brevemente de las técnicas usadas durante el proyecto, y la razón por la que se escogieron dichas técnicas. Posiblemente, haya argumentos repetidos en otros apartados similares, por ello se expresará exclusivamente finalidad y razonamiento.
+En este apartado se hablara de manera breve de las técnicas usadas durante el proyecto, y la razón por la que se escogieron dichas técnicas. Posiblemente, haya argumentos repetidos en otros apartados similares, por ello se expresará exclusivamente finalidad y razonamiento.
 \subsection{Aprender a aprender}
 \begin{quote}
 “Aprender a aprender supone disponer de habilidades para iniciarse en el aprendizaje y ser capaz de continuar aprendiendo de manera cada vez más eficaz y autónoma de acuerdo a los propios objetivos y necesidades.\\
@@ -31,9 +31,8 @@ Esta competencia tiene dos dimensiones fundamentales. Por un lado, la adquisici�
 
 Es decir, el auto-aprendizaje no solo ayuda al usuario a aprender de manera autónoma, sino que le ayuda, a que todo aquello que ha conseguido, para el sea, de alguna forma, una meta, algo que lograr, algo suyo, que no se le va a olvidar tan fácilmente, como información memorizada, sino que será el resultado de pequeños logros personales que integrarán al usuario, una nueva información, como si fuese suya.
 \subsection{TMB}
-Se traduce como el calculo o tasa del metabolismo basal, por si no lo recuerdan, el metabolismo basal, es el gasto calórico que llevamos a cabo en reposo, por el mero hecho de respirar, a este calculo se le suman una serie de variables relacionadas con la actividad física del usuario y como resultado tenemos las kilocalorías diarias que el usuario gasta al día o que es equivalente que el usuario debe tomar para mantenerse en su peso, obviamente, este calculo es genérico, es muy utilizado por endocrinos, cuya finalidad no es hacer un seguimiento estricto de una dieta, sino un calculo aproximado de esta, para la correcta alimentación del paciente.\\
-
-Tras horas de estudio, se aproximó que la forma mas correcta de bajar o subir peso en base al cálculo del metabolismo basal, es dar un margen de 500 kilocalorías, arriba o abajo, según los propósitos de nuestro usuario. Se recalca, que es claro que es un cálculo genérico pero hasta el perfeccionamiento del proyecto, es el calculo mas adecuado que podemos realizar. Dicho calculo se sustenta a través de la siguiente formula:
+Se traduce como el calculo o tasa del metabolismo basal, el metabolismo basal, es el gasto calórico de una persona a lo largo del día. A este calculo se le multiplica un valor relacionado con la actividad física del usuario y como resultado tenemos las kilocalorías diarias que el usuario gasta al día o que es equivalente que el usuario debe tomar para mantenerse en su peso. Este calculo es genérico, por esta razón es un método cada vez más en desuso. Aun así, sigue siendo un de los métodos mas utilizados para la recomendación nutricional por especialistas en la materia.\\
+La formula del TMB es la siguiente:
 \textbf{Hombres:}
 \begin{equation}
 TMB =  ((10 * Peso(kg))+(6,25*Altura (cm))-(5*edad)+5)*ActividadFisica
@@ -52,7 +51,8 @@ Ejercicio fuerte (6-7 dias/semana & 1,725\\
 Ejercicio muy fuerte (dos veces al día) & 1,9 \\
 } 
 El resultado de esta formula indica el número de calorías que gasta la persona al día. Para cumplir el objetivo de la persona (subir o bajar de peso), se le suele añadir o restar un valor estandarizado. Este valor equivale a 500 calorías si se quiere adelgazar aproximadamente un kilogramo por semana \cite{TMBadiccional}. \\
-Es este proyecto, para evitar la generalización de la formula, lo cual, es la principal razón de que la formula este siendo sustituida por la toma de medidas del cuerpo; Se ha creado una variable que inicialmente empieza en 500 calorías pero que va variando en base al progreso del peso del usuario. Si el Usuario se pasa o se queda corto del objetivo normal (Con un rango de error del 15\%), este valor variará ajustándose cada vez mas al usuario  (Si el usuario se excede se le reducirán 50 calorías, si se queda corto se le sumaran 40).
+Es este proyecto, para evitar la generalización de la formula, lo cual, es la principal razón de que la formula este siendo sustituida por la toma de medidas del cuerpo; Se ha creado una variable que inicialmente empieza en 500 calorías pero que va variando en base al progreso del peso del usuario. Si el Usuario se pasa o se queda corto del objetivo normal (Con un rango de error del 15\%), este valor variará ajustándose cada vez mas al usuario  (Si el usuario se excede se le reducirán 50 calorías, si se queda corto se le sumaran 40).\\
+
 \subsection{Tratamiento de Excepciones}
 A través del tratamiento de excepciones, y con el uso de la librería \textbf{messagebox} se informa al usuario de las distintas situaciones que se pueden dar durante el uso del programa. Existe tres tipos principales de cuadros de textos, que emergen informando al usuario de algún tipo de problemao simplemente de que una acción ha finalizado correctamente.\\
 
@@ -86,20 +86,24 @@ Pantalla que advierte que algo no ha salido bien. El usuario puede seguir con el
 Pantalla que advierte de un Error grave, en el que se ha corrompido la estructura de datos del programa.\\
 
 A través de estos cuadros se traduce los diferentes problemas que puedan surgir en la utilización del programa; de manera gráfica y entendible por el usuario, haciendo el funcionamiento de este lo más transparente al usuario posible.
+\subsection{Diseño}
+Diseño simple, se evita crear extensos arboles de ventanas y frames, creando una navegabilidad sencilla e intuitiva. Debido al principal objetivo del proyecto,  esta aplicación está orientada a todos los públicos, por lo que se procura que la interfaz sea simplista, y fácil de entender.\\
+
+Se basa en un menú principal ramificado en tres vertientes: Usuario, Dieta y Registro (en el programa aparecen con otros nombres). En la vertiente usuario, esta la información del usuario y la posibilidad de cambiar dichos datos para un avance del programa. En la rama de la dieta, se encuentra el tronco principal de la aplicación, se muestra las recomendaciones alimenticias, a parte de darte libertad a la hora de escoger y decidir que deseas comer en el día de hoy. Por último, estaría el registro o historial, es decir todo aquello que necesites para llevar un registro de tu progreso y concienciar de esta manera al usuario.\\
+
+Respecto a los colores, se decido un tema básico que no agote la vista del usuario, ni tenga múltiples colores deslumbrantes, da la posibilidad al usuario de elegir entre una serie de estilos predefinidos para que escoja el que mejor se ajuste a sus gustos y necesidades.\\
 \section{Estructura del programa}
 \subsection{Introducción}
-En un principio se pensó en hacer una estructura MVC clásica pero conforme el proyecto fue creciendo, y prácticamente de manera imperceptible se convirtió en una versión un tanto modificada de este modelo.\\
 
-La estructura se basa en cuatro módulos principales, además de las librerías pertinentes, obviamente. 
+La estructura es una variación del modelo-vista-controlador, separando el módulo HealthApp (Que funciona de Main), del resto de módulos, que son los que implementan la estructura CAV (cálculos, Administración y Vista).
 \begin{enumerate}
-\item	\textbf{Main} – Tronco del programa
+\item	\textbf{HealthApp} – Tronco del programa
 \item	\textbf{Vistas} – Relacionado con la parte visual
 \item	\textbf{CalculosDieta} – Todo calculo usado en el programa
 \item	\textbf{AdminBase} – Todo proceso relacionado con la base de datos
 
 \end{enumerate}
-En los apartados siguientes se hablará de manera extensa sobre las librerías utilizadas y los módulos creados para el desarrollo
- de esta aplicación, por el momento, este apartado será explicando en que deriva y se basa dicha estructura, conforme el MVC clásico y cuales son las consecuencias de esto.
+
 \subsection{Cálculos, Administración y vista}
 Podríamos llamar propiamente a este modelo el CAV, y se basa en separar toda función que se vaya a crear en el programa en estos tres pilares. \\
 Todo surgió de la necesidad de separar la administración de la base de datos con cualquier otro tipo de función en el programa, esto sin darme cuenta creaba una cuarta pata en el trípode que supone el MVC. Este fue uno de los motivos, pero el motivo principal fue menos precipitado, se iba creando un módulo cada vez que la lógica de una función necesitará un hueco donde encajar y ninguno de los módulos creados lo sostenía. Debido a mi forma de trabajar, me sentí cómodo de dividirlo así, creando inicialmente una estructura básica y modulada, pero no en exceso. Por un lado, todo elemento relacionado con la base de datos, por otro lado todo cálculo matemático realizado en el programa y por ultimo toda función que intervenga en la interacción usuario-aplicación.\\
@@ -110,21 +114,22 @@ Esto tuvo en su momento sus inconvenientes, surgían funciones que encajaban en 
 \item	Si realiza cálculos u operaciones matemáticas, indistintamente de si sea sobre la dieta -CalculosDieta
 \item	Si interacciona y guarda datos en la base de datos -AdminBase
 \item	Si mezcla alguna de estas funcionalidades, por ejemplo, guardar en la base de datos y mostrar por pantalla algo, se tendrá en cuenta cual es su principal finalidad, por ejemplo, se guardan estilos, que se cargaran automáticamente para el diseño del programa, obviamente su finalidad es puramente visual, y guardar en la base de datos una transacción necesaria.
-\item	Cualquier Objeto, ventana, tabulación, etc. Que siempre vaya estar ahí al Main, pero sus modificaciones se repartirán entre los diferentes módulos.
+\item	Cualquier Objeto, ventana, tabulación, etc. Que siempre vaya estar ahí al HealthApp, pero sus modificaciones se repartirán entre los diferentes módulos.
 
 \end{itemize}
 Estas reglas, a día de hoy, han cumplido con todas las funciones que se han creado en el programa dando el resultado previsto.
 \section{Librerías}
 \subsection{Pandas}
-La librería desarrollada por Wes McKinney, Pandas, es una librería usada para el tratamiento de los datos como estructuras. No fue la primera opción para este proyecto, debido a que este proyecto se enfoca en el análisis de datos, y no en el tratamiento de bases de datos, se decidió crea una base de datos local en un archivo Excel, la primera opción fue la librería “openpyxl”, la cual, es una librería de código abierto, que permite la carga y manejo de datos XLS, el problema vino que te devolvía objetos desestructurados difíciles de tratar, y complicaba él objetivo principal del proyecto, acto seguido basándome en él libro: LIBRO, decidí probar con Pandas, esta librería me permitía leer los datos de los archivos .XLS, en forma de dataframes. Esto simplificaba el análisis de los datos, permitiendo tratarles tanto como dataFrame como en forma de numpy.array, dicha librería será analizada a continuación.
+La librería desarrollada por Wes McKinney, Pandas, es una librería usada para el tratamiento de los datos como estructuras. Debido a que este proyecto se enfoca en el análisis de datos, y no en el tratamiento de bases de datos, se decidió crear una base de datos local en un archivo Excel. La primera opción fue la librería “openpyxl”, la cual, es una librería de código abierto, que permite la carga y manejo de datos ".XLS", la cual, cargaba los datos de manera correcta, pero en listas desustructuradas que complicaban el posterior análisis de los datos. Acto seguido basándose en él libro: Python for Data Analysis \cite{analisis}, se decidió probar con Pandas, esta librería me permitía leer los datos de los archivos ".xlsx", en forma de dataframes. Esto simplificaba el análisis de los datos, permitiendo tratarles tanto como dataFrame como en forma de numpy.array, dicha librería será analizada a continuación.
 \subsection{Numpy}
-Como ya he nombrado en varias ocasiones en este memoria, el libro: LIBROO, se basa principalmente en esta librería, como añadido, es la librería sobre la que he trabajado a lo largo de la carrera en cuanto a análisis de datos en Python, y la mas recomendada por los usuarios en la web, sobre esta librería se sustenta principalmente este proyecto, siendo la encargada, del tratamiento, procesamiento y calculo, de todos los datos que internamente realiza el programa.
+Como se he nombrado anteriormente, el libro: Python for Data Analysis \cite{analisis}; Hace especial énfasis en la conveniencia del uso de Numpy para el tratamiento y análisis de los datos, como añadido, es la librería sobre la que se ha  trabajado a lo largo de la carrera en cuanto a análisis de datos en Python, y una de las mas recomendadas por varias fuentes de información. sobre esta librería se sustenta principalmente este proyecto, siendo la encargada, del tratamiento, procesamiento y calculo, de todos los datos que internamente realiza el programa.
 \subsection{Interfaz Gráfica}
-La librería utilizada para realizar y diseñar la interfaz gráfica fue Tkinter, tras buscar en diferentes páginas que encontraremos en la bibliografía, me decante por Tkinter debido a la falta de conocimientos en interfaces gráficas con Python, me decante por la mas fácil de aprender. Entre las opciones que baraje se encontraban: Tkinter, WxPython, PyQt y PyGTK.\\
+La librería utilizada para realizar y diseñar la interfaz gráfica fue Tkinter, tras indagar en diferentes fuentes, se decanto por Tkinter debido al desconocimiento sobre el funcionamiento de interfaces gráficas con Python.. Entre las opciones que se barajaron se encontraban: Tkinter, WxPython, PyQt y PyGTK.\\
 
-Tkinter traía una serie de ventajas, entre ellas que viene preinstalada con Python, era fácil de aprender, y hay una documentación amplia y extensa. Pero también tiene sus desventajas, incluye pocos elementos gráficos, tiene un limitado control y la navegabilidad mas sencilla se hace complicada, y sobre todo lo que mas noto es su lentitud, cuanto mas elementos añadas, mas lento va la interfaz, no tiene alguna especie de cache o memoria que guarde lo que has “dibujado”, sino que los dibuja cada vez que salen en pantalla, lo hace sobre cada botón etiqueta, etc.\\
+Tkinter traía una serie de ventajas, entre ellas que viene preinstalada con Python, fácil de aprender,además de una documentación amplia y extensa. Pero entre sus desventajas, se encuentran: la escasez de recursos gráficos, la sencillez implica poca variedad de elementos y funciones, complicando en numerosas ocasiones la navegabilidad, y la lentitud que este tiene debido a que dibuja cada elemento sobre cada pantalla, en tiempo de ejecución.\\
 
-La segunda opción que se me paso por la cabeza, fue WxPython,  tenia grandes ventajas, como la rapidez,  la flexibilidad que este ofrecía y sobre todo su mayor ventaja son todas las opciones que tiene para crear una interfaz gráfica compleja y “profesional”, tras barajar, estas opciones y compararlas con las de Tkinter, me di cuenta que todo lo que te ofrecía WxPython, era innecesario para la interfaz tan simplista que necesitaba para mi proyecto, y el aprendizaje era más complejo, además de ser mas complicado encontrar información o documentación sobre esta librería. El mayor problema de esta librería era que tiene una comunidad muy activa, la cual, esta constantemente insertando cambios, esto era un problema para proyectos largos, pues creaba problemas de compatibilidad, pero para este proyecto, no era algo que me resultará un inconveniente.\\
+La segunda opción que se planteo, fue WxPython, tras indagar presentaba  grandes ventajas, como: la rapidez,  la flexibilidad que este ofrecía y sobre todo  las opciones que tiene para crear una interfaz gráfica compleja y profesional. Después de ser meditado se llego a la conclusión de  que todo lo que  ofrecía WxPython, era innecesario para la interfaz tan simplista que necesitaba el proyecto, y el aprendizaje era más complejo, además de tener recursos limitados, y tener menor cantidad de documentación al alcance del alumno.\\
+El mayor problema de esta librería era que tiene una comunidad muy activa, la cual, esta constantemente insertando cambios, esto era un problema para proyectos largos, pues creaba problemas de compatibilidad, pero para este proyecto, no era algo que me resultará un inconveniente.\\
 
 El resto de librerías fueron descartadas, al poco de buscar información sobre ellas debido a que daban las mismas ventajas o similares que la WxPython, pero tenían mas inconvenientes, al menos para el tema que aborda este proyecto.
 \subsection{MatplotLib}
@@ -140,12 +145,7 @@ Librería normalmente preinstalada con Python, que da un control sobre la fecha 
 
 \subsection{auto-py-to-exe}
 No es usada durante el desarrollo del proyecto, pero si al finalizar dicho desarrollo para crear un archivo ejecutable (.exe). Utiliza internamente la librería pyinstaler, y hace uso de la librería Tkinter, para otorgar una interfaz gráfica al comando pyinstaller, haciendo más fácil su uso.
-\subsection{Diseño}
-Se decidió realizar un diseño simple, sin complicaciones, ni laberintos internos de pura navegabilidad que haga del manual de usuario un mapa para guiarse a través del programa. Esta decisión trivial se llevó a cabo debido al principal objetivo del proyecto, el aprendizaje de la dietoterapia, esta aplicación esta, básicamente, orientada a todos los públicos, por lo que si se construye una aplicación tediosa, solo complicaría el uso y aprendizaje del usuario.\\
 
-Se basa en un menú principal ramificado en tres vertientes: Usuario, Dieta y Registro (en el programa aparecen con otros nombres, pues aquí se explica la lógica del diseño). En la vertiente usuario, esta la información del usuario y la posibilidad de cambiar dichos datos para un avance del programa. En la rama de la dieta, se encuentra el tronco principal de la aplicación, se muestra las recomendaciones alimenticias, a parte de darte libertad a la hora de escoger y decidir que deseas comer en el día de hoy. Por último, estaría el registro o historial, es decir todo aquello que necesites para llevar un registro de tu progreso y concienciar de esta manera al usuario.\\
-
-Respecto a los colores, se decido un tema básico que no agote la vista del usuario, ni tenga múltiples colores deslumbrantes, da la posibilidad al usuario de elegir entre una serie de estilos predefinidos para que escoja el que mejor se ajuste a sus gustos y necesidades.\\
 \section{Módulos}
 \subsection{Cálculos Dieta}
 Es el modulo principal sobre el que se sustenta el programa, hace todos los cálculos de recomendación, kilocalorías, repartos, etc.\\
@@ -279,9 +279,9 @@ El programa sigue su curso, cuando se cierra la ventana de log-in, o acceso, seg
 
 Cambio comprueba que la combinación usuario y contraseña sea válida en caso de ser así cambia el valor de bandera a verdadero (True), indicando así que el acceso a sido un éxito, si no, la bandera seguirá a False, y se mostrara por pantalla un mensaje de error.\\
 
-Cuando la tupla usuario y contraseña es validad cierra la pantalla de “log-in”, lo que hace que en el “main” se siga con su normal ejecución, lo cual lleva, de manera directa a una condición que comprueba que la bandera es verdadera, si lo es relanza la aplicación principal, sino cierra el programa, y se termina toda ejecución.\\
+Cuando la tupla usuario y contraseña es validad cierra la pantalla de “log-in”, lo que hace que en el “HealthApp” se siga con su normal ejecución, lo cual lleva, de manera directa a una condición que comprueba que la bandera es verdadera, si lo es relanza la aplicación principal, sino cierra el programa, y se termina toda ejecución.\\
 
-Como el propio nombre indica getBandera devuelve este valior al main.\\
+Como el propio nombre indica getBandera devuelve este valior al HealthApp.\\
 
 \subsubsection{Seleccionar y refrescar}
 Sin duda alguna esto presento uno de los mayores retos de la aplicación debido a las deficiencias que presenta Python para construir interfaces gráficas, y dentro de dichas deficiencias generales, se añadía la dificultad que presentaba el simplismo de la librería tkinter para dichas interfaces.\\
@@ -289,8 +289,8 @@ Sin duda alguna esto presento uno de los mayores retos de la aplicación debido 
 Todo surgió de la necesidad de actualizar lo que se mostraba por pantalla cada vez que hacía una elección, pues si se quería sacar de este proyecto la mayor precisión posible del sistema de recomendación, cada elección, cada cambio de variable, debía suponer nuevas recomendaciones, esto en un principio parecía sencillo, pero Tkinter no permite la recarga de los datos, sino que al inicio del programa lo “dibuja”, todo de manera simultánea, impidiendo una actualización del frame cada vez que haya un cambio, por ello se crearon una serie de funciones, necesarias las cuales se engloban en una mayor, para que de una llamada realice todas las funciones necesarias.\textbf{seleccionarYActualizarResto}, esta función se encarga principalmente de actualizar todos los datos en pantalla, el menú que hemos comido hoy, ademñas de llamar a la función  \textbf{seleccionar}, la cual guarda la opción escogida y bloquea las posibles opciones, y acto seguido recorre las otros cuatro frames recalculando todas las listas, todas los resultados y sus respectivos LRE, etc. \\
 
 Se ha decidido que para evitar errores de coherencia el programa solo actualizará aquellos frames no bloqueados por el método seleccionar, sacrificando un pequeño porcentaje de la precisión, para conseguir un funcionamiento mas fluido sin errores de compatibilidad o múltiples selecciones.\\
-\subsection{Main}
-Es la columna vertebral del programa, el cual, se encarga de cargar y procesar toda la información relevante que más adelante se va a ir editando en el programa, el main tiene una única función y el resto se divide en clases que se instancian en esta función.\\
+\subsection{HealthApp}
+Es la columna vertebral del programa, el cual, se encarga de cargar y procesar toda la información relevante que más adelante se va a ir editando en el programa, el HealthApp tiene una única función y el resto se divide en clases que se instancian en esta función.\\
 
 La función principal hace de flujo de entrada y salida, donde un if condicional hace la función de interruptor permitiendo que la aplicación original, distribuida en clases se lance, o se cierre, como se ha explicado anteriormente.\\
 
@@ -298,7 +298,7 @@ Todo se basa en una especie de jerarquía de objetos, en el que el objeto princi
 
 De entre las tres subclases, instanciadas dentro del Menú principal (Usuario, Dieta, Historial), cabe destacar la de Dieta, pues esta a su ver tiene una clase por cada comida, estas clases son actualizadas constantemente en cuanto se hace algún cambio en el programa, esto es una abstracción del \textbf{ patrón de diseño observador}, en el que las clases observan esperando el cambio para actualizar sus recomendaciones.\\
 
-Se quiso evitar un main lioso con cosas que no son propias del dicho, por ello se separo en lo que es el main, y las clases las cuales, se encargan del funcionamiento principal del programa. De alguna forma, podríamos ver el main como los cimientos del programa completo, y los diferentes módulos, son los encargados de terminar de construir el programa.
+Se quiso evitar un HealthApp lioso con cosas que no son propias del dicho, por ello se separo en lo que es el HealthApp, y las clases las cuales, se encargan del funcionamiento principal del programa. De alguna forma, podríamos ver el HealthApp como los cimientos del programa completo, y los diferentes módulos, son los encargados de terminar de construir el programa.
 \section{Herramientas}
 Una vez explicadas el por que de cada decisión que se ha tomado a lo largo del desarrollo del programa, y expuesto cada decisión meticulosamente, procurando que cualquier duda del lector respecto a como se ha trabajado quede resuelta; Nos centraremos en mencionar de manera breve, dando una ligera explicación del por qué, se han usado las herramientas que se han usado para el desarrollo del programa.
 \subsubsection{Anaconda}
