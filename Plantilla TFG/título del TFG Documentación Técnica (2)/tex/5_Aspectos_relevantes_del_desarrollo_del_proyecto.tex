@@ -1,15 +1,15 @@
 \capitulo{5}{Aspectos relevantes del desarrollo del proyecto}
 
 \section{La idea}
-Uno de los aspectos a destacar en el desarrollo de este proyecto, es el nacimiento de dicho proyecto. Pues se trata de un trabajo de fin de grado, el cual, es un trabajo puro del alumno, donde tanto idea como desarrollo son realizados por él, y gran parte del tiempo gastado en el desarrollo fue en la ocurrencia y el pulimento de dichas ideas, y la conversión de todo esto en lo que se convirtió en la idea final. Aunque dicha idea fuera cambiando a lo largo de su desarrollo.\\
+Uno de los aspectos a destacar en el desarrollo de este proyecto, es el nacimiento de dicho proyecto. Se trata de un trabajo de fin de grado, el cual, es un trabajo puro del alumno, donde tanto idea como desarrollo son realizados por él. Una parte del tiempo gastado en el desarrollo fue en la ocurrencia y el pulimento de la idea. Aunque dicha idea fuera cambiando a lo largo de su desarrollo.\\
 
-Todo llego de la necesidad de crear un trabajo interesante, algo diferente y que fuera de actualidad, a esto se le sumo, que para un desarrollo mas ágil debía ser un tema conocido e interesante para su desarrollo. Entonces se llevo a cabo un periodo de investigación de las necesidades que azotan a las personas hoy en día, con las ultimas corriente de moda y que sobre todo pudiera resultar útil. Tras varios días se llegó a la conclusión de que actualmente la gente tiene una constante necesidad por cuidarse, por la vida sana, y que, además de ser una necesidad básica para cualquier persona, se estaba tornando en una moda explotable en cualquier página web, red social, etc.\\
+La necesidad de hacer alfo interesante, diferente y que fuera un tema de actualidad, son los pilares sobre los que se sustenta la idea. Para ello, se llevo a cabo una investigación sobre de las necesidades que sufren las personas hoy en día, con las ultimas corrientes de moda y que además pudiera resultar útil. La salud y la buena calidad de vida, son temas de vital importancia para las personas, que con el paso del tiempo cobran cada vez más protagonismo.\\
 
 Una vez encontrado el groso del proyecto tocaba perfilar detalles, para ver a través de que medio se podía llevar “una mejor calidad de vida” al usuario. De aquí surgieron varias vertientes:\\
 
 \begin{itemize}
-\item	Deporte: descartada, por la inmensa cantidad de aplicaciones de planificación de entrenamiento que existes a día de hoy.
-\item	Nutrición: Inicialmente descartada, debido a las mismas razones que lo anterior, existen miles de aplicaciones tanto que te proponen una dieta como que te ayudan a seguirla.
+\item	Deporte: Descartad, por la inmensa cantidad de aplicaciones de planificación de entrenamiento que existes a día de hoy.
+\item	Nutrición: Inicialmente descartada, debido a las mismas razones que lo anterior, existen cientos de aplicaciones tanto que te proponen una dieta como que te ayudan a seguirla.
 \item	Recordatorios: Con esto me refiero, a recordatorios de cuando hacer deporte, de cuando tomarse los medicamentes, etc. Se descarto rápidamente por ser una más, a la par que un proyecto banal.
 \item	Nutrición con otro enfoque: Aquí es donde llego la idea, una vez descartadas las demás opciones. Se ideo  una aplicación que te enseñe a comer, y que tenga en cuenta las patologías aunque sean en menor medida. Ahí es cuando nació la idea, y se empezó a formar la idea de la estructura de lo que iba a ser el proyecto.
 
@@ -17,7 +17,7 @@ Una vez encontrado el groso del proyecto tocaba perfilar detalles, para ver a tr
 De este modo se empezó con el proyecto, partiendo totalmente de cero, hasta el punto de conseguir algo perfectamente funcional, cumplimentando los objetivos propuestos para dicho proyecto.
 
 \section{Formato de trabajo}
-Se desarrollo una metodología ágil de forma incremental, se empezó formalizando las bases hasta llegar a la etapa final. No se pasó a la siguiente etapa sin haber terminado la anterior.\\
+Se desarrollo una metodología ágil de forma incremental. Se empezó formalizando las bases hasta llegar a la etapa final. No se pasó a la siguiente etapa sin haber terminado la anterior.\\
 
 Las tres principales etapas del proyecto fueron:
 \begin{enumerate}
@@ -26,14 +26,16 @@ Las tres principales etapas del proyecto fueron:
 \item	Finalización de cada detalle dejado indicado durante el proyecto.
 \end{enumerate}
 
-De esta forma, se fueron creando todas las características de manera incremental, de forma que se dio mas importancia al claro desarrollo del proyecto, que a la velocidad de dicho desarrollo. Pese a esta importante decisión, en ningún momento el proyecto se atasco, y se pudo llevar a cabo de manera ágil, gracias a la reutilización de código entre capas, permitiendo una clara transparencia a la hora del desarrollo.\\
+De esta forma, se fueron creando todas las características de manera progresiva, de forma que se dio mas importancia al claro desarrollo del proyecto, que a la velocidad de dicho desarrollo. Debido al sistema de organización por etapas, se logra un desarrollo fluido. Utilizando los recursos substraídos de la etapa anterior, impidiendo parches en el código o incoherencias.\\
 
-Al no lanzarnos directamente con el entorno gráfico, el cual, nunca había sido visto a lo largo de la carrera, permitió que fueran más obvios los pequeños errores de implementación, de cálculos, etc. Para que cuando se pasará a la etapa de desarrollo gráfico, nos pudiéramos centrar en los errores, o correcciones que el entorno gráfico suponía, sin amontar pequeños fallos, que mas tarde dieran lugar a grandes errores.\\
+Se desarrollo en estas tres etapas principales debido a los conocimientos del alumno. Desarrollar primero una aplicación por interfaz de comandos, permitió desarrollar el motor de la aplicación, sin tener que preocuparse por otro tipo de problemas, esto permitió crear una estructura solida, que posteriormente heredaría la fase de la interfaz gráfica.\\
 
 \section{Algoritmos del programa}
-Se quiere hacer énfasis en dichos algoritmos debido a que el programa utiliza una serie de algoritmos propios, ideados por el autor, que permite que el sistema de recomendación basado en contenidos funcione como es debido. En este apartado no se va a extender con la explicación de cada uno de los algoritmos utilizados, o métodos similares, creados por terceros y desarrollados por el alumno, sino aquellos que han sido ideados por él, y son un aspecto relevante en el desarrollo.
+Se desarrollan desde cero una serie de algoritmos o sistemas de tratamiento de los datos. Haciendo de esta parte algo propio de este proyecto.
 \subsection{Algoritmos de recomendación}
-Es el algoritmo que estructura todo el sistema de programación, nace de la necesidad de que la recomendación se ajuste al máximo a las necesidades del usuario. Si se ordenaba única y exclusivamente por la calidad, nunca se verían los menús de peor calidad, además de que podría haber una desigualdad inmensa entre las calorías ingeridas y las necesitadas. Mas tarde, se pensó en hacer una formula basada en la diferencia calórica, cosa que se adecuaba mas a las necesidades del usuario, pero creaba un desajuste en los macronutrientes, pues el usuario podía llevar 300 kcal exclusivamente de grasa, y que le recomendase otras 300 también solo de grasa, rompiendo la idea de dieta equilibrada. Por ello, se ideo otro prototipo de formula.\\
+Es el algoritmo que estructura todo el sistema de recomendación, nace de la necesidad de que la recomendación se ajuste al máximo a las necesidades del usuario.\\
+Si se ordenaba única y exclusivamente por la calidad, nunca se verían los menús de peor calidad, y el usuario nunca aprendería a llevar un estilo de vida saludable; además de que podría haber una desigualdad inmensa entre las calorías ingeridas y las necesitadas.\\
+Se pensó en hacer una formula basada en la diferencia calórica, cosa que se adecuaba mas a las necesidades del usuario, pero creaba un desajuste en los macronutrientes, rompiendo la idea de dieta equilibrada. Por ello, se ideo otro prototipo de formula.\\
 
 La formula tiene en cuenta la proporción de las necesidades calóricas del usuario, partiendo de cada macronutriente, se calcula la diferencia entre la diferencia de macronutrientes que debería llevar y los que llevo, todo llevo partido por la suma de la diferencia entre: Las kilocalorías que debo comer y las que tiene el alimento y la diferencia entre el macronutriente especifico y lo que el alimento tiene.\\
 \begin{equation}
@@ -47,10 +49,10 @@ Donde:
 \item \textbf{KMM:} Kilocalorias del macronutriente concreto del menú.
 \item \textbf{KMTC:} Kilocalorias totales que debería comer en esta comida.
 \item \textbf{ktm:} kilocalorias totales que tiene el menú a recomendar.
-
 \end{itemize}
+
 \subsection{Reajuste del TMB}
-Durante el proyecto, se utilizó la formula nombrada anteriormente, para el calculo del Metabolismo Basal, esto da como resultado las calorías que el usuario consume en un día normal. A esta cantidad de calorías se le suele variar un cantidad de calorías que suele oscilar entre las 300 y 500 calorías. Para poder bajar o subir de peso de manera controlada (Aproximadamente 3 kilogramos al mes). Esta formula antiguamente estaba muy extendida entre nutricionistas y endocrinos a la hora de diagnosticar/proporcionar una dieta. Con los años, entro en desuso, debido a la generalidad que hacer la formula sobre las calorías que gasta cada persona, sin tener en cuenta metabolismos, posibles enfermedades, etcétera.\\
+Durante el proyecto, se usa la formula para el calculo del Metabolismo Basal, esto da como resultado las calorías que el usuario consume en un día normal. A esta cantidad de calorías se le suele variar un cantidad de calorías que suele oscilar entre las 300 y 500 calorías. Para poder bajar o subir de peso de manera controlada (Aproximadamente 3 kilogramos al mes). Esta formula antiguamente estaba muy extendida entre nutricionistas y endocrinos a la hora de diagnosticar/proporcionar una dieta. Con los años, entro en desuso, debido a la generalidad que hacer la formula sobre las calorías que gasta cada persona, sin tener en cuenta metabolismos, posibles enfermedades, etcétera.\\
 
 Desde el principio fue un problema que limitaba las posibilidades del proyecto. Por ello, se desarrolló un método que permite, a través de una coleccióm de registros, llevar la cuenta de las variaciones de peso que sufre el usuario, y amoldar ese valor fijo, permitiendo su reajuste, y creando una formula que se adapta con mayor precisión a las necesidades del usuario.\\
 
@@ -73,48 +75,50 @@ Esto permite la carga de un único elemento, sin posibilidad de fallo además de
 \subsection{INTRODUCCIÓN}
 Apartado donde se hablará de forma breve sobre todo conocimiento aprendido durante los años de carrera, relacionado directamente con el desarrollo del proyecto.
 \subsection{Conocimientos sobre python}
-A lo largo de la carrera, se han estudiado diferentes lenguajes de programación (Ej: Java, C, CSHARP...), entre los cuales se encontraba Python. Por ejemplo en asignaturas como Sistemas Inteligentes, Nuevas tecnologías, etc., o en mi paso por la politécnica de Varsovia, en asignaturas como “Algoritmia y computación matemática”, la cual, toda la asignatura consiste en un gran proyecto, donde se ponía a prueba los conocimientos algorítmicos en el lenguaje Python.\\
+A lo largo de la carrera, se han estudiado diferentes lenguajes de programación (Ej: Java, C, CSHARP...), entre los cuales se encontraba Python. Por ejemplo en asignaturas como Sistemas Inteligentes, Nuevas tecnologías, etc., o vistas también en la  politécnica de Varsovia, en asignaturas como “Algoritmia y computación matemática”.\\
 
-Además, multitud de las librerías usadas durante este proyecto fueron utilizadas en dichas asignaturas, haciendo que el proyecto, partiera desde un punto avanzado facilitándome el aprendizaje.
+Además, varias de las librerías usadas durante este proyecto fueron utilizadas en dichas asignaturas, haciendo que el proyecto, partiera desde un punto avanzado facilitándome el aprendizaje.
 \subsection{SCRUM}
 Quizás uno de los aspectos más destacados a la hora de realizar el proyecto, fue la organización por parte del alumno, a través de la metodología SCRUM, que permitía al alumno mantenerse centrado en cada nueva tarea, no pasando a la siguiente hasta dejar esta zanjada del todo. \\
 
-Para la realización de esta metodología se tuvo en posesión una pizarra, en la cual se iba pegando post-it con una breve descripción de la tarea y una fecha máxima para la realización de esta. La pizarra era dividida en cuatro partes (pequeña adaptación del SCRUM).\\
+Para la realización del proyecto, se usa una pizarra física, donde se colocan las diferentes tareas, con una fecha limite de realización, de esta manera, toda idea que se planteaba durante el desarrollo era plasmada en la pizarra y posteriormente hecha. \\
+La pizarra era dividida en cuatro partes (pequeña adaptación del SCRUM).\\
 \begin{enumerate}
 \item	TODO: Por hacer, eran todas las tareas, pautas, e ideas que iban surgiendo a lo largo de la semana o tras las reuniones semanales. Había un máximo de cinco, para evitar que el proyecto se atascase por una carga excesiva de trabajo. De TODO se pasaba a in progress. 
 \item	IN-PROGRESS: En proceso, máximo dos cosas, una principal y una secundaria, la principal, consistía en el desarrollo de grandes métodos, cálculos, etc. Mientras que los secundarios, podían ser trabajos de investigación, rellenar datos o cualquier detalle que faltase de completas. De esta manera se evitaba la bifurcación del trabajo, haciendo del camino, pequeños objetivos, claros y directos a completar. Cuando el alumno pensaba que había terminado la tarea, la movía a “TO-VERIFY”.
 \item	TO-VERIFY: A verificar, es decir, falta la aprobación de los cambios realizados, si eran cambios propuestos en las reuniones semanales, eran zanjados en la siguiente reunión semanal; De esta forma se creaban distintos modelos y versiones de métodos, perfilando al máximo cada detalle en cada método. Las pequeñas tareas, eran resueltas, ya fuera en las reuniones semanales, o preguntando a personas, sobre como sería para ellos el correcto funcionamiento del programa.
 \item	DONE: Una vez todas las partes se ponían de acuerdo en que la tarea estaba terminada, pasaban a DONE, este apartado existía básicamente, para hacer mella en el trabajo que el alumno realizó durante la semana, haciendo palpable las semanas donde se tuvo una mayor o menor carga de trabajo, pudiendo regular esto, y teniendo de esta manera un avance constante.
 \end{enumerate}
-En progreso solo se podía encontrar una tarea, y si el tutor catalogaba una tarea como incompleta pasaba a \textbf{TODO} de manera que, de esta forma, semanalmente se cumplían con una serie de propósitos de forma clara y concisa, y no se aglomeraban todas las ideas y propuestas dejando  cabos sueltos que podrían arruinar la representación final del proyecto. \\
+En progreso solo se podía encontrar una tarea, y si el tutor catalogaba una tarea ya en "TO-VERIFY" como incompleta pasaba de nuevo a "In progress" de manera que, de esta forma, semanalmente se cumplían con una serie de propósitos de forma clara y concisa, y no se aglomeraban todas las ideas y propuestas dejando  cabos sueltos que podrían arruinar la representación final del proyecto. \\
 Este método fue estudiado en la asignatura de gestión de proyectos por el alumno, y culminado en su periodo de practicas con el instituto de Castilla y León, el cual, usaban de manera muy similar a la adaptación del alumno, La metodología SCRUM para gestionar todos sus proyectos.\\
 
 \subsection{Investigación}
-De vital importancia, es el nivel de capacidad de investigación y búsqueda de la información no es el mismo que al inicio del grado. La velocidad y capacidad, de saber buscar, es uno de los conocimientos más importantes que se adquieren a lo largo de la carrera. Conocimiento indirecto, pero presente en todas y cada una de las asignaturas que se han cursado, dicho nivel de investigación ha permitido que errores que antiguamente hubieran durado días, durasen horas, buscando en diferentes páginas y libros y contrastando cada información recibida a lo largo de este proceso de investigación.
+De vital importancia es el nivel de capacidad de investigación y búsqueda de la información La velocidad y capacidad, de saber buscar, es uno de los conocimientos más importantes que se adquieren a lo largo de la carrera. Conocimiento indirecto, pero presente en todas y cada una de las asignaturas que se han cursado, dicho nivel de investigación permite verificar de forma mas precisa, tanto  los datos o recursos necesarios para una investigación como la solución de errores que puedan emerger durante el desarrollo.
 \section{Conocimientos externos a la carrera}
 \subsection{INTRODUCCIÓN}
 En este apartado, se explicarán los aspectos relevantes del desarrollo del proyecto externos a los conocimientos iniciales del alumno. Todo aquello que ha tenido que aprender para poder llegar al resultado final.
 \subsection{Psicología}
 Parte de psicología, intercalada con  parte de educación primaria. Para el desarrollo del proyecto, y el moldeado de lo que es la idea genérica de este; Ha sido necesario el estudio de ciertos campos para entender cual podría ser el mejor camino para el entendimiento con el usuario. Este proyecto no buscaba una forma rápida de llegar al cliente/usuario, sino constante, que el cliente convierta los cimientos de la aplicación, en su propio estilo de vida. Por ello se estudió las distintas formas de enseñanza, así como, el auge de la tecnología en el sistema educativo.
-\subsubsection{Aprender a aprender}
-Resulta ser uno de los mejores métodos de aprendizaje ausente que hay. Donde el aprendizaje ausente, como su propio nombre indica, consiste en el aprendizaje ausente de figura dedicada a la enseñanza, para poder llevar a cabo ese proceso evolutivo.\\
-En esta ocasión el profesor, sería la aplicación, pero al no tener conciencia propia, ni libre capacidad de elección, el método de enseñanza habitual queda descartado. \\
-La idea principal nace de las ventajas que tiene implementar un estilo de vida, sobre el seguir ordenes estrictas. Tras un periodo de investigación, se decanto por un estilo incremental, en el que se intenta concienciar al usuario de cada decisión que toma, haciendo que el aprendizaje se base en pequeñas metas personales, y en la concienciación del usuario para que, él mismo, se de cuenta de que es lo mejor para él y aunque de manera lenta pero segura, llegue a la meta que tenga como objetivo.
+\subsubsection{Aprender a aprender \cite{autoAprendizajeForma}}
+Usado en la educación primaria e infantil, es un método para enseñar al alumno, en base a que el alumno encuentre la propia respuesta. De esta manera desarrolla los estímulos positivos del alumno ante la adquisición de nuevos conocimientos. \\
+La idea principal nace de las ventajas que tiene implementar un estilo de vida, sobre el seguir ordenes estrictas. Tras un periodo de investigación, se decanto por un estilo progresivo, en el que se intenta concienciar al usuario de cada decisión que toma, haciendo que el aprendizaje se base en pequeñas metas personales, y en la concienciación del usuario para que, él mismo, se de cuenta de que es lo mejor para él y aunque de manera lenta pero segura, llegue a la meta que tenga como objetivo.
 \subsection{Nutrición}
-Se parte de  básicos sobre el mundo nutricional y el movimiento “real-fooding”  o comida real,el cual,consiste en comer no solo las calorías necesarias para subir o bajar de peso, sino comida saludable; A efectos prácticos, esa es la idea principal sobre la que se fundamente el proyecto. Buscar la manera, de que el usuario, adquiera una mejor calidad de vida, a través de comida saludable, y que ya de paso, consiga sus objetivos principales.
+Conocimientos básicos sobre el mundo de la nutrición, el reparto da los distintos nutrientes de cada alimento a lo largo del día y la correcta distribución de las calorías en base a las características del usuario.\\
+
+Para el desarrollo del proyecto, se ha necesitado conocimientos sobre la calidad de los alimentos, así como, la predisposición de cada tipo de patología en base a las características de los alimentos. Logrando, a través del estudio e investigación, un análisis detallado para la veracidad de los datos a tratar.
 \subsubsection{"Calidad" de los alimentos}
-Es una parte fundamental del proyecto, la calidad marca el umbral por el cual se cribaran los alimentos y se aconsejarán principalmente los alimentos de mejor calidad, y esto irá variando conforme el usuario busque nuevos alimentos, u opciones.
+Parte fundamental del proyecto, la calidad marca el umbral por el cual se cribaran los alimentos y se aconsejarán principalmente los alimentos de mejor calidad, y esto irá variando conforme a que  el usuario busque nuevos alimentos, u opciones.
 \subsection{Nutriscore}
-En un principio para que la calidad fuera lo mas precisa posible, y pensando en esta aplicación como proyecto de negocio, se pensó que, un nutricionista, experto en la materia, fuera quien añadiera los menús y la calidad de dichos. Esto a nivel de negocio, era la idea más optima, pero a nivel de proyecto, dejaba un vacío en la clara objetividad en la selección de calidad y en la limitación de la base de datos. Por esta razón se eligió el algoritmo del semáforo o NUTRISCORE, algoritmo que se basa en una serie de características buenas y malas de los alimentos, y según el resultado de la diferencia, la cual, se acaba cribando en uno de los cinco posibles valores: A,B,C,D Y E, ordenador de mejor a peor.\\
+Algoritmo del semáforo o NUTRISCORE, algoritmo que se basa en una serie de características buenas y malas de los alimentos, y según el resultado de la diferencia, la cual, se acaba cribando en uno de los cinco posibles valores: A,B,C,D Y E, ordenador de mejor a peor.\\
 
 \imagen{Nutriscore}{Algoritmo nutriscore}
 
-De esta manera conseguimos que el usuario pueda añadir sus propios alimentos y no haga “trampa” con la calidad de la comida. Manteniendo la integridad de la aplicación lo máximo posible.
+Con este algoritmo se logra una integridad de los datos en la base de datos, pese a que el usuario añada sus propios alimentos. Para hallar la calidad del menú completo se usa una pequeña variación del algoritmo en cuestión para tratar diferentes alimentos con diferentes calidades.
 \subsubsection{Imperfecciones}
-Este algoritmo no es perfecto, pues se basa única y exclusivamente en cifras, en las cifras de azúcar, de proteína, de sal, etc. Por lo cual, cosas saludables como puede ser el aceite de oliva virgen extra, tienen como resultado una pésima calidad, mientras que, quizás, ultraprocesados como cereales bajos en azucares, bebidas edulcoradas, y cosas similares. \\
+Este algoritmo contiene fallos, pues se basa única y exclusivamente en cifras, en las cifras de azúcar, de proteína, de sal, etc. Por lo cual, cosas saludables como puede ser el aceite de oliva virgen extra, tienen como resultado una pésima calidad, mientras que, quizás, ultraprocesados como cereales bajos en azucares, bebidas edulcoradas y cosas de gran similitud nutricional, adquieren una buena calidad. \\
 Esto se debe por ejemplo, a que por cada 100 gramos, el aceite de oliva tiene una alto contenido en kilojulios y en grasas, por lo cual lo coloca en la categoría E, cuando debería ser un A.
 \subsection{Interfaces Gráficas}
-Pese a tener los conocimientos básicos sobre programación en Python, se desconocía cualquier tipo de implementación de interfaz gráfica. Debido a esto, gran parte del inicio del desarrollo del proceso, fue la selección de la librería que se utilizaría durante el resto del proyecto para la implementación de este.\\
+Pese a tener los conocimientos sobre programación en Python, se desconocía cualquier tipo de implementación de interfaz gráfica. Debido a esto, gran parte del  del proceso, fue la selección de la librería que se utilizaría durante el resto del proyecto para la implementación de este.\\
 Finalmente se escogió Tkinter, por su sencillez, pues permitió dar grandes avances y adaptarse a este nuevo sistema rápidamente. Permitiendo que la interfaz se complicará de manera exponencial, aplicando todo aquello que se iba aprendiendo de manera colateral a lo ya existente.
 \section{Fases del proyecto}
 Las fases de este proyecto pueden ser divididas de diferentes modos, según que criterio se utilice, de por si podemos dividir todo el proyecto en tres grandes fases: Idea, desarrollo y testing. Teniendo en cuenta esto, hay que tener en cuenta que el desarrollo a su vez, se dividió en otras tres fases principales que fueron: creación de estructuras iniciales, desarrollo en interfaz de comandos y desarrollo en interfaz gráfica. 

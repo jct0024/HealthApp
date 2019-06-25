@@ -52,29 +52,86 @@ Se llevaron a cabo numerosas pruebas del sistema, para ver que era solido y apru
 \section{Viabilidad}
 Es necesario que el proyecto sea viable en numerosos ámbitos, tanto en el económico como en el legal, además de una viabilidad consciente a la hora del desarrollo futuro.
 \subsection{Viabilidad económica}
-En este apartado se realizará un análisis de la viabilidad economica usando algunas de las tecnicas más utilizadas en iniciativas emprendedoras.\\
-Para empezar,  aclarar que este análisis esta enfocado desde el punto de vista de un proyecto empresarial, y como tal se entenderá el proyecto como un startUp de una idea final.
-La idea de negocio se basa principalmente en la que se basan múltiples aplicaciones androis y IOS:
+En este apartado se realizará un análisis de la viabilidad económica usando algunas de las técnicas más utilizadas en iniciativas emprendedoras.\\
+Este apartado se divide en varias secciones, diferencia dos tipos de análisis:
 \begin{enumerate}
-\item Versión Free: Versión gratuita con funcionalidades limitadas que impiden que el usuario pueda hacer uso de todos los complementos de la aplicación, además, de anuncios múltiples para el beneficio de la empresa.
-\item Versión Pro: Ganancia por suscripción mensual teniendo acceso a todas las funcionalidades, y atención al cliente para resolver cualquier tipo de duda, libre de anuncios, y con diferentes ofertas de renovación y cambios constantes para la mejora de la aplicación.
-\item Versión Enterprise: Versión para los pequeños o grandes negocios, por subscripción mensual basado en packs, donde los negocios podrán dar diferentes claves a los clientes, teniendo una serie de características propias de esta versión, haciendo que le profesional de la salud, o empresa pertinente este en todo momento en contacto con sus clientes y puedan ver sus progresos de manera mas automatizada.
+\item Análisis  de la viabilidad empresarial
+\item Análisis económico de la viabilidad del proyecto, y margen de beneficios.
 \end{enumerate}
-\subsubsection{Análisis DAFO}
+\subsubsection{Análisis de la viabilidad empresarial}
+\textbf{\textsc{Análisis DAFO}}
+El análisis DAFO \cite{DAFO} es una herramienta de estudio de la situación de un proyecto, en base a sus principales características.
 \begin{itemize}
 \item Oportunidades: Crear algo nuevo y ser el primero en crearlo, siempre opta a ser el cabecilla del mercado
 \item Fortalezas: Producto innovador que se crea en la cresta de la ola que es la moda por la salud y el fitness
 \item Amenazas: El mundo de las aplicaciones es un mar lleno de rivales, donde malas aplicaciones triunfan y buenas fallan
 \item Debilidades: La dificultad de entrada al mercado al ser una aplicación nueva	
 \end{itemize}
-\subsubsection{Matriz MCKINSEY}
-La matriz mckinsey es una herramienta de marketin estratégico que ayuda a la empresa a tomar decisiones sobre la inversión en el proyecto. Ayuda a priorizar la inversión, o llevar una estrategia mas conservadora
-\imagen{MCKENSEY}{Matriz mckensey del plan de negocio}
-\subsubsection{Crecimiento propio de una App}
-Como se menciono anteriormente los ingresos esperados de una aplicación son exponenciales si llega a triunfar. Según el centro de jóvenes emprendedores del Santader Explorer, esto es una estadística real del crecimiento de una App en el mercado:
-\imagen{crecimiento}{Estadística del crecimiento propio de una aplicación}
+\textbf{\textsc{Matriz MCKINSEY}}
+La matriz mckinsey \cite{matriz} es una herramienta de marketin estratégico que ayuda a la empresa a tomar decisiones sobre la inversión en el proyecto. Ayuda a priorizar la inversión, o llevar una estrategia mas conservadora
+\imagen{MCKENSEY}{Matriz Mckensey del plan de negocio}
+\imagen{ALLADODELAMCKENSEY}{Análisis del resultado de la matriz Mckensey}
+\subsubsection{Análisis económico}
+La formula para calcular la Amortización de los diferentes elementos utilizados a lo largo del programa es:
+
+\begin{equation}
+Amortización = \frac{(Valor)}{(VidaUtil)}
+\end{equation}
+
+\textbf{\textsc{Costes Hardware:}}
+Durante el desarrollo del proyecto únicamente ha sido necesario utilizar un ordenador y un router con internet.
+\begin{itemize}
+\item Ordenador portátil: 460euros \\Vida útil de aproximadamente 5 años.\\460euros/(12*5) meses = 7,66euros/mes.\\Durante 7 meses de trabajo = 7,66*7 = 53.66 euros brutos.
+\item Router: 50euros. \\ 50euros/(12*5)meses)*7 meses de trabajo = 5,82 euros brutos.
+\end{itemize}
+
+
+\textbf{\textsc{Costes Software:}}\\
+La única licencia software de pago usada durante el desarrollo del proyecto ha sido Windows 10 Home, la cual tiene un coste de 120 euros.\\
+Se estimamos su vida útil en 4 años \cite{vidautil}. Por lo tanto:\\
+120euros/(12*4)meses = 1,5euros/mes.\\
+Por 7 meses trabajados son 17,5 euros brutos.\\
+
+\textbf{\textsc{Costes Materiales:}}\\
+Diferentes costes ajenos al software o hardware necesario para la integra realización del proyecto.
+\begin{itemize}
+\item Mobiliario - Oficina CEEI Burgos, con luces e inmuebles: 200euros/mes.\\
+Durante 7 meses de trabajo = 200euros/mes*7 = 1.400 euros brutos\\
+\item Cartulinas - 2 euros
+\item Libretas - 5euros
+\item Pizarra - 10euros
+\end{itemize}
+
+\textbf{\textsc{Costes de totales:}}\\
+Costes del trabajador según el régimen general de la Seguridad Social en 2019. \cite{ssocial} \\
+Porcentajes de cotización:
+\begin{itemize}
+\item Comunes: 23.6\%
+\item Desempleo: 5.5\%
+\item Formación profesional: 0.7\%
+\item Total acumulado: 29,8\%
+\end{itemize}
+A continuación se mostrarás las diferentes cotizaciones respecto a la situación del alumno.\\
+Coste real del trabajador: 4070*1,298 =  5.282euros.
+Coste total del desarrollo del proyecto:
+5282+2+5+10+17.5+5.82+1400+53.66 = 6775.98euros brutos\\
+
+\textbf{\textsc{Beneficios:}}\\
+En este aparatado se estima los beneficios que se pueden obtener del proyecto, y la amortización en años, en base al número y precio de ventas.\\
+Supongamos que esta herramienta, es usada de manera privada por usuarios, y diferentes clínicas destinadas al reparto entre sus clientes.
+Dos posibles paquetes de venta:
+1 licencia X 130euros\\
+10 licencias X 1.000euros\\
+Suponiendo la venta a 10 personas para uso personal, y 3 paquetes de diez unidades para empresas sanitarias por año:
+10 unidades * 130euros = 1.300euros\\
+3 Packs de 10 unidades * 1000euros = 3000euros\\
+Lo que saldría de media a: 4.300euros/año\\
+Recuperando la inversión en: 6775.98euros/4300eurosXaño = 1.53 años.\\
+A partir de ese periodo, aproximadamente año y medio, empezaríamos a tener beneficios.
+
 \subsection{Viabilidad legal}
 Se consideraría una sociedad limitada, al ser el alumno un autónomo presentando el proyecto para lo que sería su propia empresa con la serie de inversiones que esto conlleva, y la viabilidad legal-económica que trae consigo.
+\subsection{Sociedad Limitada}
 \subsubsection{Forma jurídica}
 Descripción de la forma jurídica\\
 \\
@@ -84,7 +141,7 @@ Elección de una sociedad limitada por los motivos que me benefician:\\
 - Nº socios mínimo:1 \\
 - 1socio 100\% del Capital Social.\\
 -Limitacion a los bienes de la empresa en caso de deudas o cierre \\
-\subsection{Trámites para la constitución de la empresa}
+\subsubsection{Trámites para la constitución de la empresa}
 Descripción en detalle de los trámites de constitución\\
 Solicitar el Certificado de Denominación Social.\\
 

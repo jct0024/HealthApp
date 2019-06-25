@@ -1,4 +1,15 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{LeyProteccionDatos}
+Grupo Adaptalia.
+\newblock Ley de protección de datos médicos.
+\newblock 2019.
+
+\bibitem{dashStudies}
+American Cancer~Society American Heart~Association, American College
+  of~Cardiology.
+\newblock The dash studies.
+\newblock 1997.
 
 \bibitem{autoaprendizaje}
 autoaprendizaje7.
@@ -11,6 +22,13 @@ Consuelo Boticario.
 \newblock ¿una alimentación sana puede prevenir el cáncer?e, 2005.
 \newblock [Internet; descargado 15 de Junio de 2019]
   \url{http://www.analesranf.com/index.php/aranf/article/view/206}.
+
+\bibitem{autoAprendizajeForma}
+Enrique Ballester Sarrias. Angel~Montes Carlos Camiña~Catala, Angel
+  Cuenca~Lacruz.
+\newblock Autoaprendizaje y formación en cualidades mediantelas herramientas
+  multimedia.
+\newblock 2015.
 
 \bibitem{prevencion}
 Josefina del prado.
@@ -46,5 +64,10 @@ Dr.~Pedro Pinheiro.
 \newblock Obesidad calorías para adelgazar 1 kg por semana, 2019.
 \newblock [Internet; descargado 25-junio-2019]
   \url{https://www.mdsaude.com/es/obesidad/calorias-para-adelgazar}.
+
+\bibitem{DPP}
+The Diabetes~Prevention Program.
+\newblock Diabetes prevention program.
+\newblock 2002.
 
 \end{thebibliography}

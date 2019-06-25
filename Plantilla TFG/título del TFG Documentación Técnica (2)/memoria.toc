@@ -72,29 +72,29 @@
 \contentsline {section}{\numberline {5.3}Algoritmos del programa}{39}{section.5.3}% 
 \contentsline {subsection}{Algoritmos de recomendaci\IeC {\'o}n}{39}{section*.52}% 
 \contentsline {subsection}{Reajuste del TMB}{40}{section*.53}% 
-\contentsline {subsection}{Persistencia de los datos}{41}{section*.54}% 
+\contentsline {subsection}{Persistencia de los datos}{40}{section*.54}% 
 \contentsline {subsection}{Distinci\IeC {\'o}n entre tipos de comida}{41}{section*.55}% 
 \contentsline {section}{\numberline {5.4}Conocimientos aprendidos en la carrera}{42}{section.5.4}% 
 \contentsline {subsection}{INTRODUCCI\IeC {\'O}N}{42}{section*.56}% 
 \contentsline {subsection}{Conocimientos sobre python}{42}{section*.57}% 
-\contentsline {subsection}{SCRUM}{43}{section*.58}% 
+\contentsline {subsection}{SCRUM}{42}{section*.58}% 
 \contentsline {subsection}{Investigaci\IeC {\'o}n}{44}{section*.59}% 
 \contentsline {section}{\numberline {5.5}Conocimientos externos a la carrera}{44}{section.5.5}% 
 \contentsline {subsection}{INTRODUCCI\IeC {\'O}N}{44}{section*.60}% 
 \contentsline {subsection}{Psicolog\IeC {\'\i }a}{44}{section*.61}% 
-\contentsline {subsubsection}{Aprender a aprender}{45}{section*.62}% 
+\contentsline {subsubsection}{Aprender a aprender \cite {autoAprendizajeForma}}{44}{section*.62}% 
 \contentsline {subsection}{Nutrici\IeC {\'o}n}{45}{section*.63}% 
 \contentsline {subsubsection}{"Calidad" de los alimentos}{45}{section*.64}% 
-\contentsline {subsection}{Nutriscore}{46}{section*.65}% 
-\contentsline {subsubsection}{Imperfecciones}{47}{section*.66}% 
+\contentsline {subsection}{Nutriscore}{45}{section*.65}% 
+\contentsline {subsubsection}{Imperfecciones}{46}{section*.66}% 
 \contentsline {subsection}{Interfaces Gr\IeC {\'a}ficas}{47}{section*.67}% 
 \contentsline {section}{\numberline {5.6}Fases del proyecto}{47}{section.5.6}% 
-\contentsline {subsection}{Cronograma: }{48}{section*.68}% 
+\contentsline {subsection}{Cronograma: }{47}{section*.68}% 
 \contentsline {chapter}{Trabajos relacionados}{49}{chapter*.69}% 
 \contentsline {section}{\numberline {6.1}Estudios:}{49}{section.6.1}% 
-\contentsline {subsection}{Estudios DASH}{49}{section*.70}% 
+\contentsline {subsection}{Estudios DASH \cite {dashStudies}}{49}{section*.70}% 
 \contentsline {subsection}{Las pruebas de grasas saturadas}{50}{section*.71}% 
-\contentsline {subsection}{El programa de prevenci\IeC {\'o}n de diabetes (DPP)}{50}{section*.72}% 
+\contentsline {subsection}{El programa de prevenci\IeC {\'o}n de diabetes (DPP)\cite {DPP}}{50}{section*.72}% 
 \contentsline {subsection}{Pounds Lost}{51}{section*.73}% 
 \contentsline {subsection}{Seven countries Study \cite {sevenCountries}}{51}{section*.74}% 
 \contentsline {section}{\numberline {6.2}Aplicaciones Similares}{52}{section.6.2}% 
@@ -109,5 +109,4 @@
 \contentsline {subsection}{Base de datos en Servidor}{57}{section*.81}% 
 \contentsline {subsection}{Perfeccionamiento del algoritmo de recomendaci\IeC {\'o}n}{57}{section*.82}% 
 \contentsline {subsection}{Adaptaci\IeC {\'o}n a diferentes plataformas}{58}{section*.83}% 
-\contentsline {subsection}{Desarrollo empresarial}{58}{section*.84}% 
-\contentsline {chapter}{Bibliograf\'{\i }a}{61}{chapter*.85}% 
+\contentsline {chapter}{Bibliograf\'{\i }a}{59}{chapter*.84}% 

@@ -11,4 +11,8 @@ Database file #1: bibliografia.bib
 Warning--I didn't find a database entry for "enseñanza"
 Warning--I didn't find a database entry for "pythonDataAnalisis"
 Warning--I didn't find a database entry for "aprederAAprender"
-(There were 3 warnings)
+Warning--empty journal in LeyProteccionDatos
+Warning--empty journal in dashStudies
+Warning--empty journal in autoAprendizajeForma
+Warning--empty journal in DPP
+(There were 7 warnings)
