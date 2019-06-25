@@ -96,7 +96,7 @@
 \contentsline {subsection}{Las pruebas de grasas saturadas}{50}{section*.71}% 
 \contentsline {subsection}{El programa de prevenci\IeC {\'o}n de diabetes (DPP)}{50}{section*.72}% 
 \contentsline {subsection}{Pounds Lost}{51}{section*.73}% 
-\contentsline {subsection}{Seven countries Study}{51}{section*.74}% 
+\contentsline {subsection}{Seven countries Study \cite {sevenCountries}}{51}{section*.74}% 
 \contentsline {section}{\numberline {6.2}Aplicaciones Similares}{52}{section.6.2}% 
 \contentsline {subsection}{FatSecret}{52}{section*.75}% 
 \contentsline {subsection}{DietPro}{52}{section*.76}% 
@@ -110,3 +110,4 @@
 \contentsline {subsection}{Perfeccionamiento del algoritmo de recomendaci\IeC {\'o}n}{57}{section*.82}% 
 \contentsline {subsection}{Adaptaci\IeC {\'o}n a diferentes plataformas}{58}{section*.83}% 
 \contentsline {subsection}{Desarrollo empresarial}{58}{section*.84}% 
+\contentsline {chapter}{Bibliograf\'{\i }a}{61}{chapter*.85}% 

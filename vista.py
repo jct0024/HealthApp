@@ -616,8 +616,26 @@ def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
         resultado=[0,0,0,0,0]
         for i in arrayCalidad:
             resultado[i-1]+=1
-        cal = CalidadNumberToString(resultado.index(max(resultado))+1)
         
+        indice=0
+        maxi=0;
+        for r in resultado:
+            if(maxi<r):
+                cali=[indice]
+                maxi=r
+                
+            elif(maxi==r):
+                cali.append(indice)
+            indice+=1
+        if(len(cali) <=1):
+            cal = CalidadNumberToString(resultado.index(max(resultado))+1)
+        else:
+            i=0;
+            cont=0;
+            for c in cali:
+                cont=cont+c
+                i+=1;
+            cal =  CalidadNumberToString(round(c/i))
         labelCal= tk.Label(containerCal, text="Calidad: "+str(cal),bg=colorFondo)
         labelCal.pack(side=tk.LEFT)
 
