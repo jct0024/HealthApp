@@ -237,7 +237,6 @@ def guardarHistorial (usr, menuDeHoy, historial):
     try:
         fech = str(datetime.date.today())
         h = historial.loc[historial.Fecha == fech]
-        print(historial)
         hoy = pd.DataFrame({"Fecha":[fech],
                         "Usuario":[usr],
                         "Desayuno":[menuDeHoy[0]],
@@ -392,7 +391,6 @@ def ComproYAlmacenamientoUsuario(hojaUsuarios,selfi,controller,hojaPatologias, p
         messagebox.showinfo("Datos actualizados","Datos actualizados correctamente, veras los cambios al reiniciar el programa")
         controller.show_frame("InfoUsuario")
     except ValueError as ve:
-        print(ve)
         selfi.label_Error.config(text="ERROR: Algun dato erroneo, comprueba todo")
     except PermissionError:
         messagebox.showwarning("Cierre la base de datos","Imposible guardar, !base de datos abierta¡") 

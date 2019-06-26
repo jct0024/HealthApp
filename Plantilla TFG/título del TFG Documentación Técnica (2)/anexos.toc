@@ -11,7 +11,7 @@
 \contentsline {subsection}{Viabilidad econ\IeC {\'o}mica}{4}{section*.5}% 
 \contentsline {subsubsection}{An\IeC {\'a}lisis de la viabilidad empresarial}{4}{section*.6}% 
 \contentsline {subsubsection}{An\IeC {\'a}lisis econ\IeC {\'o}mico}{6}{section*.7}% 
-\contentsline {subsection}{Viabilidad legal}{7}{section*.8}% 
+\contentsline {subsection}{Viabilidad legal}{8}{section*.8}% 
 \contentsline {subsection}{Sociedad Limitada}{8}{section*.9}% 
 \contentsline {subsubsection}{Forma jur\IeC {\'\i }dica}{8}{section*.10}% 
 \contentsline {subsubsection}{Tr\IeC {\'a}mites para la constituci\IeC {\'o}n de la empresa}{8}{section*.11}% 

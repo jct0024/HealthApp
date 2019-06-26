@@ -148,11 +148,17 @@ No es usada durante el desarrollo del proyecto, pero si al finalizar dicho desar
 
 \section{Módulos}
 \subsection{Cálculos Dieta}
-Es el modulo principal sobre el que se sustenta el programa, hace todos los cálculos de recomendación, kilocalorías, repartos, etc.\\
+Módulo encargado de los cálculos del programa. En el se encuentra el motor del sistema de recomendación, encargándose de:
+\begin{itemize}
+\item Calcular la calidad de los alimentos en base a sus características.(Algoritmo Nutriscore)
+\item Calculo y reajuste de la Tasa Metabólica Basal (TMB)
+\item Reoarto de kilocalorías y los diferentes macronutrientes, teniendo en cuenta la comida del día y las necesidades que este aplica.
+\item Aplicación de la formula del sistema de recomendación
+\end{itemize}
 
-\subsubsection{CalculoTMB, rapartoDeKcal y distribuciónDeMacronutrientes}
-Estas tres funciones trabajan de manera paralela, el \textbf{calculoTMB}, calcula el TMB (Tasa Metabólica Basal), de aquí se saca el objetivo diario, una vez calculada la cantidad de Kilocalorías diarias, se reparten las kcal (\textbf{repartoDeKcal} ) según sea desayuno, almuerzo,comida, merienda o cena. Se reparten en base a  la Tabla 4.4
-\tablaSmall{Porcentajes totales de cada comida}{l c c c c}{porcentajesTipoComida}
+\subsubsection{Reparto Calorico entre comidas.}
+Como se aprecia en la Tabla \ref{tabla:porcentaje}, se tiene en cuenta no solo la carga calorica en cada comida, sino la distribución de este porcentaje entre los distintos nutrientes. (Tabla \ref{tabla:distribucionDietas})
+\tablaSmall{Porcentajes totales de cada comida}{l c c c c}{porcentaje}
 { \multicolumn{1}{l}{Comida } & Porcentaje(\%) & Descripción\\}{ 
 Desayuno & 24,75 & Alta carga calórica, rica en hidratos\\
 Almuerzo & 13,5 & Baja carga calórica.\\
@@ -162,7 +168,7 @@ Cena & 19,75 & Alta carga calórica pero con moderación.\\
 } 
 A la par se calcula el número de Kilocalorías que se tiene que tomar de hidratos, grasas y proteínas, en base al tipo de dieta recomendable para tu patología.\textbf{distribuciónDeMacronutrientes} toma como parámetros las kilocalorías diarias calculadas previamente por la función calculoTMB, y el tipo de dieta del usuario en base a su patología, y te devuelve una lista de los macronutrientes diarios, repartidos en gramos y las kilocalorías totales en el siguiente orden: ListMacDiarios [Kilocalorías, Hidratos, Proteínas, Grasas ].
 
-\subsubsection{OrdMinimaDiferencia y  formulDif}
+\subsubsection{Formula del Sistema de recomendación}
 Motor del sistema de recomendación. A través de la formula:
 \begin{equation}
 DiferenciaMacronutriente = \frac{(KMCD - A)}{((KCDT-KMM)+(KMTC-KTM))}
@@ -184,10 +190,7 @@ Por ultimo se realiza la media entre los tres macronutrientes principales:
 DiferenciaTotal = \frac{(DiferenciaHidratos+DiferenciaProteina+DiferenciaGrasas)}{3}
 \end{equation} 
 En el caso de que en algún macronutriente de negativo, ese macronutriente no se tendrá en cuenta.
-\subsubsection{Gráficos}
-Existen varios tipos de elementos gráficos usados en el proyecto. Los gráficos convencionales, que muestran la progresión del usuario en los últimos treinta días. Estos gráficos se pueden dividir en dos: Por un lado, hay un gráfico por cada comida del día que muestra la calidad de la comida ingerida, y por otro, se encuentra la media de las comidas, es decir, la progresión de la media de la calidad de un día completo.\\
 
-Además podemos encontrar un histograma, que sirve para mostrar al usuario, porque la calidad de ese alimento es la que tiene.\\
 
 \subsection{AdminBase y estructura de la base de datos}
 En este apartado se expone la estructura la base de datos, y de como se cargan, guardan y  trabajan los datos desde el módulo \textbf{AdminBase}, el cual, es el encargado del manejo de los datos, y la traducción con el sistema de archivos.
@@ -235,9 +238,9 @@ En esta hoja, la cual se encuentra dentro de las BaseDeDatosDeAlimentos, esta la
 Base de datos que se encuentra en la ruta: assets/RegistroMejora.xlsx, y se encarga de llevar un registro de la mejora del usuario en la aplicación. Esta base de datos guarda los datos imprescindibles para el ajuste de la formula del TMB respecto al usuario concreto.\\
 En el momento que un usuario se registra, tiene tres posibilidades de tipo de dieta:
 \begin{enumerate}
-\item \textbf{bajar:} Se crea un valor inicial igual a -400
+\item \textbf{bajar:} Se crea un valor inicial igual a -500
 \item \textbf{Mantener:} Se crea un valor inicial igual a 10
-\item \textbf{Subir:} Se crea un valor inicial igual a 400. 
+\item \textbf{Subir:} Se crea un valor inicial igual a 500. 
 \end{enumerate}
 El valor inicial a la hora del registro, es el suplemento que se añade al resultado de la formula del metabolismo basal, para que las calorias a ingerir por el usuario sean las necesarias para lograr el objetivo que se ha propuesto a través del tipo de dieta. Mantener tiene un valor inicial a 10, porque en caso de tener que reajustarse.
 Esta base de datos se estructura de la siguiente manera:
@@ -254,16 +257,7 @@ Esto se debe a:
 \item \textbf{Valor:} Valor que mas tarde se suma al calculo TMB y que ayuda a cumplimentar mejor su objetivo.
 \item \textbf{tipo:} Tipo de dieta u objetivo de la dieta del usuario. Sirve para saber si el usuario a cambiado de objetivo y en caso de no hacerlo, ver como va el progreso del usuario.
 \end{enumerate}
-\subsubsection{Guardar Todo}
-Debido a las limitaciones que Tkinter ofrece a la interfaz gráfica y el manejo de esta. Hay que juntar varias funciones en una función contenedor, para llamar a esta ultima a la hora de activarse un evento (Ejemplo: Pulsar un botón). Debido a esto existen funciones como guardarTodo, que aglomeran varias funciones internas. Esta función se encarga del guardado global de la actividad en la aplicación, teniendo dentro a:
-\begin{itemize}
-\item	\textbf{guardarHistorial:} Se encarga de almacenar las selecciones que se realizaron en el mismo día en la base de datos.
-\item	\textbf{guardarUsuario:} Guarda  los cambios que el usuario haya hecho sobre su propia aplicación.
-\item	\textbf{guardarDatos:} Guarda los datos relativos a la actividad del usuario en la aplicación.
-\end{itemize}
 
-\subsubsection{getXXXX}
-Serie de funciones que manipulan los DataFrame, con la base de datos, para recorrerlo y devolver el elemento que se estaba buscando.
 \subsection{Vista}
 En el módulo vista se almacena toda función que tendrá influencia en lo que el usuario ve, es decir:
 \begin{enumerate}
@@ -274,14 +268,8 @@ En el módulo vista se almacena toda función que tendrá influencia en lo que e
 \item Etcétera.
 \end{enumerate} 
 
-\subsubsection{Comprobación usuario}
-Empezando por la función \textbf{“cambio”}, indica un cambio en la funcionalidad del programa, se explica:\\
-El programa sigue su curso, cuando se cierra la ventana de log-in, o acceso, según como se haya procesado la información en cambio cuando la ventana se cierra, el programa continúa con su normal ejecución o se cierra completamente.\\
 
-Cuando la tupla usuario y contraseña es validad cierra la pantalla de “log-in”, lo que hace que  “HealthApp” se siga con su normal ejecución, lo cual lleva, de manera directa a una condición que comprueba si el alta en la aplicación ha sido correcta, si lo es relanza la aplicación principal, sino cierra el programa, y se la ejecución.\\
-
-\subsubsection{Seleccionar y refrescar}
-Uno de los mayores retos de la aplicación debido a las deficiencias que presenta Python para construir interfaces gráficas, y dentro de dichas deficiencias generales, se añadía la dificultad que presentaba el simplismo de la librería Tkinter.\\
+\subsubsection{Reconstrucción de frames}
 
 Cada vez que se selecciona una opción, el resto de opciones cambian aplicándose el sistema de recomendación programada, sobre cada posible comida que quede por elegir. De esta manera, se va ajustando las opciones a las necesidades del usuario. Tkinter no disponía de ningún método que permitiese actualizar un Frame. Por ello, cada vez que se selecciona una opción, se crea un nuevo frame que sustituye al actual, llamándose de manera recursiva con distintas opciones sobre el sistema de recomendación.\\
 

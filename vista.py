@@ -348,7 +348,6 @@ def gráfico(selfi,x,y,bandera):
             numero.append(i)
             i+=1
         if(i <= 1):
-            print(i)
             raise ValueError;
         #selfi.lin.set_xticks(np.range(len(x)),x)
         selfi.lin.set_data(numero,y)
@@ -520,6 +519,23 @@ def registrarse(hojaUsuarios,hojaPatologias):
     label_Err.pack()
     registro.mainloop(); 
 '''
+Función que en base al número de la comida te devuelve una cadena de caracteres 
+con el tipo de comida que es
+'''
+def enteroToStringComida(numero):
+    resultado= ""
+    if(numero==31 or numero==30 or numero==29 or numero==28 or numero==27 or numero==26 or numero==25 or numero==24 or numero==23 or numero==22 or numero==21 or numero==20 or numero==19 or numero==18 or numero==17 or numero==16):
+        resultado += ": Desayuno"
+    if(numero==8 or numero==9 or numero==10 or numero==11 or numero==12 or numero==13 or numero==14 or numero==15 or numero==24 or numero==25 or numero==26 or numero==27 or numero==28 or numero==29 or numero==30 or numero==31):
+        resultado += ": Almuerzo"
+    if(numero==4 or numero==5 or numero==6 or numero==7 or numero==12 or numero==13 or numero==14 or numero==15 or numero==20 or numero==21 or numero==22 or numero==23 or numero==28 or numero==29 or numero==30 or numero==31):
+        resultado += ": Comida"
+    if(numero==2 or numero==3 or numero==6 or numero==7 or numero==10 or numero==11 or numero==14 or numero==15 or numero==18 or numero==19 or numero==22 or numero==23 or numero==26 or numero==27 or numero==30 or numero==31):
+        resultado += ": Merienda"
+    if(numero==1 or numero==3 or numero==5 or numero==7 or numero==9 or numero==11 or numero==13 or numero==15 or numero==17 or numero==19 or numero==21 or numero==23 or numero==25 or numero==27 or numero==29 or numero==31):
+        resultado += ": Cena"
+    return resultado
+'''
 Función que muestra la información (Nutrientes, Histograma, calidad, etcétera) de la nueva información a añadir.
 Parametros: 
     hojaAlimentos - Array que contiene la base de datos alimentos
@@ -610,8 +626,8 @@ def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
         
         labelSod= tk.Label(containerSod, text="SODIO: "+str(round(sodioTotal,2)),bg=colorFondo)
         labelSod.pack(side=tk.LEFT)
-        
-        labelTipo= tk.Label(containerTip, text="TIPO: xxx",bg=colorFondo)
+        tipoString = str(enteroToStringComida(tipo))
+        labelTipo= tk.Label(containerTip, text="TIPO"+tipoString,bg=colorFondo)
         labelTipo.pack(side=tk.LEFT)
         resultado=[0,0,0,0,0]
         for i in arrayCalidad:
@@ -626,7 +642,6 @@ def InformacionNuevaComida(hojaAlimentos, selfi,colorDetalles,colorFondo):
             elif(maxi==r):
                 cali.append(indice)
             indice+=1
-        print('CALIDAD:',cali)
         if(len(cali) <=1):
             cal = CalidadNumberToString(resultado.index(max(resultado))+1)
         else:
