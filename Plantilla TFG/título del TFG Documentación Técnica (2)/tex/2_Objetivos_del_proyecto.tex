@@ -1,43 +1,37 @@
 \capitulo{2}{Objetivos del proyecto}
 
-En este apartado hablaremos sobre los objetivos generales y específicos de este proyecto, aclarando las dudas, sobre las intenciones de cada parte de este proyecto.
+En este apartado hablaremos sobre los objetivos generales y específicos de este proyecto, aclarando las dudas sobre las intenciones de una de sus partes.
 \section{Objetivos generales}
-El objetivo principal de este TFG es la realización de un proyecto completo, que ponga a disposición del usuario, un sistema automatizado de planificación alimenticia, que automatice y facilite el autoaprendizaje, haciendo visible al usuario de manera directa, clara y concisa, de cómo influye cada decisión que toma en su día a día. Se da la misma importancia a cada comida para evitar el “por una vez no pasa nada”. \\
+Desarrollar un Software que ponga a disposición del usuario, un sistema automatizado de planificación alimenticia, que mecanice y facilite el autoaprendizaje. De esta manera, será visible al usuario cómo influye cada decisión que toma en su día a día. Se da la misma importancia a cada comida para evitar el “por una vez no pasa nada”. \\
 \\
-Se consigue una interfaz sencilla, apta para cualquier usuario, además de una programación simplista y modularidad haciendo que cualquier programador con los conocimientos básicos.
+Lograr una interfaz sencilla, apta para cualquier usuario, además de una programación simplista y modularizada para facilitar el futuro desarrollo del proyecto.
 \\
-\section{Objetivos Funcionales}
-En este apartado se expondrán los diferentes objetivos que fueron pautando el proyecto final. Toda aquella característica, opción o detalle que se ha llevado a cabo a lo largo del proyecto ha sido para cumplimentar alguno de los puntos expuestos a continuación.
-
+\section{Objetivos Funcionales }
+Los principales objetivos funcionales son:
 \begin{itemize}
-
-\item	El Usuario podrá iniciar sesión a través de su DNI y la contraseña que él mismo haya escogido
-\item	Un nuevo usuario podrá registrarse, para hacer uso de la aplicación, siguiendo un formulario básico.
-\item	El usuario podrá navegar libremente por la interfaz, de manera ergonómica y sencilla.
-\item	Un usuario podrá ver su información y editarla, siempre que lo desee.
-\item	Se le recomendará al usuario el menú más adecuado en base a sus características.
-\item	Las recomendaciones variaran en base a la selección del usuario, manteniendo siempre la mayor coherencia en cuanta a la recomendación, con las necesidades del usuario, creando una experiencia adaptativa a este y completa.
-\item	El usuario podrá consultar el manual de uso en todo momento, por si alguna duda le surge.
-\item	Se cargará de manera automática las elecciones del usuario.
-\item	El usuario podrá añadir nuevos alimentos a la base de datos, cuya calidad se hallará en base al computo: NUTRISCORE.
-\item	El usuario podrá refrescar en caso de que ninguna opción le gusta desatando opciones de peor calidad.
-\item	Se mantendrá un registro semanal para su consulta, además de una serie de gráficos para el aprendizaje del usuario sobre el proyecto
-\item	Se buscará que el proyecto, mecanice una enseñanza del tipo: aprender a aprender, para llegar al usuario de manera que el mismo vaya enderezando su camino.
-\item	Se podrá elegir entre diferentes estilos de diseño para la comodidad del usuario
-\item	Se podrá guardar las elecciones del usuario, de esta manera se llevara un registro.
+\item Crear una base de datos con la información necesaria para el correcto funcionamiento de la aplicación.
+\item Desarrollar una aplicación de escritorio completa que proporcione:
+\begin{itemize}
+\item Crear nuevos usuarios, modificar la información del usuario dado de alta y añadir nuevos alimentos.
+\item Visualizar a través de diferentes medios el:  progreso, historial y elecciones de un usuario concreto.
+\item Elegir entre diferentes posibilidades recomendadas adecuadamente, o actualizar dichas opciones en caso de querer algo diferente.
+\item Acceso constante al manual de usuario ante cualquier duda o inconveniente.
+\item Calcular la calidad de un menú y sus diferentes características de manera automática.
 \end{itemize}
-
+\item Adquirir nuevos conocimientos en el ámbito dietoterapéutico.
+\item Aumentar los conocimientos en el desarrollo de aplicaciones y documentos oficiales.
+\end{itemize}
 \section{Objetivos incrementales del desarrollo}
-El proyecto fue fragmentado en pequeños y diversos objetivos específicos para conseguir llegar al  objetivo final. Se pensaron objetivos complementarios, para conseguir un desarrollo incremental y mantenido, haciendo que todos los objetivos específicos encajaran de manera secuencial y facilitando así su constante desarrollo, evitando al máximo posible, parches que retrasaran la creación del proyecto.
+El proyecto fue fragmentado en pequeños y diversos objetivos específicos para conseguir llegar al objetivo final. Se valoraron objetivos complementarios para conseguir un desarrollo incremental y mantenido, haciendo que todos los objetivos específicos encajaran de manera secuencial y facilitando así su constante desarrollo, evitando al máximo posible parches que retrasaran la creación del proyecto.
 \begin{itemize}
-\item La idea: Lo primero de todo ha desarrollar fue la idea, había que conseguir una idea original, para una herramienta nueva e innovadora, algo que cubriera alguna necesidad del mundo actual, y que fuera original. Entonces se decidió unir los conocimientos adquiridos estos años de estudio, con un tema de interés actual y en auge, así surgió la idea. Entonces se hizo única, haciendo que el usuario escogiese entre diversas opciones, y teniendo en cuenta la salud de este.
-\item Dado que la idea ya estaba desarrollada, se paso a estructurar el proyecto, teniendo en cuanta que tipo de personas iban a usar esta herramienta, se pensó en como poner a disposición del usuario la información que el programa iba a mostrar al usuario. Se planificó una metodología de auto-aprendizaje, e interfaz básica para evitar toda distracción y facilitar tanto el desarrollo como el uso.
-\item Una vez aclarado todo concepto teórico sobre el desarrollo, se paso a pensar los objetivos a nivel de desarrollo software, y se llevo a cabo la creación y estructura de la base de datos. Se crearon dos colecciones los alimentos y los usuarios, con sus diferentes características para el posterior tratamiento de los datos, además de una tercera que llevase el registro de la actividad del usuario.
-\item Una vez pensada la mejor disposición y estructura de las bases de datos, se empezó a crear el esqueleto del programa, se desarrollo una aplicación de línea de comandos, que, de manera básica y lineal, te pedía comprobación de usuarios y te mostraba las opciones a comer.
-\item	Una vez hecho el esqueleto se empezaron a desarrollar los cálculos necesarios, para redistribuir la información y llevar a cabo los cálculos de la manera más precisa posible.
-\item	Una vez creados los módulos y hechos los cálculos se empezó a trabajar sobre la interfaz gráfica, en este paso, hubo un pequeño parche, pues hubo que adaptar el esqueleto para encajarle con las competencias de Tkinter para la interfaz gráfica.
-\item	En este punto ya se había conseguido una aplicación sencilla y básica y había que empezar a cubrir las necesidades del usuario. Era necesario que el usuario pudiera cambiar su elección, que tuviera a la vista la información de cada comida, y la información sobre su día a día. Aquí se creo el tronco del programa, que se basa en actualizar todas las comidas cada vez que se actualiza los datos del actual día del cliente. Para esto se creó el módulo vista.
-\item	Una vez la aplicación funcionando, y todos los algoritmos haciendo su correspondiente trabajo toco perfilar detalles, a simple vista, de menor importancia, pero que en verdad juega un gran papel en el objetivo final del proyecto, se empezó a crear el sistema de gráficos e historiales, para que los usuarios pudieran aprender de sus errores, y tener un seguimiento de su avance desde el inicio del programa.
-\item Cuando por fin se crearon los gráficos, y teníamos el programa operativo, se decidió dar la posibilidad al usuario de añadir nuevos menús a la aplicación, permitiendo un mayor crecimiento y rompiendo uno de los grandes limites que presentaba el proyecto. Junto con este punto se creó la posibilidad de que un nuevo usuario se registrará en el programa.
+\item La idea: Lo primero de todo ha desarrollar fue la idea, había que conseguir una idea original para una herramienta nueva e innovadora, algo que cubriera alguna necesidad del mundo actual. Entonces se decidió unir los conocimientos adquiridos estos años de estudio con un tema de interés actual y en auge, así surgió la idea. Entonces se hizo única, haciendo que el usuario escogiese entre diversas opciones, y teniendo en cuenta la salud de este.
+\item Dado que la idea ya estaba desarrollada, se paso a estructurar el proyecto teniendo en cuanta que tipo de personas usarían esta herramienta, se pensó en como poner a disposición del usuario la información que el programa iba a mostrarle. Se planificó una metodología de autoaprendizaje, e interfaz básica para evitar toda distracción y facilitar tanto el desarrollo como el uso.
+\item Una vez aclarado todo concepto teórico sobre el desarrollo, se pasó a pensar los objetivos a nivel de desarrollo del software, y se llevó a cabo la creación y estructura de la base de datos. Se crearon dos colecciones: los alimentos y los usuarios, con sus diferentes características para el posterior tratamiento de los datos, además de una tercera que llevase el registro de la actividad del usuario.
+\item Una vez pensada la mejor disposición y estructura de las bases de datos, se empezó a crear el esqueleto del programa. Se desarrolló una aplicación de línea de comandos, que de manera básica y lineal, pidiese la comprobación de usuarios y mostrara las opciones a comer.
+\item	Una vez hecho el esqueleto, se empezaron a desarrollar los cálculos necesarios para redistribuir la información y llevar a cabo los cálculos de la manera más precisa posible.
+\item	Ya creados los módulos y hechos los cálculos se empezó a trabajar sobre la interfaz gráfica. En este paso hubo un pequeño parche, puesto que se tuvo que adaptar el esqueleto para encajarle con las competencias de Tkinter para la interfaz gráfica.
+\item	En este punto ya se había conseguido una aplicación sencilla y básica, y había que empezar a cubrir las necesidades del usuario. Era necesario que el usuario pudiera cambiar su elección, que tuviera a la vista la información de cada comida y la información sobre su día a día. Aquí se creo el tronco del programa, que se basa en actualizar todas las comidas cada vez que se actualiza los datos del actual día del cliente. Para esto se creó el módulo vista.
+\item	Estando ya la aplicación funcionando y todos los algoritmos haciendo su correspondiente trabajo, tocó perfilar detalles, a simple vista de menor importancia, pero que en realidad jugaban un gran papel en el objetivo final del proyecto. Se empezó a crear el sistema de gráficos e historiales para que los usuarios pudieran aprender de sus errores, y tener un seguimiento de su avance desde el inicio del programa.
+\item Cuando por fin se crearon los gráficos, y  el programa estaba operativo, se decidió dar la posibilidad al usuario de añadir nuevos menús a la aplicación. Así, se permite un mayor crecimiento y se acaba con uno de los grandes límites que presentaba el proyecto. Junto con este punto se creó la posibilidad de que un nuevo usuario se registrará en el programa.
 
 \end{itemize}

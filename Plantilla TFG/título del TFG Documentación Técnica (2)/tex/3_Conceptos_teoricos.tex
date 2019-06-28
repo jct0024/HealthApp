@@ -1,26 +1,26 @@
 \capitulo{3}{Conceptos teóricos}
 
 \section{Introducción}
-Se explicará todo concepto teórico interno y/o externo, usados sobre la metodología del programa para su correcto funcionamiento y la coherencia entre funciones, acercándose al máximo a la experiencia real que se quiere conseguir con este proyecto, a la hora de interconectar los datos con los métodos dando el mayor rigor en cuanto a veracidad.
+Se explicará todo concepto teórico interno y/o externo, usados en la metodología del programa para su correcto funcionamiento y la coherencia entre funciones, acercándose lo máximo posible a la experiencia real que se quiere conseguir con este proyecto a la hora de interconectar los datos con los métodos, dando así el mayor rigor en cuanto a veracidad.
 \section{Nutrición}
-Es uno de los ámbitos principales de estudio a lo largo de este proyecto, para la máxima veracidad de los resultados. En cada calculo y método que se realizan en el programa, se tienen en cuenta una serie de valores y datos, meticulosamente estudiados para poder usarlos en el programa.\\
+La nutrición es uno de los ámbitos principales de estudio a lo largo de este proyecto, para así lograr la máxima autenticidad de los resultados. En cada cálculo y método que se realizan en el programa, se tienen en cuenta una serie de valores y datos meticulosamente estudiados para poder usarlos en el programa.\\
 
-La nutrición como avance médico, es un tema que, a día de hoy, esta en pleno auge, numerosos estudios resaltan el estrecho vinculo entre un buen estilo de vida y una buena calidad de vida en cuanto al termino de salud se refiere. Ya no solo en patologías directamente relacionadas con la alimentación, sino en otro tipo de patologías mas graves, las cuales se puede reducir enormemente el riesgo con una buena alimentación.\cite{prevCancer}
+La nutrición como un avance médico, es un tema que a día de hoy esta en pleno auge. Numerosos estudios resaltan el estrecho vínculo entre un buen estilo y una buena calidad de vida en cuanto al término de salud se refiere. Ya no solo en patologías directamente relacionadas con la alimentación, sino en otro tipo de patologías más graves, en las cuales se puede reducir enormemente el riesgo de agravamiento con una buena alimentación.\cite{prevCancer}
 \subsection{Reparto calórico}
 
-Aunque durante el periodo de investigación se ha demostrado que todos los nutrientes principales de un alimento son igual de buenos y necesarios, si que es verdad que la predisposición del cuerpo ante la comida varía según la etapa del día. \\
+Aunque durante el periodo de investigación se ha demostrado que todos los nutrientes principales de un alimento son igual de buenos y necesarios, la predisposición del cuerpo ante la comida varía según la etapa del día. \\
 
-Durante el desayuno somos mas propensos a asimilar los alimentos, mientras que a la hora de la cena nuestro metabolismo está más ralentizado, por lo que hay que cenar con mayor moderación, pero no es aconsejable restringirlo estrictamente.\\
+Durante el desayuno somos más propensos a asimilar los nutrientes, mientras que a la hora de la cena nuestro metabolismo está más ralentizado y se debe cenar con mayor moderación, pero no es aconsejable restringirlo estrictamente.\\
 
-Para ello se realizó un estudio contrastando diferentes datos y se calculó a través de los datos obtenidos el porcentaje total de cada macronutriente en cada comida.
+Para ello se realizó un estudio contrastando diferentes datos y se calculó a través de los datos obtenidos el porcentaje total de cada macronutriente (hidratos, proteínas y grasas) en cada comida.
 \subsubsection{Reparto total de los macronutrientes}
-Hay que tener en cuenta que este proyecto ha sido diseño para personas con diferentes patologías y que como tal, tendrán diferentes distribuciones, en un principio se pensó en todas las combinaciones posibles: baja en grasa, alta en grasa, baja en hidratos, alta en hidratos, etc.\\
+Hay que tener en cuenta que este proyecto ha sido diseño para personas con diferentes patologías y que como tal, tendrán diferentes distribuciones. En un principio se pensó en todas las combinaciones posibles: baja en grasa, alta en grasa, baja en hidratos, alta en hidratos, etc.\\
 
-Pero tras hablar con una profesional endocrina en el Hospital Universitario de Burgos, María Maravi, me afirmo que: 
+Pero tras hablar con un doctora especialista en Endocrinología del Hospital Universitario de Burgos, María Maravi, me afirmó que: 
 \begin{quote}
-Nosotros no trabajamos con dietas altas o bajas en hidratos, pues son necesarios por igual para todo el mundo y por lo cual, la modificación de este solo puede traer problemas al paciente. Un diabético ha de tomar la cantidad normal de hidratos
+\textit{"Nosotros no trabajamos con dietas altas o bajas en hidratos, pues son necesarios por igual para todo el mundo y por lo cual, la modificación de este parámetro solo puede traer problemas al paciente. Un diabético ha de tomar una cantidad normal de hidratos."}
 \end{quote}
-De este modo la Doctora nos proporcionó la tabla de variaciones según el tipo de dieta (Tabla 3.1).
+De este modo la especialista nos proporcionó la tabla de variaciones según el tipo de dieta (Tabla 3.1).
 \tablaSmall{Distintos tipos de dietas y su distribución}{l c c c c}{distribucionDietas}
 { \multicolumn{1}{l}{Dietas} & Hidratos & Grasa & Proteínas & Ejemplos\\}{ 
 Normal & 55\% & 20\% & 25\% & Cualquier persona  \\
@@ -32,7 +32,7 @@ Alta en proteína & 50\% & 15\% & 35\% & Pacientes en diálisis\\
 \subsection{Reparto total calórico}
 Internamente se realizan múltiples cálculos, los cuales son necesarios ya sea para la correcta recomendación alimenticia del usuario, como para el correcto tratamiento de los datos. \\
 
-Debido a la diversidad de información encontrada en la web, fue muy complicado llegar a un punto estable donde los datos tuvieran una coherencia para todos y fueran veraces. Para que las cifras cuadrase se creo una  matriz donde se dividían las columnas por macronutrientes y las filas por el tipo de comida concreto. Esta matriz debía tener como resultado un porcentaje que cuadrase en varios ejes y un sub-porcentaje que cuadrase en el total, de esta manera se tenía controlado en todo momento la veracidad de los datos. Como se puede observar en la Tabla 3.2.
+Debido a la diversidad de información encontrada en la web, fue muy complicado llegar a un punto estable donde los datos tuvieran una coherencia para todos y fueran veraces. Para que las cifras cuadrase se creó una  matriz donde se dividieron las columnas por macronutrientes y las filas por el tipo de comida en concreto. Esta matriz debía tener como resultado un porcentaje que cuadrase en varios ejes y un subporcentaje que cuadrase en el total, de esta manera se tenía controlado en todo momento la veracidad de los datos. Como se puede observar en la Tabla 3.2.
 \tablaSmall{Distribución calorica a lo largo del día.}{l c c c c}{distribucionDietas}
 { \multicolumn{1}{l}{Comidas} & Grasa & Hidratos & Proteínas & carga TOTAL \\}{ 
 Desayuno & 15\% & 30\% & 24\% & 24.75\%  \\
@@ -41,70 +41,82 @@ Comida & 20\% & 25\% & 24\%  & 30.5\% \\
 Merienda & 20\% & 10\% & 14\% & 11.5\% \\
 Cena & 10\% & 10\% & 24\% & 19.75\% \\
 } 
-Se estudio para ello la diferente predisposición de las comidas, y los nutrientes internos de cada uno.
+Se estudió para ello la diferente predisposición de las comidas y los nutrientes internos de cada uno.
 
 \subsection{Nutriscore (Algoritmo del semaforo)}
-De manera objetiva, se creó un método de medición para la conveniencia de los alimentos(calidad). para que dicho calculo, mantuviese correlación con la actualidad que cubre el proyecto, se decidió usar el recurso Nutriscore, actualmente usado en España.\\
+De manera objetiva, se creó un método de medición para la conveniencia de los alimentos (calidad). Para que dicho cálculo mantuviese correlación con la actualidad que cubre el proyecto, se decidió usar el recurso Nutriscore, actualmente usado en España.\\
 
 A continuación, se muestra en imagen el algoritmo seguido de una breve explicación:\\
 \imagen{Nutriscore}{Algoritmo Nutriscore}
 
-La imagen anterior muestra el algoritmo , el cual, se basa en el sumatorio de una serie de valores negativos ( Tabla roja), los cuales reciben una puntuación en base a la cantidad de ese nutriente informativo en nuestro alimento. Y una serie de valores positivos (Tabla verde), que funciona de la misma manera que lo anterior. Se hace la diferencia entre ambas puntuaciones y en base al resultado se le asigna un valor de la A a la E, con diferentes colores, que hace visible la calidad del alimento.
+La imagen anterior muestra el algoritmo , el cual, se basa en el sumatorio de una serie de valores negativos ( Tabla roja), que son: Energía (kilojulios), Azúcares (gramos), Grasas saturadas (gramos), Sodio (miligramos). Estos valores reciben una puntuación del 0 al 10, en base a la cantidad que contenga un alimento por cada 100 gramos de comida de estas características. Y una serie de valores positivos (tabla verde)que son: frutas, fibra y proteínas. Estos valores varían entre 0 y 5, y adquieren esta puntuación de la misma forma que los anteriores.\\
+
+A mayor puntuación, mayor presencia tiene sobre el resultado final, que se haya restando a la puntuación obtenida de las características negativas, la puntuación de las características positivas. En base al resultado de la diferencia se le asigna un color y letra. Como bien se ve en la tabla \ref{tabla:nutri} 
+\tablaSmall{Resultado final del Algoritmo Nutriscore}{l c c c c}{nutri}
+{ \multicolumn{1}{l}{Puntuación} & Letra & Color \\}{ 
+<-1 & A  & Verde oscuro \\
+0 a 2 & B & Verde \\
+3 a 10 & C  Amarillo  \\
+11 a 18 & D & Naranja  \\
+>19 & 10\% & E &Rojo  \\
+} 
+\subsubsection{Imperfecciones}
+Este algoritmo contiene fallos, pues se basa única y exclusivamente en cifras, como en las cifras de azúcar, de proteína, de sal, etc. Por lo cual, cosas saludables como puede ser el aceite de oliva virgen extra, tienen como resultado una pésima calidad, mientras que quizás ultraprocesados como los cereales bajos en azúcares, bebidas edulcoradas y cosas de gran similitud nutricional, adquieren una buena calidad. \\
+Esto se debe por ejemplo, a que por cada 100 gramos, el aceite de oliva tiene una alto contenido en kilojulios y en grasas, por lo cual lo coloca en la categoría E, cuando debería ser un A.
 
 \section{Prevenciones}
-Debido al propósito del proyecto como ayuda a la prevención o avance de enfermedades/patologías por parte del usuario, había que estudiar que tipo de prevenciones había y donde cabía el proyecto.
+Debido al propósito del proyecto como ayuda a la prevención o avance de enfermedades/patologías por parte del usuario, había que estudiar qué tipo de prevenciones había y donde cabía el proyecto.\cite{prevencion}
 Tipos:
 \begin{itemize}
 \item	Prevención Primaria: Evita la adquisición de la enfermedad. Estas técnicas actúan suprimiendo los factores desfavorables antes de que puedan llegar a general la enfermedad.
-\item	Prevención Secundaria: Detectar la enfermedad y evitar su posible progresión. Interviene cuando se inicia la enfermedad, y su función principal es que el diagnostico y tratamiento precoz mejores el pronostico y control de las enfermedades.
+\item	Prevención Secundaria: Detectar la enfermedad y evitar su posible progresión. Interviene cuando se inicia la enfermedad, y su función principal es que el diagnóstico y tratamiento precoz mejoren la evolución y control de las enfermedades.
 \item	Prevención Terciaria: Comprende aquellas medidas dirigidas al tratamiento y a la rehabilitación, además de la ralentización de su progresión. Interviene cuando las lesiones son irreversibles, y la enfermedad está arraigada, pudiendo llegar a ser crónica.
-\end{itemize}
-\cite{prevencion}
+\end{itemize} 
 
-Una vez, pautado los puntos de prevención, ¿Dónde entre la nutrición?\\
-La detención primera es clara, una buena alimentación junto con una serie de hábitos de vida saludables puede impedir enormemente el desarrollo de la enfermedad, siendo una de las recomendaciones mas repetidas por los profesionales a sus pacientes.
-En la detención secundaría también entra esta categoría, es más complicado encontrar fuentes que lo verifiquen, pero existen cada vez más estudios como los citados en el apartado 6. Un buen habito de vida puede tener hasta mejores resultados que la medicación en algunos casos.
-En el caso de la detención terciaria es más complicado de asegurar, con el tiempo se va aceptando en mayor medida que un buen habito de vida puede ayudar a este tipo de prevenciones, y varios profesionales en la materia lo corroboran, pero la realidad es que, a falta de estudios concluyentes a día de hoy, no se puede afirmar con exactitud.\\
+Análisis:\\
+Respecto a la \textbf{prevención primera}, una buena alimentación junto con una serie de hábitos de vida saludables puede impedir enormemente el desarrollo de la enfermedad, siendo la recomendación de primera elección por los profesionales a sus pacientes.\\
+En la \textbf{prevención secundaria} también entra esta categoría. En patologías como la diabetes o problemas cardiovasculares, la dieta es vital para su tratamiento. Un buen hábito de vida y de alimentación puede tener incluso mejores resultados que la medicación en algunos casos (como se observa en el estudio de prevención de diabetes \cite{DPP}).
+\\
+En el caso de la \textbf{prevención terciaria} es más complicado de asegurar. A falta de estudios concluyentes, no se puede afirmar con exactitud que el proyecto cubra este tipo de prevención en estadios tan avanzados de la enfermedad.\\
 
 Lo que si es cierto es que una buena alimentación, junto con actividad física moderada a lo largo de la vida, siempre es recomendable para la salud de cualquier persona.\\
 \section{Enseñanza}
 La idea principal del proyecto es evitar otra aplicación repetitiva sobre la gestión o impartición de dietas, las cuales suelen ser abandonadas por la mayoría de los españoles al paso del tiempo.\\
 
-Para ello se estudio varios métodos de enseñanza, aprendizaje a través de métodos multimedia, etc. 
+Para ello se estudió varios métodos de enseñanza, aprendizaje a través de métodos multimedia, etc. 
 \subsection{Métodos multimedia}
-En los últimos años, el desarrollo de aplicaciones tanto móviles como de escrito han sido integradas activamente en los diferentes métodos de enseñanza. Se considera que las aplicaciones a día de hoy ofrecen muchas ventajas al mundo de la enseñanza:
+En los últimos años, el desarrollo de aplicaciones tanto móviles como de escrito han sido integradas activamente en los diferentes procedimientos de enseñanza. Se considera que las aplicaciones a día de hoy ofrecen muchas ventajas al mundo de la enseñanza:
 \begin{itemize}
-\item	Comunicación a tiempo real entre el método de enseñanza y el alumno estando siempre al alcance de éste
+\item	Comunicación a tiempo real entre el método de enseñanza y el alumno, estando siempre al alcance de éste.
 \item	Cómoda distribución de tareas, siendo más fácil el orden y la organización.
 \item	Ayuda a la superación de las barreras geográficas.
 \end{itemize}
 
-En educación, se a pronosticado a que lo largo de los años dominará el uso de la Tablet. Por ello parte de la progresión del proyecto , es su extensión a Tablets y Smartphones.\cite{enseñanza}
+En educación, se ha pronosticado a que lo largo de los años dominará el uso de la Tablet. Por ello, parte de la progresión del proyecto es su extensión a Tablets y Smartphones. \cite{ensenanza}
 \subsection{Autoaprendizaje}
-Debido a que el uso de este tipo de aplicaciones carece de una figura presenta durante la fase de aprendizaje del usuario, se buscó un método en el que el usuario por su propia índole, aprendiese, y poco a poco fuese adecuando su nuevo habito de vida, en base a sus propias elecciones. Esto daba al usuario versatilidad, dándole la opción en todo momento de elegir que es lo que mas le apeteciese, recomendando la mejor opción y complicando que el usuario hago una mala elección, de esta manera se juega con la idea de hacer creer al usuario que es el, el que toma las buenas o malas decisiones.
-\section{Autoaprendizaje del programa}
-Pese a que en ningún momento se llego a implantar debido a que quedaba fuera del objetivo final. Se desarrollo un estudio sobre inteligencia artificial o redes neuronales en la aplicación para hacer de la aplicación un sistema único, que aprenda del usuario que hace uso de ella, y de esta manera, abandonar la idea actualmente extendida de formulas genéricas, en cuanto a aplicaciones y cálculos del TMB se refiere y ofrecer una experiencia totalmente personalizada.\\
+Debido a que el uso de este tipo de aplicaciones carece de una figura presenta durante la fase de aprendizaje del usuario, se buscó un método en el que el usuario por su propia índole, aprendiese y poco a poco fuese adecuando su nuevo habito de vida, en base a sus propias elecciones. Esto otorga al usuario versatilidad, dándole la opción en todo momento de elegir que es lo que mas le apeteciese, recomendando la mejor opción y complicando que el usuario hago una mala elección. De esta manera se juega con la idea de hacer creer al usuario que es él el que toma las buenas o malas decisiones.
+\section{Autoaprendizaje del valor TMB}
+Pese a que en ningún momento se llego a implantar, se desarrolló un estudio sobre inteligencia artificial o redes neuronales en la aplicación para hacer del programa un sistema único.
+Llegándose a crear una neurona artificial con la intención de programar una función que fuera la \textit{autoselección} de los menús, pero esto solo reforzaría las elecciones más comunes del usuario que no tienen por qué ser adecuadas.\\
 
-Se realizó un estudio de redes neuronales, llegando a crear una red de tres capas, bastante básica, sin usar ningún de las librerías proporcionada por Python.\\
+Finalmente, se ideó un sistema de autoaprendizaje basado en el reajuste del valor de una variable, la cual cambia en base a la progresión del usuario. Esto permite tener un sistema único que resuelve el principal problema del calculo del TMB, la generalidad. \\
+\clearpage
 
-Se ideo añadir dicha neurona a una función que fuera la auto-selección de los menús, pero esto solo reforzaría las elecciones mas comunes del usuario que no tienen por qué ser las mejores.\\
-
-Tras meditarlo con cautela, se pensó que en caso de tener una base de datos más extensa, su uso, sería el entrenamiento de la red en base al historial de todos los usuarios, y  tras pasar el usuario en forma de vector, ver cual sería de todos, el valor inicial optimo del TMB, (para ser exactos de la suma que se la añade más adelante para mantener, bajar o subir), y además crear una adaptabilidad de esto, haciendo que si la próxima vez que el usuario edite su peso, no ha bajado, subido o mantenido, lo que debería haber hecho, se le sume una cantidad estandarizada, de esta manera, el programa va aprendiendo a base del uso, y con el tiempo daría el resultado mas personal y exacto posible.\\
 \section{Métodos de recomendación}
 Se meditaron diferentes métodos de recomendación:
 \begin{itemize}
-\item	Filtro colaborativo Basado en modelos: Utilizan los datos para ajustar modelos que después pueden ser utilizados para proponer recomendaciones.
+\item	Filtro colaborativo basado en modelos: Utilizan los datos para ajustar modelos que después pueden ser utilizados para proponer recomendaciones.
 \item	Filtro colaborativo basado en usuario: Es un tipo de filtro basado en memoria, y se basa en recomendar lo que usuarios similares a nuestro usuario han escogido.
-\item	“Vecino mas cercano”: Su calculo se basa en la correlación de Pearson, y es muy similar (por no decir idéntico) al filtro colaborativo basado en usuarios.
+\item	“Vecino más cercano”: Su cálculo se basa en la correlación de Pearson, y es muy similar (por no decir idéntico) al filtro colaborativo basado en usuarios.
 \end{itemize}
 
-Todos estos métodos, son métodos ampliamente utilizados por grandes distribuidores como Amazon, Netflix ...\\
+Todos estos métodos son ampliamente utilizados por grandes distribuidores como Amazon, Netflix ...\\
 Pero para este proyecto presentaban dos grandes inconvenientes:
 \begin{itemize}
-\item	Como bien se vio en la asignatura de gestión de la información, son métodos que requieren de muchos usuarios y productos para que funcionen de manera precisa, sino las recomendaciones pueden ser totalmente aleatorias, dando paso a una muy mala recomendación.
-\item	La mas importante, si este proyecto es creado por el desconocimiento extendido sobre la buena alimentación y sus beneficios no podemos compara un usuario con el resto de usuarios, pues a la larga, el programa se “estropeará”, y pasará a dividir a las personas en dos grandes grupos: Los que se cuidan bien y los que no. Y es precisamente lo que se quiere evitar.
+\item	Como bien se vió en la asignatura de gestión de la información, son métodos que requieren de muchos usuarios y productos para que funcionen de manera precisa, sino las recomendaciones pueden ser totalmente aleatorias, dando paso a una muy mala recomendación.
+\item	La más importante, si este proyecto es creado por el desconocimiento extendido sobre la buena alimentación y sus beneficios, no se puede comparar a un usuario con el resto de ellos, pues a la larga el programa se “estropeará”, y pasará a dividir a las personas en dos grandes grupos: los que se cuidan bien y los que no. Y es precisamente lo que se quiere evitar.
 \end{itemize}
 
-Por ello, pese a ser uno de los filtros menos recomendados en la asignatura de Gestión de la información, irónicamente para este proyecto fue el más apropiado. Se paso a usar un filtro basado en contenidos, por lo general, este filtro necesita saber las características del usuario y del contenido de los productos (en este caso alimentos), para poder realizar la recomendación. Esto obviamente tiene por lo general un gran coste de información y por ello no es recomendable. Pero en este proyecto se parte con esa información. Básicamente, sabiendo exactamente las características que el usuario busca en esa comida, se le recomienda dicha el producto (Menú), que mas se adapte a lo que busca.
+Por ello, pese a ser uno de los filtros menos recomendados en la asignatura de Gestión de la Información,  para este proyecto fue el más apropiado. Se pasó a usar un filtro basado en contenidos, por lo general este filtro necesita saber las características del usuario y del contenido de los productos (en este caso alimentos), para poder realizar la recomendación. Esto obviamente tiene un gran coste de información y por ello no es recomendable. Pero en este proyecto se parte con esa información. Básicamente, sabiendo exactamente las características que el usuario busca en esa comida, se le recomienda dicho producto (Menú) que más se adapte a lo que busca.
 
 
