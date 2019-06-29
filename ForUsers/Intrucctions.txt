@@ -1,0 +1,16 @@
+####################
+####- Descarga -####
+####################
+
+Para descargar, usar el siguiente:
+Link: insertar link
+A continuación extraiga el archivo ".zip"
+
+################################
+####- Inicio y preparación -####
+################################
+Dentro de la carpeta extraida, encontraremos el archivo: HealthApp.exe
+Recomendación: Para mayor comodidad, hacer click derecho, y "crear acceso directo". Movemos el acceso directo al escritorio.
+NUNCA: Mover el archivo original HealthApp.exe de la carpeta, ni ninguna carpeta del mismo directorio.
+Una vez preparado hacer doble click izquierdo sobre el ejecutable o su acceso directo.
+Antu cualquier duda, consulte el manual de usuario situado en la carpeta "assets", del ejecutable.

@@ -1,0 +1,38 @@
+
+######################################
+####- DESCARGUE E INSTALE PYTHON -####
+######################################
+
+Link: https://www.python.org/downloads/release/python-372/
+
+########################################
+####- DESCARGUE E INSTALE ANACONDA -####
+########################################
+
+Recomendado: Por la comidad y entornos de programación que ofrece Anaconda. No obligatorio.
+Escoger opción: Python 3.7 version
+Link: https://www.anaconda.com/distribution/#download-section
+
+###################################
+####- INSTALACIÓN DE LIBRERÍAS -###
+###################################
+
+En la carpeta \ForDevelopment, abrir el cmd o consola de comandos.
+Una vez instalado python:
+- Actualizar Pip: python3 -m pip install --upgrade pip
+- Instalar librerias: pip -r install requeriments.txt
+
+
+###################################
+####-     Spyder y Modulos     -###
+###################################
+Abrir Spyder, y con ello abrir todos los modulos:
+- HealthApp: Main del programa. Modulo a ejecutar.
+- Vista: Modulo relacionado con los aspectos visuales.
+- AdminBase: Manejo, carga y almacenamiento de los datos almacenados.
+- CalculosDieta: Todo calculo realizado en el programa.
+
+Una vez realizados los pasos anteriore, todo estará listo para trabajar en el proyecto.
+Para pruebas principales se usa el usuario:
+- User: 1
+- Passwd: 1234
