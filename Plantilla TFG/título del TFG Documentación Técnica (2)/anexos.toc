@@ -7,7 +7,7 @@
 \contentsline {section}{\numberline {A.1}Introducci\IeC {\'o}n}{1}{section.Alph1.1}% 
 \contentsline {section}{\numberline {A.2}Planificaci\IeC {\'o}n temporal}{1}{section.Alph1.2}% 
 \contentsline {subsection}{Fases}{2}{section*.4}% 
-\contentsline {section}{\numberline {A.3}Viabilidad}{4}{section.Alph1.3}% 
+\contentsline {section}{\numberline {A.3}Viabilidad}{3}{section.Alph1.3}% 
 \contentsline {subsection}{Viabilidad econ\IeC {\'o}mica}{4}{section*.5}% 
 \contentsline {subsubsection}{An\IeC {\'a}lisis de la viabilidad empresarial}{4}{section*.6}% 
 \contentsline {subsubsection}{An\IeC {\'a}lisis econ\IeC {\'o}mico}{6}{section*.7}% 
@@ -21,36 +21,36 @@
 \contentsline {subsubsection}{Requisitos funcionales}{14}{section*.11}% 
 \contentsline {subsubsection}{Requisitos no funcionales}{14}{section*.12}% 
 \contentsline {section}{\numberline {B.4}Especificaci\IeC {\'o}n de requisitos}{14}{section.Alph2.4}% 
-\contentsline {subsection}{Requisito 1}{14}{section*.13}% 
-\contentsline {subsection}{Requisito 2}{15}{section*.14}% 
-\contentsline {subsection}{Requisito 3}{15}{section*.15}% 
-\contentsline {subsection}{Requisito 4 y 6}{15}{section*.16}% 
-\contentsline {subsection}{Requisito 5}{16}{section*.17}% 
-\contentsline {subsection}{Requisito 7}{16}{section*.18}% 
+\contentsline {subsection}{Requisito 1 - Inicio y Registro}{14}{section*.13}% 
+\contentsline {subsection}{Requisito 2 - A\IeC {\~n}adir Alimento}{15}{section*.14}% 
+\contentsline {subsection}{Requisito 3 - Correcta distribuci\IeC {\'o}n}{15}{section*.15}% 
+\contentsline {subsection}{Requisito 4 y 6 - Sistema de recomendaci\IeC {\'o}n: Pruebas y calibre}{15}{section*.16}% 
+\contentsline {subsection}{Requisito 5 - Actualizaci\IeC {\'o}n de los Frames}{16}{section*.17}% 
+\contentsline {subsection}{Requisito 7 - Persistencia }{16}{section*.18}% 
 \contentsline {appendix}{\chapternumberline {C}Especificaci\IeC {\'o}n de dise\IeC {\~n}o}{17}{appendix.Alph3}% 
 \contentsline {section}{\numberline {C.1}Introducci\IeC {\'o}n}{17}{section.Alph3.1}% 
 \contentsline {section}{\numberline {C.2}Dise\IeC {\~n}o de datos}{17}{section.Alph3.2}% 
-\contentsline {section}{\numberline {C.3}Dise\IeC {\~n}o procedimental}{18}{section.Alph3.3}% 
-\contentsline {subsection}{Introducci\IeC {\'o}n}{18}{section*.19}% 
+\contentsline {section}{\numberline {C.3}Dise\IeC {\~n}o procedimental}{17}{section.Alph3.3}% 
+\contentsline {subsection}{Introducci\IeC {\'o}n}{17}{section*.19}% 
 \contentsline {subsubsection}{Alta o modificaci\IeC {\'o}n de usuarios}{18}{section*.20}% 
 \contentsline {subsection}{Elegir Alimento}{19}{section*.21}% 
-\contentsline {subsection}{Carga Y almacenamiento bases de datos}{20}{section*.22}% 
+\contentsline {subsection}{Carga Y almacenamiento bases de datos}{22}{section*.22}% 
 \contentsline {subsection}{Estructura general del programa}{22}{section*.23}% 
 \contentsline {section}{\numberline {C.4}Dise\IeC {\~n}o arquitect\IeC {\'o}nico}{23}{section.Alph3.4}% 
-\contentsline {subsection}{Arquitectura visual}{23}{section*.24}% 
+\contentsline {subsection}{Arquitectura visual}{24}{section*.24}% 
 \contentsline {subsection}{Arquitectura Modular}{24}{section*.25}% 
-\contentsline {subsubsection}{Diagrama de m\IeC {\'o}dulos}{24}{section*.26}% 
-\contentsline {subsubsection}{Diagrama Interno del Main}{27}{section*.27}% 
+\contentsline {subsubsection}{Diagrama de m\IeC {\'o}dulos}{25}{section*.26}% 
+\contentsline {subsubsection}{Diagrama Interno del Main}{28}{section*.27}% 
 \contentsline {appendix}{\chapternumberline {D}Documentaci\IeC {\'o}n t\IeC {\'e}cnica de programaci\IeC {\'o}n}{29}{appendix.Alph4}% 
 \contentsline {section}{\numberline {D.1}Introducci\IeC {\'o}n}{29}{section.Alph4.1}% 
 \contentsline {section}{\numberline {D.2}Estructura de directorios}{29}{section.Alph4.2}% 
 \contentsline {section}{\numberline {D.3}Manual del programador}{30}{section.Alph4.3}% 
 \contentsline {subsection}{IDE}{34}{section*.28}% 
-\contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{35}{section.Alph4.4}% 
-\contentsline {section}{\numberline {D.5}Pruebas del sistema}{37}{section.Alph4.5}% 
-\contentsline {subsection}{Almacenamiento y carga de los datos}{37}{section*.29}% 
+\contentsline {section}{\numberline {D.4}Compilaci\IeC {\'o}n, instalaci\IeC {\'o}n y ejecuci\IeC {\'o}n del proyecto}{36}{section.Alph4.4}% 
+\contentsline {section}{\numberline {D.5}Pruebas del sistema}{38}{section.Alph4.5}% 
+\contentsline {subsection}{Almacenamiento y carga de los datos}{38}{section*.29}% 
 \contentsline {subsection}{Navegabilidad}{38}{section*.30}% 
-\contentsline {subsection}{Algoritmos}{38}{section*.31}% 
+\contentsline {subsection}{Algoritmos}{39}{section*.31}% 
 \contentsline {subsection}{Eliminaci\IeC {\'o}n y apertura de las bases de datos}{39}{section*.32}% 
 \contentsline {appendix}{\chapternumberline {E}Documentaci\IeC {\'o}n de usuario}{41}{appendix.Alph5}% 
 \contentsline {section}{\numberline {E.1}Introducci\IeC {\'o}n}{41}{section.Alph5.1}% 

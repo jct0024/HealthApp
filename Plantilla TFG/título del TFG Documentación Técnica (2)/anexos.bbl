@@ -1,9 +1,24 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{vidautil}
 Gestión del ciclo de vida para sistemas de control, 2016.
 \newblock [Internet; consultado 25-junio-2019]
   \url{https://www.rockwellautomation.com/es_AR/news/blog/detail.page?pagetitle=Vida-%C3%BAtil-del-sistema-de-control-%7C-Blog&content_type=blog&docid=30cf16357e57e35dfa880691ddd873c6}.
+
+\bibitem{estandarNutri}
+Valores nutricionales – reglamento (ue) nº 1169/2011, 2016.
+\newblock [Internet; consultado 29-junio-2019]
+  \url{https://www.labelfood.es/normativas-de-valores-nutricionales/}.
+
+\bibitem{scrum}
+¿qué es scrum?, 2018.
+\newblock [Internet; consultado 29-junio-2019]
+  \url{https://www.scrum.org/resources/blog/que-es-scrum}.
+
+\bibitem{pack}
+The tkinter pack geometry manager, 2018.
+\newblock [Internet; consultado 29-junio-2019]
+  \url{http://www.effbot.org/tkinterbook/pack.htm}.
 
 \bibitem{DAFO}
 Análisis dafo, 2019.

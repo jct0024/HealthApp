@@ -1,8 +1,8 @@
 \apendice{Documentación técnica de programación}
 
 \section{Introducción}
-En el siguiente apartado, se mostrarán los pasos a seguir, herramientas, etcétera. Para ponernos a trabajar con este proyecto.
-Se puede descargar desde: \href{https://github.com/jct0024/HealthApp}{Repositorio GitHub}
+En el siguiente apartado se detallaran, requisitos, herramientas, pautas\ldots Para trabajar con este proyecto.\\
+El proyecto se puede descargar desde el: \href{https://github.com/jct0024/HealthApp}{Repositorio GitHub}
 \section{Estructura de directorios}
 Los directorios siguen la siguiente estructura:
 \begin{itemize}
@@ -12,6 +12,14 @@ Los directorios siguen la siguiente estructura:
 \begin{itemize}
 \item Manual.pdf
 \item Logotipo.PNG
+\item logo.ico
+\item A.png
+\item B.png
+\item C.png
+\item D.png
+\item E.png
+\item caraRoja.png
+\item caraVerde.png
 \end{itemize}
 \item Dorectprio: Dat
 \begin{itemize}
@@ -19,12 +27,20 @@ Los directorios siguen la siguiente estructura:
 \item BaseDeDatosUsuarios.xlsx
 \item Historial.xlsx
 \item config.txt
+\item RegistroHistorial
 \end{itemize}
 \item Directorio: Memorias
 \begin{itemize}
 \item Anexos.pdf
 \item Memorias.pdf
 \item Directorio: img (Almacenamiento de imágenes)
+\item Directorio: LatEx (Memorias y anexos en LatEx.
+\end{itemize}
+\item Directorio: Poster (Poster del programa).
+\item Directorio: ForDevelopments.
+\begin{itemize}
+\item requirements.txt
+\item Intructions.txt
 \end{itemize}
 \item AdminBase.py
 \item Main.py
@@ -33,18 +49,18 @@ Los directorios siguen la siguiente estructura:
 \end{itemize}
 \end{itemize}
 \section{Manual del programador}
-A continuación veremos una pequeña guía para preparar el entorno de programación.
-\textbf{\textsc{Python}}
-El lenguaje usado durante este proyecto es Python, en su versión 3.6 (También funcional para 3.7), para ello tendremos que descargar e instalar el interprete de Python. Lo cual lo podremos hacer desde este enlace \href{https://www.python.org/downloads/release/python-368/}{Python 3.6.8}. Desde la misma página podremos descargar si lo deseamos la versión 3.7.\\
-A continuación instalaremos Anaconda (No es estrictamente necesario, pero es el sistema usado para el desarrollo del proyecto), el cual nos dará una serie de funciones y programas, además de una powershell propia. Link: \href{https://www.anaconda.com/distribution/}{Anaconda}. Con esto, se nos instalará automáticamente tanto Spyder, como Notebook, y VisualCode. Cualquiera de estos tres editores son muy potentes y funcionan a la perfección para ejecutar el proyecto (Aconsejo que no se use NoteBook). Esta herramienta además viene con una serie de librerías principales ya instaladas y que ahorran trabajo al programador.\\
-En caso de no instalar anaconda, se debería instalar un editor, para su posterior ejecución. Editores recomendados para python:
+A continuación veremos una pequeña guía para preparar el entorno de programación.\\
+\textbf{\textsc{Python}}\\
+El lenguaje usado durante este proyecto es Python, en su versión 3.6 (También funcional para 3.7), para ello tendremos que descargar e instalar el interprete de Python. Lo podremos hacer desde el siguiente enlace \href{https://www.python.org/downloads/release/python-368/}{Python 3.6.8}. Desde la misma página podremos descargar si lo deseamos la versión 3.7.\\
+A continuación instalaremos Anaconda (No es estrictamente necesario, pero es el sistema usado para el desarrollo del proyecto), el cual nos dará una serie de funciones y programas, además de una powershell propia, muy útiles. Link: \href{https://www.anaconda.com/distribution/}{Anaconda}. Con esto, se nos instalará automáticamente tanto Spyder, como Notebook, y VisualCode. Cualquiera de estos tres editores son muy potentes y funcionan a la perfección para ejecutar el proyecto (Aunque se aconseja que no usar NoteBook). Esta herramienta además viene con una serie de librerías principales ya instaladas y que ahorran trabajo al programador.\\
+En caso de no instalar anaconda, se debería instalar un editor, para su posterior ejecución. Editores recomendados para Python:
 \begin{itemize}
 \item PyCharm
 \item VisualCode
 \item Spyder
-\item Ecplipe con API de python
+\item Ecplipe con API de Python
 \end{itemize}
-Recordar que si se escoge un editor el cual no tenga la opción de ejecutar directamente desde el editor, se deberá hacer a través de la consola de comandos, para ello vaya a la carpeta donde tenga descargado el proyecto, y en la parte superior (Donde aparece la ruta del directorio), escriba cmd y se cargará la powershell desde la carpeta actual, acto seguido escriba main.py y el programa se ejecutará para su prueba o test.\\
+Recordar que si se escoge un editor el cual no tenga la opción de ejecutar directamente desde el editor, se deberá hacer a través de la consola de comandos, para ello vaya a la carpeta donde tenga descargado el proyecto, y en la parte superior (Donde aparece la ruta del directorio), escriba cmd y se cargará la powershell desde la carpeta actual, acto seguido escriba HealthApp.py y el programa se ejecutará para su prueba o test.\\
 
 Las siguientes librerías son las librerías principales usadas durante el proyecto:
 \begin{itemize}
@@ -59,42 +75,50 @@ Las siguientes librerías son las librerías principales usadas durante el proye
 \item xlrd
 \item openpyxl
 \end{itemize}
-auto-py-to-exe, es una librería que sirve para crear archivos ejecutables desde un archivo con extensión ".py",sencilla de usar, la cual usa pyinstaler de manera interna, y nos da una interfaz gráfica bastante intuitiva para crear el ejecutable. El resto de librerías son las usadas para que el programa corra con normalidad.\\
+Auto-py-to-exe, es una librería que sirve para crear archivos ejecutables desde un archivo con extensión ".py",sencilla de usar, la cual usa pyinstaler de manera interna, y nos da una interfaz gráfica bastante intuitiva para crear el ejecutable. El resto de librerías son las usadas para que el programa corra con normalidad.\\
 
-\textbf{\textsc{Auto-py-to-exe}}
-Para usar la aplicación auto-py-to-exe, abriremos la consola de comandos con \textbf{cmd}, y escribiremos el comando: \textbf{\textsc{auto-py-to-exe}}
+\textbf{\textsc{Auto-py-to-exe}}\\
+Para usar la aplicación auto-py-to-exe, abriremos la consola de comandos con \textbf{cmd}, y escribiremos el comando: \textbf{auto-py-to-exe}
 \imagen{consolaAuto}{comando para el uso de auto-py-to-exe}
 Cuando insertemos ese comando se nos abrirá una ventana como la siguiente:
 \imagen{autopy}{Pantalla de la aplicación auto-py-to-exe}
-Para su correcto uso y se deberá añadir en \textbf{path file} el archivo principal (Main) que ejecuta todo nuestro programa. Para evitar problemas se marcará la opción \textbf{"One Directory"}, y más adelante la opción \textbf{Windows Based (console hidden)} Para evitar que se reproduzca la consola cada vez que lo ejecutemos (Si deseamos depurar el programa se aconseja usar la otra opción) y para terminar añadimos el icono de la aplicación en \textbf{Icon} y en \textbf{Additional Files} se elegirá la opción \textbf{add folder} y se añadirás las carpetas de "assets" y "Dat", una vez esto, se pulsará sobre el botón \textbf{Convert .py to .exe}, Si no hemos escogido carpeta de salida se hará sobre la carpeta propia del proyecto, si deseamos que se cree en cualquier otra carpeta específica se deberá añadir la ruta dentro de las opciones que se encuentran en \textbf{Advanced}\\
+Para su correcto uso se deberá añadir en \textbf{path file} el archivo principal (HealthApp) que ejecuta todo nuestro programa. Para evitar problemas con los archivos extra, se marcará la opción \textbf{"One Directory"}, y más adelante la opción \textbf{Windows Based (console hidden)} para evitar que se reproduzca la consola cada vez que lo ejecutemos (Si deseamos depurar el programa se aconseja usar la otra opción).\\
+Para terminar añadimos el icono de la aplicación en \textbf{Icon} y en \textbf{Additional Files} se elegirá la opción \textbf{add folder} y se añadirás las carpetas de "assets" y "Dat", una vez esto, se pulsará sobre el botón \textbf{Convert .py to .exe}. Si no hemos escogido carpeta de salida se hará sobre la carpeta propia del proyecto, si deseamos que se cree en cualquier otra carpeta específica se deberá añadir la ruta dentro de las opciones que se encuentran en \textbf{Advanced}\\
+\pagebreak
+\textbf{\textsc{INSTALACIÓN DE LAS LIBRERÍAS}}\\
+Para comodidad del desarrollador se dejará preparado el documento: \textbf{requeriments.txt} donde estarán almacenadas todas las librerías necesarias, si se desea instalar a través de este documento se ha de ejecutar el siguiente comando en la Shell: \textbf{pip3 install -r requeriments.txt}.\\
 
-\textbf{\textsc{INSTALACIÓN DE LAS LIBRERÍAS}}
-Para comodidad del desarrollador se dejará preparado el documento: \textbf{requeriments.txt} donde estarán almacenadas todas las librerías necesarias, si se desea instalar a través de este documento se ha de ejecutar el siguiente comando en la Sehll: \textbf{pip3 install -r requeriments.txt}.\\
+Además existirá la carpeta: \textbf{ForDevelopmnet}, donde encontraras dicho archivo (requeriments.txt), además de un resumen sobre como trabajar con el proyecto.\\
 
-En caso de existir algún fallo con alguna librería; instalar manualmente la librería concreta con el comando nombrado anteriormente correspondiente.\\
-Una vez tenemos preparado el entorno de Python podemos pasar a la instalación del IDE
+En caso de existir algún fallo con alguna librería, instalar manualmente la librería concreta con el comando: \textbf{pip3 install NombreLibreria}
+Una vez tenemos preparado el entorno de Python podemos pasar a la instalación del IDE.
 \subsection{IDE}
-En este aparado se hablará de como descargar y preparar el entorno para trabajar, como se realizó durante estos meses.
-\textbf{\textsc{Spyder}}
+En este aparado se hablará de como descargar y preparar el entorno para trabajar, como se realizó durante estos meses.\\S
+\textbf{\textsc{Spyder}}\\
 Si se ha realizado la correcta instalación de anaconda, ya tendrá instalado este programa por defecto.
 \imagen{Spyder}{Interfaz del editor Spyder para Python.}
-\textbf{\textsc{Git}}
-Sistema de control versiones seleccionado para este proyecto. Windows no lo trae instalado por lo que deberemos descargarlo e instalarlo desde el siguiente enlace: \href{https://git-scm.com/}{Git}
-\textbf{\textsc{GitKraken}}
-Para una mejor gestión, hemos usado la herramienta de escritorio Gitkraken. Si se desea descargar se puede hacer entrando en \href{https://gitkraken.com/}{GitKraken}
-Descargamos el ejecutable y lo instalamos una vez abierto el porgrama deberemos ir a: File/Clone Repo. Y añadir la URL del proyecto GitHub. Si ya lo hemos clonado tenemos que dar a la opción: Open Repo y buscar la carpeta donde lo hayamos descargado previamente.
+
+\textbf{\textsc{Git}}\\
+Sistema de control versiones seleccionado para este proyecto. Windows no lo trae instalado por lo que deberemos descargarlo e instalarlo desde el siguiente enlace: \href{https://git-scm.com/}{Git}\\
+
+\textbf{\textsc{GitKraken}}\\
+Para una mejor gestión, hemos usado la herramienta de escritorio Gitkraken. Si se desea descargar se puede hacer entrando en \href{https://gitkraken.com/}{GitKraken}\\
+Descargamos el ejecutable y lo instalamos una vez abierto el porgrama deberemos ir a: File/Clone Repo. Y añadir la URL del proyecto GitHub. Si ya lo hemos clonado tenemos que dar a la opción: Open Repo y buscar la carpeta donde lo hayamos descargado previamente.\\
 \imagen{GitKraken}{GitKraken}
+
 \section{Compilación, instalación y ejecución del proyecto}
-Lo primero que hay que hacer, es abrir nuestro editor, en el caso de este proyecto Spyder. Una vez abierto el editor debemos abrir nuestros archivos *.py. Para ello pulsamos en archivo -> Abrir.\\
-No es necesario abrir todos los archivos, basta con abrir el archivo Main para su ejecución. Entonces nos vamos a la parte superior y pulsamos el boton ejecutar como bien vemos a continuación:
+Lo primero que hay que hacer, es abrir el editor, en el caso de este proyecto Spyder. Una vez abierto el editor debemos abrir los archivos *.py. Para ello pulsamos en archivo -> Abrir.\\
+No es necesario abrir todos los archivos, basta con abrir el archivo Main (HealthApp) para su ejecución.Pulsamos el boton ejecutar, que se encuentra en la parte superior,  como se muestra a continuación:
 \imagen{BotonEjecutar}{Boton ejecutar de Spyder.}
-Una vez pulsemos se abrirá en otra pantalla generada por Tkinter, el programa principal:
+Una vez pulsado, se abrirá en otra pantalla generada por Tkinter, el programa principal (Imagen: \ref{fig:Inicio})\\
 \begin{figure}[htb]
 \centering
 \includegraphics[scale=1]{Inicio} 
 \caption{Pantalla nueva generada por la librería Tkinter (Versión 2.0)}
+\label{fig:Inicio}
 \end{figure}
-Ante cualquier prueba que se desee realizar, como comprobar el valor de las variables, la veracidad de los datos, etcétera. Aparecerá en la pantalla de la terminal que por defecto viene posicionada abajo a la derecha:
+\textbf{Terminal}\\
+Ante cualquier prueba que se desee realizar. Aparecerá en la interfaz de Spyder, la terminal. Por defecto viene posicionada abajo a la derecha:
 \imagen{TerminalSpyder}{Señalización de la terminal interna de Spyder}
 \section{Pruebas del sistema}
 Las pruebas del sistema son pruebas de la correcta salida de información, del transcurso entre frames de manera adecuada, de la veracidad de los resultados de los cálculos internos, etcétera.
@@ -102,14 +126,14 @@ Las pruebas del sistema son pruebas de la correcta salida de información, del t
 Consisten en una serie de pruebas donde se han abordado todas las posibles combinaciones de carga y almacenamiento de los datos. Por ejemplo:
 \begin{itemize}
 \item Nuevo Usuario, Nuevo Alimento, Editar Usuario, Hacer selección y refrescar selecciones todo de manera independiente.
-\item Combinaciones varias entre las opciones anterior, editando un usuario que acabo de crear, añadiendo un alimento y haciendo una selección, editando un usuario y haciendo una seleccion, etcétera. Y comprobando acto seguido de que se había guardado correctamente en la base de datos.
+\item Combinaciones varias entre las opciones anterior, editando un usuario que acabo de crear, añadiendo un alimento y haciendo una selección, editando un usuario y haciendo una seleccion, etcétera. Comprobando acto seguido que se había guardado correctamente en la base de datos.
 \end{itemize}
 \textbf{Problemas encontrados:}\\
-Los DataFrames se ordenaban a la hora del almacenamiento provocando una inconsistencia de los datos con el programa. Los datos se guardan como objetos de Python en vez de como valores. Además, se tuvo que eliminar los indices de fila, debido a un problema de compatibilidad en la carga de los datos en otros ordenadores.
+Los DataFrames en ocasiones, se ordenaban alfabéticamente a la hora del almacenamiento provocando una inconsistencia de los datos con el programa. Los datos se guardan como objetos de Python en vez de como valores. Además, se tuvo que eliminar los indices de fila, debido a un problema de compatibilidad en la carga de los datos en otros ordenadores.
 \subsection{Navegabilidad}
 Se estuvo reiteradamente navegando por la interfaz gráfica haciendo uso de todas las funciones posibles del programa comprobando que este fuera fluido y no diera ningún tipo de problema a la hora de cambiar de Frame o generar nuevas ventanas.\\
 \textbf{Observaciones:}\\
-Se percibieron pequeños tiempos de espera además de que los Frames, son creados al inicio y mantiene su forma durante toda la navegabilidad del programa, haciéndolo una vez creado más rápido, pero dando problemas en cuanto a cambios gráficos se refiriese.
+Se percibieron pequeños tiempos de espera. Los Frames, son creados al inicio y mantiene su forma durante toda la navegabilidad del programa, haciéndolo una vez creado más rápido, pero dando problemas en cuanto a cambios gráficos se refiriese. Debido a la actualización de Frames por cada selección, se muestra una pequeña ralentización del programa, mientras crea de nuevos los Frames.
 \subsection{Algoritmos}
 Se llevaron a cabo las comprobaciones necesarias para ver que el sistema de recomendación y de reparto de datos funcionara correctamente. Para ello se llevó a cabo el siguiente tipo de pruebas:
 \begin{itemize}
@@ -130,6 +154,5 @@ Se ha llevado a cabo una serie de pruebas respecto a las bases de datos, como la
 \item Se prueba a abrir/ocupar los archivos previo a la ejecución.
 \end{itemize}
 \textbf{Problemas encontrados}\\
-Si los archivos necesarios por la aplicación eran eliminados antes de la apertura de la aplicación, la aplicación se bloqueaba impidiendo la continuidad sin avisar al usuario de que podía estar. Si se eliminaba durante, mientras no se fuera a guardar el progreso, se podía ejecutar sin ningún problema, en caso contrario se bloqueaba sin avisar de que estaba ocurriendo. Si se abren los archivos antes o durante el inicio de la aplicación, es el mismo caso que el anterior, no existe ningún problema hasta que se vaya a guardar el progreso.\\
-
-Para solucionar estos problemas, se crea un tratamiento de excepciones, de tal manera, que recoge la excepción lanzada por el sistema, y la convierte en un cuadro informativo al usuario, explicándole detalladamente que es exactamente lo que ocurre.
+Si los archivos necesarios por la aplicación eran eliminados antes de la apertura de la aplicación, la aplicación se bloqueaba impidiendo la continuidad sin avisar al usuario de que podía estar pasando. Si se eliminaba durante la ejecución, mientras no se guardara el progreso, se podía ejecutar sin ningún problema, en caso contrario se bloqueaba sin avisar de que estaba ocurriendo. Si se abren los archivos antes o durante el inicio de la aplicación, es el mismo caso que el anterior, no existe ningún problema hasta que se vaya a guardar el progreso.\\
+Los errores mostrados derivaban de: Permisos denegados, y archivos no encontrados. Para solucionar estos problemas, se crea un tratamiento de excepciones, que recoge la excepción lanzada por el sistema, y la convierte en un cuadro informativo al usuario. De esta forma, se explica al usuario a grandes rasgos, cual es la razón del problema.

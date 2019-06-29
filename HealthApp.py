@@ -914,7 +914,7 @@ if __name__ == "__main__":
         #Menu archivo
         menu = Menu(login)
         subMenuArchivo1 = Menu(menu)
-        subMenuArchivo1.add_command(label="Manual",command= lambda: os.system('assets\ejemplo.pdf'))
+        subMenuArchivo1.add_command(label="Manual",command= lambda: os.system('assets\Manual.pdf'))
         menu.add_cascade(label='Archivo',menu=subMenuArchivo1)
         login.config(menu=menu)
         #CUERPO

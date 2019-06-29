@@ -1,23 +1,23 @@
 \apendice{Especificación de diseño}
 
 \section{Introducción}
-En este capitulo veremos como todo lo relacionado con el diseño de la herramienta, por lo general ha llevado un pequeño estudio detrás para buscar la mejor ergonomía posible además del correcto desarrollo.
+En este capitulo veremos  todo lo relacionado con el diseño de la herramienta.
 \section{Diseño de datos}
-El diseño tanto visual como de los datos, se decidió antes de empezar a realizar el proyecto, por lo general se basa en:
+El diseño tanto visual como de los datos, se decidió antes de empezar a realizar el proyecto. Se basa en:
 \begin{itemize}
-\item Diseño visual organizado en Frames y ordenado por packs, sistema proporcionado por Tkinter, que permite subdividir cada pantalla en pequeñas proporciones y estas en sub-proporciones y así sucesivamente, pudiendo colarcarla a grandes rasgos (arriba, abajo,izquierda, derecha, ocupando parte, todo el eje x, etcétera.).
-\item Alimentos tratados según el estándar de medida para la información nutricional impuesto en todo el mundo.
-\item Manejo de Bases de datos en archivos ".xlsx"
+\item Diseño visual organizado en Frames y ordenado por paquetes (Packs de Tkinter \cite{pack}). Los packs permite subdividir cada pantalla en pequeñas proporciones y estas en sub-proporciones y así sucesivamente. .
+\item Alimentos tratados según el estándar de medida nutricional, por cada 100 gramos \cite{estandarNutri}.
+\item Bases de datos en archivos ".xlsx"
 \item Manejo interno de los datos a través de DataFrames
 \end{itemize}
 \section{Diseño procedimental}
 \subsection{Introducción}
 Se ha definido la estructura del sistema, y a continuación se definirá la forma de funcionamiento de las grandes acciones realizadas por la aplicación a pro de la utilidad de dicha. Todos los diseños han sido realizados con la herramienta "Draw.io" \cite{herramientoUML}
 \subsubsection{Alta o modificación de usuarios}
-Por lo general parten de la misma estructura del funcionamiento variando simplemente en un pequeño paso que será indicado en su momento. Antes de comenzar con el análisis detallado se mostrará a grandes rasgos, la estructura principal externa de este proceso, que básicamente es:
+La alta y modificación de usuarios parten de la misma estructura del funcionamiento variando simplemente en un pequeño paso que será indicado en su momento. Antes de comenzar con el análisis detallado se mostrará a grandes rasgos, la estructura principal externa de este proceso:\\
 \begin{enumerate}
 \item El usuario rellena sus datos y valida
-\item El programa comprueba que todo es correcto y si es así lo añade y sino lanza un error.
+\item El programa comprueba que todo es correcto. Si es correcto lo añade, sino lanza un error.
 \end{enumerate}
 Así es como funcionaría el algoritmo paso a paso:
 \begin{itemize}
@@ -31,7 +31,7 @@ Así es como funcionaría el algoritmo paso a paso:
 Se muestra el diagrama de interacción de los diferentes objetos.
 \imagen{UMLRegistro}{Diagrama UML sobre la interacción en el registro o modificación de un usuario}
 \subsection{Elegir Alimento}
-En este caso, es algo más complicado que lo anterior, pues hay varias vertientes, puedes refrescar hasta encontrar el alimento que buscas, y cuando lo seleccionas se actualizan el resto de frames.
+En este caso, es algo más complicado que lo anterior, pues hay varias vertientes. Es posible refrescar hasta encontrar el alimento buscado, y cuando es seleccionado se actualizan el resto de Frames.
 \begin{itemize}
 \item El Usuario refresca la página hasta encontrar su elección. 
 \item El usuario elige y se almacena en su registro diario esa elección
@@ -50,13 +50,10 @@ A continuación se detalla cada paso del procedimiento explicado anteriormente:
 Diagrama UML de la interacción del programa en la selección:
 \imagen{UMLSeleccion}{Diagrama UML que muestra la interacción entre frames y funciones durante la selección}
 A continuación se visualizará un diagrama de flujo  similar al anterior pero sobre el refrescar de las opciones y con otro método diferente a UML:
-\begin{figure}[htb]
-\centering
-\includegraphics[scale=1]{DiagramaFlujoRefrescar} 
-\caption{Diagrama de flujo de la acción de refrescar opciones de menú}
-\end{figure}
+\imagen{DiagramaFlujoRefrescar}{Diagrama de flujo de la acción de refrescar opciones de menú}
+
 \subsection{Carga Y almacenamiento bases de datos}
-Se podría hacer un apartado por cada colección de la base de datos que se carga y almacena por separado, pero puesto a que la estructura es similar y existen métodos encargados de unificar estos procesos, partiendo de la atomicidad del programa.
+Teniendo en cuenta la similitud entre el funcionamiento de la carga y almacenamiento de datos de las diferentes colecciones, se pasa a describir un modelo general que engloba a todos ellos:
 \begin{itemize}
 \item El usuario inicia la aplicación
 \item Se carga automáticamente los datos
@@ -69,7 +66,7 @@ Se podría hacer un apartado por cada colección de la base de datos que se carg
 \end{itemize}
 \imagen{UMLBD}{Diagrama UML de la interacción básica del programa con la base de datos.}
 \subsection{Estructura general del programa}
-Para concluir este pequeño apartado sobre el diseño procedimental, se mostrará el diagrama junto a su explicación de lo que es el funcionamiento e interacción de la estructura del programa por lo general.
+Diagrama del funcionamiento e interacción de la estructura del programa completo.
 \begin{itemize}
 \item Se crea la ventana de Inicio.
 \item El usuario inicia sesión o se registra
@@ -89,10 +86,11 @@ Para concluir este pequeño apartado sobre el diseño procedimental, se mostrar�
 \end{itemize}
 \end{itemize}
 \end{itemize}
-A continuación se mostrar un diagrama UML básico de la interacción del usuario con el programa en caso de haber iniciado sesión.
+A continuación se mostrará un diagrama UML básico de la interacción del usuario con el programa en caso de haber iniciado sesión.
 \imagen{UMLGeneral}{Diagrama UML general del programa, una vez se ha iniciado sesión.}
 \section{Diseño arquitectónico}
-El diseño arquitectónico lo separaremos en dos partes principales para mejorar su entendimiento. La idea principal es separar la arquitectura visual entre Frames que de alguna manera tiene un sistema de herencia en la navegabilidad y la estructura modular, con las diferentes funciones internas.
+El diseño arquitectónico lo separaremos en dos partes principales para mejorar su entendimiento. La idea principal es separar la arquitectura visual entre Frames, el cual contiene un sistema de herencia en la navegabilidad; y la estructura modular, con las diferentes funciones internas.
+\pagebreak
 \subsection{Arquitectura visual}
 \imagen{ArquitecturaVisual}{Imagen de la consiguiente arquitectura visual para la correcta navegación}
 \subsection{Arquitectura Modular}
@@ -100,13 +98,15 @@ Para esta arquitectura se tendrá en cuenta dos diagramas principales, dado la c
 \subsubsection{Diagrama de módulos}
 Antes de ver la imagen de relaciones entre módulos, aclarar que cuando la flecha sale de un modulo al siguiente es que ese modulo hace uso del otro, pero no viceversa (Excepto en flechas bidireccionales).
 \imagen{DiagramaRelaciones}{Diagrama de las relaciones generales entre los distintos módulos}
-
-\textbf{\textsc{Vista}}
+\pagebreak
+\textbf{Vista}\\
 \imagen{DiagramaVista}{Diagrama de clases del módulo/clase vista.}
-\textbf{\textsc{AdminBase}}
+\pagebreak
+\textbf{AdminBase}\\
 \imagen{DiagramaAdmin}{Diagrama de clases del módulo/clase AdminBase.}
-\textbf{\textsc{CalculosDieta}}
+\textbf{CalculosDieta}\\
 \imagen{DiagramaCalculos}{Diagrama de clases del módulo/clase CalculosDieta.}
+\pagebreak
 \subsubsection{Diagrama Interno del Main}
 Debido a la mecánica de la librería Tkinter, fue necesario crear cada Frame, dentro de la misma clase, para que esto creara el flujo que principalmente se usa durante el programa. Por ello hay una jerarquía propia de clases dentro del propio Main.
 \imagen{DiagramaMain}{Diagrama interno del Main}

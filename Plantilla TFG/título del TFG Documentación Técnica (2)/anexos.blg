@@ -6,10 +6,13 @@ A level-1 auxiliary file: ./tex/D_Manual_programador.aux
 A level-1 auxiliary file: ./tex/E_Manual_usuario.aux
 The style file: plain.bst
 Database file #1: bibliografiaAnexos.bib
+Warning--to sort, need author or key in scrum
 Warning--to sort, need author or key in DAFO
 Warning--to sort, need author or key in matriz
 Warning--to sort, need author or key in vidautil
 Warning--to sort, need author or key in ssocial
 Warning--to sort, need author or key in licencias
 Warning--to sort, need author or key in mit
-(There were 6 warnings)
+Warning--to sort, need author or key in pack
+Warning--to sort, need author or key in estandarNutri
+(There were 9 warnings)
