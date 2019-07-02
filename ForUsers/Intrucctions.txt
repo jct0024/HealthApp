@@ -14,3 +14,7 @@ Recomendación: Para mayor comodidad, hacer click derecho, y "crear acceso direct
 NUNCA: Mover el archivo original HealthApp.exe de la carpeta, ni ninguna carpeta del mismo directorio.
 Una vez preparado hacer doble click izquierdo sobre el ejecutable o su acceso directo.
 Ante cualquier duda, consulte el manual de usuario situado en la carpeta "assets", del ejecutable.
+
+###IMPORTANTE:###
+Si se adquiere el proyecto a través del CD, copiar la carpeta: "ForUsers/HealthApp" En el escritorio antes de la ejecución. Debido al impedimento de 
+regrabación de los cds, no permitirá el almacenamiento de los datos.
