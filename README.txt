@@ -20,3 +20,7 @@ Documentación tecnica del desarrollo del proyecto, incluye memorias, anexos y re
 ##################################
 Poster:
 Relativo a la representación visual del proyecto, usado para la descripción del proyecto a la hora de exponerlo.
+##################################
+Videos:
+Ayudas audivisuales para el uso del programa y para el desarrollo de este. 
+Se explica: Como instalar los requisitos para trabajar con el proyecto, como usarlo, como estan estructurados los datos, como funciona la formula de recomendación.
