@@ -14,6 +14,7 @@ Carpeta donde se encuentra todo lo referido al desarrollo del programa: Modulos,
 ForUsers:
 Carpeta donde se encuentra todo lo referente al uso por usuarios.
 Intrucciones de como descargar y usar el programa, manual de usuario, y el ejecutable dentro de la carpeta: HealthApp.
+IMPORTANTE: Si se usa el CD, copiar la carpeta: ForUsers/HealthApp, al escritorio, antes de usar el ejecutable.
 ##################################
 Memorias:
 Documentación tecnica del desarrollo del proyecto, incluye memorias, anexos y recursos utilizados para la creación de estos.

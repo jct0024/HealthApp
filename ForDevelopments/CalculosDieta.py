@@ -16,6 +16,7 @@ Calcula el número de calorias que el usuario ha de gastar en base a:
 """
 def calculoTMB(usuario):
     #Formula para calcular la tasa de metabolismo basal
+    registroUsr = ab.cargaRegistroUsuario(usuario[0])
     TMB = (10*usuario[7])+(6.25*usuario[6])-(5*usuario[5])
     #Difrencia entre mujery ho,bre
     if(usuario[4] == 'H'):
@@ -37,10 +38,7 @@ def calculoTMB(usuario):
         TMB = "ERROR"
     #Por ultimo, el TBM son las calorias que el usuario gasta al dia aproximadas,
     #si quiere subir y bajar el restamos o sumamos el resto de calorias
-    if(usuario[10]=='subir'):
-        TMB=TMB+500;
-    elif(usuario[6]=='bajar'):
-        TMB=TMB-500
+    TMB=TMB+int(registroUsr['valor']);
     return TMB
 def distribuciónDeMacronutrientes(kcal,tipoDieta):
     if (tipoDieta == 'normal'):
